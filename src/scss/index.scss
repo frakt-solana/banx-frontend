@@ -1,0 +1,13 @@
+@import './base/reset.scss';
+@import './base/scrollBar.scss';
+@import './abstracts/fonts.scss';
+@import './abstracts/variables.scss';
+
+@import './antd/slider.scss';
+@import './antd/tooltip.scss';
+
+body {
+  background-color: var(--bg-tertiary);
+  color: var(--content-primary);
+  font: var(--body-text-md);
+}

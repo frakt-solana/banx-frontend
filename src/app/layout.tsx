@@ -1,8 +1,7 @@
-import '@banx/less/index.less'
 import { QueryProvider } from '@banx/providers/query'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
 
-import { GlobalStyle } from './global-style'
+import { GlobalStyles } from './global-styles'
 
 export const metadata = {
   title: 'Banx Frontend',
@@ -13,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <GlobalStyle />
+        <GlobalStyles />
         <QueryProvider>
           <SolanaConnectionWalletProvider>{children}</SolanaConnectionWalletProvider>
         </QueryProvider>

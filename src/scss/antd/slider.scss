@@ -81,7 +81,7 @@
   }
 }
 
-.sliderValue {
+@mixin sliderValue {
   .ant-slider-handle {
     &::before {
       margin-top: 2px;
@@ -111,10 +111,11 @@
 }
 
 .sliderWithValue {
-  .sliderValue();
+  @include sliderValue;
 }
 .sliderWithValueSol {
-  .sliderValue();
+  @include sliderValue;
+
   .ant-slider-handle {
     &::before {
       min-width: 56px;
@@ -123,7 +124,8 @@
   }
 }
 .sliderWithValuePercent {
-  .sliderValue();
+  @include sliderValue;
+
   .ant-slider-handle {
     &::before {
       content: attr(aria-valuenow) '%';
@@ -131,7 +133,8 @@
   }
 }
 .sliderWithValueMultiplier {
-  .sliderValue();
+  @include sliderValue;
+
   .ant-slider-handle {
     &::before {
       content: 'x' attr(aria-valuenow);

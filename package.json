@@ -14,25 +14,25 @@
     "@solana/web3.js": "^1.98.0",
     "@tanstack/react-query": "^5.71.1",
     "@tanstack/react-query-persist-client": "^5.71.1",
+    "fbonds-core": "0.6.75-beta1",
     "idb-keyval": "^6.2.1",
+    "lodash": "^4.17.21",
     "next": "15.2.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "css-loader": "^7.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "eslint-config-prettier": "^10.1.1",
-    "less": "^4.2.2",
-    "less-loader": "^12.2.0",
     "prettier": "^3.5.3",
-    "style-loader": "^4.0.0",
     "typescript": "^5"
   }
 }
