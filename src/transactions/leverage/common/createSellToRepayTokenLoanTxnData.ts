@@ -9,8 +9,8 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
+import { BondTradeTransaction, FraktBond } from '@banx/api'
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
-import { BondTradeTransaction, FraktBond } from '@banx/api/nft'
 import { TokenLoan } from '@banx/api/tokens'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'

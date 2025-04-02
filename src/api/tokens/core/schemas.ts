@@ -1,4 +1,3 @@
-import { BN } from 'fbonds-core'
 import {
   BondFeatures,
   BondingCurveType,
@@ -9,16 +8,13 @@ import {
 } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
-import {
-  BondTradeTransactionSchema,
-  FraktBondSchema,
-  SerializedPublicKeySchema,
-  StringPublicKeySchema,
-} from '@banx/api/shared'
+import { BondTradeTransactionSchema, FraktBondSchema } from '@banx/api/shared'
 import {
   SerializedBNSchema,
   SerializedIntBNSchema,
+  SerializedPublicKeySchema,
   StringIntSchema,
+  StringPublicKeySchema,
   StringToNumberSchema,
 } from '@banx/api/zodSchemas'
 

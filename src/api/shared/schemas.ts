@@ -1,6 +1,7 @@
 import { BN, web3 } from 'fbonds-core'
 import {
   BondFeatures,
+  BondOfferV3,
   BondTradeTransactionV2State,
   BondTradeTransactionV2Type,
   BondTradeTransactionV3,
@@ -11,26 +12,13 @@ import {
   RedeemResult,
   RepayDestination,
 } from 'fbonds-core/lib/fbond-protocol/types'
+import { convertValuesInAccount } from 'solana-transactions-parser'
 import { z } from 'zod'
 
-import { BondTradeTransaction } from '../nft'
-import { StringIntSchema } from '../zodSchemas'
+import { bnToNumberSafe } from '@banx/utils'
 
-export const SerializedPublicKeySchema = z.string().transform((value) => new web3.PublicKey(value))
-
-export const StringPublicKeySchema = z.string()
-
-const BondingCurveSchema = z.object({
-  delta: StringIntSchema,
-  bondingType: z.nativeEnum(BondingCurveType),
-})
-
-const ValidationPairSchema = z.object({
-  loanToValueFilter: StringIntSchema,
-  collateralsPerToken: StringIntSchema,
-  maxReturnAmountFilter: StringIntSchema,
-  bondFeatures: z.nativeEnum(BondFeatures),
-})
+import { SerializedPublicKeySchema, StringIntSchema, StringPublicKeySchema } from '../zodSchemas'
+import { BondTradeTransaction, Offer } from './types'
 
 export const OfferSchema = z.object({
   publicKey: StringPublicKeySchema,
@@ -38,7 +26,10 @@ export const OfferSchema = z.object({
   baseSpotPrice: StringIntSchema,
   bidCap: StringIntSchema,
   bidSettlement: StringIntSchema,
-  bondingCurve: BondingCurveSchema,
+  bondingCurve: z.object({
+    delta: StringIntSchema,
+    bondingType: z.nativeEnum(BondingCurveType),
+  }),
   buyOrdersQuantity: StringIntSchema,
   concentrationIndex: StringIntSchema,
   currentSpotPrice: StringIntSchema,
@@ -48,11 +39,16 @@ export const OfferSchema = z.object({
   lastTransactedAt: StringIntSchema,
   mathCounter: StringIntSchema,
   pairState: z.nativeEnum(PairState),
-  validation: ValidationPairSchema,
+  validation: z.object({
+    loanToValueFilter: StringIntSchema,
+    collateralsPerToken: StringIntSchema,
+    maxReturnAmountFilter: StringIntSchema,
+    bondFeatures: z.nativeEnum(BondFeatures),
+  }),
 
   loanApr: StringIntSchema.default('0'),
-  liquidationLtvBp: StringIntSchema, //? Exist only for token markets
-  offerLtvBp: StringIntSchema, //? Exist only for token markets
+  liquidationLtvBp: StringIntSchema,
+  offerLtvBp: StringIntSchema,
 })
 
 export const BondTradeTransactionSchema = z.object({
@@ -139,3 +135,51 @@ export const convertBondTradeTransactionToCore = (
     collateralAmountSnapshot: new BN(schema.collateralAmountSnapshot.toString()),
   }
 }
+
+export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
+  return convertValuesInAccount<Offer>(bondOffer, {
+    bnParser: (v) => {
+      return bnToNumberSafe(v)
+    },
+    pubkeyParser: (v) => v.toBase58(),
+  })
+}
+
+export const convertCoreOfferToBondOfferV3 = (offer: unknown): BondOfferV3 => {
+  const parsed = BondOfferV3Schema.parse(offer)
+  return parsed as BondOfferV3
+}
+const SerializedToNumberBNSchema = z.number().transform((value) => {
+  return new BN(value)
+})
+
+const BondOfferV3Schema = z.object({
+  publicKey: SerializedPublicKeySchema,
+  assetReceiver: SerializedPublicKeySchema,
+  baseSpotPrice: SerializedToNumberBNSchema,
+  bidCap: SerializedToNumberBNSchema,
+  bidSettlement: SerializedToNumberBNSchema,
+  bondingCurve: z.object({
+    delta: SerializedToNumberBNSchema,
+    bondingType: z.nativeEnum(BondingCurveType),
+  }),
+  buyOrdersQuantity: SerializedToNumberBNSchema,
+  concentrationIndex: SerializedToNumberBNSchema,
+  currentSpotPrice: SerializedToNumberBNSchema,
+  edgeSettlement: SerializedToNumberBNSchema,
+  fundsSolOrTokenBalance: SerializedToNumberBNSchema,
+  hadoMarket: SerializedPublicKeySchema,
+  lastTransactedAt: SerializedToNumberBNSchema,
+  mathCounter: SerializedToNumberBNSchema,
+  pairState: z.nativeEnum(PairState),
+  validation: z.object({
+    loanToValueFilter: SerializedToNumberBNSchema,
+    collateralsPerToken: SerializedToNumberBNSchema,
+    maxReturnAmountFilter: SerializedToNumberBNSchema,
+    bondFeatures: z.nativeEnum(BondFeatures),
+  }),
+
+  loanApr: SerializedToNumberBNSchema.default(0),
+  liquidationLtvBp: SerializedToNumberBNSchema,
+  offerLtvBp: SerializedToNumberBNSchema,
+})

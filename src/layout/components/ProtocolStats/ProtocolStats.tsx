@@ -5,7 +5,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { createDisplayValueJSX } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
-import { stats } from '@banx/api/nft'
+import { stats } from '@banx/api/common'
 import { formatCompact, formatNumbersWithCommas, getTokenDecimals } from '@banx/utils'
 
 import styles from './ProtocolStats.module.scss'

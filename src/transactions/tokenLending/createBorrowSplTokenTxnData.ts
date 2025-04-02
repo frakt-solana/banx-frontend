@@ -8,7 +8,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { core } from '@banx/api/nft'
+import { BondTradeTransaction, FraktBond } from '@banx/api'
 import { BorrowOfferRaw, CollateralToken } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import {
@@ -112,9 +112,7 @@ export const parseTokenBorrowSimulatedAccounts = (
 
   return {
     bondOffer: parsedAccountsBN?.['bondOfferV3']?.[0] as BondOfferV3,
-    bondTradeTransaction: parsedAccounts?.[
-      'bondTradeTransactionV3'
-    ]?.[0] as core.BondTradeTransaction,
-    fraktBond: parsedAccounts?.['fraktBond']?.[0] as core.FraktBond,
+    bondTradeTransaction: parsedAccounts?.['bondTradeTransactionV3']?.[0] as BondTradeTransaction,
+    fraktBond: parsedAccounts?.['fraktBond']?.[0] as FraktBond,
   }
 }

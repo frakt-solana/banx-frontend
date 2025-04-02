@@ -1,4 +1,5 @@
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
+import { ZodType } from 'zod'
 
 enum MarketType {
   SOL = 'sol',
@@ -16,20 +17,14 @@ export const convertToMarketType = (tokenType: LendingTokenType): MarketType => 
   return LENDING_TOKEN_TO_MARKET_MAP[tokenType]
 }
 
-export enum OutputToken {
-  SOL = 'SOL',
-  USDC = 'USDC',
-  BanxSOL = 'BanxSOL',
-}
-
-//TODO (TokenLending): Remove it when sync LendingTokenType with OutputToken
-export const convertToOutputToken = (outputToken: LendingTokenType): OutputToken => {
-  if (outputToken === LendingTokenType.NativeSol) {
-    return OutputToken.BanxSOL
+export const parseResponseSafe = async <T>(
+  data: unknown,
+  schema: ZodType<unknown>,
+): Promise<T | undefined> => {
+  try {
+    return (await schema.parseAsync(data)) as T
+  } catch (validationError) {
+    console.error('Schema validation error:', { validationError })
+    return undefined
   }
-  if (outputToken === LendingTokenType.Usdc) {
-    return OutputToken.USDC
-  }
-
-  return OutputToken.SOL
 }

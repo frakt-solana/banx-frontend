@@ -9,8 +9,7 @@ import {
 import { RequestWithPagination } from '@banx/api/shared'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
-import { convertToMarketType } from '../../helpers'
-import { parseResponseSafe } from './../../shared/validation'
+import { convertToMarketType, parseResponseSafe } from '../../helpers'
 import {
   BondOfferV3Schema,
   BorrowOfferSchemaRaw,

@@ -12,7 +12,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond, Offer } from '@banx/api/nft'
+import { BondTradeTransaction, FraktBond, Offer } from '@banx/api'
 import { core } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import { ZERO_BN, calculateTokenLoanRepayValueOnCertainDate, isBanxSolTokenType } from '@banx/utils'

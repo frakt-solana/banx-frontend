@@ -8,7 +8,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { Offer } from '@banx/api/nft'
+import { Offer } from '@banx/api'
 import { core } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 

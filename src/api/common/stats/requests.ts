@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { parseResponseSafe } from '@banx/api/shared'
 import { BACKEND_BASE_URL } from '@banx/constants'
 
-import { convertToMarketType } from '../../helpers'
+import { convertToMarketType, parseResponseSafe } from '../../helpers'
 import { AllTotalStatsSchema, UserLoansStatsSchema, UserOffersStatsSchema } from './schemas'
 import {
   AllTotalStats,

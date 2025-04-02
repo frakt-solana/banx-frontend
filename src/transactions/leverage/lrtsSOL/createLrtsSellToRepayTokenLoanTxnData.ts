@@ -8,8 +8,8 @@ import {
 import { sellToRepay } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { SimulatedAccountInfoByPubkey } from 'solana-transactions-executor'
 
+import { BondTradeTransaction, FraktBond } from '@banx/api'
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
-import { BondTradeTransaction, FraktBond } from '@banx/api/nft'
 import { BONDS, WSOL_ADDRESS } from '@banx/constants'
 import { parseAccountInfoByPubkey, sendTxnPlaceHolder } from '@banx/transactions'
 import { getJupSwapIxns } from '@banx/transactions/jup'

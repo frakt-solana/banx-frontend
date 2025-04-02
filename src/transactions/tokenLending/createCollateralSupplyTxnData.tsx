@@ -7,7 +7,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api/nft'
+import { BondTradeTransaction, FraktBond } from '@banx/api'
 import { TokenLoan } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions/helpers'
