@@ -1,0 +1,48 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 0 24px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0;
+  }
+}
+
+.content {
+  background-color: var(--bg-tertiary);
+
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+.notificationsSider {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--z-sidebar);
+
+  height: 100%;
+  width: 328px;
+
+  @media screen and (max-width: 640px) {
+    width: 312px;
+  }
+}

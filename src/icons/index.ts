@@ -1,10 +1,16 @@
+export { BurgerClose, Burger } from './BurgerMenu'
+export { ChevronDown } from './ChevronDown'
 export { CloseModal } from './CloseModal'
 export { Copy } from './Copy'
 export { Dexscreener } from './Dexscreener'
 export { LoaderCircle } from './LoaderCircle'
+export { Logo } from './Logo'
+export { LogoFull } from './LogoFull'
 export { Pyth } from './Pyth'
+export { Settings } from './Settings'
 export { Switchboard } from './Switchboard'
 export { TensorFilled } from './TensorFilled'
+export { Wallet } from './Wallet'
 
 //? Raster icons
 export { default as SolanaFM } from './SolanaFM.png'

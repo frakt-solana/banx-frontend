@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { AppLayout } from '@banx/layout'
 import { QueryProvider } from '@banx/providers/query'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
 
@@ -16,8 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <GlobalStyles />
         <QueryProvider>
-          {/* <SolanaConnectionWalletProvider>{children}</SolanaConnectionWalletProvider> */}
-          {children}
+          <SolanaConnectionWalletProvider>
+            <AppLayout>{children}</AppLayout>
+          </SolanaConnectionWalletProvider>
         </QueryProvider>
       </body>
     </html>

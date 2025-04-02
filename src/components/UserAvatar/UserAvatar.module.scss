@@ -1,0 +1,19 @@
+.avatar {
+  &,
+  svg,
+  img {
+    border-radius: 50%;
+
+    height: 32px;
+    width: 32px;
+  }
+
+  svg {
+    rect {
+      fill: var(--bg-tertiary);
+    }
+    path {
+      fill: var(--bg-border);
+    }
+  }
+}
