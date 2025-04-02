@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { QueryProvider } from '@banx/providers/query'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
 
@@ -8,13 +10,14 @@ export const metadata = {
   description: 'Next.js rewrite of Banx UI',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
         <GlobalStyles />
         <QueryProvider>
-          <SolanaConnectionWalletProvider>{children}</SolanaConnectionWalletProvider>
+          {/* <SolanaConnectionWalletProvider>{children}</SolanaConnectionWalletProvider> */}
+          {children}
         </QueryProvider>
       </body>
     </html>

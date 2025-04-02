@@ -3,7 +3,6 @@
 import styles from './page.module.scss'
 
 export default function MultiplyPage() {
-  console.log(styles)
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.content}>
