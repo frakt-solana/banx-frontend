@@ -8,8 +8,7 @@ import {
 import moment from 'moment'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
-import { UserVault } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan, UserVault } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import {
   ZERO_BN,

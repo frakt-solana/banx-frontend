@@ -1,4 +1,4 @@
-import { DefaultApi, Instruction, QuoteResponse, createJupiterApiClient } from '@jup-ag/api'
+import { Instruction, QuoteResponse, SwapApi, createJupiterApiClient } from '@jup-ag/api'
 import { BN, web3 } from 'fbonds-core'
 import { BASE_POINTS, LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
@@ -11,8 +11,8 @@ import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor
 
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
 import { core } from '@banx/api/tokens'
+import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
-import { MultiplyPair } from '@banx/pages/tokenLending/LeveragePage'
 import { sendTxnPlaceHolder } from '@banx/transactions'
 import { deserializeJupInstruction } from '@banx/transactions/jup'
 import { bnToNumberSafe, getTokenDecimals } from '@banx/utils'
@@ -161,7 +161,7 @@ export const createLeverageTxnData: CreateLeverageTxnData = async (params, walle
 }
 
 const getJupSwapIxns = async (params: {
-  jupiterQuoteApi: DefaultApi
+  jupiterQuoteApi: SwapApi
   quote: QuoteResponse
   walletPublicKey: web3.PublicKey
 }) => {

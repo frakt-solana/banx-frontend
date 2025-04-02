@@ -9,7 +9,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { fetchTokenBalance } from '@banx/api/common'
-import { UserVault } from '@banx/api/shared'
+import { UserVault } from '@banx/api/tokens'
 import { BANX_SOL_ADDRESS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { isBanxSolTokenType } from '@banx/utils'

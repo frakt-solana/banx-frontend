@@ -8,7 +8,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
 import { ClusterStats } from '@banx/api/common'
-import { UserVault } from '@banx/api/shared'
+import { UserVault } from '@banx/api/tokens'
 import { getTokenDecimals, getTokenTicker } from '@banx/utils'
 
 import { TabName } from './hooks'
@@ -17,6 +17,7 @@ type GetLenderVaultInfoParams = {
   userVault: UserVault | undefined
   clusterStats: ClusterStats | undefined
 }
+
 export const getLenderVaultInfo = ({ userVault, clusterStats }: GetLenderVaultInfoParams) => {
   const { slot = 0, epochStartedAt = 0 } = clusterStats || {}
 

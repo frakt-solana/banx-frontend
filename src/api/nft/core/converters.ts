@@ -22,10 +22,10 @@ export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
   })
 }
 
-export const convertCoreOfferToBondOfferV3 = (offer: Offer): BondOfferV3 => {
-  return BondOfferV3Schema.parse(offer)
+export const convertCoreOfferToBondOfferV3 = (offer: unknown): BondOfferV3 => {
+  const parsed = BondOfferV3Schema.parse(offer)
+  return parsed as BondOfferV3
 }
-
 const SerializedToNumberBNSchema = z.number().transform((value) => {
   return new BN(value)
 })

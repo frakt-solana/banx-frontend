@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss'
 
-export default function MultiplyPage() {
+export default function LendingMultiplyPage() {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.content}>

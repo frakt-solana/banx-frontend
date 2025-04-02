@@ -1,22 +1,26 @@
+import { BN } from 'fbonds-core'
 import {
   BondFeatures,
   BondingCurveType,
   LendingTokenType,
   OraclePriceFeedType,
   PairState,
+  UserVaultState,
 } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
 import {
   BondTradeTransactionSchema,
   FraktBondSchema,
+  SerializedPublicKeySchema,
+  StringPublicKeySchema,
+} from '@banx/api/shared'
+import {
   SerializedBNSchema,
   SerializedIntBNSchema,
-  SerializedPublicKeySchema,
   StringIntSchema,
-  StringPublicKeySchema,
   StringToNumberSchema,
-} from '@banx/api/shared'
+} from '@banx/api/zodSchemas'
 
 import { MarketCategory } from './types'
 
@@ -231,4 +235,23 @@ export const MultiplyMarketDataSchema = z.object({
   maxMultiplier: z.number(),
   maxNetApr: z.number(),
   collateralApr: z.number(),
+})
+
+export const UserVaultSchema = z.object({
+  publicKey: SerializedPublicKeySchema,
+  userVaultState: z.nativeEnum(UserVaultState),
+  user: SerializedPublicKeySchema,
+  lendingTokenType: z.nativeEnum(LendingTokenType),
+  offerLiquidityAmount: SerializedBNSchema,
+  liquidityInLoansAmount: SerializedBNSchema,
+  repaymentsAmount: SerializedBNSchema,
+  interestRewardsAmount: SerializedBNSchema,
+  rentRewards: SerializedBNSchema,
+  fundsInCurrentEpoch: SerializedBNSchema,
+  fundsInNextEpoch: SerializedBNSchema,
+  lastCalculatedSlot: SerializedBNSchema,
+  lastCalculatedTimestamp: SerializedBNSchema,
+  rewardsToHarvest: SerializedBNSchema,
+  rewardsHarvested: SerializedBNSchema,
+  lastTransactedAt: SerializedBNSchema,
 })

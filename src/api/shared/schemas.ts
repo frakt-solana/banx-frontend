@@ -10,68 +10,15 @@ import {
   PairState,
   RedeemResult,
   RepayDestination,
-  UserVaultState,
 } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
 import { BondTradeTransaction } from '../nft'
-import { RarityTier, TokenStandard } from './types'
+import { StringIntSchema } from '../zodSchemas'
 
-export const SerializedBNSchema = z.string().transform((value) => {
-  return new BN(value)
-})
-
-export const StringToNumberSchema = z.string().transform((value) => {
-  return parseFloat(value)
-})
-
-export const StringIntSchema = z.string().transform((value) => {
-  return parseInt(value)
-})
-
-export const SerializedIntBNSchema = z.number().transform((value) => {
-  return new BN(value.toString())
-})
-
-export const SerializedPublicKeySchema = z.string().transform((value) => {
-  return new web3.PublicKey(value)
-})
+export const SerializedPublicKeySchema = z.string().transform((value) => new web3.PublicKey(value))
 
 export const StringPublicKeySchema = z.string()
-
-export const RaritySchema = z.object({
-  tier: z.nativeEnum(RarityTier), //? string
-  rank: z.number(), //? number
-})
-
-export const NFTSchema = z.object({
-  mint: StringPublicKeySchema,
-  meta: z.object({
-    imageUrl: z.string(),
-    name: z.string(),
-    collectionName: z.string(),
-    collectionImage: z.string(),
-    tensorSlug: z.string(),
-    partnerPoints: z.number().optional(),
-    playerPoints: z.number().optional(),
-    tokenStandard: z.nativeEnum(TokenStandard).or(z.string().optional()),
-    collectionId: z.string().optional(),
-  }),
-  //? Change to BN and PublicKey?
-  compression: z
-    .object({
-      dataHash: z.string(),
-      creatorHash: z.string(),
-      leafId: z.number(),
-      tree: z.string(),
-      whitelistEntry: z.string(),
-    })
-    .optional(),
-  collectionFloor: StringIntSchema,
-  rarity: RaritySchema.optional().nullable(),
-  interestFee: StringIntSchema,
-  upfrontFee: StringIntSchema,
-})
 
 const BondingCurveSchema = z.object({
   delta: StringIntSchema,
@@ -104,8 +51,8 @@ export const OfferSchema = z.object({
   validation: ValidationPairSchema,
 
   loanApr: StringIntSchema.default('0'),
-  liquidationLtvBp: StringIntSchema.optional(), //? Exist only for token markets
-  offerLtvBp: StringIntSchema.optional(), //? Exist only for token markets
+  liquidationLtvBp: StringIntSchema, //? Exist only for token markets
+  offerLtvBp: StringIntSchema, //? Exist only for token markets
 })
 
 export const BondTradeTransactionSchema = z.object({
@@ -160,44 +107,6 @@ export const FraktBondSchema = z.object({
   repaidOrLiquidatedAt: StringIntSchema,
   terminatedCounter: z.number(),
   hadoMarket: StringPublicKeySchema,
-})
-
-export const UserVaultSchema = z.object({
-  publicKey: SerializedPublicKeySchema,
-  userVaultState: z.nativeEnum(UserVaultState),
-  user: SerializedPublicKeySchema,
-  lendingTokenType: z.nativeEnum(LendingTokenType),
-  offerLiquidityAmount: SerializedBNSchema,
-  liquidityInLoansAmount: SerializedBNSchema,
-  repaymentsAmount: SerializedBNSchema,
-  interestRewardsAmount: SerializedBNSchema,
-  rentRewards: SerializedBNSchema,
-  fundsInCurrentEpoch: SerializedBNSchema,
-  fundsInNextEpoch: SerializedBNSchema,
-  lastCalculatedSlot: SerializedBNSchema,
-  lastCalculatedTimestamp: SerializedBNSchema,
-  rewardsToHarvest: SerializedBNSchema,
-  rewardsHarvested: SerializedBNSchema,
-  lastTransactedAt: SerializedBNSchema,
-})
-
-export const UserVaultPrimitiveSchema = z.object({
-  publicKey: StringPublicKeySchema,
-  userVaultState: z.nativeEnum(UserVaultState),
-  user: StringPublicKeySchema,
-  lendingTokenType: z.nativeEnum(LendingTokenType),
-  offerLiquidityAmount: StringIntSchema,
-  liquidityInLoansAmount: StringIntSchema,
-  repaymentsAmount: StringIntSchema,
-  interestRewardsAmount: StringIntSchema,
-  rentRewards: StringIntSchema,
-  fundsInCurrentEpoch: StringIntSchema,
-  fundsInNextEpoch: StringIntSchema,
-  lastCalculatedSlot: StringIntSchema,
-  lastCalculatedTimestamp: StringIntSchema,
-  rewardsToHarvest: StringIntSchema,
-  rewardsHarvested: StringIntSchema,
-  lastTransactedAt: StringIntSchema,
 })
 
 export const convertBondTradeTransactionToCore = (

@@ -1,0 +1,56 @@
+import { useRef, useState } from 'react'
+
+import classNames from 'classnames'
+
+import { useOnClickOutside } from '@banx/hooks'
+
+import { DropdownButton, SortOptions } from './components'
+
+import styles from './SortDropdown.module.scss'
+
+export type SortOrder = 'asc' | 'desc'
+export type SortOption<T> = { label: string; value: [T, SortOrder] }
+
+export interface SortDropdownProps<T> {
+  option: SortOption<T>
+  onChange: (option: SortOption<T>) => void
+  options: SortOption<T>[]
+  className?: string
+}
+
+export const SortDropdown = <T,>({
+  option,
+  onChange,
+  options,
+  className,
+}: SortDropdownProps<T>) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+
+  const dropdownRef = useRef(null)
+  useOnClickOutside(dropdownRef, () => setIsDropdownOpen(false))
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prevOpen) => !prevOpen)
+  }
+
+  return (
+    <>
+      <div
+        onClick={() => setIsDropdownOpen(false)}
+        className={classNames(styles.overlay, { [styles.visible]: isDropdownOpen })}
+      />
+      <div ref={dropdownRef} className={classNames(styles.sortDropdownWrapper, className)}>
+        <DropdownButton
+          selectedOption={option}
+          isDropdownOpen={isDropdownOpen}
+          toggleDropdown={toggleDropdown}
+        />
+        {isDropdownOpen && (
+          <div className={styles.dropdown}>
+            <SortOptions selectedOption={option} options={options} onChange={onChange} />
+          </div>
+        )}
+      </div>
+    </>
+  )
+}

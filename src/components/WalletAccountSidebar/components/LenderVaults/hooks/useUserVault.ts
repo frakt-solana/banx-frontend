@@ -1,7 +1,7 @@
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 
-import { UserVault, fetchUserVaults } from '@banx/api/shared'
+import { UserVault, fetchUserVaults } from '@banx/api/tokens'
 import { useClusterStats } from '@banx/hooks'
 import { queryClient } from '@banx/providers/query'
 import { useTokenType } from '@banx/store'

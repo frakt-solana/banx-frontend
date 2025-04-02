@@ -1,4 +1,4 @@
-import { DefaultApi, QuoteResponse, createJupiterApiClient } from '@jup-ag/api'
+import { QuoteResponse, SwapApi, createJupiterApiClient } from '@jup-ag/api'
 import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { sellToRepay } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
@@ -12,8 +12,8 @@ import {
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
 import { BondTradeTransaction, FraktBond } from '@banx/api/nft'
 import { TokenLoan } from '@banx/api/tokens'
+import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
-import { MultiplyPair } from '@banx/pages/tokenLending/LeveragePage'
 import { parseAccountInfoByPubkey, sendTxnPlaceHolder } from '@banx/transactions'
 import { getJupSwapIxns } from '@banx/transactions/jup'
 import { createRepayTokenLoanTxnData } from '@banx/transactions/tokenLending'
@@ -105,7 +105,7 @@ export const parseSellToRepayTokenLoanSimulatedAccounts = (
 type FetchQuoteProps = (props: {
   loan: TokenLoan
   pair: MultiplyPair
-  jupiterClient: DefaultApi
+  jupiterClient: SwapApi
   slippageBps: number
   swapWarningHandler?: (message: string) => void
 }) => Promise<QuoteResponse | null>

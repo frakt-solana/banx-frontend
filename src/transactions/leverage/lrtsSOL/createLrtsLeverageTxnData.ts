@@ -9,7 +9,7 @@ import {
 import { BONDS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions'
 
-import { CreateLeverageTxnData } from '../common'
+import { CreateLeverageTxnData } from '../common/createLeverageTxnData'
 import { getFlashLoanIxns } from '../flashLoan'
 
 export const createLrtsLeverageTxnData: CreateLeverageTxnData = async (

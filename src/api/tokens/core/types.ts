@@ -1,4 +1,7 @@
-import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
+import {
+  LendingTokenType,
+  UserVault as UserVaultFromSdk,
+} from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
 import { ResponseWithPagination } from '@banx/api/shared'
@@ -62,3 +65,5 @@ export type MarketTokenRewardsResponse = Record<string, MarketTokenRewards>
 
 export type VaultPreview = z.infer<typeof VaultPreviewSchema>
 export type MultiplyMarketData = z.infer<typeof MultiplyMarketDataSchema>
+
+export type UserVault = UserVaultFromSdk

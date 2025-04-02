@@ -17,7 +17,7 @@ import { createRepayTokenLoanTxnData } from '@banx/transactions/tokenLending'
 import { caclulateBorrowTokenLoanValue } from '@banx/utils'
 
 import { SSOL_MINT } from '.'
-import { CreateSellToRepayTokenLoanTxnData } from '../common'
+import { CreateSellToRepayTokenLoanTxnData } from '../common/createSellToRepayTokenLoanTxnData'
 
 export const createLrtsSellToRepayTokenLoanTxnData: CreateSellToRepayTokenLoanTxnData = async (
   params,

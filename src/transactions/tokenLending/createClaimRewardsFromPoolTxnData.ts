@@ -5,12 +5,14 @@ import {
   getTokenMintFromLendingTokenType,
   updateLiquidityToUserVault,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
-import { LendingTokenType, UserVault } from 'fbonds-core/lib/fbond-protocol/types'
+import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import {
   CreateTxnData,
   SimulatedAccountInfoByPubkey,
   WalletAndConnection,
 } from 'solana-transactions-executor'
+
+import { UserVault } from '@banx/api/tokens'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'

@@ -1,16 +1,16 @@
 import { QuoteGetRequest, createJupiterApiClient } from '@jup-ag/api'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
+import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
-import { MultiplyPair } from '@banx/pages/tokenLending/LeveragePage'
 import { getTokenDecimals } from '@banx/utils'
 
 export type CustomQuoteParams = Partial<Omit<QuoteGetRequest, 'amount' | 'slippageBps'>>
 
 export const DEFAULT_JUP_QUOTE_PARAMS: CustomQuoteParams = {
-  computeAutoSlippage: true,
+  // computeAutoSlippage: true,
   asLegacyTransaction: false,
-  minimizeSlippage: false,
+  // minimizeSlippage: false,
   onlyDirectRoutes: true,
 } as const
 

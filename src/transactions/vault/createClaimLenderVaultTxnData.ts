@@ -13,7 +13,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { ClusterStats } from '@banx/api/common'
-import { UserVault } from '@banx/api/shared'
+import { UserVault } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'

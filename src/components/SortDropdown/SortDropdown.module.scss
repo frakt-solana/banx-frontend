@@ -1,0 +1,144 @@
+.overlay {
+  display: none;
+
+  @media (max-width: 960px) {
+    display: block;
+
+    background: var(--overlay-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-overlay);
+
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.sortDropdownWrapper {
+  position: relative;
+}
+
+.dropdown {
+  background: var(--bg-primary);
+  border: var(--border-primary);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+
+  position: absolute;
+  top: 45px;
+  right: 0;
+  z-index: var(--z-dropdown);
+
+  @media screen and (max-width: 960px) {
+    border: 0;
+    border-top: var(--border-primary);
+    padding: 24px;
+
+    position: fixed;
+    top: unset;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 640px) {
+    padding: 16px;
+    gap: 8px;
+  }
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  width: 100%;
+
+  position: relative;
+
+  &.isOpen {
+    border: 1px solid var(--bg-border-active);
+  }
+}
+
+.dropdownButtonTextContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dropdownButtonText {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font: var(--btn-text-md);
+
+  @media screen and (max-width: 640px) {
+    font: var(--btn-text-sm);
+  }
+}
+
+.dropdownButton,
+.sortButton {
+  svg > path {
+    fill: var(--content-primary);
+  }
+}
+
+.sortButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.sortButton {
+  background: var(--action-primary);
+  color: var(--content-secondary);
+
+  font: var(--body-text-md);
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+  height: 32px;
+
+  svg path {
+    fill: var(--content-secondary);
+  }
+}
+
+.sortButton.active {
+  background: var(--bg-primary);
+  border-color: var(--bg-border-active);
+  color: var(--content-primary);
+  pointer-events: none;
+
+  svg path {
+    fill: var(--content-primary);
+  }
+}
+
+.chevronIcon {
+  transition: transform 0.3s ease;
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}
