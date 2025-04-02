@@ -9,14 +9,9 @@ import { useRouter } from 'next/navigation'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
 import { Burger, BurgerClose, ChevronDown } from '@banx/icons'
-import { AssetMode, buildUrlWithModeAndToken, useAssetMode, useTokenType } from '@banx/store'
+import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
 
-import {
-  NFT_NAVIGATION_LINKS,
-  NavigationLink,
-  SubNavigationLink,
-  TOKEN_NAVIGATION_LINKS,
-} from '../Navbar'
+import { NavigationLink, SubNavigationLink, TOKEN_NAVIGATION_LINKS } from '../Navbar'
 import { isActivePath, isLinkOrSubLinkActive } from '../Navbar/helpers'
 import { useBurgerMenu } from './hooks'
 
@@ -24,14 +19,10 @@ import styles from './BurgerMenu.module.scss'
 
 const BurgerMenu = () => {
   const { isVisible, toggleVisibility } = useBurgerMenu()
-  const { currentAssetMode } = useAssetMode()
   const { tokenType } = useTokenType()
 
-  const linksToRender =
-    currentAssetMode === AssetMode.Token ? TOKEN_NAVIGATION_LINKS : NFT_NAVIGATION_LINKS
-
   const createNewPath = (pathname: string) => {
-    return buildUrlWithModeAndToken(pathname, currentAssetMode, tokenType)
+    return buildUrlWithModeAndToken(pathname, tokenType)
   }
 
   const [expandedLink, setExpandedLink] = useState<string | null>(null)
@@ -56,7 +47,7 @@ const BurgerMenu = () => {
         onClick={(e) => e.stopPropagation()}
         className={classNames(styles.burgerMenu, { [styles.visible]: isVisible })}
       >
-        {linksToRender.map((link) => (
+        {TOKEN_NAVIGATION_LINKS.map((link) => (
           <MenuItem
             key={link.label}
             link={link}

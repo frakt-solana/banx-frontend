@@ -2,34 +2,30 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 
-import { AssetMode, useAssetMode } from '@banx/store'
-
 import styles from './ModeSwitcher.module.scss'
 
 type ModeSwitcherProps = {
   className?: string
 }
 
+enum AssetMode {
+  NFT = 'nft',
+  Token = 'token',
+}
+
 const ModeSwitcher: FC<ModeSwitcherProps> = ({ className }) => {
   const MODES = [AssetMode.Token, AssetMode.NFT]
-
-  const { currentAssetMode, changeAssetMode } = useAssetMode()
-
-  const toggleAssetMode = () => {
-    const nextValue = currentAssetMode === AssetMode.NFT ? AssetMode.Token : AssetMode.NFT
-    changeAssetMode(nextValue)
-  }
 
   const getLabelByMode = (mode: AssetMode): string => {
     return mode === AssetMode.NFT ? 'NFTs' : 'Tokens'
   }
 
   return (
-    <div className={classNames(styles.modeSwitcher, className)} onClick={toggleAssetMode}>
+    <div className={classNames(styles.modeSwitcher, className)}>
       {MODES.map((mode) => (
         <div
           key={mode}
-          className={classNames(styles.mode, { [styles.active]: mode === currentAssetMode })}
+          className={classNames(styles.mode, { [styles.active]: mode === AssetMode.Token })}
         >
           <span className={styles.label}>{getLabelByMode(mode)}</span>
         </div>

@@ -1,5 +1,4 @@
-import BN from 'bn.js'
-import { web3 } from 'fbonds-core'
+import { BN, web3 } from 'fbonds-core'
 import { BASE_POINTS, LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { getMintLrtsInstructions } from 'fbonds-core/lib/fbond-protocol/functions/multiply'
 import {

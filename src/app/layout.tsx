@@ -3,8 +3,7 @@ import { ReactNode } from 'react'
 import { AppLayout } from '@banx/layout'
 import { QueryProvider } from '@banx/providers/query'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
-
-import { GlobalStyles } from './global-styles'
+import '@banx/scss/index.scss'
 
 export const metadata = {
   title: 'Banx Frontend',
@@ -15,7 +14,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <GlobalStyles />
         <QueryProvider>
           <SolanaConnectionWalletProvider>
             <AppLayout>{children}</AppLayout>

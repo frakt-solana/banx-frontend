@@ -6,7 +6,7 @@
 @import './antd/slider.scss';
 @import './antd/tooltip.scss';
 
-body {
+html body {
   background-color: var(--bg-tertiary);
   color: var(--content-primary);
   font: var(--body-text-md);

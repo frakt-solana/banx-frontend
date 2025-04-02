@@ -6,27 +6,23 @@ import Link from 'next/link'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
 import { ChevronDown } from '@banx/icons'
-import { AssetMode, buildUrlWithModeAndToken, useAssetMode, useTokenType } from '@banx/store'
+import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
 
-import { NFT_NAVIGATION_LINKS, NavigationLink, TOKEN_NAVIGATION_LINKS } from './constants'
+import { NavigationLink, TOKEN_NAVIGATION_LINKS } from './constants'
 import { isActivePath, isLinkOrSubLinkActive } from './helpers'
 
 import styles from './Navbar.module.scss'
 
 export const Navbar = () => {
-  const { currentAssetMode } = useAssetMode()
   const { tokenType } = useTokenType()
 
-  const linksToRender =
-    currentAssetMode === AssetMode.Token ? TOKEN_NAVIGATION_LINKS : NFT_NAVIGATION_LINKS
-
   const createNewPath = (pathname: string) => {
-    return buildUrlWithModeAndToken(pathname, currentAssetMode, tokenType)
+    return buildUrlWithModeAndToken(pathname, tokenType)
   }
 
   return (
     <div className={styles.navbar}>
-      {linksToRender.map((link) => (
+      {TOKEN_NAVIGATION_LINKS.map((link) => (
         <Fragment key={link.label}>
           {link.subLinks && (
             <DropdownLink key={link.label} link={link} createNewPath={createNewPath} />

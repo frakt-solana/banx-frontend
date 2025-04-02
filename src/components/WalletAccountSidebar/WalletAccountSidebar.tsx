@@ -11,6 +11,7 @@ import { useModal } from '@banx/store'
 
 // import { ClaimSection, EscrowVault } from './LenderVaults'
 import { SidebarFooter, WalletAssets, WalletDetails, WalletList } from './components'
+import { ClaimSection, EscrowVault } from './components/LenderVaults'
 import { useWalletSidebar } from './hooks'
 
 import styles from './WalletAccountSidebar.module.scss'
@@ -25,7 +26,7 @@ export const WalletAccountSidebar = () => {
     onWalletSelect: () => setVisible(false),
   })
 
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
   useOnClickOutside(containerRef, () => {
     if (isWalletSidebarVisible && !isModalVisible) {
       setVisible(false)
@@ -56,9 +57,9 @@ const WalletAccountOverview = () => (
   <>
     <CloseIconComponent />
     <div className={styles.accountOverviewContainer}>
-      {/* <WalletDetails /> */}
-      {/* <EscrowVault />
-      <ClaimSection /> */}
+      <WalletDetails />
+      <EscrowVault />
+      <ClaimSection />
     </div>
     <WalletAssets />
   </>

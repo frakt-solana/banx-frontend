@@ -6,7 +6,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { create } from 'zustand'
 
-import { buildUrlWithModeAndToken, getAssetModeFromUrl, getTokenTypeFromUrl } from './functions'
+import { buildUrlWithModeAndToken, getTokenTypeFromUrl } from './functions'
 
 type TokenTypeContext = {
   currentTokenType: LendingTokenType
@@ -23,8 +23,7 @@ export const useTokenType = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const assetModeFromUrl = getAssetModeFromUrl(searchParams)
-  const tokenTypeFromUrl = getTokenTypeFromUrl(searchParams, assetModeFromUrl)
+  const tokenTypeFromUrl = getTokenTypeFromUrl(searchParams)
 
   const { currentTokenType, setTokenType } = useTokenTypeState()
 
@@ -36,7 +35,7 @@ export const useTokenType = () => {
 
   const changeTokenType = (newTokenType: LendingTokenType) => {
     if (newTokenType !== currentTokenType) {
-      const newUrl = buildUrlWithModeAndToken(pathname, assetModeFromUrl, newTokenType)
+      const newUrl = buildUrlWithModeAndToken(pathname, newTokenType)
       setTokenType(newTokenType)
       router.replace(newUrl)
     }

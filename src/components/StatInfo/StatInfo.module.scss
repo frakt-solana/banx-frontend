@@ -1,0 +1,49 @@
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rowFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.label {
+  color: var(--content-secondary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.value {
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+
+.secondValue {
+  font: var(--body-text-sm);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-xs);
+  }
+}
+
+.valueIcon,
+.valueIcon path {
+  fill: var(--content-primary);
+}
