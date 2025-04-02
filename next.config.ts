@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
       https: require.resolve('https-browserify'),
       url: false,
     }
-
     return config
   },
 }
