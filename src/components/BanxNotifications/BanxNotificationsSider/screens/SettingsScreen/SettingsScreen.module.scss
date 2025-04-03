@@ -1,0 +1,196 @@
+.settingsLabel {
+  color: var(--content-secondary);
+  font: var(--important-text-sm);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.discordSettings,
+.emailSettings,
+.telegramSettings {
+  width: 100%;
+}
+
+.emailSettings,
+.telegramSettings {
+  padding-top: 16px;
+}
+
+//? Discord
+.discordSettingsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.discordSettingsAvatar {
+  &,
+  svg,
+  img {
+    height: 44px;
+    width: 44px;
+  }
+}
+
+.discordSettingsUserInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+
+  button {
+    width: 100%;
+  }
+}
+
+.discordSettingsUserName {
+  font: var(--btn-text-md);
+}
+
+.discordAlert {
+  border: 1px solid var(--additional-gold-primary);
+  border-radius: 6px;
+  background: var(--additional-gold-secondary);
+  color: var(--content-primary);
+  font: var(--body-text-sm);
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 8px;
+
+  svg {
+    min-width: 24px;
+
+    @media (max-width: 640px) {
+      min-width: 16px;
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+//? Events
+.eventsList {
+  width: 100%;
+  display: grid;
+  row-gap: 8px;
+  column-gap: 24px;
+
+  @media screen and (max-width: 1024px) and (min-width: 575px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.eventsListRow {
+  font: var(--body-text-md);
+  display: flex;
+  justify-content: space-between;
+}
+
+//? AddressInput
+.addressInputWrapper {
+  background: var(--action-tertiary);
+  border: 1px solid var(--bg-border);
+  border-radius: 6px;
+
+  height: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 4px 8px;
+
+  // &__error {
+
+  // }
+}
+
+.addressInput {
+  height: 100%;
+  color: var(--content-primary);
+  font: var(--body-text-md);
+  flex-grow: 1;
+  background: transparent;
+
+  &,
+  &:focus,
+  &:focus-visible,
+  &:hover {
+    border: unset;
+    outline: unset;
+  }
+}
+
+.addressInputLoader {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear reverse;
+
+  background: conic-gradient(
+    from 180deg at 50% 52.27%,
+    #aeaeb2 0deg,
+    rgba(174, 174, 178, 0) 360deg
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    content: '';
+    background: var(--action-tertiary);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.addressErrorText {
+  color: var(--additional-red-primary);
+  font: var(--body-text-xs);
+  margin-bottom: 0;
+}
+
+.addressInputDescription {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 8px;
+  padding-top: 6px;
+}
+.addressInputDescriptionText {
+  color: var(--content-primary);
+  font: var(--body-text-xs);
+  flex-grow: 1;
+  margin-bottom: 0;
+  a {
+    cursor: pointer;
+
+    &,
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:visited {
+      color: var(--additional-blue-primary);
+      border: unset;
+      border-bottom: 1px solid var(--additional-blue-primary);
+    }
+  }
+}
+
+.addressInputToggle {
+  padding-top: 8px;
+}

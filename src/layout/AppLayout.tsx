@@ -2,7 +2,9 @@
 
 import { FC, PropsWithChildren } from 'react'
 
+import { BanxNotificationsSider } from '@banx/components/BanxNotifications'
 import { WalletAccountSidebar } from '@banx/components/WalletAccountSidebar'
+import { ModalPortal } from '@banx/components/modals'
 
 import { useTheme } from '@banx/hooks'
 
@@ -30,10 +32,10 @@ export const AppLayout: FC<PropsWithChildren> = ({ children }) => {
 
         <div className={styles.container}>
           <BurgerMenu />
-          {/* <ModalPortal /> */}
+          <ModalPortal />
           <div className={styles.content}>
             {children}
-            {/* <BanxNotificationsSider className={styles.notificationsSider} /> */}
+            <BanxNotificationsSider className={styles.notificationsSider} />
           </div>
         </div>
       </div>

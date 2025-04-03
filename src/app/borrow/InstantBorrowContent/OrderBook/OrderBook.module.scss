@@ -1,0 +1,117 @@
+.container {
+  border: var(--border-primary);
+  border-radius: 12px;
+  padding-top: 12px;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 0 140px;
+
+    overflow: hidden;
+    height: unset;
+  }
+}
+
+.loader {
+  height: 100%;
+
+  path {
+    fill: var(--accent-primary);
+  }
+}
+
+.table {
+  tr > td,
+  tr > th {
+    height: 44px;
+    width: 100%;
+
+    @media (max-width: 960px) {
+      height: 32px;
+    }
+  }
+}
+
+.tableWrapper {
+  padding-bottom: 10px;
+  height: 100%;
+
+  @media (max-width: 960px) {
+    height: 100vh;
+  }
+}
+
+// * Cells * //
+
+.valueWithRadio {
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+  column-gap: 8px;
+}
+
+.radioCircle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: var(--border-primary);
+  background: var(--action-primary);
+  border-radius: 100%;
+
+  &.acitve {
+    border-color: var(--bg-border-active);
+
+    &::before {
+      content: '';
+      display: block;
+      background: var(--additional-green-primary);
+      width: 7px;
+      height: 7px;
+      border-radius: 100%;
+    }
+  }
+}
+
+.maxBorrowCell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cellTextValue {
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+
+.cellTextCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.headerCellCenter {
+  justify-content: center;
+}
+
+.ltvValue {
+  color: var(--content-primary);
+  font: var(--body-text-sm);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-xs);
+  }
+}
+
+// * Cells * //

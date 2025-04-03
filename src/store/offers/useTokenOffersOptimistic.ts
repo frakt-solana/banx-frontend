@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect } from 'react'
 
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'

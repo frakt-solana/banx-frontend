@@ -1,6 +1,7 @@
 export { useBestWorkingRPC } from './useBestWorkingRPC'
 export { useClusterStats } from './useClusterStats'
 export { useCollateralsList } from './useCollateralsList'
+export { useDebounce } from './useDebounce'
 export { useCountdown } from './useCountdown'
 export { useDiscordUser } from './useDiscordUser'
 export { useOnClickOutside } from './useOnClickOutside'

@@ -1,3 +1,5 @@
+'use client'
+
 import { ChangeEvent, FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import { SearchOutlined } from '@ant-design/icons'
