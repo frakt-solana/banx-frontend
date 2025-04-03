@@ -1,13 +1,11 @@
 import { ReactNode } from 'react'
 
-import { StaticImageData } from 'next/image'
-
 import { ADRASOL_PAIR, JLP_PAIR, LRTS_PAIR, VSOL_PAIR, WFRAGSOL_PAIR } from './[ticker]/constants'
 import FLPImage from './assets/FLP.png'
 import MeteoraImage from './assets/Meteora.png'
 
 export type TokenItem = {
-  logoUrl?: string | StaticImageData
+  logoUrl?: string
   ticker: string
   maxApr?: string
   maxMultiply?: number
@@ -18,13 +16,13 @@ export type TokenItem = {
 
 export const MOCK_TOKEN_ITEMS: TokenItem[] = [
   {
-    logoUrl: FLPImage,
+    logoUrl: FLPImage.src,
     ticker: 'FLP.1',
     maxMultiply: 100,
     isComingSoon: true,
   },
   {
-    logoUrl: MeteoraImage,
+    logoUrl: MeteoraImage.src,
     ticker: 'Meteora LP',
     maxMultiply: 100,
     isComingSoon: true,

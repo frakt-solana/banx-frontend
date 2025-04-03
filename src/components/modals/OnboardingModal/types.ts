@@ -1,0 +1,15 @@
+export enum OnboardingModalContentType {
+  BORROW = 'borrow',
+  MULTIPLY = 'multiply',
+  MULTIPLY_LRTS = 'multiplyLrts',
+  MULTIPLY_JLP = 'multiplyJlp',
+  MULTIPLY_ADRASOL = 'multiplyAdra',
+  MULTIPLY_VSOL = 'multiplyVsol',
+  MULTIPLY_HUBSOL = 'multiplyHub',
+  MULTIPLY_WFRAGSOL = 'multiplyWFrag',
+  VAULTS = 'vaults',
+  PLACE_OFFER = 'placeOffer',
+  LOANS_MARKET = 'loansMarket',
+  OFFERS = 'offers',
+  LOANS = 'loans',
+}

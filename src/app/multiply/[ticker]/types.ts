@@ -2,6 +2,8 @@ import { BN, web3 } from 'fbonds-core'
 import { offer as tokenOfferUtils } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
+import { OnboardingModalContentType } from '@banx/components/modals'
+
 import { CustomQuoteParams } from '@banx/api/common'
 import { CreateLeverageTxnData } from '@banx/transactions/leverage/common/createLeverageTxnData'
 import { CreateSellToRepayTokenLoanTxnData } from '@banx/transactions/leverage/common/createSellToRepayTokenLoanTxnData'
@@ -41,7 +43,7 @@ export type MultiplyPair = {
   createLeverageTxnHandler: CreateLeverageTxnData
   createSellToRepayTxnHandler: CreateSellToRepayTokenLoanTxnData
 
-  // onboardingContent: OnboardingModalContentType
+  onboardingContent: OnboardingModalContentType
 
   getNonJupLeverageConversionRate?: (connection: web3.Connection) => Promise<number>
   getNonJupSellToRepayConversionRate?: (connection: web3.Connection) => Promise<number>

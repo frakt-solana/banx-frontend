@@ -1,7 +1,7 @@
 import { BN, web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-// import { OnboardingModalContentType } from '@banx/components/modals'
+import { OnboardingModalContentType } from '@banx/components/modals'
 
 import { IS_SDK_ON_DEV_CONTRACT } from '@banx/constants'
 import { leverage, lrtsSOL } from '@banx/transactions/leverage'
@@ -23,7 +23,7 @@ export const JLP_PAIR: MultiplyPair = {
   minPositionSize: new BN(1e6), //? 1 JLP
   createLeverageTxnHandler: leverage.createLeverageTxnData,
   createSellToRepayTxnHandler: leverage.createSellToRepayTokenLoanTxnData,
-  // onboardingContent: OnboardingModalContentType.MULTIPLY_JLP,
+  onboardingContent: OnboardingModalContentType.MULTIPLY_JLP,
 }
 
 export const LRTS_PAIR: MultiplyPair = {
@@ -41,7 +41,7 @@ export const LRTS_PAIR: MultiplyPair = {
   minPositionSize: new BN(1e8), //? 0.1 lrtsSOL
   createLeverageTxnHandler: lrtsSOL.createLrtsLeverageTxnData,
   createSellToRepayTxnHandler: lrtsSOL.createLrtsSellToRepayTokenLoanTxnData,
-  // onboardingContent: OnboardingModalContentType.MULTIPLY_LRTS,
+  onboardingContent: OnboardingModalContentType.MULTIPLY_LRTS,
 }
 
 export const ADRASOL_PAIR: MultiplyPair = {
@@ -54,7 +54,7 @@ export const ADRASOL_PAIR: MultiplyPair = {
   minPositionSize: new BN(1e8), //? 0.1 adraSOL
   createLeverageTxnHandler: leverage.createLeverageTxnData,
   createSellToRepayTxnHandler: leverage.createSellToRepayTokenLoanTxnData,
-  // onboardingContent: OnboardingModalContentType.MULTIPLY_ADRASOL,
+  onboardingContent: OnboardingModalContentType.MULTIPLY_ADRASOL,
 }
 
 export const VSOL_PAIR: MultiplyPair = {
@@ -67,7 +67,7 @@ export const VSOL_PAIR: MultiplyPair = {
   minPositionSize: new BN(1e8), //? 0.1 vSOL
   createLeverageTxnHandler: leverage.createLeverageTxnData,
   createSellToRepayTxnHandler: leverage.createSellToRepayTokenLoanTxnData,
-  // onboardingContent: OnboardingModalContentType.MULTIPLY_VSOL,
+  onboardingContent: OnboardingModalContentType.MULTIPLY_VSOL,
 
   customLeverageQuoteParams: {
     exactIn: {
@@ -104,7 +104,7 @@ export const WFRAGSOL_PAIR: MultiplyPair = {
   minPositionSize: new BN(1e8), //? 0.1 wfragSOL
   createLeverageTxnHandler: leverage.createLeverageTxnData,
   createSellToRepayTxnHandler: leverage.createSellToRepayTokenLoanTxnData,
-  // onboardingContent: OnboardingModalContentType.MULTIPLY_WFRAGSOL,
+  onboardingContent: OnboardingModalContentType.MULTIPLY_WFRAGSOL,
 
   customLeverageQuoteParams: {
     exactIn: {

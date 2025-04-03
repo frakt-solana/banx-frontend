@@ -1,0 +1,100 @@
+// * OnboardingCarousel * //
+.carousel {
+  max-width: 510px;
+  width: 100%;
+}
+
+.carouselContent {
+  background: var(--bg-primary);
+  border-radius: 12px;
+
+  :global {
+    .slick-dots li button {
+      background: var(--content-primary) !important;
+    }
+
+    .slick-dots li.slick-active {
+      width: 16px !important;
+    }
+
+    .slick-track:focus-visible {
+      outline: none !important;
+    }
+
+    .slick-next {
+      transform: rotate(-90deg);
+      inset-inline-end: 0;
+      inset-inline-start: unset;
+    }
+    .slick-disabled {
+      opacity: 0;
+    }
+  }
+}
+// * OnboardingCarousel * //
+
+// * Slide * //
+.carouselSlide {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  cursor: grab;
+  user-select: none;
+  width: 100%;
+
+  &,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.slideImg {
+  background: var(--bg-primary);
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+
+  object-fit: contain;
+  height: 124px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    height: 96px;
+  }
+}
+
+.slideText {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 32px;
+  gap: 8px;
+
+  @media screen and (max-width: 640px) {
+    padding: 8px 16px 24px;
+  }
+
+  h3 {
+    color: var(--content-primary);
+    font: var(--title-lg);
+    text-transform: uppercase;
+
+    @media (max-width: 640px) {
+      font: var(--title-md);
+    }
+  }
+
+  p {
+    color: var(--content-primary);
+    font: var(--body-text-md);
+
+    @media (max-width: 640px) {
+      font: var(--body-text-sm);
+    }
+  }
+}
+
+.slideTextImportant {
+  font: var(--important-text-md);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+// * Slide * //
