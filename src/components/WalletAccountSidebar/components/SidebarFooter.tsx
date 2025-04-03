@@ -2,7 +2,7 @@
 
 import { Button } from '@banx/components/Buttons'
 
-// import { AppSettingsModal } from '@banx/components/modals'
+import { AppSettingsModal } from '@banx/components/modals'
 
 import { Settings } from '@banx/icons'
 import { useModal } from '@banx/store'
@@ -15,7 +15,7 @@ export const SidebarFooter = () => {
   const { open: openModal } = useModal()
 
   const handleClick = () => {
-    // openModal(AppSettingsModal)
+    openModal(AppSettingsModal)
   }
 
   return (

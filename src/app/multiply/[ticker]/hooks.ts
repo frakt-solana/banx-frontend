@@ -7,7 +7,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { isEmpty, uniqueId } from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { AppSettingsModal } from '@banx/components/AppSettingsModal'
+import { AppSettingsModal } from '@banx/components/modals'
 
 import { fetchConversionRate } from '@banx/api/common'
 import { CollateralToken, core } from '@banx/api/tokens'
