@@ -1,3 +1,3 @@
-export * from './useAllTokenLoanAuctionsAndListings'
+export * from './useAllLoanAuctionsAndListings'
 export * from './useInstantLendTokenTable'
 export * from './useInstantTokenTransactions'

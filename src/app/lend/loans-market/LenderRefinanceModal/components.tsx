@@ -24,7 +24,7 @@ import {
 
 import { calculateLendToBorrowValue } from '../helpers'
 
-import styles from './LenderTokenRefinanceModal.module.scss'
+import styles from './LenderRefinanceModal.module.scss'
 
 export const CollateralCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   return (

@@ -10,7 +10,7 @@ import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 import { TokenLoan } from '@banx/api/tokens'
 import { useModal } from '@banx/store/common'
 
-import RefinanceModal from '../LenderTokenRefinanceModal/LenderTokenRefinanceModal'
+import RefinanceModal from '../LenderRefinanceModal/LenderTokenRefinanceModal'
 
 import styles from '../page.module.scss'
 

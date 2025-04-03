@@ -33,7 +33,7 @@ import {
 } from '@banx/utils'
 
 import { useLoansTokenState } from '../loansState'
-import { useAllTokenLoanAuctionsAndListings } from './useAllTokenLoanAuctionsAndListings'
+import { useAllLoanAuctionsAndListings } from './useAllLoanAuctionsAndListings'
 
 export const useInstantTokenTransactions = () => {
   const wallet = useWallet()
@@ -43,7 +43,7 @@ export const useInstantTokenTransactions = () => {
   const { userEscrow } = useUserEscrow()
 
   const { setVisibility: setBanxNotificationsSiderVisibility } = useBanxNotificationsSider()
-  const { addLoansPubkeys } = useAllTokenLoanAuctionsAndListings()
+  const { addLoansPubkeys } = useAllLoanAuctionsAndListings()
   const { open, close } = useModal()
 
   const { selection, clear: clearSelection, remove: removeSelection } = useLoansTokenState()

@@ -3,12 +3,12 @@ import { isEmpty } from 'lodash'
 import { MESSAGES } from '@banx/constants/messages'
 import { useTokenType } from '@banx/store/common'
 
-import { useAllTokenLoanAuctionsAndListings } from './useAllTokenLoanAuctionsAndListings'
+import { useAllLoanAuctionsAndListings } from './useAllLoanAuctionsAndListings'
 import { useFilterLoans } from './useFilterLoans'
 import { useSortedLoans } from './useSortedLoans'
 
 export const useInstantLendTokenTable = () => {
-  const { loans, isLoading } = useAllTokenLoanAuctionsAndListings()
+  const { loans, isLoading } = useAllLoanAuctionsAndListings()
 
   const { tokenType, setTokenType } = useTokenType()
 

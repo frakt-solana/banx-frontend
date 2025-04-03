@@ -13,7 +13,7 @@ import { TokenLoan, core } from '@banx/api/tokens'
 import { useModal } from '@banx/store/common'
 import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils'
 
-import RefinanceModal from './LenderTokenRefinanceModal/LenderTokenRefinanceModal'
+import RefinanceModal from './LenderRefinanceModal/LenderTokenRefinanceModal'
 import { calcTokenWeeklyInterest, calculateLendToBorrowValue } from './helpers'
 import { useLoansTokenState } from './loansState'
 
