@@ -1,4 +1,4 @@
-import { uniqBy } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 
 import { core } from '@banx/api/tokens'
@@ -15,7 +15,7 @@ export const isOptimisticLoanExpired = (loan: TokenLoanOptimistic, walletPublicK
   loan.expiredAt < moment().unix() && loan.wallet === walletPublicKey
 
 export const addLoans = (loansState: TokenLoanOptimistic[], loansToAdd: TokenLoanOptimistic[]) => {
-  const sameLoansRemoved = uniqBy([...loansState, ...loansToAdd], ({ loan }) => loan.publicKey)
+  const sameLoansRemoved = _.uniqBy([...loansState, ...loansToAdd], ({ loan }) => loan.publicKey)
   return sameLoansRemoved
 }
 

@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
 import { get, set } from 'idb-keyval'
-import { map } from 'lodash'
+import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { core } from '@banx/api/tokens'
 
 import {
   TokenLoanOptimistic,
@@ -15,25 +15,25 @@ import {
   updateLoans,
 } from './helpers'
 
-const BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY = '@banx.tokenLoanListingsOptimistics'
+const BANX_TOKEN_LOANS_OPTIMISTICS_LS_KEY = '@banx.tokenLoansOptimistics'
 
-interface TokenLoanListingsOptimistic {
+export interface TokenLoansOptimisticStore {
   optimisticLoans: TokenLoanOptimistic[]
   find: (publicKey: string, walletPublicKey: string) => TokenLoanOptimistic | undefined
-  add: (loans: TokenLoan[], walletPublicKey: string) => void
+  add: (loans: core.TokenLoan[], walletPublicKey: string) => void
   remove: (publicKeys: string[], walletPublicKey: string) => void
-  update: (loans: TokenLoan[], walletPublicKey: string) => void
+  update: (loans: core.TokenLoan[], walletPublicKey: string) => void
   setState: (optimisticLoans: TokenLoanOptimistic[]) => void
 }
 
-const useTokenLoanListingsOptimisticStore = create<TokenLoanListingsOptimistic>((set, get) => ({
+const useOptimisticLoansStore = create<TokenLoansOptimisticStore>((set, get) => ({
   optimisticLoans: [],
   add: (loans, walletPublicKey) => {
     if (!walletPublicKey) return
     return set((state) => {
       const nextLoans = addLoans(
         state.optimisticLoans,
-        map(loans, (loan) => convertLoanToOptimistic(loan, walletPublicKey)),
+        _.map(loans, (loan) => convertLoanToOptimistic(loan, walletPublicKey)),
       )
       setOptimisticLoansIdb(nextLoans)
       return { ...state, optimisticLoans: nextLoans }
@@ -52,12 +52,12 @@ const useTokenLoanListingsOptimisticStore = create<TokenLoanListingsOptimistic>(
     return findLoan(optimisticLoans, publicKey, walletPublicKey)
   },
 
-  update: (loans: TokenLoan[], walletPublicKey) => {
+  update: (loans: core.TokenLoan[], walletPublicKey) => {
     if (!walletPublicKey) return
     set((state) => {
       const nextLoans = updateLoans(
         state.optimisticLoans,
-        map(loans, (loan) => convertLoanToOptimistic(loan, walletPublicKey)),
+        _.map(loans, (loan) => convertLoanToOptimistic(loan, walletPublicKey)),
       )
       setOptimisticLoansIdb(nextLoans)
       return { ...state, optimisticLoans: nextLoans }
@@ -69,9 +69,8 @@ const useTokenLoanListingsOptimisticStore = create<TokenLoanListingsOptimistic>(
     }),
 }))
 
-export const useTokenLoanListingsOptimistic = () => {
-  const { optimisticLoans, add, update, remove, find, setState } =
-    useTokenLoanListingsOptimisticStore()
+export const useTokenLoansOptimistic = () => {
+  const { optimisticLoans, add, update, remove, find, setState } = useOptimisticLoansStore()
 
   useEffect(() => {
     const setInitialState = async () => {
@@ -93,7 +92,7 @@ export const useTokenLoanListingsOptimistic = () => {
 
 const setOptimisticLoansIdb = async (loans: TokenLoanOptimistic[]) => {
   try {
-    await set(BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY, loans)
+    await set(BANX_TOKEN_LOANS_OPTIMISTICS_LS_KEY, loans)
   } catch {
     return
   }
@@ -101,7 +100,7 @@ const setOptimisticLoansIdb = async (loans: TokenLoanOptimistic[]) => {
 
 const getOptimisticLoansIdb = async () => {
   try {
-    return ((await get(BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY)) || []) as TokenLoanOptimistic[]
+    return ((await get(BANX_TOKEN_LOANS_OPTIMISTICS_LS_KEY)) || []) as TokenLoanOptimistic[]
   } catch {
     return []
   }

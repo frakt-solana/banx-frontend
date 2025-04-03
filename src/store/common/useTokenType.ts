@@ -6,7 +6,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { create } from 'zustand'
 
-import { buildUrlWithModeAndToken, getTokenTypeFromUrl } from './functions'
+import { buildUrlWithModeAndToken, getTokenTypeFromUrl } from '../functions'
 
 type TokenTypeContext = {
   currentTokenType: LendingTokenType

@@ -13,8 +13,7 @@ import { fetchConversionRate } from '@banx/api/common'
 import { CollateralToken, core } from '@banx/api/tokens'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { useCollateralsList, useTokenBondOffers, useWalletCollateralBalance } from '@banx/hooks'
-import { useModal, useSlippage, useTokenType } from '@banx/store'
-import { useTokenLoansOptimistic } from '@banx/store/token'
+import { useModal, useSlippage, useTokenLoansOptimistic, useTokenType } from '@banx/store'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,
   createExecutorWalletAndConnection,

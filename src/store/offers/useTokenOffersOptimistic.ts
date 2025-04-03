@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { get, set } from 'idb-keyval'
-import { map, uniqBy } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { create } from 'zustand'
 
@@ -36,7 +36,7 @@ const useOptimisticOffersStore = create<TokenOffersOptimisticStore>((set, get) =
     set((state) => {
       const nextOffers = addOffers(
         state.optimisticOffers,
-        map(offers, (offer) => convertOfferToOptimistic(offer)),
+        _.map(offers, (offer) => convertOfferToOptimistic(offer)),
       )
       setOptimisticOffersIdb(nextOffers)
       return { ...state, optimisticOffers: nextOffers }
@@ -55,7 +55,7 @@ const useOptimisticOffersStore = create<TokenOffersOptimisticStore>((set, get) =
     set((state) => {
       const nextOffers = updateOffers(
         state.optimisticOffers,
-        map(offers, (offer) => convertOfferToOptimistic(offer)),
+        _.map(offers, (offer) => convertOfferToOptimistic(offer)),
       )
       setOptimisticOffersIdb(nextOffers)
       return { ...state, optimisticOffers: nextOffers }
@@ -93,7 +93,7 @@ export const isOptimisticOfferExpired = (loan: TokenOfferOptimistic) =>
 
 const setOptimisticOffersIdb = async (offers: TokenOfferOptimistic[]) => {
   try {
-    const convertedOffers = map(offers, (offer) => {
+    const convertedOffers = _.map(offers, (offer) => {
       return {
         offer: core.convertBondOfferV3ToDBOffer(offer.offer),
         expiredAt: offer.expiredAt,
@@ -117,7 +117,7 @@ const getOptimisticOffersIdb = async () => {
   try {
     const offers = (await get(BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY)) as DBOfferOptimistic[]
 
-    const convertedOffers = map(offers, (offer) => {
+    const convertedOffers = _.map(offers, (offer) => {
       return {
         offer: core.convertDBOfferToBondOfferV3(offer.offer),
         expiredAt: offer.expiredAt,
@@ -131,7 +131,7 @@ const getOptimisticOffersIdb = async () => {
 }
 
 const addOffers = (offersState: TokenOfferOptimistic[], offersToAdd: TokenOfferOptimistic[]) =>
-  uniqBy([...offersState, ...offersToAdd], ({ offer }) => offer.publicKey)
+  _.uniqBy([...offersState, ...offersToAdd], ({ offer }) => offer.publicKey)
 
 const removeOffers = (offersState: TokenOfferOptimistic[], offersPubkeysToRemove: string[]) =>
   offersState.filter(({ offer }) => !offersPubkeysToRemove.includes(offer.publicKey.toBase58()))
