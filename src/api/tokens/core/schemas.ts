@@ -233,7 +233,7 @@ export const MultiplyMarketDataSchema = z.object({
   collateralApr: z.number(),
 })
 
-export const UserVaultSchema = z.object({
+export const UserEscrowSchema = z.object({
   publicKey: SerializedPublicKeySchema,
   userVaultState: z.nativeEnum(UserVaultState),
   user: SerializedPublicKeySchema,

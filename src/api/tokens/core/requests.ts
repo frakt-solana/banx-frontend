@@ -3,7 +3,6 @@ import {
   BondOfferV3,
   BondingCurveType,
   LendingTokenType,
-  UserVault,
 } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { RequestWithPagination } from '@banx/api/shared'
@@ -19,7 +18,7 @@ import {
   TokenLoanSchema,
   TokenMarketPreviewSchema,
   TokenOfferPreviewSchema,
-  UserVaultSchema,
+  UserEscrowSchema,
   VaultPreviewSchema,
 } from './schemas'
 import {
@@ -33,6 +32,7 @@ import {
   TokenMarketPreview,
   TokenMarketPreviewResponse,
   TokenOfferPreview,
+  UserEscrow,
   VaultPreview,
 } from './types'
 
@@ -304,9 +304,9 @@ export const fetchMultiplyMarketData: FetchMultiplyMarketData = async ({
   return await parseResponseSafe<MultiplyMarketData>(data, MultiplyMarketDataSchema)
 }
 
-type FetchUserVaults = (props: { walletPublicKey: string }) => Promise<UserVault[] | undefined>
-export const fetchUserVaults: FetchUserVaults = async ({ walletPublicKey }) => {
+type FetchUserEscrows = (props: { walletPublicKey: string }) => Promise<UserEscrow[] | undefined>
+export const fetchUserEscrows: FetchUserEscrows = async ({ walletPublicKey }) => {
   const { data } = await axios.get(`${BACKEND_BASE_URL}/vault/${walletPublicKey}`)
 
-  return await parseResponseSafe(data?.data, UserVaultSchema.array())
+  return await parseResponseSafe(data?.data, UserEscrowSchema.array())
 }

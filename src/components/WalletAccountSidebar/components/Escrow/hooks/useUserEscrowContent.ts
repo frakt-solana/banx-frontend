@@ -13,10 +13,10 @@ import {
   defaultTxnErrorHandler,
 } from '@banx/transactions'
 import {
-  CreateUpdateUserVaultTxnDataParams,
-  createUpdateUserVaultTxnData,
-  parseDepositSimulatedAccounts,
-} from '@banx/transactions/vault'
+  CreateUpdateUserEscrowTxnDataParams,
+  createUpdateUserEscrowTxnData,
+  parseUpdateUserEscrowSimulatedAccounts,
+} from '@banx/transactions/escrow'
 import {
   ZERO_BN,
   destroySnackbar,
@@ -30,21 +30,21 @@ import {
 } from '@banx/utils'
 
 import { getInputErrorMessage } from '../helpers'
-import { useLenderVaultInfo } from './useUserVault'
+import { useUserEscrowInfo } from './useUserEscrow'
 
 export enum TabName {
   Wallet = 'wallet',
   Escrow = 'escrow',
 }
 
-export const useUserVaultContent = () => {
+export const useUserEscrowContent = () => {
   const wallet = useWallet()
   const { connection } = useConnection()
   const { tokenType } = useTokenType()
 
-  const { lenderVaultInfo, updateUserVaultOptimistic } = useLenderVaultInfo()
+  const { userEscrowInfo, updateUserEscrowOptimistic } = useUserEscrowInfo()
   const walletBalance = useWalletBalance(tokenType)
-  const escrowBalance = lenderVaultInfo.offerLiquidityAmount
+  const escrowBalance = userEscrowInfo.offerLiquidityAmount
 
   const [activeTab, setActiveTab] = useState<TabName>(TabName.Wallet)
   const [inputValue, setInputValue] = useState('0')
@@ -83,7 +83,7 @@ export const useUserVaultContent = () => {
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
 
-      const txnData = await createUpdateUserVaultTxnData(
+      const txnData = await createUpdateUserEscrowTxnData(
         {
           amount,
           lendingTokenType: tokenType,
@@ -92,9 +92,10 @@ export const useUserVaultContent = () => {
         walletAndConnection,
       )
 
-      await new TxnExecutor<CreateUpdateUserVaultTxnDataParams>(walletAndConnection, {
-        ...TXN_EXECUTOR_DEFAULT_OPTIONS,
-      })
+      await new TxnExecutor<CreateUpdateUserEscrowTxnDataParams>(
+        walletAndConnection,
+        TXN_EXECUTOR_DEFAULT_OPTIONS,
+      )
         .addTxnData(txnData)
         .on('sentAll', () => {
           enqueueTransactionsSent()
@@ -114,11 +115,11 @@ export const useUserVaultContent = () => {
 
             confirmed.forEach(({ accountInfoByPubkey }) => {
               if (!accountInfoByPubkey) return
-              const userVault = parseDepositSimulatedAccounts(accountInfoByPubkey)
+              const userEscrow = parseUpdateUserEscrowSimulatedAccounts(accountInfoByPubkey)
 
-              updateUserVaultOptimistic({
+              updateUserEscrowOptimistic({
                 walletPubkey: walletAndConnection.wallet.publicKey.toBase58(),
-                updatedUserVault: userVault,
+                updatedUserEscrow: userEscrow,
               })
             })
           }
@@ -141,7 +142,7 @@ export const useUserVaultContent = () => {
           lendingTokenType: tokenType,
         },
         walletPubkey: wallet?.publicKey?.toBase58(),
-        transactionName: 'UpdateUserVault',
+        transactionName: 'UpdateUserEscrow',
       })
     }
   }

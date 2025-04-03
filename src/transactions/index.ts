@@ -5,5 +5,5 @@ export * from './constants'
 
 export * as common from './common'
 export * as banxSol from './banxSol'
-export * as vault from './vault'
+export * as vault from './escrow'
 export * as leverage from './leverage'

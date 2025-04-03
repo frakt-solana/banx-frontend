@@ -3,15 +3,16 @@ import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   getTokenMintFromLendingTokenType,
-  updateLiquidityToUserVault,
+  updateLiquidityToUserVault as updateLiquidityToUserEscrow,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
-import { LendingTokenType, UserVault } from 'fbonds-core/lib/fbond-protocol/types'
+import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import {
   CreateTxnData,
   SimulatedAccountInfoByPubkey,
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
+import { UserEscrow } from '@banx/api/tokens'
 import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'
 
 import { banxSol } from '..'
@@ -22,7 +23,7 @@ export type CreateDepositLiquidityToPoolTxnDataParams = {
   amount: BN
   vaultPubkey: string
   lendingToken: LendingTokenType
-  userVault: UserVault | undefined
+  userEscrow: UserEscrow | undefined
 }
 
 type CreateDepositLiquidityToPoolTxnData = (
@@ -36,25 +37,25 @@ export const createDepositLiquidityToPoolTxnData: CreateDepositLiquidityToPoolTx
 ) => {
   const { connection, wallet } = walletAndConnection
 
-  const { amount, vaultPubkey, lendingToken, userVault } = params
+  const { amount, vaultPubkey, lendingToken, userEscrow } = params
 
   const instructions: web3.TransactionInstruction[] = []
   const signers: web3.Signer[] = []
   const accounts: web3.PublicKey[] = []
 
-  const userVaultBalance = userVault?.offerLiquidityAmount || ZERO_BN
-  const fundsFromVault = BN.min(amount, userVaultBalance)
-  const fundsFromWallet = amount.sub(fundsFromVault)
+  const userEscrowBalance = userEscrow?.offerLiquidityAmount || ZERO_BN
+  const fundsFromEscrow = BN.min(amount, userEscrowBalance)
+  const fundsFromWallet = amount.sub(fundsFromEscrow)
 
-  if (!userVaultBalance.isZero()) {
+  if (!userEscrowBalance.isZero()) {
     const {
-      instructions: updateUserVaultInstructions,
-      signers: updateUserVaultSigners,
-      accounts: updateUseVaultAccounts,
-    } = await updateLiquidityToUserVault({
+      instructions: updateUserEscrowInstructions,
+      signers: updateUserEscrowSigners,
+      accounts: updateUserEscrowAccounts,
+    } = await updateLiquidityToUserEscrow({
       connection: walletAndConnection.connection,
       args: {
-        amount: fundsFromVault,
+        amount: fundsFromEscrow,
         lendingTokenType: lendingToken,
         add: false,
       },
@@ -64,9 +65,9 @@ export const createDepositLiquidityToPoolTxnData: CreateDepositLiquidityToPoolTx
       sendTxn: sendTxnPlaceHolder,
     })
 
-    instructions.push(...updateUserVaultInstructions)
-    signers.push(...updateUserVaultSigners)
-    accounts.push(updateUseVaultAccounts.lenderVault)
+    instructions.push(...updateUserEscrowInstructions)
+    signers.push(...updateUserEscrowSigners)
+    accounts.push(updateUserEscrowAccounts.lenderVault)
   }
 
   if (isBanxSolTokenType(lendingToken) && !fundsFromWallet.isZero()) {
@@ -109,5 +110,5 @@ export const parseDepositLiquidityToPoolSimulatedAccounts = (
 ) => {
   const results = parseAccountInfoByPubkey(accountInfoByPubkey, accountConverterBNAndPublicKey)
 
-  return results?.['userVault']?.[0] as UserVault
+  return results?.['userVault']?.[0] as UserEscrow
 }

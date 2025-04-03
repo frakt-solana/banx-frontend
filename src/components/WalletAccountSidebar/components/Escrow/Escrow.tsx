@@ -20,10 +20,10 @@ import {
   defaultTxnErrorHandler,
 } from '@banx/transactions'
 import {
-  CreateClaimLenderVaultTxnDataParams,
-  createClaimLenderVaultTxnData,
-  parseClaimLenderVaultSimulatedAccounts,
-} from '@banx/transactions/vault'
+  CreateClaimUserEscrowTxnDataParams,
+  createClaimUserEscrowTxnData,
+  parseClaimUserEscrowSimulatedAccounts,
+} from '@banx/transactions/escrow'
 import {
   destroySnackbar,
   enqueueConfirmationError,
@@ -35,11 +35,11 @@ import {
 } from '@banx/utils'
 
 import { BanxSolEpochContent, EscrowTabs } from './components'
-import { TabName, useLenderVaultInfo, useUserVaultContent } from './hooks'
+import { TabName, useUserEscrowContent, useUserEscrowInfo } from './hooks'
 
-import styles from './LenderVaults.module.scss'
+import styles from './Escrow.module.scss'
 
-export const EscrowVault = () => {
+export const Escrow = () => {
   const {
     inputValue,
     setInputValue,
@@ -49,7 +49,7 @@ export const EscrowVault = () => {
     walletBalance,
     escrowBalance,
     errorMessage,
-  } = useUserVaultContent()
+  } = useUserEscrowContent()
 
   const { tokenType, setTokenType } = useTokenType()
 
@@ -104,28 +104,29 @@ export const ClaimSection = () => {
   const { connection } = useConnection()
   const { tokenType } = useTokenType()
 
-  const { userVault, updateUserVaultOptimistic, lenderVaultInfo, clusterStats } =
-    useLenderVaultInfo()
+  const { userEscrow, updateUserEscrowOptimistic, userEscrowInfo, clusterStats } =
+    useUserEscrowInfo()
 
   const { totalClaimAmount, repaymentsAmount, interestRewardsAmount, rentRewards, totalLstYield } =
-    lenderVaultInfo
+    userEscrowInfo
 
-  const claimVault = async () => {
-    if (totalClaimAmount <= 0 || !userVault || !clusterStats) return
+  const claim = async () => {
+    if (totalClaimAmount <= 0 || !userEscrow || !clusterStats) return
 
     const loadingSnackbarId = uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
 
-      const txnData = await createClaimLenderVaultTxnData(
-        { userVault, clusterStats },
+      const txnData = await createClaimUserEscrowTxnData(
+        { userEscrow, clusterStats },
         walletAndConnection,
       )
 
-      await new TxnExecutor<CreateClaimLenderVaultTxnDataParams>(walletAndConnection, {
-        ...TXN_EXECUTOR_DEFAULT_OPTIONS,
-      })
+      await new TxnExecutor<CreateClaimUserEscrowTxnDataParams>(
+        walletAndConnection,
+        TXN_EXECUTOR_DEFAULT_OPTIONS,
+      )
         .addTxnData(txnData)
         .on('sentAll', () => {
           enqueueTransactionsSent()
@@ -140,11 +141,11 @@ export const ClaimSection = () => {
             enqueueSnackbar({ message: 'Successfully claimed', type: 'success' })
             confirmed.forEach(({ accountInfoByPubkey }) => {
               if (!accountInfoByPubkey) return
-              const userVault = parseClaimLenderVaultSimulatedAccounts(accountInfoByPubkey)
+              const userEscrow = parseClaimUserEscrowSimulatedAccounts(accountInfoByPubkey)
 
-              updateUserVaultOptimistic({
+              updateUserEscrowOptimistic({
                 walletPubkey: walletAndConnection.wallet.publicKey.toBase58(),
-                updatedUserVault: userVault,
+                updatedUserEscrow: userEscrow,
               })
             })
           }
@@ -163,7 +164,7 @@ export const ClaimSection = () => {
       destroySnackbar(loadingSnackbarId)
       defaultTxnErrorHandler(error, {
         walletPubkey: wallet?.publicKey?.toBase58(),
-        transactionName: 'ClaimLenderVault',
+        transactionName: 'ClaimUserEscrow',
       })
     }
   }
@@ -179,7 +180,7 @@ export const ClaimSection = () => {
     </div>
   )
 
-  const isBanxSol = userVault?.lendingTokenType === LendingTokenType.BanxSol
+  const isBanxSol = userEscrow?.lendingTokenType === LendingTokenType.BanxSol
 
   return (
     <div className={styles.claimSection}>
@@ -202,7 +203,7 @@ export const ClaimSection = () => {
             flexType="row"
           />
         </div>
-        <Button onClick={claimVault} disabled={!totalClaimAmount} size="medium">
+        <Button onClick={claim} disabled={!totalClaimAmount} size="medium">
           Claim
         </Button>
       </div>

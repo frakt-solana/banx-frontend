@@ -9,9 +9,14 @@ import { useOnClickOutside, useWalletAdapters } from '@banx/hooks'
 import { CloseModal } from '@banx/icons'
 import { useModal } from '@banx/store'
 
-// import { ClaimSection, EscrowVault } from './LenderVaults'
-import { SidebarFooter, WalletAssets, WalletDetails, WalletList } from './components'
-import { ClaimSection, EscrowVault } from './components/LenderVaults'
+import {
+  ClaimSection,
+  Escrow,
+  SidebarFooter,
+  WalletAssets,
+  WalletDetails,
+  WalletList,
+} from './components'
 import { useWalletSidebar } from './hooks'
 
 import styles from './WalletAccountSidebar.module.scss'
@@ -58,7 +63,7 @@ const WalletAccountOverview = () => (
     <CloseIconComponent />
     <div className={styles.accountOverviewContainer}>
       <WalletDetails />
-      <EscrowVault />
+      <Escrow />
       <ClaimSection />
     </div>
     <WalletAssets />

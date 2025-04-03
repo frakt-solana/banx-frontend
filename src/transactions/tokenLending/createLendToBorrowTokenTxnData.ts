@@ -3,12 +3,12 @@ import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   lendToBorrowerListing,
   refinancePerpetualLoan,
-  updateLiquidityToUserVault,
+  updateLiquidityToUserVault as updateLiquidityToUserEscrow,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import moment from 'moment'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
-import { TokenLoan, UserVault } from '@banx/api/tokens'
+import { TokenLoan, UserEscrow } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import {
   ZERO_BN,
@@ -25,19 +25,19 @@ import { banxSol } from '../index'
 type CreateBulkLendToBorrowTokenTxnsData = (
   params: {
     loans: TokenLoan[]
-    userVault: UserVault | undefined
+    userEscrow: UserEscrow | undefined
   },
   walletAndConnection: WalletAndConnection,
 ) => Promise<CreateTxnData<CreateLendToBorrowTokenTxnDataParams>[]>
 
 export const createBulkLendToBorrowTokenTxnsData: CreateBulkLendToBorrowTokenTxnsData = async (
-  { loans, userVault },
+  { loans, userEscrow },
   walletAndConnection,
 ) => {
   const { txnDataPromises } = loans.reduce(
     (
       acc: {
-        restVaultBalance: BN
+        restEscrowBalance: BN
         txnDataPromises: Promise<CreateTxnData<CreateLendToBorrowTokenTxnDataParams>>[]
       },
       loan,
@@ -57,34 +57,34 @@ export const createBulkLendToBorrowTokenTxnsData: CreateBulkLendToBorrowTokenTxn
         ? createLendToBorrowListingTxnData
         : createRefinancePerpetualLoanTxnData
 
-      if (loanValue.lte(acc.restVaultBalance)) {
-        const fundsFromVault = loanValue
+      if (loanValue.lte(acc.restEscrowBalance)) {
+        const fundsFromEscrow = loanValue
 
         const promise = createTxnFunc(
-          { loan, fundsFromVault, fundsFromWallet: ZERO_BN },
+          { loan, fundsFromEscrow, fundsFromWallet: ZERO_BN },
           walletAndConnection,
         )
 
         return {
           txnDataPromises: [...acc.txnDataPromises, promise],
-          restVaultBalance: acc.restVaultBalance.sub(fundsFromVault),
+          restEscrowBalance: acc.restEscrowBalance.sub(fundsFromEscrow),
         }
       } else {
-        const fundsFromVault = acc.restVaultBalance
+        const fundsFromEscrow = acc.restEscrowBalance
 
         const promise = createTxnFunc(
-          { loan, fundsFromVault, fundsFromWallet: loanValue.sub(fundsFromVault) },
+          { loan, fundsFromEscrow, fundsFromWallet: loanValue.sub(fundsFromEscrow) },
           walletAndConnection,
         )
 
         return {
           txnDataPromises: [...acc.txnDataPromises, promise],
-          restVaultBalance: ZERO_BN,
+          restEscrowBalance: ZERO_BN,
         }
       }
     },
     {
-      restVaultBalance: userVault?.offerLiquidityAmount || ZERO_BN,
+      restEscrowBalance: userEscrow?.offerLiquidityAmount || ZERO_BN,
       txnDataPromises: [],
     },
   )
@@ -95,7 +95,7 @@ export const createBulkLendToBorrowTokenTxnsData: CreateBulkLendToBorrowTokenTxn
 export type CreateLendToBorrowTokenTxnDataParams = {
   loan: TokenLoan
   fundsFromWallet: BN
-  fundsFromVault: BN
+  fundsFromEscrow: BN
 }
 
 type CreateLendToBorrowTokenTxnData = (
@@ -107,7 +107,7 @@ const createLendToBorrowListingTxnData: CreateLendToBorrowTokenTxnData = async (
   params,
   walletAndConnection,
 ) => {
-  const { loan, fundsFromVault } = params
+  const { loan, fundsFromEscrow } = params
   const { connection, wallet } = walletAndConnection
 
   const { bondTradeTransaction, fraktBond } = loan
@@ -118,15 +118,15 @@ const createLendToBorrowListingTxnData: CreateLendToBorrowTokenTxnData = async (
   const lookupTables: web3.PublicKey[] = []
   const accounts: web3.PublicKey[] = [new web3.PublicKey(LOOKUP_TABLE)]
 
-  if (!fundsFromVault.isZero()) {
+  if (!fundsFromEscrow.isZero()) {
     const {
-      instructions: updateLiquidityIxns,
-      signers: updateLiquiditySigners,
-      accounts: updateLiquidityAccounts,
-    } = await updateLiquidityToUserVault({
+      instructions: updateUserEscrowInstructions,
+      signers: updateUserEscrowSigners,
+      accounts: updateUserEscrowAccounts,
+    } = await updateLiquidityToUserEscrow({
       connection,
       args: {
-        amount: fundsFromVault,
+        amount: fundsFromEscrow,
         lendingTokenType,
         add: false,
       },
@@ -136,15 +136,15 @@ const createLendToBorrowListingTxnData: CreateLendToBorrowTokenTxnData = async (
       sendTxn: sendTxnPlaceHolder,
     })
 
-    instructions.push(...updateLiquidityIxns)
-    signers.push(...updateLiquiditySigners)
-    accounts.push(updateLiquidityAccounts.lenderVault)
+    instructions.push(...updateUserEscrowInstructions)
+    signers.push(...updateUserEscrowSigners)
+    accounts.push(updateUserEscrowAccounts.lenderVault)
   }
 
-  if (isBanxSolTokenType(lendingTokenType) && !fundsFromVault.isZero()) {
+  if (isBanxSolTokenType(lendingTokenType) && !fundsFromEscrow.isZero()) {
     const { instructions: swapInstructions, lookupTables: swapLookupTables } =
       await banxSol.getSwapBanxSolToSolInstructions({
-        inputAmount: fundsFromVault,
+        inputAmount: fundsFromEscrow,
         walletAndConnection,
       })
 
@@ -193,7 +193,7 @@ const createRefinancePerpetualLoanTxnData: CreateLendToBorrowTokenTxnData = asyn
   params,
   walletAndConnection,
 ) => {
-  const { loan, fundsFromWallet, fundsFromVault } = params
+  const { loan, fundsFromWallet, fundsFromEscrow } = params
   const { connection, wallet } = walletAndConnection
 
   const { bondTradeTransaction, fraktBond } = loan
@@ -203,15 +203,15 @@ const createRefinancePerpetualLoanTxnData: CreateLendToBorrowTokenTxnData = asyn
   const lookupTables: web3.PublicKey[] = []
   const accounts: web3.PublicKey[] = [new web3.PublicKey(LOOKUP_TABLE)]
 
-  if (!fundsFromVault.isZero()) {
+  if (!fundsFromEscrow.isZero()) {
     const {
-      instructions: updateLiquidityIxns,
-      signers: updateLiquiditySigners,
-      accounts: updateLiquidityAccounts,
-    } = await updateLiquidityToUserVault({
+      instructions: updateUserEscrowInstructions,
+      signers: updateUserEscrowSigners,
+      accounts: updateUserEscrowAccounts,
+    } = await updateLiquidityToUserEscrow({
       connection,
       args: {
-        amount: fundsFromVault,
+        amount: fundsFromEscrow,
         lendingTokenType: bondTradeTransaction.lendingToken,
         add: false,
       },
@@ -221,9 +221,9 @@ const createRefinancePerpetualLoanTxnData: CreateLendToBorrowTokenTxnData = asyn
       sendTxn: sendTxnPlaceHolder,
     })
 
-    instructions.push(...updateLiquidityIxns)
-    signers.push(...updateLiquiditySigners)
-    accounts.push(updateLiquidityAccounts.lenderVault)
+    instructions.push(...updateUserEscrowInstructions)
+    signers.push(...updateUserEscrowSigners)
+    accounts.push(updateUserEscrowAccounts.lenderVault)
   }
 
   //? refinancePerpetualLoan txn needs BanxSol. Swap lack of banxSol using sol from wallet

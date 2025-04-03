@@ -14,9 +14,9 @@ import { BanxSOL } from '@banx/icons'
 import { useTokenType } from '@banx/store'
 import { CountdownUnits, formatCountdownUnits, formatValueByTokenType } from '@banx/utils'
 
-import { TabName, useLenderVaultInfo } from './hooks'
+import { TabName, useUserEscrowInfo } from './hooks'
 
-import styles from './LenderVaults.module.scss'
+import styles from './Escrow.module.scss'
 
 type EscrowTabsProps = {
   walletBalance: number
@@ -71,9 +71,10 @@ const EscrowTab: FC<EscrowTabProps> = ({ label, balance, onClick, isActive }) =>
 
 export const BanxSolEpochContent = () => {
   const { data: clusterStats } = useClusterStats()
-  const { lenderVaultInfo } = useLenderVaultInfo()
+  const { userEscrowInfo } = useUserEscrowInfo()
   const { tokenType } = useTokenType()
-  const { banxSolYieldInCurrentEpoch, banxSolYieldInNextEpoch } = lenderVaultInfo
+
+  const { banxSolYieldInCurrentEpoch, banxSolYieldInNextEpoch } = userEscrowInfo
   const { epochApproxTimeRemaining = 0 } = clusterStats || {}
   const expiredAt = moment().unix() + epochApproxTimeRemaining
 

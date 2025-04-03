@@ -3,7 +3,7 @@ import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   getTokenMintFromLendingTokenType,
-  updateLiquidityToUserVault,
+  updateLiquidityToUserVault as updateLiquidityToUserEscrow,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import {
@@ -12,7 +12,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { UserVault } from '@banx/api/tokens'
+import { UserEscrow } from '@banx/api/tokens'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
@@ -33,7 +33,6 @@ export const createClaimRewardsFromPoolTxnData: CreateClaimRewardsFromPoolTxnDat
   walletAndConnection,
 ) => {
   const { connection, wallet } = walletAndConnection
-
   const { amount, vaultPubkey, lendingToken } = params
 
   const { instructions: harvestRewardsInstructions, signers: harvestRewardsSigners } =
@@ -48,28 +47,28 @@ export const createClaimRewardsFromPoolTxnData: CreateClaimRewardsFromPoolTxnDat
     })
 
   const {
-    instructions: updateUserVaultInstructions,
-    signers: updateUserVaultSigners,
-    accounts: updateUseVaultAccounts,
-  } = await updateLiquidityToUserVault({
-    connection: walletAndConnection.connection,
+    instructions: updateUserEscrowInstructions,
+    signers: updateUserEscrowSigners,
+    accounts: updateUserEscrowAccounts,
+  } = await updateLiquidityToUserEscrow({
+    connection,
     args: {
       amount: amount,
       lendingTokenType: lendingToken,
       add: true,
     },
     accounts: {
-      userPubkey: walletAndConnection.wallet.publicKey,
+      userPubkey: wallet.publicKey,
     },
     sendTxn: sendTxnPlaceHolder,
   })
 
-  const instructions = [...harvestRewardsInstructions, ...updateUserVaultInstructions]
-  const signers = [...harvestRewardsSigners, ...updateUserVaultSigners]
+  const instructions = [...harvestRewardsInstructions, ...updateUserEscrowInstructions]
+  const signers = [...harvestRewardsSigners, ...updateUserEscrowSigners]
 
   return {
     params,
-    accounts: [updateUseVaultAccounts['lenderVault']],
+    accounts: [updateUserEscrowAccounts['lenderVault']],
     instructions,
     signers,
     lookupTables: [new web3.PublicKey(LOOKUP_TABLE)],
@@ -81,5 +80,5 @@ export const parseClaimRewardsFromPoolSimulatedAccounts = (
 ) => {
   const results = parseAccountInfoByPubkey(accountInfoByPubkey, accountConverterBNAndPublicKey)
 
-  return results?.['userVault']?.[0] as UserVault
+  return results?.['userVault']?.[0] as UserEscrow
 }

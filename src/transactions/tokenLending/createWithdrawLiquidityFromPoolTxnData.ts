@@ -6,7 +6,7 @@ import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   getTokenMintFromLendingTokenType,
-  updateLiquidityToUserVault,
+  updateLiquidityToUserVault as updateLiquidityToUserEscrow,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import {
   CreateTxnData,
@@ -14,7 +14,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { UserVault, VaultPreview } from '@banx/api/tokens'
+import { UserEscrow, VaultPreview } from '@banx/api/tokens'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
@@ -58,10 +58,10 @@ export const createWithdrawLiquidityFromPoolTxnData: CreateWithdrawLiquidityFrom
       signers.push(...liquiditySigners)
 
       const {
-        instructions: userVaultInstructions,
-        signers: userVaultSigners,
-        accounts: userVaultAccounts,
-      } = await updateLiquidityToUserVault({
+        instructions: updateUserEscrowInstructions,
+        signers: updateUserEscrowSigners,
+        accounts: updateUserEscrowAccounts,
+      } = await updateLiquidityToUserEscrow({
         connection,
         args: {
           amount: amount,
@@ -74,9 +74,9 @@ export const createWithdrawLiquidityFromPoolTxnData: CreateWithdrawLiquidityFrom
         sendTxn: sendTxnPlaceHolder,
       })
 
-      instructions.push(...userVaultInstructions)
-      signers.push(...userVaultSigners)
-      accounts.push(userVaultAccounts.lenderVault)
+      instructions.push(...updateUserEscrowInstructions)
+      signers.push(...updateUserEscrowSigners)
+      accounts.push(updateUserEscrowAccounts.lenderVault)
     }
 
     const handleRequestWithdraw = async (amount: BN) => {
@@ -121,5 +121,5 @@ export const parseWithdrawLiquidityFromPoolSimulatedAccounts = (
 ) => {
   const results = parseAccountInfoByPubkey(accountInfoByPubkey, accountConverterBNAndPublicKey)
 
-  return results?.['userVault']?.[0] as UserVault
+  return results?.['userVault']?.[0] as UserEscrow
 }

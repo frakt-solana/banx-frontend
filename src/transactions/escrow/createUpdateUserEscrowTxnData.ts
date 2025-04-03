@@ -1,6 +1,6 @@
 import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
-import { updateLiquidityToUserVault } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
+import { updateLiquidityToUserVault as updateLiquidityToUserEscrow } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import {
   CreateTxnData,
@@ -9,7 +9,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { fetchTokenBalance } from '@banx/api/common'
-import { UserVault } from '@banx/api/tokens'
+import { UserEscrow } from '@banx/api/tokens'
 import { BANX_SOL_ADDRESS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { isBanxSolTokenType } from '@banx/utils'
@@ -17,36 +17,37 @@ import { isBanxSolTokenType } from '@banx/utils'
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
-export type CreateUpdateUserVaultTxnDataParams = {
+export type CreateUpdateUserEscrowTxnDataParams = {
   amount: BN
   lendingTokenType: LendingTokenType
   add: boolean
 }
 
-type CreateUpdateUserVaultTxnData = (
-  params: CreateUpdateUserVaultTxnDataParams,
+type CreateUpdateUserEscrowTxnData = (
+  params: CreateUpdateUserEscrowTxnDataParams,
   walletAndConnection: WalletAndConnection,
-) => Promise<CreateTxnData<CreateUpdateUserVaultTxnDataParams>>
+) => Promise<CreateTxnData<CreateUpdateUserEscrowTxnDataParams>>
 
-export const createUpdateUserVaultTxnData: CreateUpdateUserVaultTxnData = async (
+export const createUpdateUserEscrowTxnData: CreateUpdateUserEscrowTxnData = async (
   params,
   walletAndConnection,
 ) => {
   const { amount, lendingTokenType, add } = params
+  const { connection, wallet } = walletAndConnection
 
   const {
     instructions,
     signers,
     accounts: accountsCollection,
-  } = await updateLiquidityToUserVault({
-    connection: walletAndConnection.connection,
+  } = await updateLiquidityToUserEscrow({
+    connection,
     args: {
       amount,
       lendingTokenType,
       add,
     },
     accounts: {
-      userPubkey: walletAndConnection.wallet.publicKey,
+      userPubkey: wallet.publicKey,
     },
     sendTxn: sendTxnPlaceHolder,
   })
@@ -99,10 +100,9 @@ export const createUpdateUserVaultTxnData: CreateUpdateUserVaultTxnData = async 
   }
 }
 
-export const parseDepositSimulatedAccounts = (
+export const parseUpdateUserEscrowSimulatedAccounts = (
   accountInfoByPubkey: SimulatedAccountInfoByPubkey,
 ) => {
   const results = parseAccountInfoByPubkey(accountInfoByPubkey, accountConverterBNAndPublicKey)
-
-  return results?.['userVault']?.[0] as UserVault
+  return results?.['userVault']?.[0] as UserEscrow
 }

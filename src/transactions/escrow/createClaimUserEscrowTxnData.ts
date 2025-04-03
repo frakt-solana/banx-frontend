@@ -13,7 +13,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { ClusterStats } from '@banx/api/common'
-import { UserVault } from '@banx/api/tokens'
+import { UserEscrow } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'
@@ -21,22 +21,22 @@ import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
-export type CreateClaimLenderVaultTxnDataParams = {
-  userVault: UserVault
+export type CreateClaimUserEscrowTxnDataParams = {
+  userEscrow: UserEscrow
   clusterStats: ClusterStats
 }
 
-type CreateClaimLenderVaultTxnData = (
-  params: CreateClaimLenderVaultTxnDataParams,
+type CreateClaimUserEscrowTxnData = (
+  params: CreateClaimUserEscrowTxnDataParams,
   walletAndConnection: WalletAndConnection,
-) => Promise<CreateTxnData<CreateClaimLenderVaultTxnDataParams>>
+) => Promise<CreateTxnData<CreateClaimUserEscrowTxnDataParams>>
 
-export const createClaimLenderVaultTxnData: CreateClaimLenderVaultTxnData = async (
+export const createClaimUserEscrowTxnData: CreateClaimUserEscrowTxnData = async (
   params,
   walletAndConnection,
 ) => {
-  const { userVault, clusterStats } = params
-  const { repaymentsAmount, interestRewardsAmount, rentRewards, lendingTokenType } = userVault
+  const { userEscrow, clusterStats } = params
+  const { repaymentsAmount, interestRewardsAmount, rentRewards, lendingTokenType } = userEscrow
 
   const instructionsArray: web3.TransactionInstruction[] = []
   const signersArray: web3.Signer[] = []
@@ -75,7 +75,7 @@ export const createClaimLenderVaultTxnData: CreateClaimLenderVaultTxnData = asyn
     signersArray.push(...signers)
   }
 
-  if (rentRewards.gt(ZERO_BN) && isBanxSolTokenType(userVault.lendingTokenType)) {
+  if (rentRewards.gt(ZERO_BN) && isBanxSolTokenType(userEscrow.lendingTokenType)) {
     const { instructions, signers } = await claimUserRentRewards({
       programId: new web3.PublicKey(BONDS.PROGRAM_PUBKEY),
       connection: walletAndConnection.connection,
@@ -91,7 +91,7 @@ export const createClaimLenderVaultTxnData: CreateClaimLenderVaultTxnData = asyn
 
   const totalLstYield = isBanxSolTokenType(lendingTokenType)
     ? calculateBanxSolStakingRewards({
-        userVault: params.userVault,
+        userVault: params.userEscrow,
         nowSlot: new BN(clusterStats.slot),
         currentEpochStartAt: new BN(clusterStats.epochStartedAt ?? 0),
       })
@@ -111,7 +111,7 @@ export const createClaimLenderVaultTxnData: CreateClaimLenderVaultTxnData = asyn
     signersArray.push(...signers)
   }
 
-  const accounts = [userVault.publicKey]
+  const accounts = [userEscrow.publicKey]
 
   //? rentRewards is regular SOL. No need to swap
   const banxSolClaimAmount = isBanxSolTokenType(lendingTokenType)
@@ -140,10 +140,10 @@ export const createClaimLenderVaultTxnData: CreateClaimLenderVaultTxnData = asyn
   }
 }
 
-export const parseClaimLenderVaultSimulatedAccounts = (
+export const parseClaimUserEscrowSimulatedAccounts = (
   accountInfoByPubkey: SimulatedAccountInfoByPubkey,
 ) => {
   const results = parseAccountInfoByPubkey(accountInfoByPubkey, accountConverterBNAndPublicKey)
 
-  return results?.['userVault']?.[0] as UserVault
+  return results?.['userVault']?.[0] as UserEscrow
 }
