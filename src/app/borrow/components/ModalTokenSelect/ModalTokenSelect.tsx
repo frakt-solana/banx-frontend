@@ -1,5 +1,3 @@
-'use client'
-
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react'
 
 import { SearchOutlined } from '@ant-design/icons'

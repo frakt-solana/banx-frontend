@@ -1,7 +1,4 @@
-'use client'
-
 import { Button } from '@banx/components/Buttons'
-
 import { AppSettingsModal } from '@banx/components/modals'
 
 import { Settings } from '@banx/icons'

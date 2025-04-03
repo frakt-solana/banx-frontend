@@ -1,5 +1,3 @@
-'use client'
-
 import { RefObject, useEffect } from 'react'
 
 type Event = MouseEvent | TouchEvent

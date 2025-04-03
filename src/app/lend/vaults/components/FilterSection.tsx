@@ -17,7 +17,7 @@ import { CoinPlus } from '@banx/icons'
 
 import { SortField } from '../hooks'
 
-import styles from '../page.module.scss'
+import styles from '../ClientLendVaultsPage.module.scss'
 
 interface FilterSectionProps {
   sortParams: SortDropdownProps<SortField>

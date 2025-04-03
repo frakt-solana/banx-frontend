@@ -5,7 +5,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import styles from '../page.module.scss'
+import styles from '../ClientLendVaultsPage.module.scss'
 
 interface TvlProgressIndicatorProps {
   totalDepositedAmount: number

@@ -1,5 +1,3 @@
-'use client'
-
 import { FC, useCallback, useEffect, useMemo } from 'react'
 
 import { BN } from 'fbonds-core'

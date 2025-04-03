@@ -3,6 +3,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
@@ -19,7 +20,7 @@ interface LendVaultCardProps {
   onClick: () => void
 }
 
-const LendVaultCard: FC<LendVaultCardProps> = ({ vaultPreview, onClick }) => {
+export const LendVaultCard: FC<LendVaultCardProps> = ({ vaultPreview, onClick }) => {
   return (
     <div className={styles.card} onClick={onClick}>
       <div className={styles.cardBody}>
@@ -111,9 +112,8 @@ export const AssetsLogos: FC<AssetsLogosProps> = ({ assets }) => {
     <div className={styles.assetsLogosContainer}>
       {visibleAssets.map((asset) => (
         <Tooltip key={asset.mint} title={<VisibleAssetTooltip asset={asset} />}>
-          <img
+          <ResponsiveImage
             src={asset.logoUrl}
-            alt={asset.ticker}
             className={classNames(styles.assetLogo, {
               [styles.stackedLogo]: visibleAssets.length > 1,
             })}
@@ -138,7 +138,7 @@ const HiddenAssetsTooltip: FC<{ assets: VaultPreview['assetsDetails'] }> = ({ as
   <div className={styles.assetsTooltipContent}>
     {assets.map((asset) => (
       <div key={asset.mint} className={styles.assetTooltipItem}>
-        <img src={asset.logoUrl} className={styles.assetTooltipLogo} />
+        <ResponsiveImage src={asset.logoUrl} className={styles.assetTooltipLogo} />
         <span className={styles.assetTooltipTicker}>{asset.ticker}</span>
       </div>
     ))}

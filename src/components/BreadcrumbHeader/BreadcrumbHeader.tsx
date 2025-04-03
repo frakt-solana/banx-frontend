@@ -1,8 +1,6 @@
-'use client'
-
 import React, { FC } from 'react'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 import { OnboardButton } from '@banx/components/Buttons'
 
@@ -29,12 +27,7 @@ export const BreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
   onboardContentType,
   faqType,
 }) => {
-  const router = useRouter()
   const { tokenType } = useTokenType()
-
-  const handleNavigate = (path: string) => {
-    router.push(buildUrlWithModeAndToken(path, tokenType))
-  }
 
   return (
     <div className={styles.container}>
@@ -43,12 +36,12 @@ export const BreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
           {breadcrumbs.map((breadcrumb, index) => (
             <React.Fragment key={index}>
               {breadcrumb.path ? (
-                <span
-                  onClick={() => handleNavigate(breadcrumb.path!)}
+                <Link
+                  href={buildUrlWithModeAndToken(breadcrumb.path, tokenType)}
                   className={styles.clickableBreadcrumb}
                 >
                   {breadcrumb.title}
-                </span>
+                </Link>
               ) : (
                 <span className={styles.currentBreadcrumb}>{breadcrumb.title}</span>
               )}

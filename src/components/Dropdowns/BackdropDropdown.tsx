@@ -1,5 +1,3 @@
-'use client'
-
 import { FC, PropsWithChildren, ReactNode, useRef, useState } from 'react'
 
 import classNames from 'classnames'

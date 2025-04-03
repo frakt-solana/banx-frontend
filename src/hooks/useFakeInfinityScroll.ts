@@ -1,5 +1,3 @@
-'use client'
-
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
 
 import { debounce } from 'lodash'

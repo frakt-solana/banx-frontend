@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect } from 'react'
 
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
