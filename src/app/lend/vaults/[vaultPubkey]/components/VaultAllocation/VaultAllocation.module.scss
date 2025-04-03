@@ -1,0 +1,88 @@
+// * VaultAllocation * //
+.table {
+  min-width: 640px;
+
+  th,
+  td {
+    &:first-child,
+    &:nth-child(2) {
+      min-width: 124px !important;
+    }
+  }
+
+  td {
+    @media (max-width: 1180px) {
+      &:first-child {
+        padding-left: 16px !important;
+      }
+
+      &:last-child {
+        padding-right: 16px !important;
+      }
+    }
+  }
+}
+
+.tableWrapper {
+  margin: 0 -24px;
+  padding-bottom: 0;
+  height: 100%;
+
+  @media (max-width: 1180px) {
+    margin: 0 -16px;
+  }
+}
+// * VaultAllocation * //
+
+// * Cells * //
+.tokenCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cellText {
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+
+.tokenInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.tokenInfoImage {
+  border-radius: 100px;
+  height: 30px;
+  width: 30px;
+
+  @media (max-width: 640px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.tokenInfoAllocation {
+  color: var(--content-secondary);
+  font: var(--important-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-sm);
+  }
+}
+
+.tokenInfoTicker {
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+
+.tvlProgress {
+  max-width: 148px;
+}
+// * Cells * //

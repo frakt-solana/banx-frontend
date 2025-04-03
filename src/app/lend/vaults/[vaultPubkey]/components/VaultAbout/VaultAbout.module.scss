@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vaultDescription {
+  font: var(--body-text-md);
+  max-width: 640px;
+}
+
+.curatorMainInfo {
+  background-color: var(--action-primary);
+  border-radius: 6px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+
+  span {
+    color: var(--content-primary);
+    font: var(--body-text-md);
+  }
+
+  &:hover {
+    span {
+      color: var(--content-secondary);
+    }
+
+    svg path {
+      fill: var(--content-secondary);
+    }
+  }
+
+  svg {
+    height: 14px;
+    width: 14px;
+
+    path {
+      fill: var(--content-primary);
+    }
+  }
+}

@@ -1,0 +1,258 @@
+// * ManageVault ** //
+.manageVaultContent {
+  border: var(--border-less-primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  max-width: 424px;
+  width: 100%;
+
+  @media (max-width: 1180px) {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    max-width: unset;
+  }
+}
+
+.manageVaultTabs {
+  @media (min-width: 1181px) {
+    button:first-child {
+      border-top-left-radius: 12px;
+
+      &:after {
+        margin-left: 10px;
+        width: calc(100% - 10px);
+      }
+    }
+
+    button:last-child {
+      border-top-right-radius: 12px;
+
+      &:after {
+        margin-right: 10px;
+        width: calc(100% - 10px);
+      }
+    }
+  }
+}
+
+.depositContent,
+.withdrawContent {
+  padding: 12px 24px 24px;
+
+  @media (max-width: 1180px) {
+    padding: 16px;
+  }
+}
+
+.pendingWithdrawRequest {
+  background-color: var(--accent-primary-sub);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  margin-bottom: 12px;
+  gap: 4px;
+
+  font: var(--body-text-sm);
+  width: max-content;
+}
+
+.withdrawEmptyList {
+  margin: 12px 0;
+}
+
+.depositButton,
+.withdrawButton {
+  margin-top: 16px;
+  width: 100%;
+}
+// * ManageVault ** //
+
+// * DepositOverviewSwitcher * //
+.depositOverviewSwitcher {
+  background: var(--bg-tertiary);
+  border: var(--border-less-primary);
+  border-radius: 100px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 4px;
+  height: 24px;
+  width: 210px;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  @media (max-width: 1180px) {
+    margin-left: 16px;
+  }
+}
+
+.depositOverviewSwitcherItem {
+  border-radius: 100px;
+  color: var(--content-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+
+  height: 16px;
+  width: 100%;
+
+  &.active {
+    background: var(--action-primary);
+    color: var(--content-primary);
+  }
+}
+
+.depositOverviewSwitcherItemTitle {
+  font: var(--btn-text-sm);
+}
+// * DepositOverviewSwitcher * //
+
+// * Input * //
+.input {
+  background-color: var(--action-primary);
+  border: var(--border-less-primary);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px;
+  gap: 8px;
+}
+
+.inputHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20px;
+}
+
+.inputLabel {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputToken {
+  display: flex;
+  align-items: center;
+  font: var(--important-text-md);
+  gap: 4px;
+}
+
+.numericInput {
+  background: var(--action-primary) !important;
+  padding: 6px 0 6px 0 !important;
+  text-align: right;
+
+  &:disabled {
+    background: var(--bg-tertiary);
+  }
+
+  &:not(:placeholder-shown) {
+    color: var(--content-primary);
+  }
+}
+// * Input * //
+
+// * ControlsButtons * //
+.inputControlsButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputControlButton {
+  background: var(--action-secondary) !important;
+  text-transform: uppercase;
+}
+
+.inputMaxTokenBalance {
+  color: var(--content-secondary);
+  font: var(--important-text-md);
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-sm);
+  }
+
+  svg {
+    height: 14px;
+    width: 14px;
+
+    path {
+      fill: var(--content-secondary);
+    }
+  }
+}
+// * ControlsButtons * //
+
+// * WarningModal * //
+.warningModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.warningModalTitle {
+  font: var(--title-xl);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--title-lg);
+  }
+}
+
+.warningModalText {
+  font: var(--body-text-lg);
+  text-align: center;
+
+  @media (max-width: 640px) {
+    font: var(--body-text-md);
+  }
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  gap: 12px;
+  width: 100%;
+}
+
+.cancelButton {
+  color: var(--content-primary) !important;
+  background-color: var(--additional-red-primary-sub) !important;
+
+  &:hover {
+    border: 1px solid var(--additional-red-primary) !important;
+  }
+
+  width: 100%;
+}
+
+.approveButton {
+  width: 100%;
+}
+// * WarningModal * //
