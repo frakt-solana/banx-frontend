@@ -2,11 +2,16 @@ import { BN, web3 } from 'fbonds-core'
 import { BASE_POINTS, LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { repayPartialPerpetualLoan } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import moment from 'moment'
-import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
+import {
+  CreateTxnData,
+  SimulatedAccountInfoByPubkey,
+  WalletAndConnection,
+} from 'solana-transactions-executor'
 
+import { BondTradeTransaction, FraktBond } from '@banx/api'
 import { core } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
-import { banxSol } from '@banx/transactions'
+import { banxSol, parseAccountInfoByPubkey } from '@banx/transactions'
 import {
   calculateTokenLoanRepayValueOnCertainDate,
   isBanxSolTokenType,
@@ -93,5 +98,16 @@ export const createRepayPartialTokenLoanTxnData: CreateRepayPartialTokenLoanTxnD
     instructions,
     signers,
     lookupTables,
+  }
+}
+
+export const parseRepayPartialLoanSimulatedAccounts = (
+  accountInfoByPubkey: SimulatedAccountInfoByPubkey,
+) => {
+  const results = parseAccountInfoByPubkey(accountInfoByPubkey)
+
+  return {
+    bondTradeTransaction: results?.['bondTradeTransactionV3']?.[0] as BondTradeTransaction,
+    fraktBond: results?.['fraktBond']?.[0] as FraktBond,
   }
 }

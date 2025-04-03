@@ -1,0 +1,247 @@
+import { FC } from 'react'
+
+import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
+import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
+import { capitalize } from 'lodash'
+import moment from 'moment'
+
+import { Button } from '@banx/components/Buttons'
+import {
+  DisplayValue,
+  HorizontalCell,
+  createPercentValueJSX,
+} from '@banx/components/TableComponents'
+import Timer from '@banx/components/Timer'
+import { TooltipWrapper } from '@banx/components/Tooltip'
+
+import { TokenLoan } from '@banx/api/tokens'
+import { createMultiplyPairFromCollateral } from '@banx/app/multiply/[ticker]/helpers'
+import { SECONDS_IN_72_HOURS } from '@banx/constants'
+import { useModal } from '@banx/store/common'
+import {
+  HealthColorIncreasing,
+  STATUS_LOANS_COLOR_MAP,
+  caclulateBorrowTokenLoanValue,
+  calcTokenLoanAprWithRepayFee,
+  calcTokenWeeklyFeeWithRepayFee,
+  calculateTimeFromNow,
+  calculateTokenLoanLtvByLoanValue,
+  getColorByPercent,
+  getTokenDecimals,
+  isTokenLoanActive,
+  isTokenLoanSelling,
+  isTokenLoanTerminating,
+  isTokenLoanUnderWater,
+} from '@banx/utils'
+
+import { calculateAccruedInterest } from '../../helpers'
+import { useTokenLoansTransactions } from '../../hooks'
+import ManageTokenModal from '../ManageTokenModal'
+import RefinanceTokenModal from '../RefinanceTokenModal'
+import { getTokenLoanStatus } from './helpers'
+
+import styles from './ExpandedCardContent.module.scss'
+
+interface TooltipRowProps {
+  label: string
+  value: number
+  lendingToken: LendingTokenType
+  isSubscriptFormat?: boolean
+}
+const TooltipRow: FC<TooltipRowProps> = ({
+  label,
+  value,
+  lendingToken,
+  isSubscriptFormat = false,
+}) => (
+  <div className={styles.tooltipRow}>
+    <span className={styles.tooltipRowLabel}>{label}</span>
+    <span className={styles.tooltipRowValue}>
+      <DisplayValue
+        value={value}
+        isSubscriptFormat={isSubscriptFormat}
+        strictTokenType={lendingToken}
+      />
+    </span>
+  </div>
+)
+
+export const DebtCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  const { bondTradeTransaction, fraktBond } = loan
+
+  const debtValue = caclulateBorrowTokenLoanValue(loan).toNumber()
+  const borrowedValue = fraktBond.borrowedAmount
+
+  const totalAccruedInterest = calculateAccruedInterest(loan)
+
+  const upfrontFee =
+    (bondTradeTransaction.borrowerOriginalLent * loan.collateral.upfrontFee) / BASE_POINTS
+
+  const weeklyFee = calcTokenWeeklyFeeWithRepayFee(loan)
+
+  const lendingToken = bondTradeTransaction.lendingToken
+
+  const tooltipContent = (
+    <div className={styles.tooltipContent}>
+      <TooltipRow label="Principal" value={borrowedValue} lendingToken={lendingToken} />
+      <TooltipRow
+        label="Repaid"
+        value={bondTradeTransaction.borrowerFullRepaidAmount}
+        lendingToken={lendingToken}
+      />
+      <TooltipRow
+        label="Accrued interest"
+        value={totalAccruedInterest}
+        lendingToken={lendingToken}
+      />
+      <TooltipRow label="Upfront fee" value={upfrontFee} lendingToken={lendingToken} />
+      <TooltipRow label="Est. weekly interest" value={weeklyFee} lendingToken={lendingToken} />
+    </div>
+  )
+
+  return (
+    <HorizontalCell
+      tooltipContent={tooltipContent}
+      value={<DisplayValue value={debtValue} strictTokenType={lendingToken} />}
+      className={styles.bodyCellText}
+    />
+  )
+}
+
+export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  const lendingToken = loan.bondTradeTransaction.lendingToken
+
+  const debtValue = caclulateBorrowTokenLoanValue(loan).toNumber()
+  const ltvPercent = calculateTokenLoanLtvByLoanValue(loan, debtValue)
+
+  const marketTokenDecimals = getTokenDecimals(lendingToken)
+
+  const tooltipContent = (
+    <div className={styles.tooltipContent}>
+      <TooltipRow
+        label="Price"
+        value={loan.collateralPrice / 10 ** marketTokenDecimals}
+        lendingToken={lendingToken}
+        isSubscriptFormat
+      />
+      <TooltipRow label="Debt" value={debtValue} lendingToken={lendingToken} />
+    </div>
+  )
+
+  return (
+    <HorizontalCell
+      value={createPercentValueJSX(ltvPercent)}
+      tooltipContent={tooltipContent}
+      textColor={getColorByPercent(ltvPercent, HealthColorIncreasing)}
+      className={styles.bodyCellText}
+    />
+  )
+}
+
+export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  const aprPercent = calcTokenLoanAprWithRepayFee(loan) / 100
+
+  return (
+    <HorizontalCell
+      value={createPercentValueJSX(aprPercent)}
+      className={styles.bodyCellText}
+      isHighlighted
+    />
+  )
+}
+
+export const StatusCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  const loanStatus = getTokenLoanStatus(loan)
+  const loanStatusColor = STATUS_LOANS_COLOR_MAP[loanStatus]
+
+  const timeContent = getTimeContent(loan)
+
+  return (
+    <div className={styles.statusCell}>
+      <span className={styles.statusCellTimeText}>{timeContent}</span>
+      <span style={{ color: loanStatusColor }} className={styles.bodyCellText}>
+        {capitalize(loanStatus)}
+      </span>
+    </div>
+  )
+}
+
+const getTimeContent = (loan: TokenLoan) => {
+  const { fraktBond } = loan
+
+  if (isTokenLoanActive(loan) || isTokenLoanSelling(loan)) {
+    const currentTimeInSeconds = moment().unix()
+    const timeSinceActivationInSeconds = currentTimeInSeconds - fraktBond.activatedAt
+    return calculateTimeFromNow(timeSinceActivationInSeconds)
+  }
+
+  if (isTokenLoanTerminating(loan)) {
+    const expiredAt = fraktBond.refinanceAuctionStartedAt + SECONDS_IN_72_HOURS
+    return <Timer expiredAt={expiredAt} />
+  }
+
+  return ''
+}
+
+interface ActionsCellProps {
+  loan: TokenLoan
+  disableActions: boolean
+}
+
+export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
+  const { open } = useModal()
+
+  const { sellToRepay } = useTokenLoansTransactions()
+
+  const isLoanTerminating = isTokenLoanTerminating(loan)
+  const isLoanUnderWater = isTokenLoanUnderWater(loan)
+
+  const tooltipTitle = isLoanUnderWater
+    ? 'Cannot sell this loan as the LTV exceeds 100%. Selling this loan would result in a net loss because the debt surpasses the value of the collateral'
+    : null
+
+  const pair = createMultiplyPairFromCollateral(
+    loan.collateral,
+    loan.fraktBond.hadoMarket,
+    loan.bondTradeTransaction.lendingToken,
+  )
+
+  return (
+    <div className={styles.actionsButtons}>
+      <TooltipWrapper title={tooltipTitle} className={styles.tooltip}>
+        <Button
+          size="medium"
+          className={styles.actionSellButton}
+          disabled={isLoanUnderWater}
+          onClick={(event) => {
+            sellToRepay({ loan, pair })
+            event.stopPropagation()
+          }}
+        >
+          Sell
+        </Button>
+      </TooltipWrapper>
+
+      <Button
+        size="medium"
+        variant="secondary"
+        onClick={(event) => {
+          open(RefinanceTokenModal, { loan })
+          event.stopPropagation()
+        }}
+      >
+        {isLoanTerminating ? 'Extend' : 'Rollover'}
+      </Button>
+      <Button
+        size="medium"
+        disabled={disableActions}
+        onClick={(event) => {
+          open(ManageTokenModal, { loan })
+          event.stopPropagation()
+        }}
+      >
+        Manage
+      </Button>
+    </div>
+  )
+}

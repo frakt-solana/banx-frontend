@@ -1,0 +1,170 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+// * HeaderList * //
+.headerList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.headerMainStat {
+  display: flex;
+  align-items: center;
+  min-width: 290px;
+
+  @media (min-width: 961px) and (max-width: 1240px) {
+    min-width: 176px;
+  }
+}
+
+.headerStatLabel {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.headerStats {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 48px;
+  gap: 16px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.headerAdditionalStat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  max-width: 180px;
+  width: 100%;
+
+  @media (max-width: 1240px) {
+    max-width: 120px;
+  }
+}
+// * HeaderList * //
+
+// * FilterSection * //
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 8px 16px;
+  }
+}
+
+.filterContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+// * FilterSection * //
+
+// * RepaymentCallFilterButton & TerminatingFilterButton *//
+.filterButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterButtonsTitle {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.filterButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterButtonWrapper {
+  position: relative;
+  width: max-content;
+
+  &[data-loans-amount]::after {
+    border-radius: 100px;
+    content: attr(data-loans-amount);
+    color: var(--pure-black);
+    font: var(--body-text-xs);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+
+    position: absolute;
+    top: -2px;
+    right: -8px;
+    min-width: 8px;
+    height: 16px;
+  }
+
+  &.terminating[data-loans-amount]::after {
+    background: var(--additional-lava-primary);
+  }
+
+  &.repaymentCall[data-loans-amount]::after {
+    background: var(--additional-yellow-primary);
+  }
+}
+
+.repaymentCallFilterButton,
+.terminatingFilterButton {
+  font: var(--body-text-md) !important;
+  padding: 2px 8px !important;
+  gap: 4px !important;
+
+  &.active {
+    border-color: var(--content-primary);
+  }
+
+  svg path {
+    fill: revert-layer;
+  }
+}
+
+.terminatingFilterButton {
+  &.disabled {
+    svg path:first-child {
+      fill: var(--content-secondary);
+    }
+  }
+}
+
+.repaymentCallFilterButton {
+  &.disabled {
+    svg path:nth-last-child(n + 3) {
+      fill: var(--content-secondary);
+    }
+  }
+}
+// * RepaymentCallFilterButton & TerminatingFilterButton *//

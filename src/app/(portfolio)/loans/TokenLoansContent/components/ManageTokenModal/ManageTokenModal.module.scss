@@ -1,0 +1,129 @@
+// * ManageTokenModal * //
+.modal {
+  :global {
+    .ant-modal-content {
+      padding: 0;
+    }
+  }
+}
+
+.modalContent {
+  background-color: var(--bg-tertiary);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 24px;
+}
+
+.tabs {
+  button:first-child {
+    border-top-left-radius: 6px;
+
+    &:after {
+      margin-left: 6px;
+      width: calc(100% - 6px);
+    }
+  }
+
+  button:last-child {
+    border-top-right-radius: 6px;
+
+    &:after {
+      margin-right: 6px;
+      width: calc(100% - 6px);
+    }
+  }
+}
+
+.currentLtv {
+  color: var(--content-secondary);
+}
+// * ManageTokenModal * //
+
+.repayModalInfo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.repayModalSlider {
+  margin: 16px 4px 24px;
+}
+
+@mixin repayModalSliderColor($color) {
+  :global {
+    .ant-slider-track {
+      background: $color !important;
+      border-color: $color !important;
+    }
+
+    .ant-slider-dot-active {
+      border-color: $color !important;
+    }
+
+    .ant-slider-handle {
+      border-color: $color !important;
+    }
+  }
+
+  &:hover {
+    :global {
+      .ant-slider-track {
+        background: $color !important;
+        border-color: $color !important;
+      }
+
+      .ant-slider-dot-active {
+        border-color: $color !important;
+      }
+    }
+  }
+}
+
+.repayModalSliderGreen {
+  @include repayModalSliderColor(var(--accent-primary));
+}
+
+.repayModalSliderYellow {
+  @include repayModalSliderColor(var(--additional-yellow-primary));
+}
+
+.repayModalAdditionalInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 16px;
+  gap: 8px;
+}
+
+.repayModalButton {
+  width: 100%;
+}
+
+.repayModalRepaymentCall {
+  background: var(--additional-yellow-primary);
+  color: var(--pure-black);
+  cursor: pointer;
+}
+
+.repayModalButton {
+  &:disabled {
+    svg path:first-child {
+      fill: var(--content-secondary);
+    }
+  }
+}
+
+.repayButton {
+  width: 96px;
+}
+
+// * SupplyCollateralContent * //
+.supplyCollateralButton {
+  width: 100%;
+}
+
+.supplyCollateralStats {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 16px;
+  gap: 8px;
+}
+// * SupplyCollateralContent * //
