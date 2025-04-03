@@ -6,10 +6,10 @@ import { MESSAGES, NO_LOANS_IN_MARKET_MESSAGE } from '@banx/constants/messages'
 
 import { useWalletTokenLoans } from '../../hooks'
 import { buildLoansPreviewGroupedByMint } from '../helpers'
-import { useFilterTokenLoansPreviews } from './useFilterTokenLoansPreviews'
-import { useSortTokenLoansPreviews } from './useSortTokenLoansPreviews'
+import { useFilterLoansPreviews } from './useFilterLoansPreviews'
+import { useSortLoansPreviews } from './useSortLoansPreviews'
 
-export const useTokenLoansContent = () => {
+export const useLoansContent = () => {
   const { loans, isLoading } = useWalletTokenLoans()
 
   const loansPreviews = useMemo(() => buildLoansPreviewGroupedByMint(loans), [loans])
@@ -32,9 +32,9 @@ export const useTokenLoansContent = () => {
     toggleTerminationFilter,
     isRepaymentCallFilterEnabled,
     toggleRepaymentCallFilter,
-  } = useFilterTokenLoansPreviews(loansPreviews)
+  } = useFilterLoansPreviews(loansPreviews)
 
-  const { sortedLoansPreviews, sortParams } = useSortTokenLoansPreviews(filteredLoansPreviews)
+  const { sortedLoansPreviews, sortParams } = useSortLoansPreviews(filteredLoansPreviews)
 
   const isNoLoans = isEmpty(loans) && !isLoading
   const isFilteredListEmpty = isEmpty(filteredLoansPreviews) && !isLoading

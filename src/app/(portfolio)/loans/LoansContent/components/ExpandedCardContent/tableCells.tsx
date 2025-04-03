@@ -35,7 +35,7 @@ import {
 } from '@banx/utils'
 
 import { calculateAccruedInterest } from '../../helpers'
-import { useTokenLoansTransactions } from '../../hooks'
+import { useLoansTransactions } from '../../hooks'
 import ManageTokenModal from '../ManageTokenModal'
 import RefinanceTokenModal from '../RefinanceTokenModal'
 import { getTokenLoanStatus } from './helpers'
@@ -191,7 +191,7 @@ interface ActionsCellProps {
 export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
   const { open } = useModal()
 
-  const { sellToRepay } = useTokenLoansTransactions()
+  const { sellToRepay } = useLoansTransactions()
 
   const isLoanTerminating = isTokenLoanTerminating(loan)
   const isLoanUnderWater = isTokenLoanUnderWater(loan)

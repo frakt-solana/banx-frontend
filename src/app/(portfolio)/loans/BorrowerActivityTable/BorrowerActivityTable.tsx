@@ -15,7 +15,7 @@ import { Summary } from './Summary'
 import { getTableColumns } from './columns'
 import { useBorrowerTokenActivityTable } from './hooks'
 
-import styles from './BorrowerTokenActivityTable.module.scss'
+import styles from './BorrowerActivityTable.module.scss'
 
 const BorrowerTokenActivityTable = () => {
   const { connected } = useWallet()

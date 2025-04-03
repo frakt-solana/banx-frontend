@@ -12,7 +12,7 @@ import {
   STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE,
 } from '@banx/utils'
 
-import styles from './BorrowerTokenActivityTable.module.scss'
+import styles from './BorrowerActivityTable.module.scss'
 
 interface DebtCellProps {
   loan: activity.TokenBorrowerActivity

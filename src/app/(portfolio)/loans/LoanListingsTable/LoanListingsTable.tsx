@@ -14,9 +14,9 @@ import { ViewState, useTableView } from '@banx/store/common'
 import { getTableColumns } from './columns'
 import { useTokenLoanListingsContent } from './hooks/useTokenLoanListingsContent'
 
-import styles from './TokenLoanListingsTable.module.scss'
+import styles from './LoanListingsTable.module.scss'
 
-const TokenLoanListingsTable = () => {
+const LoanListingsTable = () => {
   const { connected } = useWallet()
   const { viewState } = useTableView()
 
@@ -63,7 +63,7 @@ const TokenLoanListingsTable = () => {
   )
 }
 
-export default TokenLoanListingsTable
+export default LoanListingsTable
 
 const NoListings = () => {
   const router = useRouter()

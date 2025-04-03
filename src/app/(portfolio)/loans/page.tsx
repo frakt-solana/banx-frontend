@@ -7,9 +7,9 @@ import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 
 import { PATHS } from '@banx/constants'
 
-import BorrowerTokenActivityTable from './BorrowerTokenActivityTable'
-import TokenLoanListingsTable from './TokenLoanListingsTable'
-import TokenLoansContent from './TokenLoansContent'
+import BorrowerTokenActivityTable from './BorrowerActivityTable'
+import LoanListingsTable from './LoanListingsTable'
+import LoansContent from './LoansContent'
 import { useTokenLoansTabs } from './hooks'
 
 import styles from './page.module.scss'
@@ -37,8 +37,8 @@ const TokenLoansPage = () => {
         onboardContentType="loans"
       />
       <Tabs value={currentTabValue} {...tabsProps} type="secondary" />
-      {currentTabValue === TokenLoansTabName.LOANS && <TokenLoansContent />}
-      {currentTabValue === TokenLoansTabName.LISTINGS && <TokenLoanListingsTable />}
+      {currentTabValue === TokenLoansTabName.LOANS && <LoansContent />}
+      {currentTabValue === TokenLoansTabName.LISTINGS && <LoanListingsTable />}
       {currentTabValue === TokenLoansTabName.HISTORY && <BorrowerTokenActivityTable />}
     </div>
   )

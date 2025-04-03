@@ -12,7 +12,7 @@ import { createDownloadLink } from '@banx/utils'
 
 import { useUserTokenLoansStats } from '../hooks'
 
-import styles from './BorrowerTokenActivityTable.module.scss'
+import styles from './BorrowerActivityTable.module.scss'
 
 const ACTIVITY_CSV_FILENAME = 'banx_borrower_spl_activity.csv'
 

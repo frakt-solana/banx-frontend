@@ -15,7 +15,7 @@ import {
 
 import { useTokenLoanListingsTransactions } from './hooks'
 
-import styles from './TokenLoanListingsTable.module.scss'
+import styles from './LoanListingsTable.module.scss'
 
 export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   const borrowedValue = loan.fraktBond.borrowedAmount

@@ -2,7 +2,7 @@ import Tooltip from '@banx/components/Tooltip'
 
 import { TOOLTIP_TEXTS } from '../constants'
 
-import styles from '../TokenLoansContent.module.scss'
+import styles from '../LoansContent.module.scss'
 
 export const HeaderList = () => {
   const stats = [

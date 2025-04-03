@@ -11,7 +11,7 @@ import { getTokenDecimals, isUsdcTokenType } from '@banx/utils'
 import { SORT_OPTIONS } from '../constants'
 import { LoansPreview, SortField } from '../types'
 
-export const useSortTokenLoansPreviews = (loansPreviews: LoansPreview[]) => {
+export const useSortLoansPreviews = (loansPreviews: LoansPreview[]) => {
   const [sortOption, setSortOption] = useState(SORT_OPTIONS[0])
   const { data: tokenPrice, isLoading: isTokenPriceLoading } = useTokenPrice(WSOL_ADDRESS)
 

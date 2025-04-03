@@ -17,7 +17,7 @@ import { Coin, Warning } from '@banx/icons'
 
 import { SortField } from '../types'
 
-import styles from '../TokenLoansContent.module.scss'
+import styles from '../LoansContent.module.scss'
 
 interface FilterSectionProps {
   sortParams: SortDropdownProps<SortField>

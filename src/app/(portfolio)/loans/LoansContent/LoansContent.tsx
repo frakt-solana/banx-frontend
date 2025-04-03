@@ -11,11 +11,11 @@ import { buildUrlWithModeAndToken } from '@banx/store'
 import CollateralLoansCard from './components/CollateralLoansCard'
 import { FilterSection } from './components/FilterSection'
 import { HeaderList } from './components/HeaderList'
-import { useTokenLoansContent } from './hooks/useTokenLoansContent'
+import { useLoansContent } from './hooks/useLoansContent'
 
-import styles from './TokenLoansContent.module.scss'
+import styles from './LoansContent.module.scss'
 
-const TokenLoansContent = () => {
+const LoansContent = () => {
   const { connected } = useWallet()
 
   const {
@@ -37,7 +37,7 @@ const TokenLoansContent = () => {
     expandedPreviewId,
     handleCardToggle,
     sortParams,
-  } = useTokenLoansContent()
+  } = useLoansContent()
 
   if (!connected) return <EmptyList message={MESSAGES.NO_CONNECTED_LOANS} />
 
@@ -79,7 +79,7 @@ const TokenLoansContent = () => {
   )
 }
 
-export default TokenLoansContent
+export default LoansContent
 
 const NoLoans = () => {
   const router = useRouter()

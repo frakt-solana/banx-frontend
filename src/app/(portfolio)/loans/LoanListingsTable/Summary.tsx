@@ -19,7 +19,7 @@ import {
 import { useTokenLoanListingsTransactions } from './hooks'
 import { TokenLoanOptimistic } from './loansState'
 
-import styles from './TokenLoanListingsTable.module.scss'
+import styles from './LoanListingsTable.module.scss'
 
 interface SummaryProps {
   loans: TokenLoan[]

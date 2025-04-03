@@ -41,7 +41,7 @@ import {
 import { caclFractionToRepay, caclFractionToRepayForRepaymentCall } from '../helpers'
 import { useSelectedTokenLoans } from '../loansCart'
 
-export const useTokenLoansTransactions = () => {
+export const useLoansTransactions = () => {
   const wallet = useWallet()
   const { connection } = useConnection()
   const { isLedger } = useIsLedger()

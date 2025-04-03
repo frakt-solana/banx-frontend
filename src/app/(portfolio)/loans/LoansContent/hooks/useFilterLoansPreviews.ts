@@ -7,7 +7,7 @@ import { filterBySearchQuery } from '@banx/components/Search'
 
 import { LoansPreview } from '../types'
 
-export const useFilterTokenLoansPreviews = (loansPreviews: LoansPreview[]) => {
+export const useFilterLoansPreviews = (loansPreviews: LoansPreview[]) => {
   const [selectedLendingToken, setSelectedLendingToken] = useState<MarketTokenType>('ALL')
   const [isTerminationFilterEnabled, setTerminationFilterState] = useState(false)
   const [isRepaymentCallFilterEnabled, setIsRepaymentCallFilterState] = useState(false)
