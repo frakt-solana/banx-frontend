@@ -1,4 +1,4 @@
-import { chain, isInteger, padStart, split } from 'lodash'
+import _ from 'lodash'
 import moment, { Duration } from 'moment'
 
 export const calculateTimeFromNow = (seconds: number) => {
@@ -6,8 +6,8 @@ export const calculateTimeFromNow = (seconds: number) => {
 }
 
 export const formatWithLeadingZero = (value: number): string => {
-  if (value <= 0 || !isInteger(value)) return '00'
-  return padStart(value.toString(), 2, '0')
+  if (value <= 0 || !_.isInteger(value)) return '00'
+  return _.padStart(value.toString(), 2, '0')
 }
 
 export const getTimeDifference = (endTimeUnix: number): Duration => {
@@ -52,13 +52,13 @@ export const splitTimeDifferenceToUnits = (difference: Duration | null): Countdo
  * @returns Countdown in string format: '05d:04h:24m:17s'
  */
 export const formatCountdownUnits = (countdownUnits: CountdownUnits, format: string): string => {
-  const unitsToShow = split(format, ':')
+  const unitsToShow = _.split(format, ':')
   //TODO: Add regular expression for better format validation
   if (unitsToShow.length === 0) throw new Error('Incorrect time format')
 
   const { days, hours, minutes, seconds } = countdownUnits
 
-  return chain(unitsToShow)
+  return _.chain(unitsToShow)
     .map((unit) => {
       if (unit === 'd') return `${formatWithLeadingZero(days)}d`
       if (unit === 'h') return `${formatWithLeadingZero(hours)}h`

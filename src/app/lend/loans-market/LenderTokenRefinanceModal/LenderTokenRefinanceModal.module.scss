@@ -1,0 +1,149 @@
+// * RefinanceModal * //
+.modal :global {
+  z-index: 2;
+
+  .ant-modal-body {
+    padding: 0;
+  }
+
+  .ant-modal-content {
+    background: var(--bg-tertiary);
+    padding: 0;
+  }
+}
+
+.modalTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--title-xl);
+  padding: 24px 24px 12px;
+  text-transform: uppercase;
+
+  @media (max-width: 960px) {
+    font: var(--title-lg);
+    padding: 16px 16px 8px;
+  }
+
+  @media (max-width: 640px) {
+    font: var(--title-md);
+  }
+}
+
+.footerModalContent {
+  border-top: var(--border-less-primary);
+}
+
+.emptyList {
+  & > div {
+    padding: 4px 8px !important;
+  }
+
+  span {
+    font: var(--body-text-sm);
+  }
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  padding: 0 24px 24px;
+
+  @media (max-width: 960px) {
+    padding: 0 16px 16px;
+  }
+}
+
+.confirmButton {
+  width: 100%;
+}
+
+.tableRoot {
+  tr > td,
+  tr > th {
+    border-radius: 0 !important;
+    padding: 4px !important;
+
+    &:first-child {
+      padding-left: 24px !important;
+    }
+
+    &:last-child {
+      padding-right: 24px !important;
+    }
+
+    @media (max-width: 960px) {
+      &:first-child {
+        padding-left: 16px !important;
+      }
+
+      &:last-child {
+        padding-right: 16px !important;
+      }
+    }
+  }
+}
+
+.tableWrapper {
+  height: 100%;
+  width: 100%;
+}
+
+input.liqLtvInput {
+  border: none;
+  border-radius: 0;
+  background: transparent !important;
+
+  font: var(--body-text-sm);
+  text-decoration: underline;
+  text-align: right;
+
+  margin-right: 16px;
+  padding: 0;
+
+  height: 16px;
+  width: 64px;
+}
+// * RefinanceModal * //
+
+//* Cells * //
+.headerCellText {
+  font: var(--important-text-xs);
+}
+
+.bodyCellText {
+  font: var(--body-text-sm);
+
+  &.editable {
+    text-decoration: underline;
+  }
+}
+
+.liqLtvCell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  gap: 4px;
+
+  svg {
+    opacity: 0;
+    height: 12px;
+    width: 12px;
+
+    path {
+      fill: var(--content-primary);
+    }
+  }
+
+  &.editable {
+    cursor: pointer;
+    pointer-events: unset;
+
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+//* Cells * //
