@@ -1,0 +1,38 @@
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.collapsedButton {
+  @media (max-width: 640px) {
+    max-width: 32px;
+  }
+}
+
+.searchText {
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchInput {
+  padding-right: 24px !important;
+}
+
+.closeIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+
+  rect {
+    fill: var(--content-primary);
+  }
+}
