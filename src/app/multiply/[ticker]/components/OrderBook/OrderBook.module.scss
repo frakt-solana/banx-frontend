@@ -1,0 +1,69 @@
+.container {
+  border: var(--border-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  padding-top: 12px;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 0 156px;
+    height: unset;
+  }
+}
+
+.loader {
+  height: 100%;
+
+  path {
+    fill: #9cff1f;
+  }
+}
+
+.table {
+  tbody {
+    tr:nth-child(odd) {
+      background: unset;
+    }
+
+    tr {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  tr > td,
+  tr > th {
+    height: 44px;
+    width: 100%;
+    background: unset !important;
+
+    @media (max-width: 960px) {
+      height: 32px;
+    }
+  }
+}
+
+.tableWrapper {
+  height: 100%;
+
+  @media (max-width: 960px) {
+    height: 100vh;
+  }
+}
+
+.selectedOffer {
+  opacity: 1 !important;
+}
+
+.multiplierCell,
+.multiplierHeaderCell {
+  display: flex;
+  justify-content: center;
+}

@@ -1,7 +1,7 @@
 import { WalletContextState } from '@solana/wallet-adapter-react'
 import { BN, web3 } from 'fbonds-core'
 import { getRuleset } from 'fbonds-core/lib/fbond-protocol/helpers'
-import { chain } from 'lodash'
+import _ from 'lodash'
 import {
   GetPriorityFee,
   SimulatedAccountInfoByPubkey,
@@ -139,7 +139,7 @@ export const parseAccountInfoByPubkey = (
   accountInfoByPubkey: SimulatedAccountInfoByPubkey,
   customConverter?: Parameters<typeof convertValuesInAccount>[1],
 ): Record<string, unknown[]> => {
-  return chain(accountInfoByPubkey)
+  return _.chain(accountInfoByPubkey)
     .toPairs()
     .filter(([, info]) => !!info)
     .map(([publicKey, info]) => {

@@ -1,0 +1,23 @@
+// * Summary * //
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: 960px) {
+    gap: 4px;
+  }
+}
+
+.statWithMarginBottom {
+  margin-bottom: 12px;
+}
+
+.fixedStatValue {
+  white-space: nowrap;
+
+  @media (max-width: 960px) {
+    max-width: 144px;
+  }
+}
+// * Summary * //

@@ -1,0 +1,40 @@
+.container {
+  background-color: var(--bg-primary);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 8px 24px;
+  min-height: 32px;
+  max-height: 32px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    border-radius: 0;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navigation {
+  cursor: pointer;
+  font: var(--btn-text-md);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clickableBreadcrumb {
+  cursor: pointer;
+  color: var(--content-secondary);
+}
+
+.currentBreadcrumb {
+  color: var(--content-primary);
+}
+
+.arrow {
+  color: var(--content-secondary);
+}

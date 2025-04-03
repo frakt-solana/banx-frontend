@@ -1,0 +1,90 @@
+.tabsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.root {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 32px;
+
+  &:active,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    background: var(--action-secondary);
+    color: var(--content-tertiary);
+    pointer-events: none;
+  }
+}
+
+// * Primary * //
+.primary {
+  background: var(--action-secondary);
+  border-bottom: var(--border-less-primary);
+  color: var(--content-primary);
+  font: var(--body-text-md);
+  width: 100%;
+
+  &.tabActive {
+    border-bottom-color: var(--bg-tertiary);
+    background: var(--bg-primary-gradient);
+    position: relative;
+
+    &::after {
+      content: '';
+      background-color: var(--accent-primary);
+      display: block;
+      position: absolute;
+      top: -1px;
+      height: 1px;
+      width: 100%;
+    }
+
+    &,
+    &:hover {
+      pointer-events: none;
+    }
+  }
+}
+.primary:first-child {
+  border-right: var(--border-less-primary);
+}
+.primary:last-child {
+  border-left: var(--border-less-primary);
+}
+
+//? The right border will not be displayed if there are only two elements.
+.primary:first-child:nth-last-child(2) {
+  border-right: none;
+}
+// * Primary * //
+
+// * Secondary * //
+.secondary {
+  background: transparent;
+  border-bottom: 1px solid var(--bg-border);
+  color: var(--content-secondary);
+  padding: 8px 24px;
+  width: 100%;
+
+  &.tabActive {
+    border-color: var(--accent-primary);
+
+    &,
+    &:hover {
+      pointer-events: none;
+    }
+  }
+}
+// * Secondary * //

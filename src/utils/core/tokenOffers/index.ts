@@ -1,3 +1,4 @@
+import { BN } from 'fbonds-core'
 import {
   BondOfferV3,
   BondingCurveType,
@@ -5,6 +6,7 @@ import {
   PairState,
 } from 'fbonds-core/lib/fbond-protocol/types'
 
+import { Offer } from '@banx/api'
 import { convertToDecimalString, formatTrailingZeros } from '@banx/utils'
 import { ZERO_BN } from '@banx/utils/bn'
 
@@ -78,4 +80,10 @@ export const calcOfferLtvPercent = (props: {
 
   const ltvRatio = tokensPerCollateral / (collateralPrice / Math.pow(10, lendingTokenDecimals))
   return Math.round(ltvRatio * 100)
+}
+
+export const calculateOfferSize = (offer: Offer): BN => {
+  const { fundsSolOrTokenBalance, bidSettlement } = offer
+
+  return new BN(fundsSolOrTokenBalance).add(new BN(bidSettlement))
 }

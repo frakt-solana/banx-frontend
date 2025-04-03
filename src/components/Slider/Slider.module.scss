@@ -1,0 +1,56 @@
+.slider {
+  padding: 2px 0;
+}
+.sliderWithValue {
+  padding: 0 0 10px;
+}
+
+.labels {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  color: var(--content-secondary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.couterSliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 200px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    min-width: unset;
+  }
+}
+
+.counterSlider {
+  padding: 0;
+  width: 100%;
+}
+
+.counterInputContainer {
+  max-width: 72px;
+  min-width: 72px;
+
+  input {
+    @media (max-width: 640px) {
+      padding: 8px 24px 8px 4px !important;
+    }
+  }
+
+  @media (max-width: 960px) {
+    max-width: 58px;
+    min-width: 58px;
+  }
+}

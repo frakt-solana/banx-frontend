@@ -1,0 +1,15 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button {
+  gap: 4px !important;
+
+  &.active {
+    background-color: var(--bg-tertiary);
+    border-color: var(--bg-border-active);
+    pointer-events: none;
+  }
+}
