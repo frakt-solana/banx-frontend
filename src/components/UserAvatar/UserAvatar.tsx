@@ -4,6 +4,8 @@ import classNames from 'classnames'
 
 import { WalletAvatar } from '@banx/icons'
 
+import { ResponsiveImage } from '../ResponsiveImage'
+
 import styles from './UserAvatar.module.scss'
 
 interface UserAvatarProps {
@@ -12,7 +14,7 @@ interface UserAvatarProps {
 }
 
 const UserAvatar: FC<UserAvatarProps> = ({ imageUrl, className }) => {
-  const avatar = imageUrl ? <img src={imageUrl} alt="user avatar" /> : <WalletAvatar />
+  const avatar = imageUrl ? <ResponsiveImage src={imageUrl} alt="user avatar" /> : <WalletAvatar />
 
   return <div className={classNames(styles.avatar, className)}>{avatar}</div>
 }

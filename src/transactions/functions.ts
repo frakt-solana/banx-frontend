@@ -90,7 +90,7 @@ export const accountConverterBNAndPublicKey = {
   bnParser: (v: BN) => {
     try {
       return v
-    } catch (err) {
+    } catch {
       return ZERO_BN
     }
   },
@@ -120,7 +120,7 @@ export const parseBanxAccountInfo = <T>(
       bnParser: (v) => {
         try {
           return v.toNumber()
-        } catch (err) {
+        } catch {
           return 0
         }
       },

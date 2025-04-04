@@ -12,6 +12,7 @@ import { ChevronDown, Wallet } from '@banx/icons'
 import { useModal } from '@banx/store'
 import { ZERO_BN, bnToHuman } from '@banx/utils'
 
+import { ResponsiveImage } from '../ResponsiveImage'
 import ModalTokenSelect from './ModalTokenSelect'
 
 import styles from './TokenInput.module.scss'
@@ -107,7 +108,7 @@ const SelectTokenButton = ({ token, onClick, disabled, className }: SelectTokenB
       )}
       variant="tertiary"
     >
-      <img src={token.collateral.logoUrl} className={styles.selectTokenButtonIcon} />
+      <ResponsiveImage src={token.collateral.logoUrl} className={styles.selectTokenButtonIcon} />
       {token.collateral.ticker}
       {!disabled && <ChevronDown className={styles.selectTokenButtonChevronIcon} />}
     </Button>

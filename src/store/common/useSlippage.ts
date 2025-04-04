@@ -57,7 +57,7 @@ export const getSlippage = () => {
     z.number().parse(slippage)
 
     return slippage
-  } catch (error) {
+  } catch {
     console.error('Invalid slippage value in LS. Value was removed')
     localStorage.removeItem(BANX_SLIPPAGE_STATE_LS_KEY)
     return DEFAULT_SLIPPAGE

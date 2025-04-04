@@ -10,6 +10,8 @@ import { CollateralToken } from '@banx/api/tokens'
 import { useModal } from '@banx/store'
 import { bnToHuman, formatCollateralTokenValue, shortenAddress } from '@banx/utils'
 
+import { ResponsiveImage } from '../ResponsiveImage'
+
 import styles from './TokenInput.module.scss'
 
 type ModalTokenSelectProps = {
@@ -99,7 +101,7 @@ type TokenListItemProps = {
 const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => (
   <div onClick={onClick} className={styles.tokensListItem}>
     <div className={styles.tokensListItemInfo}>
-      <img src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
+      <ResponsiveImage src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
       <div className={styles.flexCol}>
         <span className={styles.tokensListItemTicker}>{token.collateral.ticker}</span>
         <span className={styles.tokensListItemAddress}>
@@ -165,7 +167,7 @@ const PinnedTokensList: FC<PinnedTokensListProps> = ({ onChange, tokensList }) =
           onClick={() => onChange(token)}
           className={styles.pinnedToken}
         >
-          <img src={token.collateral.logoUrl} className={styles.pinnedTokenIcon} />
+          <ResponsiveImage src={token.collateral.logoUrl} className={styles.pinnedTokenIcon} />
           <span className={styles.pinnedTokenLabel}>{token.collateral.ticker}</span>
         </div>
       ))}

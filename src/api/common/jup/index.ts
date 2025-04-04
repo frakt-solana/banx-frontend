@@ -68,7 +68,7 @@ export const fetchConversionRate = async ({
           parseInt(exactOutQuote.inAmount) / parseInt(exactOutQuote.outAmount) / 10 ** decimalsDiff
         )
       }
-    } catch (error) {
+    } catch {
       //? Cannot use collateral token as input mint for sellToRepay, because we need conversionRate to convert debt(amount) in usdc/sol into collateral
       const inputMint = lendingTokenMint
       const outputMint = pair.collateralMint.toBase58()

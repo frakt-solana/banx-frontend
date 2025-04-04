@@ -72,7 +72,7 @@ export const createLeverageTxnData: CreateLeverageTxnData = async (params, walle
     })
 
     quote = exactOutQuote
-  } catch (error) {
+  } catch {
     swapWarningHandler?.('Exact swap not found. Trying to find the closest...')
 
     const marketTokenDecimals = getTokenDecimals(pair.marketTokenType)

@@ -2,6 +2,8 @@ import * as common from './common'
 
 export * from './shared'
 
-export default {
+const api = {
   common,
 }
+
+export default api

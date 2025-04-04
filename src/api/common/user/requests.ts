@@ -265,7 +265,7 @@ export const linkRef: LinkRef = async ({ refCode, walletJwt }) => {
     )
 
     return data.data
-  } catch (error) {
+  } catch {
     const errorResponse: MutationResponse = {
       message: 'Unable to link ref code',
       success: false,

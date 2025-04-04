@@ -1,3 +1,5 @@
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
+
 import borrowImg from './assets/borrow.png'
 import borrowImg_dark from './assets/borrow_dark.png'
 import loansImg from './assets/loans.png'
@@ -32,8 +34,10 @@ const MULTIPLY_CONTENT = {
   title: 'Multiply',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyImg.src} alt="multiply" />,
-      imgDark: <img className={styles.slideImg} src={multiplyImg_dark.src} alt="multiply" />,
+      img: <ResponsiveImage className={styles.slideImg} src={multiplyImg.src} alt="multiply" />,
+      imgDark: (
+        <ResponsiveImage className={styles.slideImg} src={multiplyImg_dark.src} alt="multiply" />
+      ),
       text: null,
     },
   ],
@@ -43,9 +47,19 @@ const MULTIPLY_LRTS_CONTENT = {
   title: 'Multiply: lrtssol',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyLrtsImg.src} alt="multiply lrtssol" />,
+      img: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyLrtsImg.src}
+          alt="multiply lrtssol"
+        />
+      ),
       imgDark: (
-        <img className={styles.slideImg} src={multiplyLrtsImg_dark.src} alt="multiply lrtssol" />
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyLrtsImg_dark.src}
+          alt="multiply lrtssol"
+        />
       ),
       text: null,
     },
@@ -56,8 +70,16 @@ const MULTIPLY_JLP_CONTENT = {
   title: 'Multiply: JLP',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyJlpImg.src} alt="multiply jlp" />,
-      imgDark: <img className={styles.slideImg} src={multiplyJlpImg_dark.src} alt="multiply jlp" />,
+      img: (
+        <ResponsiveImage className={styles.slideImg} src={multiplyJlpImg.src} alt="multiply jlp" />
+      ),
+      imgDark: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyJlpImg_dark.src}
+          alt="multiply jlp"
+        />
+      ),
       text: null,
     },
   ],
@@ -67,9 +89,19 @@ const MULTIPLY_HUBSOL_CONTENT = {
   title: 'Multiply: Hubsol',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyHubImg.src} alt="multiply hubsol" />,
+      img: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyHubImg.src}
+          alt="multiply hubsol"
+        />
+      ),
       imgDark: (
-        <img className={styles.slideImg} src={multiplyHubImg_dark.src} alt="multiply hubsol" />
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyHubImg_dark.src}
+          alt="multiply hubsol"
+        />
       ),
       text: null,
     },
@@ -80,9 +112,19 @@ const MULTIPLY_ADRASOL_CONTENT = {
   title: 'Multiply: adraSOL',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyAdraImg.src} alt="multiply adraSOL" />,
+      img: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyAdraImg.src}
+          alt="multiply adraSOL"
+        />
+      ),
       imgDark: (
-        <img className={styles.slideImg} src={multiplyAdraImg_dark.src} alt="multiply adraSOL" />
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyAdraImg_dark.src}
+          alt="multiply adraSOL"
+        />
       ),
       text: null,
     },
@@ -93,9 +135,19 @@ const MULTIPLY_VSOL_CONTENT = {
   title: 'Multiply: vSOL',
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyVsolImg.src} alt="multiply vSOL" />,
+      img: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyVsolImg.src}
+          alt="multiply vSOL"
+        />
+      ),
       imgDark: (
-        <img className={styles.slideImg} src={multiplyVsolImg_dark.src} alt="multiply vSOL" />
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyVsolImg_dark.src}
+          alt="multiply vSOL"
+        />
       ),
       text: null,
     },
@@ -107,10 +159,14 @@ const MULTIPLY_WFRAGSOL_CONTENT = {
   slides: [
     {
       img: (
-        <img className={styles.slideImg} src={multiplyFragImg.src} alt="multiply wrapped FragSOL" />
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={multiplyFragImg.src}
+          alt="multiply wrapped FragSOL"
+        />
       ),
       imgDark: (
-        <img
+        <ResponsiveImage
           className={styles.slideImg}
           src={multiplyFragImg_dark.src}
           alt="multiply wrapped FragSOL"
@@ -125,8 +181,10 @@ const BORROW_CONTENT = {
   title: 'Borrow',
   slides: [
     {
-      img: <img className={styles.slideImg} src={borrowImg.src} alt="borrow" />,
-      imgDark: <img className={styles.slideImg} src={borrowImg_dark.src} alt="borrow" />,
+      img: <ResponsiveImage className={styles.slideImg} src={borrowImg.src} alt="borrow" />,
+      imgDark: (
+        <ResponsiveImage className={styles.slideImg} src={borrowImg_dark.src} alt="borrow" />
+      ),
       text: null,
     },
   ],
@@ -136,8 +194,10 @@ const VAULTS_CONTENT = {
   title: 'Vaults',
   slides: [
     {
-      img: <img className={styles.slideImg} src={vaultsImg.src} alt="vaults" />,
-      imgDark: <img className={styles.slideImg} src={vaultsImg_dark.src} alt="vaults" />,
+      img: <ResponsiveImage className={styles.slideImg} src={vaultsImg.src} alt="vaults" />,
+      imgDark: (
+        <ResponsiveImage className={styles.slideImg} src={vaultsImg_dark.src} alt="vaults" />
+      ),
       text: null,
     },
   ],
@@ -147,8 +207,16 @@ const PLACE_OFFER = {
   title: 'Place offer',
   slides: [
     {
-      img: <img className={styles.slideImg} src={placeOfferImg.src} alt="place offer" />,
-      imgDark: <img className={styles.slideImg} src={placeOfferImg_dark.src} alt="place offer" />,
+      img: (
+        <ResponsiveImage className={styles.slideImg} src={placeOfferImg.src} alt="place offer" />
+      ),
+      imgDark: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={placeOfferImg_dark.src}
+          alt="place offer"
+        />
+      ),
       text: null,
     },
   ],
@@ -158,8 +226,16 @@ const LOANS_MARKET = {
   title: 'Loans market',
   slides: [
     {
-      img: <img className={styles.slideImg} src={loansMarketImg.src} alt="loans market" />,
-      imgDark: <img className={styles.slideImg} src={loansMarketImg_dark.src} alt="loans market" />,
+      img: (
+        <ResponsiveImage className={styles.slideImg} src={loansMarketImg.src} alt="loans market" />
+      ),
+      imgDark: (
+        <ResponsiveImage
+          className={styles.slideImg}
+          src={loansMarketImg_dark.src}
+          alt="loans market"
+        />
+      ),
       text: null,
     },
   ],
@@ -169,8 +245,10 @@ const OFFERS_CONTENT = {
   title: 'My offers',
   slides: [
     {
-      img: <img className={styles.slideImg} src={offersImg.src} alt="offers" />,
-      imgDark: <img className={styles.slideImg} src={offersImg_dark.src} alt="offers" />,
+      img: <ResponsiveImage className={styles.slideImg} src={offersImg.src} alt="offers" />,
+      imgDark: (
+        <ResponsiveImage className={styles.slideImg} src={offersImg_dark.src} alt="offers" />
+      ),
       text: null,
     },
   ],
@@ -180,8 +258,8 @@ const LOANS_CONTENT = {
   title: 'My loans',
   slides: [
     {
-      img: <img className={styles.slideImg} src={loansImg.src} alt="loans" />,
-      imgDark: <img className={styles.slideImg} src={loansImg_dark.src} alt="loans" />,
+      img: <ResponsiveImage className={styles.slideImg} src={loansImg.src} alt="loans" />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={loansImg_dark.src} alt="loans" />,
       text: null,
     },
   ],

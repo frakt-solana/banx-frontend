@@ -4,6 +4,7 @@ import { Skeleton } from 'antd'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 
 import { ChevronDown, Wallet } from '@banx/icons'
 
@@ -32,7 +33,7 @@ export const SelectTokenButton = <T extends BaseToken>({
       className={classNames(styles.selectTokenButton, className)}
       variant="tertiary"
     >
-      <img src={token.collateral.logoUrl} className={styles.selectTokenButtonIcon} />
+      <ResponsiveImage src={token.collateral.logoUrl} className={styles.selectTokenButtonIcon} />
       {token.collateral.ticker}
       <ChevronDown className={styles.selectTokenButtonChevronIcon} />
     </Button>

@@ -3,6 +3,8 @@ import { FC } from 'react'
 import { Adapter } from '@solana/wallet-adapter-base'
 import classNames from 'classnames'
 
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
+
 import { iconComponents } from '../constants'
 
 import styles from '../WalletAccountSidebar.module.scss'
@@ -53,6 +55,6 @@ const WalletIcon: FC<{ icon: string; name: string }> = ({ icon, name }) => {
   return IconComponent ? (
     <IconComponent className={styles.customWalletIcon} />
   ) : (
-    <img src={icon} alt={name} className={styles.walletImage} />
+    <ResponsiveImage src={icon} alt={name} className={styles.walletImage} />
   )
 }

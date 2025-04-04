@@ -72,7 +72,7 @@ export const getPriorityFeeLevel = () => {
     z.nativeEnum(PriorityLevel).parse(priorityLevel)
 
     return priorityLevel
-  } catch (error) {
+  } catch {
     console.error('Invalid priorityFee value in LS. Value was removed')
     localStorage.removeItem(BANX_PRIORITY_FEES_STATE_LS_KEY)
     return DEFAULT_PRIORITY_FEE_LEVEL

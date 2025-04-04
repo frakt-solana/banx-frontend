@@ -7,6 +7,7 @@ import { SOLFilled, USDC } from '@banx/icons'
 import { formatCompact, isUsdcTokenType } from '@banx/utils'
 
 import Checkbox from '../Checkbox'
+import { ResponsiveImage } from '../ResponsiveImage'
 import { DisplayValue } from './helpers'
 
 import styles from './TableCells.module.scss'
@@ -90,7 +91,13 @@ interface TokenLogoProps {
 
 const TokenLogo: FC<TokenLogoProps> = ({ logoUrl, altText, className }) => {
   if (!logoUrl) return null
-  return <img src={logoUrl} alt={altText} className={classNames(styles.tokenLogo, className)} />
+  return (
+    <ResponsiveImage
+      src={logoUrl}
+      alt={altText}
+      className={classNames(styles.tokenLogo, className)}
+    />
+  )
 }
 
 interface LendingTokenLogoProps {

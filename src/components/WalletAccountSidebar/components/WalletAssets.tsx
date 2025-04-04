@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { Loader } from '@banx/components/Loader'
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 
 import { CollateralToken } from '@banx/api/tokens'
 import { useWalletTokenAssets } from '@banx/hooks'
@@ -35,7 +36,7 @@ interface TokenListItemProps {
 export const TokenListItem: FC<TokenListItemProps> = ({ token }) => (
   <div className={styles.tokensListItem}>
     <div className={styles.tokensListItemInfo}>
-      <img src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
+      <ResponsiveImage src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
       <div className={styles.tokensListItemMainInfo}>
         <span className={styles.tokensListItemTicker}>{token.collateral.ticker}</span>
         <span className={styles.tokensListItemAddress}>

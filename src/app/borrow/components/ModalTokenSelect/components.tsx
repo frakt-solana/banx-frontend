@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { capitalize } from 'lodash'
 
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import Tooltip from '@banx/components/Tooltip'
 
 import {
@@ -30,7 +31,7 @@ export const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => {
   return (
     <div onClick={onClick} className={styles.tokensListItem}>
       <div className={styles.tokensListItemInfo}>
-        <img src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
+        <ResponsiveImage src={token.collateral.logoUrl} className={styles.tokensListItemIcon} />
         <div className={styles.flexCol}>
           <span className={styles.tokensListItemTicker}>{token.collateral.ticker}</span>
           <span className={styles.tokensListItemAddress}>
@@ -104,7 +105,7 @@ export const PinnedTokensList: FC<PinnedTokensListProps> = ({ onChange, tokensLi
           onClick={() => onChange(token)}
           className={styles.pinnedToken}
         >
-          <img src={token.collateral.logoUrl} className={styles.pinnedTokenIcon} />
+          <ResponsiveImage src={token.collateral.logoUrl} className={styles.pinnedTokenIcon} />
           <span className={styles.pinnedTokenLabel}>{token.collateral.ticker}</span>
         </div>
       ))}

@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react'
 
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import Table, { ColumnType } from '@banx/components/Table'
 import {
   DisplayValue,
@@ -140,7 +141,7 @@ const AllocationCell: FC<{ allocation: AssetsAllocation }> = ({ allocation }) =>
 
   return (
     <div className={styles.tokenCell}>
-      <img src={logoUrl} className={styles.tokenInfoImage} />
+      <ResponsiveImage src={logoUrl} className={styles.tokenInfoImage} />
       <div className={styles.tokenInfo}>
         <span className={styles.tokenInfoAllocation}>
           {createPercentValueJSX(allocationBasePoints / 100)}

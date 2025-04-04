@@ -20,7 +20,7 @@ const getBestWorkingEndpoint = async ({
         disableRetryOnRateLimit: true,
       }).getLatestBlockhash()
       return endpoint
-    } catch (error) {
+    } catch {
       if (logErrors) {
         console.warn(`RPC endpoint doesnt work\n${endpoint}`)
       }

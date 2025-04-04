@@ -13,12 +13,13 @@ import multiplyImage1Dark from './assets/multiply1_dark.png'
 import { OnboardingContentType } from './types'
 
 import styles from './OnboardingCarousel.module.scss'
+import { ResponsiveImage } from '../ResponsiveImage'
 
 const MULTIPLY_CONTENT = {
   slides: [
     {
-      img: <img className={styles.slideImg} src={multiplyImage1.src} />,
-      imgDark: <img className={styles.slideImg} src={multiplyImage1Dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={multiplyImage1.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={multiplyImage1Dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Farm apy and extra rewards</h3>
@@ -32,8 +33,8 @@ const MULTIPLY_CONTENT = {
 const LEND_TOKEN_CONTENT = {
   slides: [
     {
-      img: <img className={styles.slideImg} src={lend1.src} />,
-      imgDark: <img className={styles.slideImg} src={lend1Dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={lend1.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={lend1Dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Vaults</h3>
@@ -45,8 +46,8 @@ const LEND_TOKEN_CONTENT = {
       ),
     },
     {
-      img: <img className={styles.slideImg} src={lend2.src} />,
-      imgDark: <img className={styles.slideImg} src={lend2Dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={lend2.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={lend2Dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Place offer</h3>
@@ -55,8 +56,8 @@ const LEND_TOKEN_CONTENT = {
       ),
     },
     {
-      img: <img className={styles.slideImg} src={borrowImage1.src} />,
-      imgDark: <img className={styles.slideImg} src={borrowImg1_dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={borrowImage1.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={borrowImg1_dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Loans market</h3>
@@ -70,8 +71,8 @@ const LEND_TOKEN_CONTENT = {
 const BORROW_TOKEN_CONTENT = {
   slides: [
     {
-      img: <img className={styles.slideImg} src={borrowImage1.src} />,
-      imgDark: <img className={styles.slideImg} src={borrowImg1_dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={borrowImage1.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={borrowImg1_dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Banx loans are perpetual</h3>
@@ -82,8 +83,8 @@ const BORROW_TOKEN_CONTENT = {
       ),
     },
     {
-      img: <img className={styles.slideImg} src={borrowImage2.src} />,
-      imgDark: <img className={styles.slideImg} src={borrowImg2_dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={borrowImage2.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={borrowImg2_dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Interest rates</h3>
@@ -96,8 +97,8 @@ const BORROW_TOKEN_CONTENT = {
       ),
     },
     {
-      img: <img className={styles.slideImg} src={borrowImage3.src} />,
-      imgDark: <img className={styles.slideImg} src={borrowImg3_dark.src} />,
+      img: <ResponsiveImage className={styles.slideImg} src={borrowImage3.src} />,
+      imgDark: <ResponsiveImage className={styles.slideImg} src={borrowImg3_dark.src} />,
       text: (
         <div className={styles.slideText}>
           <h3>Loan status</h3>
