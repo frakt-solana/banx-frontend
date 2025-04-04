@@ -12,7 +12,7 @@ import {
 
 import { TokenLoan, core } from '@banx/api/tokens'
 import { getDialectAccessToken } from '@banx/providers/dialect'
-import { useIsLedger, useModal } from '@banx/store/common'
+import { useIsLedger, useModal } from '@banx/store'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,
   createExecutorWalletAndConnection,

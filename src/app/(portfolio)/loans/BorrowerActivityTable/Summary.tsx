@@ -10,7 +10,7 @@ import { activity } from '@banx/api/tokens'
 import { useTokenType } from '@banx/store/common'
 import { createDownloadLink } from '@banx/utils'
 
-import { useUserTokenLoansStats } from '../hooks'
+import { useLoansStatsData } from '../ActiveLoansSection/hooks'
 
 import styles from './BorrowerActivityTable.module.scss'
 
@@ -21,7 +21,7 @@ export const Summary = () => {
 
   const { tokenType } = useTokenType()
 
-  const { data } = useUserTokenLoansStats()
+  const { data } = useLoansStatsData()
   const { totalLoans = 0, totalBorrowed = 0, totalRepaid = 0 } = data || {}
 
   const [isDownloading, setIsDownloading] = useState(false)

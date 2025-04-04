@@ -1,0 +1,16 @@
+// * TableCells * //
+.delistButton {
+  background-color: var(--additional-red-primary-sub) !important;
+  color: var(--content-primary) !important;
+  width: 96px;
+
+  &:hover {
+    border: 1px solid var(--additional-red-primary);
+  }
+
+  &:disabled {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--content-secondary) !important;
+  }
+}
+// * TableCells * //
