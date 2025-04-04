@@ -10,8 +10,8 @@ import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 import { PATHS } from '@banx/constants'
 
 import ActiveLoansSection from './ActiveLoansSection'
-import BorrowerTokenActivityTable from './BorrowerActivityTable'
 import LoanListingsTable from './LoanListingsSection'
+import LoansHistorySection from './LoansHistorySection'
 
 import styles from './ClientBorrowerLoansPage.module.scss'
 
@@ -44,7 +44,7 @@ export const ClientBorrowerLoansPage = () => {
       <Tabs value={currentTabValue} {...tabsProps} type="secondary" />
       {currentTabValue === TokenLoansTabName.LOANS && <ActiveLoansSection />}
       {currentTabValue === TokenLoansTabName.LISTINGS && <LoanListingsTable />}
-      {currentTabValue === TokenLoansTabName.HISTORY && <BorrowerTokenActivityTable />}
+      {currentTabValue === TokenLoansTabName.HISTORY && <LoansHistorySection />}
     </div>
   )
 }

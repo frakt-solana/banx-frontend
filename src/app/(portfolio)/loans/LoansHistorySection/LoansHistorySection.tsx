@@ -13,16 +13,16 @@ import { ViewState, useTableView } from '@banx/store/common'
 
 import { Summary } from './Summary'
 import { getTableColumns } from './columns'
-import { useBorrowerTokenActivityTable } from './hooks'
+import { useLoansHistoryView } from './hooks'
 
-import styles from './BorrowerActivityTable.module.scss'
+import styles from './LoansHistorySection.module.scss'
 
 const BorrowerTokenActivityTable = () => {
   const { connected } = useWallet()
   const { viewState } = useTableView()
 
   const { loans, loading, isNoLoans, tokenType, setTokenType, sortViewParams, loadMore } =
-    useBorrowerTokenActivityTable()
+    useLoansHistoryView()
 
   const columns = getTableColumns({ isCardView: viewState === ViewState.CARD })
 

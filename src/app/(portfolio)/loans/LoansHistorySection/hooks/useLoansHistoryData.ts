@@ -12,7 +12,7 @@ const PAGINATION_LIMIT = 15
 
 const useCollectionsStore = createGlobalState<string[]>([])
 
-export const useBorrowerTokenActivity = () => {
+export const useLoansHistoryData = () => {
   const { publicKey } = useWallet()
   const publicKeyString = publicKey?.toBase58() || ''
 

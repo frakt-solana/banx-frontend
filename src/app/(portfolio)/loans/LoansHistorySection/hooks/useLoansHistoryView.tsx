@@ -2,12 +2,12 @@ import { isEmpty } from 'lodash'
 
 import { useTokenType } from '@banx/store/common'
 
-import { useBorrowerTokenActivity } from './useTokenBorrowerActivity'
+import { useLoansHistoryData } from './useLoansHistoryData'
 
-export const useBorrowerTokenActivityTable = () => {
+export const useLoansHistoryView = () => {
   const { tokenType, setTokenType } = useTokenType()
 
-  const { loans, isLoading, sortParams, fetchNextPage, hasNextPage } = useBorrowerTokenActivity()
+  const { loans, isLoading, sortParams, fetchNextPage, hasNextPage } = useLoansHistoryData()
 
   const loadMore = () => {
     if (hasNextPage) {
