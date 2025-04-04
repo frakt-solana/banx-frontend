@@ -7,9 +7,9 @@ import { TooltipWrapper } from '@banx/components/Tooltip'
 
 import { deepMergeStyles } from '@banx/utils'
 
-import { StatContext, StatEntry, TOKEN_CONTENT_MAP } from './constants'
+import { StatContext, StatEntry, TOKEN_CONTENT_MAP } from '../constants'
 
-import styles from './page.module.scss'
+import styles from './ClientLendingMultiplyPage.module.scss'
 
 interface TokenStatsProps {
   ticker: string

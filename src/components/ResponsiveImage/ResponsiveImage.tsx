@@ -9,5 +9,6 @@ type ResponsiveImageProps = Omit<ImageProps, 'width' | 'height' | 'fill' | 'alt'
 export const ResponsiveImage: FC<ResponsiveImageProps> = ({ className, ...props }) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-expect-error
+  // eslint-disable-next-line @next/next/no-img-element
   return <img {...props} className={className} alt="image" />
 }
