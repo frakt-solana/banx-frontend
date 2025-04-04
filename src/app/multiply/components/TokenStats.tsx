@@ -9,7 +9,7 @@ import { deepMergeStyles } from '@banx/utils'
 
 import { StatContext, StatEntry, TOKEN_CONTENT_MAP } from '../constants'
 
-import styles from './ClientLendingMultiplyPage.module.scss'
+import styles from '../ClientLendingMultiplyPage.module.scss'
 
 interface TokenStatsProps {
   ticker: string

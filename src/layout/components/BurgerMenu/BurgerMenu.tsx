@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import classNames from 'classnames'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
@@ -10,7 +10,7 @@ import { Burger, BurgerClose, ChevronDown } from '@banx/icons'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
 
 import { NavigationLink, SubNavigationLink, TOKEN_NAVIGATION_LINKS } from '../Navbar'
-import { isActivePath, isLinkOrSubLinkActive } from '../Navbar/helpers'
+import { isPathActive } from '../Navbar/helpers'
 import { useBurgerMenu } from './hooks'
 
 import styles from './BurgerMenu.module.scss'
@@ -91,12 +91,16 @@ const MenuItem: FC<MenuItemProps> = ({
     }
   }
 
+  const isGroupActive =
+    isPathActive(pathname, link.pathname, true) ||
+    link.subLinks?.some((subLink) => isPathActive(pathname, subLink.pathname, true))
+
   return (
     <TooltipWrapper title={link.disabledText}>
       <div
         onClick={handleClick}
         className={classNames(styles.menuItem, {
-          [styles.active]: isExpanded || isLinkOrSubLinkActive(pathname, subLinks),
+          [styles.active]: isExpanded || isGroupActive,
           [styles.disabled]: link.disabledText,
           [styles.expanded]: isExpanded,
         })}
@@ -134,25 +138,33 @@ interface DropdownProps {
   isExpanded: boolean
 }
 
-const Dropdown: FC<DropdownProps> = ({ subLinks, createNewPath, closeMenu, isExpanded }) => (
-  <div className={classNames(styles.dropdown, { [styles.expanded]: isExpanded })}>
-    {subLinks.map((link) => (
-      <Link
-        key={link.label}
-        onClick={closeMenu}
-        href={createNewPath(link.pathname)}
-        className={classNames(styles.dropdownItem, {
-          [styles.active]: isActivePath(link.pathname, true),
-        })}
-      >
-        <span className={styles.dropdownLink}>{link.label}</span>
-        {link.description && (
-          <span className={styles.dropdownLinkDescription}>{link.description}</span>
-        )}
-      </Link>
-    ))}
-  </div>
-)
+const Dropdown: FC<DropdownProps> = ({ subLinks, createNewPath, closeMenu, isExpanded }) => {
+  const pathname = usePathname()
+
+  return (
+    <div className={classNames(styles.dropdown, { [styles.expanded]: isExpanded })}>
+      {subLinks.map((link) => {
+        const isActive = isPathActive(pathname, link.pathname, true)
+
+        return (
+          <Link
+            key={link.label}
+            onClick={closeMenu}
+            href={createNewPath(link.pathname)}
+            className={classNames(styles.dropdownItem, {
+              [styles.active]: isActive,
+            })}
+          >
+            <span className={styles.dropdownLink}>{link.label}</span>
+            {link.description && (
+              <span className={styles.dropdownLinkDescription}>{link.description}</span>
+            )}
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
 
 export const BurgerIcon = () => {
   const { isVisible, toggleVisibility } = useBurgerMenu()

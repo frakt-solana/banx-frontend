@@ -1,18 +1,4 @@
-export const isActivePath = (pathname = '', strict = false) => {
-  if (strict) {
-    return location.pathname === pathname
-  }
-
-  return location.pathname.startsWith(pathname)
-}
-
-export const isLinkOrSubLinkActive = (
-  pathname: string,
-  subLinks?: Array<{ pathname: string }>,
-): boolean => {
-  return (
-    isActivePath(pathname, true) ||
-    subLinks?.some((subLink) => isActivePath(subLink.pathname, true)) ||
-    false
-  )
+export const isPathActive = (current: string, target: string, strict = false): boolean => {
+  if (strict) return current === target
+  return current.startsWith(target)
 }

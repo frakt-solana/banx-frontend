@@ -2,6 +2,7 @@ import { FC, Fragment } from 'react'
 
 import classNames from 'classnames'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
@@ -9,7 +10,7 @@ import { ChevronDown } from '@banx/icons'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
 
 import { NavigationLink, TOKEN_NAVIGATION_LINKS } from './constants'
-import { isActivePath, isLinkOrSubLinkActive } from './helpers'
+import { isPathActive } from './helpers'
 
 import styles from './Navbar.module.scss'
 
@@ -42,12 +43,15 @@ interface NavbarLinkProps {
 }
 
 const NavbarLink: FC<NavbarLinkProps> = ({ link, createNewPath }) => {
+  const pathname = usePathname()
+  const isActive = isPathActive(pathname, link.pathname, true)
+
   return (
     <TooltipWrapper title={link.disabledText}>
       <Link
         href={createNewPath(link.pathname)}
         className={classNames(styles.linkText, styles.navbarLink, {
-          [styles.active]: isActivePath(link.pathname, true),
+          [styles.active]: isActive,
           [styles.disabled]: link.disabledText,
         })}
       >
@@ -65,11 +69,15 @@ interface DropdownLinkProps {
 }
 
 const DropdownLink: FC<DropdownLinkProps> = ({ link, createNewPath }) => {
+  const pathname = usePathname()
+
+  const isGroupActive =
+    isPathActive(pathname, link.pathname, true) ||
+    link.subLinks?.some((subLink) => isPathActive(pathname, subLink.pathname, true))
+
   return (
     <div
-      className={classNames(styles.navbarLink, styles.dropdown, {
-        [styles.active]: isLinkOrSubLinkActive(link.pathname, link.subLinks),
-      })}
+      className={classNames(styles.navbarLink, styles.dropdown, { [styles.active]: isGroupActive })}
     >
       <div className={styles.dropdownLabelWrapper}>
         <span className={styles.dropdownLabel}>{link.label}</span>
@@ -81,7 +89,7 @@ const DropdownLink: FC<DropdownLinkProps> = ({ link, createNewPath }) => {
             key={child.label}
             href={createNewPath(child.pathname)}
             className={classNames(styles.dropdownLink, {
-              [styles.active]: isActivePath(child.pathname, true),
+              [styles.active]: isPathActive(pathname, child.pathname, true),
             })}
           >
             <div className={styles.dropdownLinkContent}>
