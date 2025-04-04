@@ -10,8 +10,7 @@ import { DisplayValue, createPercentValueJSX } from '@banx/components/TableCompo
 
 import { core } from '@banx/api/tokens'
 
-import { useLoansTransactions } from '../../hooks'
-import { TokenLoanOptimistic } from '../../loansCart'
+import { TokenLoanOptimistic, useLoansTransactions } from '../../hooks'
 import { calculateLoansStats, getPayInterestActionText } from './helpers'
 
 import styles from './ExpandedCardContent.module.scss'

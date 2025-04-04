@@ -6,6 +6,8 @@ import { QueryProvider } from '@banx/providers/query'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
 import '@banx/scss/index.scss'
 
+import { syne, wix } from './fonts'
+
 export const metadata = {
   title: 'Banx Frontend',
   description: 'Next.js rewrite of Banx UI',
@@ -13,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${syne.variable} ${wix.variable}`}>
       <body>
         <QueryProvider>
           <SolanaConnectionWalletProvider>

@@ -18,8 +18,7 @@ import {
 } from '@banx/utils'
 
 import { TableColumnKey } from '../../constants'
-import { SortColumnOption } from '../../hooks'
-import { TokenLoanOptimistic } from '../../loansCart'
+import { SortColumnOption, TokenLoanOptimistic } from '../../hooks'
 import { APRCell, ActionsCell, DebtCell, LTVCell, StatusCell } from './tableCells'
 
 import styles from './ExpandedCardContent.module.scss'
