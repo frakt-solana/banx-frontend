@@ -32,10 +32,10 @@ import {
   isTokenLoanListed,
 } from '@banx/utils'
 
-import { useLoansTokenState } from '../loansState'
-import { useAllLoanAuctionsAndListings } from './useAllLoanAuctionsAndListings'
+import { useMarketLoansData } from './useMarketLoansData'
+import { useMarketLoansState } from './useMarketLoansState'
 
-export const useInstantTokenTransactions = () => {
+export const useMarketLoansTransactions = () => {
   const wallet = useWallet()
   const { connection } = useConnection()
   const { isLedger } = useIsLedger()
@@ -43,10 +43,10 @@ export const useInstantTokenTransactions = () => {
   const { userEscrow } = useUserEscrow()
 
   const { setVisibility: setBanxNotificationsSiderVisibility } = useBanxNotificationsSider()
-  const { addLoansPubkeys } = useAllLoanAuctionsAndListings()
+  const { addLoansPubkeys } = useMarketLoansData()
   const { open, close } = useModal()
 
-  const { selection, clear: clearSelection, remove: removeSelection } = useLoansTokenState()
+  const { selection, clear: clearSelection, remove: removeSelection } = useMarketLoansState()
 
   const onSuccess = (loansAmount: number) => {
     if (!getDialectAccessToken(wallet.publicKey?.toBase58())) {

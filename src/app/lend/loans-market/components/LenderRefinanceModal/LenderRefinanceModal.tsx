@@ -9,7 +9,7 @@ import { Modal } from '@banx/components/modals/BaseModal'
 import { TokenLoan } from '@banx/api/tokens'
 import { useModal } from '@banx/store/common'
 
-import { useInstantTokenTransactions } from '../hooks'
+import { useMarketLoansTransactions } from '../../hooks'
 import { CollateralCell, FreezeCell, LiquidationLtvCell, LtvCell } from './components'
 
 import styles from './LenderRefinanceModal.module.scss'
@@ -18,9 +18,9 @@ interface LenderRefinanceModalProps {
   loans: TokenLoan[]
 }
 
-const LenderRefinanceModal: FC<LenderRefinanceModalProps> = ({ loans: initialLoans }) => {
+export const LenderRefinanceModal: FC<LenderRefinanceModalProps> = ({ loans: initialLoans }) => {
   const { close: closeModal } = useModal()
-  const { lendToBorrowAll } = useInstantTokenTransactions()
+  const { lendToBorrowAll } = useMarketLoansTransactions()
 
   const [loans, setLoans] = useState<TokenLoan[]>([...initialLoans])
 
@@ -83,8 +83,6 @@ const LenderRefinanceModal: FC<LenderRefinanceModalProps> = ({ loans: initialLoa
     </Modal>
   )
 }
-
-export default LenderRefinanceModal
 
 type GetTableColumnsParams = {
   editingLoanPubkey: string | null

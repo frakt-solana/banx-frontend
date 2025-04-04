@@ -22,7 +22,7 @@ import {
   isTokenLoanSelling,
 } from '@banx/utils'
 
-import { calculateLendToBorrowValue } from '../helpers'
+import { calculateLendToBorrowValue } from '../../helpers'
 
 import styles from './LenderRefinanceModal.module.scss'
 

@@ -25,7 +25,7 @@ import VaultAllocation from './components/VaultAllocation'
 import VaultPerformance from './components/VaultPerformance'
 import { useLiquidityPoolTxns } from './hooks'
 
-import styles from './page.module.scss'
+import styles from './ClientLendVaultsPage.module.scss'
 
 export const ClientLendVaultsPage = () => {
   const { vaultPubkey = '' } = useParams<{ vaultPubkey: string }>()

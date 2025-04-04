@@ -3,12 +3,12 @@ import { isEmpty } from 'lodash'
 import { MESSAGES } from '@banx/constants/messages'
 import { useTokenType } from '@banx/store/common'
 
-import { useAllLoanAuctionsAndListings } from './useAllLoanAuctionsAndListings'
-import { useFilterLoans } from './useFilterLoans'
-import { useSortedLoans } from './useSortedLoans'
+import { useMarketLoansData } from './useMarketLoansData'
+import { useMarketLoansFilter } from './useMarketLoansFilter'
+import { useMarketLoansSorting } from './useMarketLoansSorting'
 
-export const useInstantLendTokenTable = () => {
-  const { loans, isLoading } = useAllLoanAuctionsAndListings()
+export const useMarketLoansView = () => {
+  const { loans, isLoading } = useMarketLoansData()
 
   const { tokenType, setTokenType } = useTokenType()
 
@@ -22,9 +22,9 @@ export const useInstantLendTokenTable = () => {
     toggleAuctionFilter,
     isFreezeFilterEnabled,
     toggleFreezeFilter,
-  } = useFilterLoans(loans)
+  } = useMarketLoansFilter(loans)
 
-  const { sortedLoans, sortParams } = useSortedLoans(filteredLoans)
+  const { sortedLoans, sortParams } = useMarketLoansSorting(filteredLoans)
 
   const isNoLoans = !isLoading && isEmpty(loans)
   const isFilteredListEmpty =

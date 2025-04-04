@@ -38,7 +38,7 @@ const SORT_VALUE_MAP: Record<SortField, SortValueGetter> = {
   [SortField.FREEZE]: (loan) => loan.bondTradeTransaction.terminationFreeze,
 }
 
-export const useSortedLoans = (loans: core.TokenLoan[]) => {
+export const useMarketLoansSorting = (loans: core.TokenLoan[]) => {
   const [sortOption, setSortOption] = useState(SORT_OPTIONS[0])
 
   const sortedLoans = useMemo(() => {

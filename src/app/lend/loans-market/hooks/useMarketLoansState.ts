@@ -13,7 +13,7 @@ type LoansTokenState = {
   clear: () => void
 }
 
-export const useLoansTokenState = create<LoansTokenState>((set, get) => ({
+export const useMarketLoansState = create<LoansTokenState>((set, get) => ({
   selection: [],
 
   set: (loans) => {

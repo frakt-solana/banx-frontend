@@ -4,15 +4,57 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
+import {
+  DisplayValue,
+  HorizontalCell,
+  createPercentValueJSX,
+} from '@banx/components/TableComponents'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
 import { TokenLoan } from '@banx/api/tokens'
-import { useModal } from '@banx/store/common'
+import { useModal } from '@banx/store'
+import {
+  HealthColorIncreasing,
+  calculateTokenLoanLtvByLoanValue,
+  getColorByPercent,
+} from '@banx/utils'
 
-import RefinanceModal from '../LenderRefinanceModal/LenderTokenRefinanceModal'
+import { calculateLendToBorrowValue } from '../../helpers'
+import { LenderRefinanceModal } from '../LenderRefinanceModal'
 
-import styles from '../page.module.scss'
+import styles from './LoansMarketTable.module.scss'
+
+interface DebtCellProps {
+  loan: TokenLoan
+}
+
+export const DebtCell: FC<DebtCellProps> = ({ loan }) => {
+  const lentValue = calculateLendToBorrowValue(loan)
+
+  return <HorizontalCell value={<DisplayValue value={lentValue} />} />
+}
+
+export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  const lentValue = calculateLendToBorrowValue(loan)
+  const ltv = calculateTokenLoanLtvByLoanValue(loan, lentValue)
+
+  return (
+    <HorizontalCell
+      value={createPercentValueJSX(ltv)}
+      textColor={getColorByPercent(ltv, HealthColorIncreasing)}
+    />
+  )
+}
+
+export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+  return (
+    <HorizontalCell
+      value={createPercentValueJSX(loan.bondTradeTransaction.amountOfBonds / 100)}
+      isHighlighted
+    />
+  )
+}
 
 interface ActionsCellProps {
   loan: TokenLoan
@@ -32,7 +74,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, isCardView, disabledAc
       return toggleVisibility()
     }
 
-    return openModal(RefinanceModal, { loans: [loan] })
+    return openModal(LenderRefinanceModal, { loans: [loan] })
   }
 
   const isOwnLoan = loan.bondTradeTransaction.user === publicKey?.toBase58()

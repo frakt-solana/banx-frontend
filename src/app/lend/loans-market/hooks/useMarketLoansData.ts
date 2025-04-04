@@ -23,7 +23,7 @@ const useHiddenLoansPubkeys = create<HiddenLoansPubkeysState>((set) => ({
   },
 }))
 
-export const useAllLoanAuctionsAndListings = () => {
+export const useMarketLoansData = () => {
   const { pubkeys, addLoansPubkeys } = useHiddenLoansPubkeys()
   const { tokenType } = useTokenType()
 

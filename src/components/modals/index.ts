@@ -1,4 +1,6 @@
-export { ModalPortal } from './ModalPortal'
 export * from './AppSettingsModal'
+export * from './BaseModal'
 export * from './OnboardingModal'
 export * from './SubscribeNotificationsModal'
+
+export { ModalPortal } from './ModalPortal'

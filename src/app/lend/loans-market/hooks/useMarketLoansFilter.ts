@@ -14,7 +14,7 @@ import {
 
 type LoanPredicate = (loan: TokenLoan) => boolean
 
-export const useFilterLoans = (loans: TokenLoan[]) => {
+export const useMarketLoansFilter = (loans: TokenLoan[]) => {
   const [isAuctionFilterEnabled, setAuctionFilterState] = useState(true)
   const [isFreezeFilterEnabled, setFreezeFilterState] = useState(true)
 

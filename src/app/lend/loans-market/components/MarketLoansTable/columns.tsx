@@ -11,7 +11,7 @@ import {
 import Timer from '@banx/components/Timer'
 import Tooltip from '@banx/components/Tooltip'
 
-import { core } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api/tokens'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { Hourglass, Snowflake } from '@banx/icons'
 import {
@@ -23,13 +23,13 @@ import {
   isTokenLoanSelling,
 } from '@banx/utils'
 
-import { APRCell, ActionsCell, DebtCell, LTVCell } from './TableCells'
+import { APRCell, ActionsCell, DebtCell, LTVCell } from './cells'
 
-import styles from './page.module.scss'
+import styles from './LoansMarketTable.module.scss'
 
 interface GetTableColumnsProps {
-  toggleLoanInSelection: (loan: core.TokenLoan) => void
-  findLoanInSelection: (loanPubkey: string) => core.TokenLoan | null
+  toggleLoanInSelection: (loan: TokenLoan) => void
+  findLoanInSelection: (loanPubkey: string) => TokenLoan | null
   onSelectAll: () => void
   isCardView: boolean
   hasSelectedLoans: boolean
@@ -42,7 +42,7 @@ export const getTableColumns = ({
   hasSelectedLoans,
   toggleLoanInSelection,
 }: GetTableColumnsProps) => {
-  const columns: ColumnType<core.TokenLoan>[] = [
+  const columns: ColumnType<TokenLoan>[] = [
     {
       key: 'collateral',
       title: (
@@ -123,7 +123,7 @@ export const getTableColumns = ({
   return columns
 }
 
-const createRightContentJSX = (loan: core.TokenLoan) => {
+const createRightContentJSX = (loan: TokenLoan) => {
   if ((isTokenLoanListed(loan) && !isTokenLoanFrozen(loan)) || isTokenLoanSelling(loan)) {
     return null
   }

@@ -1,0 +1,29 @@
+// * Cells * //
+.headerTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.checkbox {
+  height: 18px;
+  padding-left: 18px;
+}
+// * Cells * //
+
+// * ActionsCell * //
+.actionsCell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+
+  &.cardView {
+    gap: unset;
+  }
+}
+
+.actionButton {
+  width: 96px;
+}
+// * ActionsCell * //

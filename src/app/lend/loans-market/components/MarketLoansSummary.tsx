@@ -13,17 +13,17 @@ import { TokenLoan, core } from '@banx/api/tokens'
 import { useModal } from '@banx/store/common'
 import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils'
 
-import RefinanceModal from './LenderRefinanceModal/LenderTokenRefinanceModal'
-import { calcTokenWeeklyInterest, calculateLendToBorrowValue } from './helpers'
-import { useLoansTokenState } from './loansState'
+import { calcTokenWeeklyInterest, calculateLendToBorrowValue } from '../helpers'
+import { useMarketLoansState } from '../hooks/useMarketLoansState'
+import { LenderRefinanceModal } from './LenderRefinanceModal'
 
-import styles from './page.module.scss'
+import styles from '../ClientMarketLoansPage.module.scss'
 
-export const Summary: FC<{ loans: TokenLoan[] }> = ({ loans: rawLoans }) => {
+export const MarketLoansSummary: FC<{ loans: TokenLoan[] }> = ({ loans: rawLoans }) => {
   const { publicKey, connected } = useWallet()
   const { open: openModal } = useModal()
   const { toggleVisibility } = useWalletSidebar()
-  const { selection, set: setSelection } = useLoansTokenState()
+  const { selection, set: setSelection } = useMarketLoansState()
 
   const loans = useMemo(() => {
     if (!publicKey) return []
@@ -40,7 +40,7 @@ export const Summary: FC<{ loans: TokenLoan[] }> = ({ loans: rawLoans }) => {
       return toggleVisibility()
     }
 
-    return openModal(RefinanceModal, { loans: selection })
+    return openModal(LenderRefinanceModal, { loans: selection })
   }
 
   const handleLoanSelection = (value = 0) => {
