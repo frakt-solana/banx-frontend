@@ -13,8 +13,6 @@ import { isLoanNewer, isOptimisticLoanExpired, useTokenLoansOptimistic } from '@
 import { useTokenType } from '@banx/store/common'
 import { isTokenLoanLiquidated, isTokenLoanRepaid } from '@banx/utils'
 
-import { TokenLoansTabName } from './page'
-
 export const useWalletTokenLoans = (strictTokenType?: LendingTokenType) => {
   const { publicKey: walletPublicKey } = useWallet()
   const walletPubkey = walletPublicKey?.toBase58() || ''
@@ -91,6 +89,12 @@ export const useWalletTokenLoans = (strictTokenType?: LendingTokenType) => {
     loans,
     isLoading,
   }
+}
+
+export enum TokenLoansTabName {
+  LOANS = 'loans',
+  LISTINGS = 'listings',
+  HISTORY = 'history',
 }
 
 type LoansTokenTabsState = {

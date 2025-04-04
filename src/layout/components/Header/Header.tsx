@@ -1,8 +1,8 @@
-// import { useWallet } from '@solana/wallet-adapter-react'
+import { useWallet } from '@solana/wallet-adapter-react'
 import Link from 'next/link'
 
+import { BanxNotificationsButton } from '@banx/components/BanxNotifications'
 import { WalletConnectButton } from '@banx/components/Buttons'
-// import { BanxNotificationsButton } from '@banx/components/BanxNotifications'
 import ModeSwitcher from '@banx/components/ModeSwitcher'
 
 import { PATHS } from '@banx/constants'
@@ -15,7 +15,7 @@ import { ProtocolStats } from '../ProtocolStats'
 import styles from './Header.module.scss'
 
 export const Header = () => {
-  // const { connected } = useWallet()
+  const { connected } = useWallet()
 
   return (
     <div className={styles.header}>
@@ -31,7 +31,7 @@ export const Header = () => {
 
       <div className={styles.widgetContainer}>
         <ModeSwitcher className={styles.modeSwitcher} />
-        {/* {connected && <BanxNotificationsButton />} */}
+        {connected && <BanxNotificationsButton />}
         <WalletConnectButton />
         <BurgerIcon />
       </div>

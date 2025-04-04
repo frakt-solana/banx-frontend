@@ -10,7 +10,7 @@ import { PATHS } from '@banx/constants'
 import BorrowerTokenActivityTable from './BorrowerActivityTable'
 import LoanListingsTable from './LoanListingsTable'
 import LoansContent from './LoansContent'
-import { useTokenLoansTabs } from './hooks'
+import { TokenLoansTabName, useTokenLoansTabs } from './hooks'
 
 import styles from './page.module.scss'
 
@@ -45,12 +45,6 @@ const TokenLoansPage = () => {
 }
 
 export default TokenLoansPage
-
-export enum TokenLoansTabName {
-  LOANS = 'loans',
-  LISTINGS = 'listings',
-  HISTORY = 'history',
-}
 
 const LOANS_TABS: Tab[] = [
   {

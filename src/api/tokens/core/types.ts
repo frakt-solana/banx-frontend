@@ -1,3 +1,4 @@
+import { BN } from 'fbonds-core'
 import {
   LendingTokenType,
   UserVault as UserEscrowFromSdk,
@@ -32,7 +33,10 @@ export type TokenLoanAuctionsAndListings = z.infer<typeof TokenLoanAuctionsAndLi
 export type TokenLoanAuctionsAndListingsResponse =
   ResponseWithPagination<TokenLoanAuctionsAndListings>
 
-export type CollateralToken = z.infer<typeof CollateralTokenSchema>
+type BaseCollateralToken = z.infer<typeof CollateralTokenSchema>
+export type CollateralToken = Omit<BaseCollateralToken, 'amountInWallet'> & {
+  amountInWallet: BN
+}
 
 export type DBOffer = z.infer<typeof DBOfferSchema>
 export type BorrowOfferRaw = z.infer<typeof BorrowOfferSchemaRaw>

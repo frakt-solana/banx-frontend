@@ -41,7 +41,7 @@ export const useBorrowerTokenActivity = () => {
     queryKey: ['tokenBorrowerActivity', publicKey, sortOption, selectedCollections, tokenType],
     queryFn: ({ pageParam = 0 }) => fetchData(pageParam),
     getPreviousPageParam: (firstPage) => {
-      return firstPage.pageParam - 1 ?? undefined
+      return firstPage.pageParam - 1
     },
     getNextPageParam: (lastPage) => {
       return lastPage.data?.length ? lastPage.pageParam + 1 : undefined
@@ -50,6 +50,7 @@ export const useBorrowerTokenActivity = () => {
     networkMode: 'offlineFirst',
     refetchOnWindowFocus: false,
     enabled: !!publicKeyString,
+    initialPageParam: 0,
   })
 
   const loans = useMemo(() => {
@@ -94,21 +95,19 @@ export const useBorrowerTokenActivityCollectionsList = () => {
 
   const { tokenType } = useTokenType()
 
-  const { data, isLoading } = useQuery(
-    ['tokenBorrowerActivityCollectionsList', publicKeyString, tokenType],
-    () =>
+  const { data, isLoading } = useQuery({
+    queryKey: ['tokenBorrowerActivityCollectionsList', publicKeyString, tokenType],
+    queryFn: () =>
       activity.fetchTokenActivityCollectionsList({
         walletPubkey: publicKeyString,
         userType: 'borrower',
         tokenType,
       }),
-    {
-      enabled: !!publicKeyString,
-      staleTime: 5 * 1000,
-      refetchOnWindowFocus: false,
-      refetchInterval: 15 * 1000,
-    },
-  )
+    enabled: !!publicKeyString,
+    staleTime: 5 * 1000,
+    refetchOnWindowFocus: false,
+    refetchInterval: 15 * 1000,
+  })
 
   return {
     data: data ?? [],

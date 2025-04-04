@@ -20,7 +20,7 @@ interface LendVaultCardProps {
   onClick: () => void
 }
 
-export const LendVaultCard: FC<LendVaultCardProps> = ({ vaultPreview, onClick }) => {
+const LendVaultCard: FC<LendVaultCardProps> = ({ vaultPreview, onClick }) => {
   return (
     <div className={styles.card} onClick={onClick}>
       <div className={styles.cardBody}>

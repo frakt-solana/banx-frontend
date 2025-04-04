@@ -43,6 +43,7 @@ export const useVaultActivity = (props: {
     staleTime: 60 * 1000,
     networkMode: 'offlineFirst',
     refetchOnWindowFocus: false,
+    initialPageParam: 0,
   })
 
   const loans = useMemo(() => {

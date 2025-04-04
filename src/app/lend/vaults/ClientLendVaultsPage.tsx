@@ -7,7 +7,7 @@ import EmptyList from '@banx/components/EmptyList'
 import { Loader } from '@banx/components/Loader'
 
 import { PATHS } from '@banx/constants'
-import { useFakeInfinityScroll, useRenderTimer } from '@banx/hooks'
+import { useRenderTimer } from '@banx/hooks'
 import { buildUrlWithModeAndToken } from '@banx/store'
 
 import FilterSection from './components/FilterSection'
@@ -35,8 +35,6 @@ export const ClientLendVaultsPage = () => {
     toggleUserDepositFilter,
     depositedVaultsAmount,
   } = useLendVaultsContent()
-
-  const { data, fetchMoreTrigger } = useFakeInfinityScroll({ rawData: vaultsPreview })
 
   const handleCardClick = (vaultPubkey: string) => {
     const basePath = `${PATHS.LEND_VAULTS}/${vaultPubkey}`
@@ -69,14 +67,13 @@ export const ClientLendVaultsPage = () => {
 
         {!emptyMessage && (
           <div className={styles.vaultsList}>
-            {data.map((preview) => (
+            {vaultsPreview.map((preview) => (
               <LendVaultCard
                 key={preview.vaultPubkey}
                 vaultPreview={preview}
                 onClick={() => handleCardClick(preview.vaultPubkey)}
               />
             ))}
-            <div ref={fetchMoreTrigger} />
           </div>
         )}
       </div>
