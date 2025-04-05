@@ -1,3 +1,4 @@
+export * from './breakpoints'
 export * from './config'
 export * from './date'
 export * from './endpoints'

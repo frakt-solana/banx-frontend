@@ -1,0 +1,225 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 100%;
+  height: 100%;
+}
+
+.contentWrapper {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+}
+
+.container {
+  cursor: default;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.tabsContent {
+  background: var(--bg-tertiary);
+  border: var(--border-less-primary);
+  border-radius: 12px;
+  max-width: 540px;
+  width: 100%;
+  position: relative;
+  flex: 1;
+
+  @media (max-width: 960px) {
+    border: 0;
+    max-width: unset;
+  }
+}
+
+.tabs {
+  button:first-child {
+    border-top-left-radius: 12px;
+
+    &:after {
+      margin-left: 10px;
+      width: calc(100% - 10px);
+    }
+  }
+
+  button:last-child {
+    border-top-right-radius: 12px;
+
+    &:after {
+      margin-right: 10px;
+      width: calc(100% - 10px);
+    }
+  }
+}
+
+.activityTable {
+  @media (max-width: 960px) {
+    padding-bottom: 284px !important;
+    height: 100vh;
+  }
+}
+
+.placeOfferContainer {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  cursor: default;
+  padding: 24px;
+  max-width: 432px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.placeOfferContainerMobile {
+  padding: 8px 16px 16px;
+
+  @media (min-width: 961px) {
+    display: none;
+  }
+}
+
+.showOffersMobileButton {
+  max-width: 96px;
+  margin-bottom: 8px;
+
+  @media (min-width: 961px) {
+    display: none;
+  }
+}
+
+.modal :global {
+  .ant-modal-body {
+    height: 440px;
+  }
+
+  .ant-modal-content {
+    padding: 0;
+  }
+}
+
+.orderBook {
+  @media (max-width: 960px) {
+    padding-bottom: 224px !important;
+    height: 100vh;
+  }
+}
+
+// * MarketOverview
+.marketOverviewContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  gap: 16px;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+}
+
+.marketMainContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 148px;
+  z-index: 1;
+
+  @media (max-width: 960px) {
+    gap: 8px;
+  }
+}
+
+.marketLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+
+    @media (max-width: 640px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.marketImageWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.marketImage {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+
+  circle {
+    fill: var(--action-primary);
+  }
+
+  @media (max-width: 640px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.imageOverlap {
+  background-color: var(--bg-primary);
+  margin-left: -12px;
+}
+
+.marketName {
+  font: var(--title-3xl);
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    font: var(--title-xl);
+  }
+}
+
+.marketStats {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    justify-content: flex-start;
+  }
+}
+
+.marketStat {
+  align-items: flex-end;
+  gap: 0;
+  max-width: 96px;
+  width: 100%;
+  white-space: nowrap;
+
+  @media (max-width: 960px) {
+    align-items: flex-start;
+    width: unset;
+  }
+}
+
+.marketStatLabel {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.marketStatValue {
+  color: var(--content-primary);
+  font: var(--body-text-md);
+}
+// * MarketOverview

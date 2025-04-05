@@ -16,5 +16,6 @@ export { useWalletAdapters } from './useWalletAdapters'
 export { useWalletBalance } from './useWalletBalance'
 export { useWalletCollateralBalance } from './useWalletCollateralBalance'
 export { useWalletTokenAssets } from './useWalletTokenAssets'
+export { useWindowSize } from './useWindowSize'
 
 export * from './useTheme'
