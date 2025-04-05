@@ -1,0 +1,122 @@
+// * FilterSection * //
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 8px 16px;
+  }
+}
+// * FilterSection * //
+
+// * FilterButtons * //
+.tooltip {
+  width: max-content;
+}
+
+.filterContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.filterButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.filterButtonsTitle {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.filterButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterButton {
+  font: var(--body-text-md) !important;
+  padding: 2px 8px !important;
+  gap: 4px !important;
+
+  svg path {
+    fill: var(--additional-gold-primary);
+  }
+
+  &.active {
+    border-color: var(--content-primary);
+  }
+
+  &.disabled {
+    svg path {
+      fill: var(--bg-border-active);
+    }
+  }
+}
+// * FilterButtons * //
+
+// * CategoryContent * //
+.categoryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryContentTitle {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.valueWithRadio {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+  column-gap: 8px;
+}
+
+.radioCircle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: var(--border-primary);
+  background: var(--action-primary);
+  border-radius: 100%;
+
+  &.active {
+    border-color: var(--bg-border-active);
+
+    &::before {
+      content: '';
+      display: block;
+      background: var(--additional-green-primary);
+      width: 7px;
+      height: 7px;
+      border-radius: 100%;
+    }
+  }
+}
+
+// * CategoryContent * //

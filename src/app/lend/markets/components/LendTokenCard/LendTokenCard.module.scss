@@ -1,0 +1,151 @@
+// * LendTokenCard * //
+.card {
+  background: var(--bg-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background: var(--action-tertiary);
+  }
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 10px 24px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+    gap: 16px;
+  }
+}
+
+.additionalContentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.placeOfferButton {
+  @media (max-width: 960px) {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+}
+// * LendTokenCard * //
+
+// * MarketMainInfo * //
+.mainInfoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 152px;
+  z-index: 1;
+
+  @media (max-width: 960px) {
+    gap: 8px;
+  }
+
+  svg {
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+  }
+}
+
+.collateralImage {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+
+  @media (max-width: 640px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.collateralName {
+  font: var(--important-text-md);
+}
+
+.marketLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+// * MarketMainInfo * //
+
+// * MarketAdditionalInfo * //
+.additionalInfoStats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  white-space: nowrap;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 8px;
+  }
+}
+
+.additionalInfoStat {
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  max-width: 180px;
+  width: 100%;
+
+  @media (max-width: 1240px) {
+    max-width: 120px;
+  }
+
+  @media (max-width: 960px) {
+    &:nth-child(-n + 2) {
+      grid-row: 1;
+    }
+
+    &:nth-child(n + 3) {
+      grid-row: 2;
+    }
+
+    &:not(:last-child) {
+      align-items: flex-start;
+    }
+  }
+}
+
+.additionalInfoStatLabelWrapper {
+  @media (min-width: 961px) {
+    display: none;
+  }
+}
+
+.additionalAprStat {
+  color: var(--additional-green-primary-deep);
+
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 4px;
+
+  svg {
+    height: 16px;
+
+    path {
+      fill: var(--additional-gold-primary);
+    }
+  }
+}
+// * MarketAdditionalInfo * //

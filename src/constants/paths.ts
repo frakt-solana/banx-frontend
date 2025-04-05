@@ -10,7 +10,7 @@ export const PATHS = {
 
   BORROW: '/borrow',
 
-  LEND: '/ear',
+  LEND: '/lend',
   LEND_VAULTS: '/lend/vaults',
   LEND_VAULT: '/lend/vaults/:vaultPubkey',
   LEND_MARKERS: '/lend/markets',
