@@ -16,8 +16,7 @@ import {
   isTokenLoanUnderWater,
 } from '@banx/utils'
 
-import { useSortedLoans } from '../../hooks/useLenderLoansSorting'
-import { useSelectedTokenLoans } from '../../hooks/useLenderLoansState'
+import { useLenderLoansSorting, useLenderLoansState } from '../../hooks'
 import { FilterStatus, FilterTableSection, LOAN_FILTERS } from './FilterTableSection'
 import { checkIfFreezeExpired } from './ManageModal/helpers'
 import { Summary } from './Summary'
@@ -46,7 +45,7 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
     find,
     clear: clearSelection,
     set: setSelection,
-  } = useSelectedTokenLoans()
+  } = useLenderLoansState()
 
   useEffect(() => {
     clearSelection()
@@ -105,7 +104,8 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
     return setSelection(loansToTerminate, walletPubkey)
   }, [clearSelection, hasSelectedLoans, loansToTerminate, setSelection, walletPubkey])
 
-  const { sortedLoans, selectedSortOption, onChangeSortOption } = useSortedLoans(filteredLoans)
+  const { sortedLoans, selectedSortOption, onChangeSortOption } =
+    useLenderLoansSorting(filteredLoans)
 
   const columns = getTableColumns({
     findLoanInSelection,

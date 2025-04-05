@@ -10,7 +10,7 @@ import { DisplayValue, createPercentValueJSX } from '@banx/components/TableCompo
 
 import { core } from '@banx/api/tokens'
 
-import { TokenLoanOptimistic, useLoansTransactions } from '../../hooks'
+import { TokenLoanOptimistic, useLoansTxns } from '../../hooks'
 import { calculateLoansStats, getPayInterestActionText } from './helpers'
 
 import styles from './ExpandedCardContent.module.scss'
@@ -23,7 +23,7 @@ interface SummaryProps {
 
 export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics, setSelection }) => {
   const { publicKey: walletPublicKey } = useWallet()
-  const { repayAllLoans, repayUnpaidLoansInterest } = useLoansTransactions()
+  const { repayAllLoans, repayUnpaidLoansInterest } = useLoansTxns()
 
   const lendingToken = loans[0].bondTradeTransaction.lendingToken
 

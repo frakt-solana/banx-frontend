@@ -12,7 +12,7 @@ import { createDownloadLink, isBanxSolTokenType } from '@banx/utils'
 
 import { useUserTokenOffersStats } from '../../../hooks'
 
-import styles from '../LenderTokenActivityTable.module.scss'
+import styles from '../OffersHistorySection.module.scss'
 
 const ACTIVITY_CSV_FILENAME = 'banx_lender_spl_activity.csv'
 

@@ -1,6 +1,7 @@
 export * from './config'
 export * from './date'
 export * from './endpoints'
+export * from './markets'
 export * from './messages'
 export * from './paths'
 export * from './tokens'

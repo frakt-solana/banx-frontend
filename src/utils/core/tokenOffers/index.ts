@@ -87,3 +87,14 @@ export const calculateOfferSize = (offer: Offer): BN => {
 
   return new BN(fundsSolOrTokenBalance).add(new BN(bidSettlement))
 }
+
+type CalculateNewOfferSizeParams = {
+  loanValue: number
+  loansAmount: number
+}
+export const calculateNewOfferSize = ({
+  loanValue,
+  loansAmount,
+}: CalculateNewOfferSizeParams): BN => {
+  return new BN(loanValue * loansAmount)
+}

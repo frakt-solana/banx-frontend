@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:log": "next build 2> build-errors.log",
     "start": "next start",
     "lint": "next lint"
   },

@@ -12,7 +12,7 @@ import {
   stringToBN,
 } from '@banx/utils'
 
-import { useLoansTransactions } from '../../hooks'
+import { useLoansTxns } from '../../hooks'
 
 import styles from './ManageTokenModal.module.scss'
 
@@ -21,7 +21,7 @@ interface SupplyCollateralContentProps {
 }
 
 const SupplyCollateralContent: FC<SupplyCollateralContentProps> = ({ loan }) => {
-  const { supplyCollateral } = useLoansTransactions()
+  const { supplyCollateral } = useLoansTxns()
   const { collateralsList } = useCollateralsList()
 
   const collateralToken = useMemo(

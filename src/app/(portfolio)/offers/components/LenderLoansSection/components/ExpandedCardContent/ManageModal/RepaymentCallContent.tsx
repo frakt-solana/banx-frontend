@@ -12,7 +12,7 @@ import {
   getColorByPercent,
 } from '@banx/utils'
 
-import { useLenderTokenLoansTransactions } from '../../../hooks'
+import { useLenderLoansTxns } from '../../../hooks'
 import { calculateRepaymentStaticValues } from './helpers'
 
 import styles from './ManageModal.module.scss'
@@ -20,7 +20,7 @@ import styles from './ManageModal.module.scss'
 export const RepaymentCallContent: FC<{ loan: core.TokenLoan }> = ({ loan }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
 
-  const { sendRepaymentCall } = useLenderTokenLoansTransactions()
+  const { sendRepaymentCall } = useLenderLoansTxns()
 
   const { repaymentCallActive, totalClaim, initialRepayPercent, initialRepayValue } =
     calculateRepaymentStaticValues(loan)

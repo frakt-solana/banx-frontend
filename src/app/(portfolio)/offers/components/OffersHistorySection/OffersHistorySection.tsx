@@ -13,7 +13,7 @@ import { Summary } from './components/Summary'
 import { getTableColumns } from './components/columns'
 import { useOffersHistoryView } from './hooks'
 
-import styles from './LenderTokenActivityTable.module.scss'
+import styles from './OffersHistorySection.module.scss'
 
 const OffersHistorySection = () => {
   const { connected } = useWallet()

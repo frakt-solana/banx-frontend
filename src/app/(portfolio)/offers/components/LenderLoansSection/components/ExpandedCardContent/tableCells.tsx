@@ -30,7 +30,7 @@ import {
   isTokenLoanTerminating,
 } from '@banx/utils'
 
-import { useLenderTokenLoansTransactions } from '../../hooks'
+import { useLenderLoansTxns } from '../../hooks'
 import ManageModal from './ManageModal'
 import { getTokenLoanStatus } from './helpers'
 
@@ -155,7 +155,7 @@ const getTimeContent = (loan: TokenLoan) => {
 }
 
 export const ActionsCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
-  const { claimTokenLoan } = useLenderTokenLoansTransactions()
+  const { claimTokenLoan } = useLenderLoansTxns()
   const { open } = useModal()
 
   const isLoanTerminating = isTokenLoanTerminating(loan)

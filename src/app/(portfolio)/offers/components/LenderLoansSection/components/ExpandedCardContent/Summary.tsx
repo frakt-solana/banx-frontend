@@ -11,8 +11,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 
 import { TokenLoan } from '@banx/api/tokens'
 
-import { useLenderTokenLoansTransactions } from '../../hooks'
-import { TokenLoanOptimistic } from '../../hooks/useLenderLoansState'
+import { TokenLoanOptimistic, useLenderLoansTxns } from '../../hooks'
 import { calculateLoansStats } from './helpers'
 
 import styles from './ExpandedCardContent.module.scss'
@@ -33,7 +32,7 @@ export const Summary: FC<SummaryProps> = ({
   lendingToken,
 }) => {
   const { publicKey: walletPublicKey } = useWallet()
-  const { claimTokenLoans, terminateTokenLoans } = useLenderTokenLoansTransactions()
+  const { claimTokenLoans, terminateTokenLoans } = useLenderLoansTxns()
 
   const selectedLoans = useMemo(
     () => selectedLoansOptimistics.map(({ loan }) => loan),

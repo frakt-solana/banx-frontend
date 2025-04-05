@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .pageWrapper {
   display: flex;
   flex-direction: column;
@@ -86,8 +88,8 @@
 }
 
 @mixin generate-glow($color) {
-  $edge: darken(adjust-hue($color, -8deg), 10%);
-  $middle: lighten(saturate($color, 30%), 20%);
+  $edge: color.adjust($color, $hue: -8deg, $lightness: -10%);
+  $middle: color.adjust($color, $saturation: 30%, $lightness: 20%);
   --token-glow-gradient: linear-gradient(270deg, #{$edge}, #{$middle}, #{$edge});
 }
 

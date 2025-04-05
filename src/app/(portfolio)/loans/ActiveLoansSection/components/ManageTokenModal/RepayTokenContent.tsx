@@ -16,7 +16,7 @@ import {
   isTokenLoanRepaymentCallActive,
 } from '@banx/utils'
 
-import { useLoansTransactions } from '../../hooks'
+import { useLoansTxns } from '../../hooks'
 
 import styles from './ManageTokenModal.module.scss'
 
@@ -25,7 +25,7 @@ interface RepayTokenContentProps {
 }
 
 export const RepayTokenContent: FC<RepayTokenContentProps> = ({ loan }) => {
-  const { repayLoan, repayPartialLoan } = useLoansTransactions()
+  const { repayLoan, repayPartialLoan } = useLoansTxns()
 
   const lendingToken = loan.bondTradeTransaction.lendingToken
   const marketTokenDecimals = getTokenDecimals(lendingToken)

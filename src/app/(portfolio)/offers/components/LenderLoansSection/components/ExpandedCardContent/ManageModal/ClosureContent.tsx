@@ -23,7 +23,7 @@ import {
   isTokenLoanTerminating,
 } from '@banx/utils'
 
-import { useLenderTokenLoansTransactions } from '../../../hooks'
+import { useLenderLoansTxns } from '../../../hooks'
 import { calculateFreezeExpiredAt, checkIfFreezeExpired, findBestOffer } from './helpers'
 
 import styles from './ManageModal.module.scss'
@@ -34,8 +34,7 @@ export const ClosureContent: FC<{ loan: core.TokenLoan }> = ({ loan }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
   const marketPubkey = loan.fraktBond.hadoMarket || ''
 
-  const { instantTokenLoan, terminateTokenLoan, revertTerminateTokenLoan } =
-    useLenderTokenLoansTransactions()
+  const { instantTokenLoan, terminateTokenLoan, revertTerminateTokenLoan } = useLenderLoansTxns()
 
   const {
     offers,

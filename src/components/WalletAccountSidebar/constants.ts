@@ -1,6 +1,6 @@
 import { FC, SVGProps } from 'react'
 
-import { DISCORD, DOCS_URL, GITHUB_URL, GOVERNANCE_URL, X_URL } from '@banx/constants'
+// import { DISCORD, DOCS_URL, GITHUB_URL, GOVERNANCE_URL, X_URL } from '@banx/constants'
 import { Discord, Docs, Github, Governance, Ledger, MathWallet, Twitter } from '@banx/icons'
 
 export const iconComponents: { [key: string]: FC<SVGProps<SVGSVGElement>> } = {
@@ -11,27 +11,27 @@ export const iconComponents: { [key: string]: FC<SVGProps<SVGSVGElement>> } = {
 export const COMMUNITY_LINKS = [
   {
     name: 'Governance',
-    url: GOVERNANCE_URL,
+    // url: GOVERNANCE_URL,
     icon: Governance,
   },
   {
     name: 'Twitter',
-    url: X_URL,
+    // url: X_URL,
     icon: Twitter,
   },
   {
     name: 'Discord',
-    url: DISCORD.SERVER_URL,
+    // url: DISCORD.SERVER_URL,
     icon: Discord,
   },
   {
     name: 'Docs',
-    url: DOCS_URL,
+    // url: DOCS_URL,
     icon: Docs,
   },
   {
     name: 'Github',
-    url: GITHUB_URL,
+    // url: GITHUB_URL,
     icon: Github,
   },
 ]
