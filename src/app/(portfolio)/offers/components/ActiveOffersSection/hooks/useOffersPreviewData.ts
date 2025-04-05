@@ -58,7 +58,7 @@ export const useOffersPreviewData = () => {
 
     if (optimisticsToRemove.length || expiredOffersByTime.length) {
       removeOffers(
-        map([...expiredOffersByTime, ...optimisticsToRemove], ({ offer }) =>
+        _.map([...expiredOffersByTime, ...optimisticsToRemove], ({ offer }) =>
           offer.publicKey?.toBase58(),
         ),
       )

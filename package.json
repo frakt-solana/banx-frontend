@@ -7,7 +7,8 @@
     "build": "next build",
     "build:log": "next build 2> build-errors.log",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:log": "next lint > lint-report.log"
   },
   "dependencies": {
     "@dialectlabs/blockchain-sdk-solana": "1.0.0-beta.4",
@@ -25,6 +26,7 @@
     "antd": "^5.7.3",
     "axios": "^1.4.0",
     "banx-vaults-sdk": "0.0.20",
+    "bn.js": "^5.2.1",
     "bs58": "^5.0.0",
     "chart.js": "^4.4.0",
     "classnames": "^2.3.2",
@@ -47,6 +49,7 @@
     "@eslint/eslintrc": "^3",
     "@sentry/webpack-plugin": "^3.2.4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/bn.js": "^5.1.6",
     "@types/lodash": "^4.17.16",
     "@types/node": "^20",
     "@types/react": "^19",

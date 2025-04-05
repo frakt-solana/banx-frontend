@@ -1,8 +1,5 @@
 import { BN } from 'fbonds-core'
-import {
-  LendingTokenType,
-  UserVault as UserEscrowFromSdk,
-} from 'fbonds-core/lib/fbond-protocol/types'
+import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
 import { ResponseWithPagination } from '@banx/api/shared'
@@ -17,6 +14,7 @@ import {
   TokenMarketPreviewSchema,
   TokenMetaSchema,
   TokenOfferPreviewSchema,
+  UserEscrowSchema,
   VaultPreviewSchema,
 } from './schemas'
 
@@ -70,4 +68,4 @@ export type MarketTokenRewardsResponse = Record<string, MarketTokenRewards>
 export type VaultPreview = z.infer<typeof VaultPreviewSchema>
 export type MultiplyMarketData = z.infer<typeof MultiplyMarketDataSchema>
 
-export type UserEscrow = UserEscrowFromSdk
+export type UserEscrow = z.infer<typeof UserEscrowSchema>
