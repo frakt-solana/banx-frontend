@@ -1,10 +1,16 @@
 import { BN, web3 } from 'fbonds-core'
 import { setRepaymentCall } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
-import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
+import {
+  CreateTxnData,
+  SimulatedAccountInfoByPubkey,
+  WalletAndConnection,
+} from 'solana-transactions-executor'
 
+import { BondTradeTransaction } from '@banx/api'
 import { core } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 
+import { parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateRepaymentCallTokenTxnDataParams = {
@@ -51,4 +57,12 @@ export const createRepaymentCallTokenTxnData: CreateRepaymentCallTokenTxnData = 
     signers,
     lookupTables: [],
   }
+}
+
+export const parseRepaymentCallSimulatedAccounts = (
+  accountInfoByPubkey: SimulatedAccountInfoByPubkey,
+) => {
+  const results = parseAccountInfoByPubkey(accountInfoByPubkey)
+
+  return results?.['bondTradeTransactionV3']?.[0] as BondTradeTransaction
 }

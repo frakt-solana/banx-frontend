@@ -1,0 +1,192 @@
+// * OfferTokenCard * //
+.card {
+  background: var(--bg-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 10px 24px;
+  min-height: 56px;
+  width: 100%;
+
+  &:hover:not(.opened) {
+    background: var(--action-tertiary);
+    border-radius: 6px;
+  }
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 8px 16px;
+
+    &.opened {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.additionalContentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.chevronButton {
+  display: flex;
+
+  &.opened svg {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 960px) {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+}
+// * OfferTokenCard * //
+
+// * MarketMainInfo * //
+.mainInfoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 152px;
+  z-index: 1;
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.collateralImageWrapper {
+  display: flex;
+  position: relative;
+}
+
+.collateralImage {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+
+  @media (max-width: 640px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.lendingTokenImage {
+  border-radius: 100%;
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+
+  height: 16px;
+  width: 16px;
+
+  @media (max-width: 640px) {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.collateralName {
+  font: var(--important-text-md);
+}
+
+.marketLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+// * MarketMainInfo * //
+
+// * MarketAdditionalInfo * //
+.additionalInfoStats {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  white-space: nowrap;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 8px;
+  }
+}
+
+.additionalInfoStat {
+  align-items: flex-end;
+  gap: 2px;
+  max-width: 180px;
+  width: 100%;
+
+  @media (max-width: 1240px) {
+    max-width: 120px;
+  }
+
+  @media (max-width: 960px) {
+    .opened &:nth-child(n + 3) {
+      visibility: hidden;
+      height: 0;
+    }
+
+    &:nth-child(-n + 2) {
+      grid-row: 1;
+    }
+
+    &:nth-child(n + 3) {
+      grid-row: 2;
+    }
+
+    &:not(:last-child) {
+      align-items: flex-start;
+    }
+  }
+}
+
+.additionalInfoStatLabelWrapper {
+  @media (min-width: 961px) {
+    display: none;
+  }
+}
+
+.additionalAprStat {
+  color: var(--additional-green-primary-deep);
+}
+// * MarketAdditionalInfo * //
+
+// * LoansStatus * //
+.loansStatus {
+  display: flex;
+  align-items: center;
+}
+
+.loansStatusIcon {
+  display: flex;
+  align-items: center;
+
+  span {
+    font: var(--body-text-md);
+
+    @media (max-width: 640px) {
+      font: var(--body-text-sm);
+    }
+  }
+}

@@ -32,7 +32,7 @@ export interface SliderProps {
   showValue?: keyof typeof SLIDER_WITH_VALUE_CLASSNAME
 }
 
-//? Described in global silder.less file
+//? Described in global silder.scss file
 const SLIDER_WITH_VALUE_CLASSNAME = {
   number: 'sliderWithValue',
   percent: 'sliderWithValuePercent',

@@ -1,0 +1,153 @@
+.orderBook {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  max-height: 100%;
+
+  @media (max-width: 960px) {
+    padding-bottom: 32px;
+    max-height: unset;
+    height: 100%;
+  }
+}
+
+.labelsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px 8px;
+  width: 100%;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: calc(100% / 4);
+
+  &:nth-child(2),
+  &:nth-child(3) {
+    justify-content: center;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.label {
+  color: var(--content-tertiary);
+  font: var(--important-text-xs);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.offersList {
+  overflow-y: auto;
+}
+
+// * Offer * //
+.offerListItem {
+  position: relative;
+  padding: 4px 24px;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  min-height: 26px;
+  width: 100%;
+
+  &:hover {
+    background: var(--bg-secondary);
+  }
+
+  &:nth-child(odd) {
+    background: var(--bg-secondary);
+  }
+
+  &.creating {
+    background: var(--accent-primary-sub);
+  }
+
+  &.editing {
+    background: var(--additional-blue-secondary);
+  }
+}
+
+.offerHighlightIndicator {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 16px;
+
+  &.creating {
+    background: var(--accent-primary);
+  }
+
+  &.editing {
+    background: var(--additional-blue-primary);
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  svg {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.offerDetailsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  & > * {
+    width: calc(100% / 4);
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      text-align: center;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.commonValue {
+  color: var(--content-primary);
+  font: var(--body-text-sm);
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.ownerBadge {
+  &::after {
+    content: 'You';
+    display: inline-block;
+
+    background-color: var(--additional-green-secondary);
+    border-radius: 100px;
+    color: var(--additional-green-primary-deep);
+    font: var(--body-text-xs);
+
+    padding: 1px 4px;
+    margin-left: 2px;
+  }
+}
+
+// * Offer * //

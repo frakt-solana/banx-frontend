@@ -1,11 +1,17 @@
 import { web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { terminatePerpetualLoan } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
-import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
+import {
+  CreateTxnData,
+  SimulatedAccountInfoByPubkey,
+  WalletAndConnection,
+} from 'solana-transactions-executor'
 
+import { BondTradeTransaction, FraktBond, Offer } from '@banx/api'
 import { core } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 
+import { parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
 /**
@@ -53,5 +59,17 @@ export const createTerminateTokenTxnData: CreateTerminateTokenTxnData = async (
     instructions,
     signers,
     lookupTables: [new web3.PublicKey(LOOKUP_TABLE)],
+  }
+}
+
+export const parseTerminateSimulatedAccounts = (
+  accountInfoByPubkey: SimulatedAccountInfoByPubkey,
+) => {
+  const results = parseAccountInfoByPubkey(accountInfoByPubkey)
+
+  return {
+    bondOffer: results?.['bondOfferV3']?.[0] as Offer,
+    bondTradeTransaction: results?.['bondTradeTransactionV3']?.[0] as BondTradeTransaction,
+    fraktBond: results?.['fraktBond']?.[0] as FraktBond,
   }
 }

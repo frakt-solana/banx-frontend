@@ -1,0 +1,167 @@
+// * Form * //
+.fieldsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.fieldsRow {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    gap: 16px;
+  }
+}
+
+.fieldColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.borrowerMessage {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font: var(--body-text-sm);
+}
+
+.inputErrorMessage {
+  margin-top: 4px;
+}
+// * Form * //
+
+// * ActionsButtons * //
+.actionsButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+.editModeButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.actionButton {
+  width: 124px;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.placeOfferButton {
+  width: 100%;
+}
+
+.removeOfferButton {
+  background-color: var(--additional-red-primary-sub) !important;
+
+  &:hover {
+    border: 1px solid var(--additional-red-primary) !important;
+  }
+}
+// * ActionsButtons * //
+
+// * Summary * //
+.additionalSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 24px 12px;
+  margin: 0 -24px 0;
+  width: calc(100% + 48px);
+
+  @media (max-width: 640px) {
+    padding: 8px 16px;
+    margin: 0 -16px 0;
+    width: calc(100% + 32px);
+  }
+}
+
+.fixedValueContent {
+  max-width: 86px;
+  white-space: nowrap;
+  overflow: auto;
+
+  @media (max-width: 960px) {
+    max-width: 144px;
+  }
+}
+
+.aprValue {
+  color: #389e0d;
+}
+// * Summary * //
+
+// * ExtraRewards * //
+.extraRewards {
+  border: 0.5px solid var(--additional-gold-primary);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 8px;
+
+  margin-bottom: 12px;
+  position: relative;
+  width: 100%;
+
+  &:after {
+    content: 'Additional rewards';
+
+    border-radius: 100px;
+    background-color: var(--additional-gold-secondary);
+    color: var(--additional-gold-primary-deep);
+
+    font: var(--body-text-xs);
+    padding: 2px 8px;
+
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    top: -9px;
+    left: 8px;
+  }
+}
+
+.fixedRewardsValueContent {
+  max-width: 144px;
+  white-space: nowrap;
+  overflow: auto;
+}
+// * ExtraRewards * //
+
+// * LtvActionPanelView * //
+.ltvActionPanel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ltvActionLabel {
+  color: var(--content-secondary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.ltvActionButton {
+  text-transform: uppercase;
+}
+// * LtvActionPanelView * //
