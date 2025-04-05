@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { TokenMetaSchema } from '../core/schemas'
+import { TokenMetaSchema } from '@banx/api/core/shared'
 
 export const LenderTokenActivitySchema = z.object({
   id: z.string(),

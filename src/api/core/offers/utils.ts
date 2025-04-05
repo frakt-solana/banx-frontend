@@ -1,7 +1,24 @@
 import { BN, web3 } from 'fbonds-core'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
+import { convertValuesInAccount } from 'solana-transactions-parser'
 
-import { DBOffer } from './types'
+import { bnToNumberSafe } from '@banx/utils'
+
+import { BondOfferV3Schema } from './schemas'
+import { DBOffer, Offer } from './types'
+
+export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
+  return convertValuesInAccount<Offer>(bondOffer, {
+    bnParser: (v) => {
+      return bnToNumberSafe(v)
+    },
+    pubkeyParser: (v) => v.toBase58(),
+  })
+}
+
+export const convertCoreOfferToBondOfferV3 = (offer: Offer): BondOfferV3 => {
+  return BondOfferV3Schema.parse(offer)
+}
 
 export const convertBondOfferV3ToDBOffer = (offer: BondOfferV3): DBOffer => {
   return {
