@@ -25,7 +25,7 @@ export const useTokenBondOffers = ({
   const { data, isLoading, isFetching, isFetched } = useQuery({
     queryKey: ['tokenBondOffers', marketPubkey, lendingTokenType, excludeWallet],
     queryFn: () =>
-      core.fetchTokenMarketOffers({
+      core.fetchMarketOffers({
         marketPubkey: marketPubkey?.toBase58(),
         tokenType: lendingTokenType,
         excludeWallet: excludeWallet?.toBase58(),

@@ -11,7 +11,7 @@ import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenOfferPreview, core } from '@banx/api'
+import { OfferPreview, core } from '@banx/api'
 import { ChevronDown, Coin, CoinPlus, SOLFilled, USDC, Warning } from '@banx/icons'
 import { convertToSynthetic, useSyntheticTokenOffers } from '@banx/store'
 import {
@@ -32,7 +32,7 @@ import ExpandedCardContent from '../ExpandedCardContent'
 import styles from './OfferCard.module.scss'
 
 interface OfferCardProps {
-  offerPreview: TokenOfferPreview
+  offerPreview: OfferPreview
   isOpen: boolean
   onToggleCard: () => void
 }
@@ -78,7 +78,7 @@ export const OfferCard: FC<OfferCardProps> = ({ offerPreview, isOpen, onToggleCa
   )
 }
 
-const MarketMainInfo: FC<{ offerPreview: core.TokenOfferPreview }> = ({ offerPreview }) => {
+const MarketMainInfo: FC<{ offerPreview: core.OfferPreview }> = ({ offerPreview }) => {
   const { collateral } = offerPreview.tokenMarketPreview
 
   const isOracleMarket = collateral.oraclePriceFeedType !== 'none'
@@ -110,7 +110,7 @@ const MarketMainInfo: FC<{ offerPreview: core.TokenOfferPreview }> = ({ offerPre
 }
 
 interface MarketAdditionalInfoProps {
-  offerPreview: core.TokenOfferPreview
+  offerPreview: core.OfferPreview
   isOpen: boolean
 }
 

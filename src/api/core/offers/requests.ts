@@ -1,28 +1,20 @@
 import axios from 'axios'
-import {
-  BondOfferV3,
-  BondingCurveType,
-  LendingTokenType,
-} from 'fbonds-core/lib/fbond-protocol/types'
+import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { convertToMarketType, parseResponseSafe } from '@banx/api/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
+import { BondOfferFromApiSchema, BorrowOfferSchemaRaw, OfferPreviewSchema } from './schemas'
 import {
-  BorrowOfferSchemaRaw,
-  StrOfferToBondOfferV3Schema,
-  TokenOfferPreviewSchema,
-} from './schemas'
-import { BorrowOfferRaw, OfferStr, TokenOfferPreview } from './types'
+  BorrowOfferRaw,
+  FetchBorrowOffers,
+  FetchMarketOffers,
+  FetchUserOffersPreview,
+  OfferApi,
+  OfferPreview,
+} from './types'
 
-type FetchTokenMarketOffers = (props: {
-  marketPubkey?: string
-  tokenType: LendingTokenType
-  getAll?: boolean
-  excludeWallet?: string
-}) => Promise<BondOfferV3[] | undefined>
-
-export const fetchTokenMarketOffers: FetchTokenMarketOffers = async ({
+export const fetchMarketOffers: FetchMarketOffers = async ({
   marketPubkey,
   tokenType,
   getAll = true,
@@ -35,18 +27,14 @@ export const fetchTokenMarketOffers: FetchTokenMarketOffers = async ({
     isPrivate: String(IS_PRIVATE_MARKETS),
   })
 
-  const { data } = await axios.get<{ data: OfferStr[] }>(
+  const { data } = await axios.get<{ data: OfferApi[] }>(
     `${BACKEND_BASE_URL}/bond-offers/${marketPubkey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<BondOfferV3[]>(data?.data, StrOfferToBondOfferV3Schema.array())
+  return await parseResponseSafe<BondOfferV3[]>(data?.data, BondOfferFromApiSchema.array())
 }
 
-type FetchTokenOffersPreview = (props: {
-  walletPubkey: string
-  tokenType?: LendingTokenType
-}) => Promise<TokenOfferPreview[] | undefined>
-export const fetchTokenOffersPreview: FetchTokenOffersPreview = async ({
+export const fetchUserOffersPreview: FetchUserOffersPreview = async ({
   walletPubkey,
   tokenType,
 }) => {
@@ -59,19 +47,13 @@ export const fetchTokenOffersPreview: FetchTokenOffersPreview = async ({
     queryParams.append('marketType', convertToMarketType(tokenType))
   }
 
-  const { data } = await axios.get<{ data: TokenOfferPreview[] }>(
+  const { data } = await axios.get<{ data: OfferPreview[] }>(
     `${BACKEND_BASE_URL}/spl-offers/my-offers-v2/${walletPubkey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<TokenOfferPreview[]>(data?.data, TokenOfferPreviewSchema.array())
+  return await parseResponseSafe<OfferPreview[]>(data?.data, OfferPreviewSchema.array())
 }
 
-type FetchBorrowOffers = (props: {
-  market: string
-  bondingCurveType: BondingCurveType
-  customLtv: number | undefined //? base points
-  excludeWallet?: string
-}) => Promise<BorrowOfferRaw[] | undefined>
 export const fetchBorrowOffers: FetchBorrowOffers = async (props) => {
   const { market, bondingCurveType, customLtv, excludeWallet } = props
 

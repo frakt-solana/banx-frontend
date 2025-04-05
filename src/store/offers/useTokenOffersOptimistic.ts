@@ -16,8 +16,8 @@ export interface TokenOfferOptimistic {
   expiredAt: number
 }
 
-export interface OfferStrOptimistic {
-  offer: core.OfferStr
+export interface OfferApiOptimistic {
+  offer: core.OfferApi
   expiredAt: number
 }
 
@@ -95,7 +95,7 @@ const setOptimisticOffersIdb = async (offers: TokenOfferOptimistic[]) => {
   try {
     const convertedOffers = _.map(offers, (offer) => {
       return {
-        offer: core.convertBondOfferV3ToOfferStr(offer.offer),
+        offer: core.convertBondOfferV3ToOfferApi(offer.offer),
         expiredAt: offer.expiredAt,
       }
     })
@@ -115,11 +115,11 @@ const convertOfferToOptimistic = (offer: BondOfferV3) => {
 
 const getOptimisticOffersIdb = async () => {
   try {
-    const offers = (await get(BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY)) as OfferStrOptimistic[]
+    const offers = (await get(BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY)) as OfferApiOptimistic[]
 
     const convertedOffers = _.map(offers, (offer) => {
       return {
-        offer: core.convertOfferStrToBondOfferV3(offer.offer),
+        offer: core.convertOfferApiToBondOfferV3(offer.offer),
         expiredAt: offer.expiredAt,
       }
     })

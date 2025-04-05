@@ -7,7 +7,7 @@ import { map, merge } from 'lodash'
 import { Loader } from '@banx/components/Loader'
 import Tooltip from '@banx/components/Tooltip/Tooltip'
 
-import { TokenOfferPreview } from '@banx/api'
+import { OfferPreview } from '@banx/api'
 
 import { Offer, OracleOffer } from './Offer'
 import { useMarketOrders } from './hooks'
@@ -15,7 +15,7 @@ import { useMarketOrders } from './hooks'
 import styles from './OrderBook.module.scss'
 
 export interface OrderBookProps {
-  market: TokenOfferPreview['tokenMarketPreview'] | undefined
+  market: OfferPreview['tokenMarketPreview'] | undefined
   lendingToken: LendingTokenType
   offerPubkey?: string
   className?: string

@@ -6,7 +6,7 @@ import { MarketCategory } from '@banx/constants'
 
 import { TokenMetaSchema } from '../shared'
 
-export const StrOfferToBondOfferV3Schema = z.object({
+export const BondOfferFromApiSchema = z.object({
   publicKey: zStringToPubkey,
   assetReceiver: zStringToPubkey,
   baseSpotPrice: zStringToBN,
@@ -37,9 +37,9 @@ export const StrOfferToBondOfferV3Schema = z.object({
   offerLtvBp: zStringToBN,
 })
 
-export const TokenOfferPreviewSchema = z.object({
+export const OfferPreviewSchema = z.object({
   publicKey: z.string(),
-  bondOffer: StrOfferToBondOfferV3Schema,
+  bondOffer: BondOfferFromApiSchema,
   tokenMarketPreview: z.object({
     marketPubkey: z.string(),
     collateral: TokenMetaSchema,
@@ -101,7 +101,7 @@ export const BorrowOfferSchemaRaw = z.object({
   liquidationLtvBp: zStringToInt,
 })
 
-export const OfferSchemaStr = z.object({
+export const OfferSchemaApi = z.object({
   publicKey: zPubkeyString,
   assetReceiver: zPubkeyString,
   baseSpotPrice: z.string(),

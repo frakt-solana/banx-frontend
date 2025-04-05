@@ -12,7 +12,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { TokenOfferPreview } from '@banx/api'
+import { OfferPreview } from '@banx/api'
 import { Pencil } from '@banx/icons'
 import { SyntheticTokenOffer } from '@banx/store'
 import {
@@ -26,7 +26,7 @@ import styles from './OrderBook.module.scss'
 
 interface OfferProps {
   offer: SyntheticTokenOffer
-  market: TokenOfferPreview['tokenMarketPreview'] | undefined
+  market: OfferPreview['tokenMarketPreview'] | undefined
   lendingToken: LendingTokenType
 }
 

@@ -29,7 +29,7 @@ export const useOffersPreviewData = () => {
     isFetched,
   } = useQuery({
     queryKey: ['tokenOffersPreview', walletPubkey],
-    queryFn: () => core.fetchTokenOffersPreview({ walletPubkey }),
+    queryFn: () => core.fetchUserOffersPreview({ walletPubkey }),
     refetchOnWindowFocus: false,
     refetchInterval: 30 * 1000,
     staleTime: 30 * 1000,

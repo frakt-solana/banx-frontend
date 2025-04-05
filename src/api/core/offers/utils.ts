@@ -11,7 +11,7 @@ import { z } from 'zod'
 import { zNumberToBN, zStringToPubkey } from '@banx/api/zodSchemas'
 import { bnToNumberSafe } from '@banx/utils'
 
-import { Offer, OfferStr } from './types'
+import { Offer, OfferApi } from './types'
 
 export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
   return convertValuesInAccount<Offer>(bondOffer, {
@@ -57,7 +57,7 @@ export const convertCoreOfferToBondOfferV3 = (offer: Offer): BondOfferV3 => {
     .parse(offer)
 }
 
-export const convertBondOfferV3ToOfferStr = (offer: BondOfferV3): OfferStr => {
+export const convertBondOfferV3ToOfferApi = (offer: BondOfferV3): OfferApi => {
   return {
     publicKey: offer.publicKey.toBase58(),
     assetReceiver: offer.assetReceiver.toBase58(),
@@ -91,7 +91,7 @@ export const convertBondOfferV3ToOfferStr = (offer: BondOfferV3): OfferStr => {
   }
 }
 
-export const convertOfferStrToBondOfferV3 = (offer: OfferStr): BondOfferV3 => {
+export const convertOfferApiToBondOfferV3 = (offer: OfferApi): BondOfferV3 => {
   return {
     publicKey: new web3.PublicKey(offer.publicKey),
     assetReceiver: new web3.PublicKey(offer.assetReceiver),

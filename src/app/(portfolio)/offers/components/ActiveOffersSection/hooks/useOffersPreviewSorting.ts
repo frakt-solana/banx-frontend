@@ -5,7 +5,7 @@ import { orderBy } from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { TokenOfferPreview } from '@banx/api'
+import { OfferPreview } from '@banx/api'
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
 import {
@@ -31,7 +31,7 @@ const SORT_OPTIONS: SortOption<SortField>[] = [
   { label: 'APR', value: [SortField.APR, 'desc'] },
 ]
 
-export const useOffersPreviewSorting = (offers: TokenOfferPreview[]) => {
+export const useOffersPreviewSorting = (offers: OfferPreview[]) => {
   const [sortOption, setSortOption] = useState(SORT_OPTIONS[0])
   const { data: tokenPrice, isLoading: isTokenPriceLoading } = useTokenPrice(WSOL_ADDRESS)
 
@@ -40,7 +40,7 @@ export const useOffersPreviewSorting = (offers: TokenOfferPreview[]) => {
 
     const [field, order] = sortOption.value
 
-    const getSortValue = (offer: TokenOfferPreview) => {
+    const getSortValue = (offer: OfferPreview) => {
       const { inLoans, offerSize } = offer.tokenOfferPreview
 
       const lendingToken = getLendingTokenFromBondingCurve(offer.bondOffer.bondingCurve.bondingType)
@@ -73,7 +73,7 @@ export const useOffersPreviewSorting = (offers: TokenOfferPreview[]) => {
   }
 }
 
-const calculateLtv = (offer: TokenOfferPreview): number => {
+const calculateLtv = (offer: OfferPreview): number => {
   const { collateral, collateralPrice } = offer.tokenMarketPreview
 
   if (!offer.bondOffer.offerLtvBp.isZero()) {
