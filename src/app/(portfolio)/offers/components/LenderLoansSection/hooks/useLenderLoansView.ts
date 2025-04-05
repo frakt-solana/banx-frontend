@@ -5,12 +5,12 @@ import { isEmpty } from 'lodash'
 import { MESSAGES, NO_LOANS_IN_MARKET_MESSAGE } from '@banx/constants/messages'
 
 import { buildLoansPreviewGroupedByMint } from '../helpers'
-import { useLoansData } from './useLoansData'
-import { useLoansPreviewFilter } from './useLoansPreviewFilter'
-import { useLoansPrivewSorting } from './useLoansPreviewSorting'
+import { useLenderLoansData } from './useLenderLoansData'
+import { useLenderLoansPreviewFilter } from './useLenderLoansPreviewFilter'
+import { useLenderLoansPreviewSorting } from './useLenderLoansPreviewSorting'
 
-export const useLoansView = () => {
-  const { loans, isLoading } = useLoansData()
+export const useLenderLoansView = () => {
+  const { loans, isLoading } = useLenderLoansData()
 
   const loansPreviews = useMemo(() => buildLoansPreviewGroupedByMint(loans), [loans])
 
@@ -27,14 +27,17 @@ export const useLoansView = () => {
     selectedLendingToken,
     handleSelectedTokenChange,
     terminatingLoansAmount,
-    repaymentCallsAmount,
     isTerminationFilterEnabled,
     toggleTerminationFilter,
-    isRepaymentCallFilterEnabled,
-    toggleRepaymentCallFilter,
-  } = useLoansPreviewFilter(loansPreviews)
+    liquidatedLoansAmount,
+    isLiquidatedFilterEnabled,
+    toggleLiquidatedFilter,
+    underwaterLoansAmount,
+    isUnderwaterFilterEnabled,
+    toggleUnderwaterFilter,
+  } = useLenderLoansPreviewFilter(loansPreviews)
 
-  const { sortedLoansPreviews, sortParams } = useLoansPrivewSorting(filteredLoansPreviews)
+  const { sortedLoansPreviews, sortParams } = useLenderLoansPreviewSorting(filteredLoansPreviews)
 
   const isNoLoans = isEmpty(loans) && !isLoading
   const isFilteredListEmpty = isEmpty(filteredLoansPreviews) && !isLoading
@@ -59,11 +62,16 @@ export const useLoansView = () => {
     handleSelectedTokenChange,
 
     terminatingLoansAmount,
-    repaymentCallsAmount,
     isTerminationFilterEnabled,
     toggleTerminationFilter,
-    isRepaymentCallFilterEnabled,
-    toggleRepaymentCallFilter,
+
+    liquidatedLoansAmount,
+    isLiquidatedFilterEnabled,
+    toggleLiquidatedFilter,
+
+    underwaterLoansAmount,
+    isUnderwaterFilterEnabled,
+    toggleUnderwaterFilter,
 
     expandedPreviewId,
     handleCardToggle,

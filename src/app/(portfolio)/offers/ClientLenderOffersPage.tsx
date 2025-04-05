@@ -5,16 +5,16 @@ import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 
 import { PATHS } from '@banx/constants'
 
-import LenderTokenActivityTable from './components/LenderTokenActivityTable'
-import LenderTokenLoansContent from './components/LenderTokenLoansContent'
-import OffersTokenTabContent from './components/OffersTokenTabContent'
+import ActiveOffersSection from './components/ActiveOffersSection'
+import LenderLoansSection from './components/LenderLoansSection'
+import OffersHistorySection from './components/OffersHistorySection'
 
 import styles from './ClientLenderOffersPage.module.scss'
 
 export const ClientLenderOffersPage = () => {
   const { value: currentTabValue, ...tabsProps } = useTabs({
     tabs: OFFERS_TABS,
-    defaultValue: OffersTabName.OFFERS,
+    defaultValue: TabName.Offers,
   })
 
   return (
@@ -24,30 +24,30 @@ export const ClientLenderOffersPage = () => {
         onboardContentType="offers"
       />
       <Tabs value={currentTabValue} {...tabsProps} type="secondary" />
-      {currentTabValue === OffersTabName.OFFERS && <OffersTokenTabContent />}
-      {currentTabValue === OffersTabName.LOANS && <LenderTokenLoansContent />}
-      {currentTabValue === OffersTabName.HISTORY && <LenderTokenActivityTable />}
+      {currentTabValue === TabName.Offers && <ActiveOffersSection />}
+      {currentTabValue === TabName.Loans && <LenderLoansSection />}
+      {currentTabValue === TabName.History && <OffersHistorySection />}
     </div>
   )
 }
 
-enum OffersTabName {
-  OFFERS = 'offers',
-  LOANS = 'loans',
-  HISTORY = 'history',
+enum TabName {
+  Offers = 'offers',
+  Loans = 'loans',
+  History = 'history',
 }
 
 const OFFERS_TABS: Tab[] = [
   {
     label: 'Offers',
-    value: OffersTabName.OFFERS,
+    value: TabName.Offers,
   },
   {
     label: 'Loans',
-    value: OffersTabName.LOANS,
+    value: TabName.Loans,
   },
   {
     label: 'History',
-    value: OffersTabName.HISTORY,
+    value: TabName.History,
   },
 ]
