@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 
-import { fetchWalletTokenLoansAndOffers } from '@banx/api'
+import { fetchBorrowerLoans } from '@banx/api'
 import { AssetType, stats } from '@banx/api/common'
 import { USE_WALLET_TOKEN_LOANS_AND_OFFERS_QUERY_KEY } from '@banx/providers/query'
 import {
@@ -25,7 +25,7 @@ export const useLoansData = (strictTokenType?: LendingTokenType) => {
   const { data, isLoading, isFetched, isFetching } = useQuery({
     queryKey: [USE_WALLET_TOKEN_LOANS_AND_OFFERS_QUERY_KEY, walletPubkey, strictTokenType],
     queryFn: () =>
-      fetchWalletTokenLoansAndOffers({
+      fetchBorrowerLoans({
         walletPublicKey: walletPubkey,
         tokenType: strictTokenType,
       }),

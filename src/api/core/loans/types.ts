@@ -6,7 +6,7 @@ import { ResponseWithPagination } from '@banx/api/shared'
 import {
   BondTradeTransactionSchema,
   FraktBondSchema,
-  TokenLoanAuctionsAndListingsSchema,
+  LoansMarketSchema,
   TokenLoanSchema,
 } from './schemas'
 
@@ -15,31 +15,29 @@ export type FraktBond = z.infer<typeof FraktBondSchema>
 export type BondTradeTransaction = z.infer<typeof BondTradeTransactionSchema>
 
 export type TokenLoan = z.infer<typeof TokenLoanSchema>
-export type TokenLoanAuctionsAndListings = z.infer<typeof TokenLoanAuctionsAndListingsSchema>
+export type LoansMarket = z.infer<typeof LoansMarketSchema>
 
 //? ========= API function types =========
-export type FetchWalletTokenLoansAndOffers = (props: {
+export type FetchBorrowerLoans = (props: {
   walletPublicKey: string
   tokenType?: LendingTokenType
   getAll?: boolean
 }) => Promise<TokenLoan[] | undefined>
 
-export type FetchTokenLenderLoans = (props: {
+export type FetchLenderLoans = (props: {
   walletPublicKey: string
   tokenType?: LendingTokenType
   getAll?: boolean
 }) => Promise<TokenLoan[] | undefined>
 
-export type FetchTokenLoanAuctionsAndListings = (props: {
+export type FetchLoansMarket = (props: {
   tokenType: LendingTokenType
   getAll?: boolean
-}) => Promise<TokenLoanAuctionsAndListings | undefined>
+}) => Promise<LoansMarket | undefined>
+export type LoansMarketResponse = ResponseWithPagination<LoansMarket>
 
-export type FetchUserTokenLoanListings = (props: {
+export type FetchBorrowerLoanListings = (props: {
   walletPubkey: string
   tokenType?: LendingTokenType
   getAll?: boolean
 }) => Promise<TokenLoan[] | undefined>
-
-export type TokenLoanAuctionsAndListingsResponse =
-  ResponseWithPagination<TokenLoanAuctionsAndListings>

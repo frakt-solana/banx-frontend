@@ -4,7 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 import _ from 'lodash'
 
-import { fetchUserTokenLoanListings } from '@banx/api'
+import { fetchBorrowerLoanListings } from '@banx/api'
 import { isLoanNewer, isOptimisticLoanExpired, useTokenLoanListingsOptimistic } from '@banx/store'
 import { isTokenLoanListed } from '@banx/utils'
 
@@ -18,7 +18,7 @@ export const useLoanListingsData = () => {
 
   const { data, isLoading, isFetched, isFetching } = useQuery({
     queryKey: [USE_USER_TOKEN_LOAN_LISTINGS_QUERY_KEY, walletPubkey],
-    queryFn: () => fetchUserTokenLoanListings({ walletPubkey }),
+    queryFn: () => fetchBorrowerLoanListings({ walletPubkey }),
     refetchOnWindowFocus: false,
     refetchInterval: 15 * 1000,
     staleTime: 15 * 1000,

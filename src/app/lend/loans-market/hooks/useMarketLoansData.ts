@@ -28,8 +28,8 @@ export const useMarketLoansData = () => {
   const { tokenType } = useTokenType()
 
   const { data, isLoading } = useQuery({
-    queryKey: ['allTokenLoanAuctionsAndListings', tokenType],
-    queryFn: () => core.fetchTokenLoanAuctionsAndListings({ tokenType }),
+    queryKey: ['allLoansMarket', tokenType],
+    queryFn: () => core.fetchLoansMarket({ tokenType }),
     refetchOnWindowFocus: false,
     refetchInterval: 60 * 1000,
     staleTime: 60 * 1000,

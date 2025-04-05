@@ -78,7 +78,7 @@ export const TokenLoanSchema = z.object({
   liquidationLtvBp: zStringToInt,
 })
 
-export const TokenLoanAuctionsAndListingsSchema = z.object({
+export const LoansMarketSchema = z.object({
   auctions: TokenLoanSchema.array(),
   listings: TokenLoanSchema.array(),
 })

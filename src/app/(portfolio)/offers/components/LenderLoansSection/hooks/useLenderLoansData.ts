@@ -6,7 +6,7 @@ import produce from 'immer'
 import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan, fetchTokenLenderLoans } from '@banx/api'
+import { TokenLoan, fetchLenderLoans } from '@banx/api'
 
 import { useLenderLoansOptimistic } from './useLenderLoansOptimistic'
 
@@ -35,7 +35,7 @@ export const useLenderLoansData = () => {
 
   const { data: loans, isLoading } = useQuery({
     queryKey: ['lenderTokenLoans', walletPubkey],
-    queryFn: () => fetchTokenLenderLoans({ walletPublicKey: walletPubkey }),
+    queryFn: () => fetchLenderLoans({ walletPublicKey: walletPubkey }),
     refetchOnWindowFocus: false,
     staleTime: 30 * 1000,
   })
