@@ -11,7 +11,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { HealthColorIncreasing, getColorByPercent } from '@banx/utils'
 
 import { TvlProgressIndicator } from '../../../components/TvlProgressIndicator'

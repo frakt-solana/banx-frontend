@@ -8,8 +8,8 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
+import { UserEscrow } from '@banx/api'
 import { fetchTokenBalance } from '@banx/api/common'
-import { UserEscrow } from '@banx/api/tokens'
 import { BANX_SOL_ADDRESS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { isBanxSolTokenType } from '@banx/utils'

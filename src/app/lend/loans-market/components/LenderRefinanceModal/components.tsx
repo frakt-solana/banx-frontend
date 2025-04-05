@@ -9,7 +9,7 @@ import {
 } from '@banx/components/TableComponents'
 import NumericInput from '@banx/components/inputs/NumericInput'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import { Pencil } from '@banx/icons'
 import {

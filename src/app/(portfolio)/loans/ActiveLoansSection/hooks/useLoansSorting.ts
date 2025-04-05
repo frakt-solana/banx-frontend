@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { SortOrder } from '@banx/components/SortDropdown'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   caclulateBorrowTokenLoanValue,
   calculateTokenLoanLtvByLoanValue,

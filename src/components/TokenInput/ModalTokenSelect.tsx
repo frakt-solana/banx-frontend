@@ -6,7 +6,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { Input } from '@banx/components/inputs/Input'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { useModal } from '@banx/store'
 import { bnToHuman, formatCollateralTokenValue, shortenAddress } from '@banx/utils'
 

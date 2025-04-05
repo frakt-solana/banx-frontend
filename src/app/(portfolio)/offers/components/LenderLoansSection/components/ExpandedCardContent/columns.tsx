@@ -10,7 +10,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   HealthColorIncreasing,
   getColorByPercent,

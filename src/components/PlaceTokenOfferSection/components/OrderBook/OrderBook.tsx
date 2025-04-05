@@ -7,7 +7,7 @@ import { map, merge } from 'lodash'
 import { Loader } from '@banx/components/Loader'
 import Tooltip from '@banx/components/Tooltip/Tooltip'
 
-import { TokenOfferPreview } from '@banx/api/tokens'
+import { TokenOfferPreview } from '@banx/api'
 
 import { Offer, OracleOffer } from './Offer'
 import { useMarketOrders } from './hooks'

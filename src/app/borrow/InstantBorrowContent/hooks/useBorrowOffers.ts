@@ -8,7 +8,7 @@ import { getBondingCurveTypeFromLendingToken } from 'fbonds-core/lib/fbond-proto
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 
-import { BorrowOfferRaw, CollateralToken, core } from '@banx/api/tokens'
+import { BorrowOfferRaw, CollateralToken, core } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 import { ZERO_BN, getTokenDecimals } from '@banx/utils'
 

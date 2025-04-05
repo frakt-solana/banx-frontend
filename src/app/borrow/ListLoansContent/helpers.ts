@@ -4,7 +4,7 @@ import { calcBorrowerTokenAPR } from 'fbonds-core/lib/fbond-protocol/helpers'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { DAYS_IN_YEAR, ONE_WEEK_IN_SECONDS } from '@banx/constants'
 import { bnToHuman, getTokenDecimals } from '@banx/utils'
 

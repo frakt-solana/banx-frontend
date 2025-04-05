@@ -12,7 +12,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import {
   bnToNumberSafe,

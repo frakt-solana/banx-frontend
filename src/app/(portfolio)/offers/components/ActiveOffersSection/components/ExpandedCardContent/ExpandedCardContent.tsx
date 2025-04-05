@@ -10,7 +10,7 @@ import PlaceTokenOfferSection, { OrderBook } from '@banx/components/PlaceTokenOf
 import { Tabs, useTabs } from '@banx/components/Tabs'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { TokenOfferPreview } from '@banx/api/tokens'
+import { TokenOfferPreview } from '@banx/api'
 import { useMarketTokenRewards } from '@banx/hooks'
 import { useModal } from '@banx/store/common'
 

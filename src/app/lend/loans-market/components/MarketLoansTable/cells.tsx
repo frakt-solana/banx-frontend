@@ -12,7 +12,7 @@ import {
 import { TooltipWrapper } from '@banx/components/Tooltip'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useModal } from '@banx/store'
 import {
   HealthColorIncreasing,

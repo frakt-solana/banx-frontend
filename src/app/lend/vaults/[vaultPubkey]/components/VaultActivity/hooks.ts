@@ -4,7 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 
 const PAGINATION_LIMIT = 15
 

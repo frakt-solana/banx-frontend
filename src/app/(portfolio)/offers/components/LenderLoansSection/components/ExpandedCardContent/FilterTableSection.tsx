@@ -4,7 +4,7 @@ import { mapValues } from 'lodash'
 
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   isTokenLoanLiquidated,
   isTokenLoanRepaymentCallActive,

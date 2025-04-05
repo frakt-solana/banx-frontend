@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 
-import { TokenMarketPreview, core } from '@banx/api/tokens'
+import { TokenMarketPreview, core } from '@banx/api'
 import { useTokenMarketsPreview } from '@banx/hooks'
 import { isOfferNewer, isOptimisticOfferExpired, useTokenOffersOptimistic } from '@banx/store'
 import { isBondOfferV3Closed } from '@banx/utils/core/tokenOffers'

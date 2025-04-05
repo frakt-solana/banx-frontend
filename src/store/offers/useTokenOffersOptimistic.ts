@@ -6,7 +6,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import { create } from 'zustand'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 const BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY = '@banx.tokenOffersOptimistics'
 const OFFERS_CACHE_TIME_UNIX = 2 * 60 //? Auto purge optimistic after 2 minutes
@@ -16,8 +16,8 @@ export interface TokenOfferOptimistic {
   expiredAt: number
 }
 
-export interface DBOfferOptimistic {
-  offer: core.DBOffer
+export interface OfferStrOptimistic {
+  offer: core.OfferStr
   expiredAt: number
 }
 
@@ -95,7 +95,7 @@ const setOptimisticOffersIdb = async (offers: TokenOfferOptimistic[]) => {
   try {
     const convertedOffers = _.map(offers, (offer) => {
       return {
-        offer: core.convertBondOfferV3ToDBOffer(offer.offer),
+        offer: core.convertBondOfferV3ToOfferStr(offer.offer),
         expiredAt: offer.expiredAt,
       }
     })
@@ -115,11 +115,11 @@ const convertOfferToOptimistic = (offer: BondOfferV3) => {
 
 const getOptimisticOffersIdb = async () => {
   try {
-    const offers = (await get(BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY)) as DBOfferOptimistic[]
+    const offers = (await get(BANX_TOKEN_OFFERS_OPTIMISTICS_LS_KEY)) as OfferStrOptimistic[]
 
     const convertedOffers = _.map(offers, (offer) => {
       return {
-        offer: core.convertDBOfferToBondOfferV3(offer.offer),
+        offer: core.convertOfferStrToBondOfferV3(offer.offer),
         expiredAt: offer.expiredAt,
       }
     })

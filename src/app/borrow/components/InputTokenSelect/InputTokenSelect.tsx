@@ -5,7 +5,7 @@ import { BN } from 'fbonds-core'
 
 import NumericInput from '@banx/components/inputs/NumericInput'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { useModal } from '@banx/store/common'
 
 import ModalTokenSelect from '../ModalTokenSelect'

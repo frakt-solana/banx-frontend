@@ -37,7 +37,7 @@ export const LRTS_PAIR: MultiplyPair = {
   marketPublicKey: !IS_SDK_ON_DEV_CONTRACT
     ? new web3.PublicKey('7EuPa26AjGdnQ7JcqM3kFhwFR4U2NQTU9guHcmaDF2G')
     : new web3.PublicKey('EJXya3FW1T8uZnxjtph7PxTeQJkb44eqYJwJHhTJhms3'),
-  loanValueLimit: new BN(120 * 10 ** (() => getTokenDecimals(LendingTokenType.BanxSol))()),
+  // loanValueLimit: new BN(120 * 10 ** (() => getTokenDecimals(LendingTokenType.BanxSol))()), //TODO: Return back to this
   minPositionSize: new BN(1e8), //? 0.1 lrtsSOL
   createLeverageTxnHandler: lrtsSOL.createLrtsLeverageTxnData,
   createSellToRepayTxnHandler: lrtsSOL.createLrtsSellToRepayTokenLoanTxnData,

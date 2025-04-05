@@ -2,17 +2,14 @@ import { z } from 'zod'
 
 import {
   BorrowOfferSchemaRaw,
-  DBOfferSchema,
-  OfferDBSchema,
   OfferSchema,
+  OfferSchemaStr,
   TokenOfferPreviewSchema,
 } from './schemas'
 
 export type TokenOfferPreview = z.infer<typeof TokenOfferPreviewSchema>
 
 export type Offer = z.infer<typeof OfferSchema>
-export type OfferDB = z.infer<typeof OfferDBSchema>
+export type OfferStr = z.infer<typeof OfferSchemaStr>
 
 export type BorrowOfferRaw = z.infer<typeof BorrowOfferSchemaRaw>
-
-export type DBOffer = z.infer<typeof DBOfferSchema>

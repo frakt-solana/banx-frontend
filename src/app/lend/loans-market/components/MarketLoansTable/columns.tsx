@@ -11,7 +11,7 @@ import {
 import Timer from '@banx/components/Timer'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { Hourglass, Snowflake } from '@banx/icons'
 import {

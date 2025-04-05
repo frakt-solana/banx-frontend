@@ -9,7 +9,7 @@ import { divide } from 'lodash/fp'
 import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { ZERO_BN, bnToNumberSafe, formatDecimalWithSubscript, getTokenDecimals } from '@banx/utils'
 
 import {

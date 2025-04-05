@@ -8,7 +8,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions/helpers'
 

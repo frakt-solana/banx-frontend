@@ -1,7 +1,7 @@
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
 import { filter, first, groupBy, map, size, sumBy } from 'lodash'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   calcWeightedAverage,
   calculateLentTokenValueWithInterest,

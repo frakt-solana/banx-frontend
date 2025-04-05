@@ -12,7 +12,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { UserEscrow } from '@banx/api/tokens'
+import { UserEscrow } from '@banx/api'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'

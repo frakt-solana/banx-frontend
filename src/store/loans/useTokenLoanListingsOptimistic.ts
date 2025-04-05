@@ -4,7 +4,7 @@ import { get, set } from 'idb-keyval'
 import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 
 import {
   TokenLoanOptimistic,

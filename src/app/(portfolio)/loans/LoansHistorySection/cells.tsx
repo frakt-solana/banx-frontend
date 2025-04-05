@@ -5,7 +5,7 @@ import { capitalize } from 'lodash'
 
 import { DisplayValue, HorizontalCell } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import {
   LoanStatus,
   STATUS_LOANS_COLOR_MAP,

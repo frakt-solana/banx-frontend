@@ -9,8 +9,8 @@ import { TxnExecutor } from 'solana-transactions-executor'
 
 import { AppSettingsModal } from '@banx/components/modals'
 
+import { CollateralToken, core } from '@banx/api'
 import { fetchConversionRate } from '@banx/api/common'
-import { CollateralToken, core } from '@banx/api/tokens'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { useCollateralsList, useTokenBondOffers, useWalletCollateralBalance } from '@banx/hooks'
 import { useModal, useSlippage, useTokenLoansOptimistic, useTokenType } from '@banx/store'

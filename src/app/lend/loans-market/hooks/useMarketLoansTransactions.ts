@@ -10,7 +10,7 @@ import {
   createRefinanceSubscribeNotificationsTitle,
 } from '@banx/components/modals'
 
-import { TokenLoan, core } from '@banx/api/tokens'
+import { TokenLoan, core } from '@banx/api'
 import { getDialectAccessToken } from '@banx/providers/dialect'
 import { useIsLedger, useModal } from '@banx/store'
 import {

@@ -6,7 +6,7 @@ import { chain } from 'lodash'
 import moment from 'moment'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan, core } from '@banx/api/tokens'
+import { TokenLoan, core } from '@banx/api'
 import {
   bnToNumberSafe,
   caclulateBorrowTokenLoanValue,

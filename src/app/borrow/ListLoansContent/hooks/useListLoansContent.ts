@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { BANX_TOKEN_MINT } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calcLenderTokenApr } from 'fbonds-core/lib/fbond-protocol/helpers'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { useCollateralsList } from '@banx/hooks'
 import { useTokenType } from '@banx/store'
 

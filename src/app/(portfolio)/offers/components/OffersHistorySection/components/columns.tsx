@@ -8,7 +8,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 
 import { ReceivedCell, StatusCell } from './cells'
 

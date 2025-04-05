@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useTokenLoanListingsOptimistic } from '@banx/store'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,

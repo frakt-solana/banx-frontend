@@ -4,7 +4,7 @@ import { calculateCurrentInterestSolPure } from 'fbonds-core/lib/fbond-protocol/
 import { calcBorrowerTokenAPR } from 'fbonds-core/lib/fbond-protocol/helpers'
 import moment from 'moment'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import { adjustTokenAmountWithUpfrontFee, bnToHuman, stringToBN } from '@banx/utils'
 

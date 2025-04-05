@@ -1,7 +1,7 @@
 import { BN } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { calculateNetApr } from '@banx/app/multiply/[ticker]/helpers'
 import { calcTokenLoanAprWithRepayFee, getTokenDecimals } from '@banx/utils'
 

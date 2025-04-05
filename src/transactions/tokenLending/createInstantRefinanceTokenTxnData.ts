@@ -9,7 +9,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { Offer } from '@banx/api'
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'

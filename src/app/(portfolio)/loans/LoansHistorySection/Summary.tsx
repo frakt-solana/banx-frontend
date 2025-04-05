@@ -6,7 +6,7 @@ import { Button } from '@banx/components/Buttons'
 import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 import { createDownloadLink } from '@banx/utils'
 

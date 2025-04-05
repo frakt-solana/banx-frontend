@@ -8,7 +8,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 
 import { TOOLTIP_TEXTS } from '../../constants'
 import { TvlProgressIndicator } from '../TvlProgressIndicator'

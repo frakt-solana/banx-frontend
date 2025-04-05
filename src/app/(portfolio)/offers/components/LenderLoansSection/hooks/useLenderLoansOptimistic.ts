@@ -4,7 +4,7 @@ import { produce } from 'immer'
 import { filter } from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 
 export interface LoanOptimistic {

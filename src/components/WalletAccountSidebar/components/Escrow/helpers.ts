@@ -7,8 +7,8 @@ import {
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
+import { UserEscrow } from '@banx/api'
 import { ClusterStats } from '@banx/api/common'
-import { UserEscrow } from '@banx/api/tokens'
 import { getTokenDecimals, getTokenTicker } from '@banx/utils'
 
 import { TabName } from './hooks'

@@ -8,7 +8,7 @@ import { CounterSlider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 import { TokenLoanOptimistic, useLoansTxns } from '../../hooks'
 import { calculateLoansStats, getPayInterestActionText } from './helpers'

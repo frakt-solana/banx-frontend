@@ -13,7 +13,7 @@ import { Loader } from '@banx/components/Loader'
 import { DisplayValue } from '@banx/components/TableComponents'
 import TokenInput from '@banx/components/TokenInput'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { PATHS } from '@banx/constants'
 import { Settings } from '@banx/icons'
 import { useTokenType } from '@banx/store'

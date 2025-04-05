@@ -9,7 +9,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
-import { TokenLoan, core } from '@banx/api/tokens'
+import { TokenLoan, core } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils'
 

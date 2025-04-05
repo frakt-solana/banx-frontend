@@ -9,7 +9,7 @@ import { CounterSlider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 
 import { TokenLoanOptimistic, useLenderLoansTxns } from '../../hooks'
 import { calculateLoansStats } from './helpers'

@@ -7,7 +7,7 @@ import EmptyList from '@banx/components/EmptyList'
 import Table, { ColumnType } from '@banx/components/Table'
 import { DisplayValue, DurationCell, HeaderCell } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import { MESSAGES } from '@banx/constants/messages'
 
 import { useVaultActivity } from '../VaultActivity/hooks'

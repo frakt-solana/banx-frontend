@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 
 import { BorrowToken } from '../../constants'
 

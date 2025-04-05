@@ -8,7 +8,7 @@ import {
   HeaderCell,
 } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 
 import { AprCell, StatusCell } from './cells'
 

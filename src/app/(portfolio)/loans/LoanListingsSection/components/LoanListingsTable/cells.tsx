@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { Button } from '@banx/components/Buttons'
 import { HorizontalCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   HealthColorIncreasing,

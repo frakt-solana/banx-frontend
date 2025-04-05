@@ -8,7 +8,7 @@ import { Slider, SliderProps } from '@banx/components/Slider'
 import { createDisplayValueJSX } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { useDebounce } from '@banx/hooks'
 import { Wallet } from '@banx/icons'
 import { useModal, useTokenType } from '@banx/store/common'

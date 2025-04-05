@@ -6,7 +6,7 @@ import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import { NumericStepInput } from '@banx/components/inputs'
 
-import { TokenLoan, core } from '@banx/api/tokens'
+import { TokenLoan, core } from '@banx/api'
 import {
   caclulateBorrowTokenLoanValue,
   formatTrailingZeros,

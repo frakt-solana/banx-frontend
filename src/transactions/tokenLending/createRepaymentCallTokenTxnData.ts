@@ -7,7 +7,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { BondTradeTransaction } from '@banx/api'
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { parseAccountInfoByPubkey } from '../functions'

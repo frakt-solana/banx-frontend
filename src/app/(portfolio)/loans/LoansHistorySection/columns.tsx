@@ -7,7 +7,7 @@ import {
   HorizontalCell,
 } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 
 import { DebtCell, RepaidCell, StatusCell } from './cells'
 

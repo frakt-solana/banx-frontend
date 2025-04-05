@@ -1,7 +1,7 @@
 import produce from 'immer'
 import { create } from 'zustand'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 type LoansTokenState = {
   selection: core.TokenLoan[]

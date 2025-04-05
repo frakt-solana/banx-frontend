@@ -5,7 +5,7 @@ import { BN } from 'fbonds-core'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { adjustTokenAmountWithUpfrontFee } from '@banx/utils'
 
 import { getSummaryInfo } from './helpers'

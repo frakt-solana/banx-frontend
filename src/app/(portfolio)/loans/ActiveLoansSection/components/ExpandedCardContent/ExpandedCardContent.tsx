@@ -6,7 +6,7 @@ import { filter } from 'lodash'
 import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { isTokenLoanRepaymentCallActive, isTokenLoanTerminating } from '@banx/utils'
 
 import { useLoansSorting, useLoansState } from '../../hooks'

@@ -5,7 +5,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { RBOption } from '@banx/components/RadioButton'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import { useTokenMarketsPreview } from '@banx/hooks'
 import { useTokenType } from '@banx/store/common'
 

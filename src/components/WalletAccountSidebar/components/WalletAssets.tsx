@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Loader } from '@banx/components/Loader'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { useWalletTokenAssets } from '@banx/hooks'
 import {
   bnToHuman,

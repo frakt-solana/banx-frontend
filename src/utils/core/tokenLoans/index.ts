@@ -11,8 +11,7 @@ import {
 import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
-import { convertBondTradeTransactionToCore } from '@banx/api'
-import { core } from '@banx/api/tokens'
+import { convertBondTradeTransactionToCore, core } from '@banx/api'
 import { SECONDS_IN_72_HOURS, SECONDS_IN_DAY } from '@banx/constants'
 
 export enum LoanStatus {

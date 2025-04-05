@@ -1,6 +1,6 @@
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { getTokenDecimals } from '@banx/utils'
 
 /**

@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { Button } from '@banx/components/Buttons'
 import NumericInput from '@banx/components/inputs/NumericInput'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { ChevronDown, Wallet } from '@banx/icons'
 import { useModal } from '@banx/store'
 import { ZERO_BN, bnToHuman } from '@banx/utils'

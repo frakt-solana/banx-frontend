@@ -12,7 +12,7 @@ import {
 } from '@banx/components/TableComponents'
 import Timer from '@banx/components/Timer'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { useModal } from '@banx/store/common'
 import {

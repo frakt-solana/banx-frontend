@@ -10,7 +10,7 @@ import { MarketTokenType } from '@banx/components/Dropdowns'
 import { filterBySearchQuery } from '@banx/components/Search'
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { VaultPreview, fetchVaultsPreview } from '@banx/api/tokens'
+import { VaultPreview, fetchVaultsPreview } from '@banx/api'
 import { MESSAGES } from '@banx/constants'
 import { queryClient } from '@banx/providers/query'
 import { ZERO_BN } from '@banx/utils'

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import moment from 'moment'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 const LOANS_CACHE_TIME_UNIX = 2 * 60 //? Auto clear optimistic after 2 minutes
 

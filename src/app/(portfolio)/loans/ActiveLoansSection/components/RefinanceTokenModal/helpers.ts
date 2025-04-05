@@ -2,7 +2,7 @@ import { BN } from 'fbonds-core'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   ZERO_BN,
   caclulateBorrowTokenLoanValue,

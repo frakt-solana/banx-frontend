@@ -4,7 +4,7 @@ import { Button } from '@banx/components/Buttons'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import TokenInput from '@banx/components/TokenInput'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useCollateralsList } from '@banx/hooks'
 import {
   caclulateBorrowTokenLoanValue,

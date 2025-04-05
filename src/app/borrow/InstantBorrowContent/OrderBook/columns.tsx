@@ -1,7 +1,7 @@
 import { ColumnType } from '@banx/components/Table'
 import { DisplayValue, HeaderCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { insertAtArray } from '@banx/utils'
 
 import { BorrowOffer, ColumnKey, SortColumnOption } from '../hooks'

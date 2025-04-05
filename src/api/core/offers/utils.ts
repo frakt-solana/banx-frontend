@@ -1,11 +1,17 @@
 import { BN, web3 } from 'fbonds-core'
-import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
+import {
+  BondFeatures,
+  BondOfferV3,
+  BondingCurveType,
+  PairState,
+} from 'fbonds-core/lib/fbond-protocol/types'
 import { convertValuesInAccount } from 'solana-transactions-parser'
+import { z } from 'zod'
 
+import { zNumberToBN, zStringToPubkey } from '@banx/api/zodSchemas'
 import { bnToNumberSafe } from '@banx/utils'
 
-import { BondOfferV3Schema } from './schemas'
-import { DBOffer, Offer } from './types'
+import { Offer, OfferStr } from './types'
 
 export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
   return convertValuesInAccount<Offer>(bondOffer, {
@@ -17,10 +23,41 @@ export const convertBondOfferV3ToCore = (bondOffer: BondOfferV3): Offer => {
 }
 
 export const convertCoreOfferToBondOfferV3 = (offer: Offer): BondOfferV3 => {
-  return BondOfferV3Schema.parse(offer)
+  return z
+    .object({
+      publicKey: zStringToPubkey,
+      assetReceiver: zStringToPubkey,
+      baseSpotPrice: zNumberToBN,
+      bidCap: zNumberToBN,
+      bidSettlement: zNumberToBN,
+      bondingCurve: z.object({
+        delta: zNumberToBN,
+        bondingType: z.nativeEnum(BondingCurveType),
+      }),
+      buyOrdersQuantity: zNumberToBN,
+      concentrationIndex: zNumberToBN,
+      currentSpotPrice: zNumberToBN,
+      edgeSettlement: zNumberToBN,
+      fundsSolOrTokenBalance: zNumberToBN,
+      hadoMarket: zStringToPubkey,
+      lastTransactedAt: zNumberToBN,
+      mathCounter: zNumberToBN,
+      pairState: z.nativeEnum(PairState),
+      validation: z.object({
+        loanToValueFilter: zNumberToBN,
+        collateralsPerToken: zNumberToBN,
+        maxReturnAmountFilter: zNumberToBN,
+        bondFeatures: z.nativeEnum(BondFeatures),
+      }),
+
+      loanApr: zNumberToBN,
+      liquidationLtvBp: zNumberToBN,
+      offerLtvBp: zNumberToBN,
+    })
+    .parse(offer)
 }
 
-export const convertBondOfferV3ToDBOffer = (offer: BondOfferV3): DBOffer => {
+export const convertBondOfferV3ToOfferStr = (offer: BondOfferV3): OfferStr => {
   return {
     publicKey: offer.publicKey.toBase58(),
     assetReceiver: offer.assetReceiver.toBase58(),
@@ -54,7 +91,7 @@ export const convertBondOfferV3ToDBOffer = (offer: BondOfferV3): DBOffer => {
   }
 }
 
-export const convertDBOfferToBondOfferV3 = (offer: DBOffer): BondOfferV3 => {
+export const convertOfferStrToBondOfferV3 = (offer: OfferStr): BondOfferV3 => {
   return {
     publicKey: new web3.PublicKey(offer.publicKey),
     assetReceiver: new web3.PublicKey(offer.assetReceiver),

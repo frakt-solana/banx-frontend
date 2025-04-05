@@ -11,7 +11,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createDisplayValueJSX } from '@banx/components/TableComponents'
 import { Tabs, useTabs } from '@banx/components/Tabs'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { PATHS } from '@banx/constants'
 import { formatCompact, getTokenDecimals, getTokenUnit } from '@banx/utils'
 

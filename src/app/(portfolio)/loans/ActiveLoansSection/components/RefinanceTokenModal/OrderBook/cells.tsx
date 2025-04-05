@@ -9,7 +9,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { Button } from '@banx/components/Buttons'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import {
   adjustTokenAmountWithUpfrontFee,
   bnToNumberSafe,

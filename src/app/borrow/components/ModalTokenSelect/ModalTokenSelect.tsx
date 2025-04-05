@@ -6,7 +6,7 @@ import { BN } from 'fbonds-core'
 import { Input } from '@banx/components/inputs/Input'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { useModal } from '@banx/store/common'
 
 import { PinnedTokensList, TokenListItem, TokensListLabels } from './components'

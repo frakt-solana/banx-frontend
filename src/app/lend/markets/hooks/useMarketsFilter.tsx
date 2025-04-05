@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { filterBySearchQuery } from '@banx/components/Search'
 
-import { MarketCategory, MarketTokenRewards, TokenMarketPreview } from '@banx/api/tokens'
+import { MarketTokenRewards, TokenMarketPreview } from '@banx/api'
+import { MarketCategory } from '@banx/constants'
 import { useTokenType } from '@banx/store/common'
 
 export const useMarketsFilter = (

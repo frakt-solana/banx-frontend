@@ -6,7 +6,7 @@ import produce from 'immer'
 import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan, fetchTokenLenderLoans } from '@banx/api/tokens'
+import { TokenLoan, fetchTokenLenderLoans } from '@banx/api'
 
 import { useLenderLoansOptimistic } from './useLenderLoansOptimistic'
 

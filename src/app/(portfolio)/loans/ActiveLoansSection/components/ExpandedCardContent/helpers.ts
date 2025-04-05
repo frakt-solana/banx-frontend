@@ -1,6 +1,6 @@
 import { sumBy } from 'lodash'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   LoanStatus,
   STATUS_LOANS_MAP,

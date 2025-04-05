@@ -12,7 +12,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { TokenOfferPreview } from '@banx/api/tokens'
+import { TokenOfferPreview } from '@banx/api'
 import { Pencil } from '@banx/icons'
 import { SyntheticTokenOffer } from '@banx/store'
 import {

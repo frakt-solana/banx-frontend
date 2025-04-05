@@ -4,7 +4,7 @@ import { every, uniqueId } from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { useTokenLoansOptimistic } from '@banx/store'
 import { useIsLedger, useModal, useSlippage } from '@banx/store/common'

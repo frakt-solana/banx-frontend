@@ -9,7 +9,7 @@ import moment from 'moment'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { MarketTokenRewards, TokenMarketPreview } from '@banx/api/tokens'
+import { MarketTokenRewards, TokenMarketPreview } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   HealthColorIncreasing,

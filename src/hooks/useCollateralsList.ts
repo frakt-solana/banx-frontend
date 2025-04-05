@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 
-import { CollateralToken, core } from '@banx/api/tokens'
+import { CollateralToken, core } from '@banx/api'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { useTokenType } from '@banx/store'
 import { bnToHuman, isBanxSolTokenType } from '@banx/utils'

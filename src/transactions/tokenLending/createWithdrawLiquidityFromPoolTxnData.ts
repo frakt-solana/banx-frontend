@@ -14,7 +14,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { UserEscrow, VaultPreview } from '@banx/api/tokens'
+import { UserEscrow, VaultPreview } from '@banx/api'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'

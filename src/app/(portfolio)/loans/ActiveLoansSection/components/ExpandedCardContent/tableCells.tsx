@@ -14,7 +14,7 @@ import {
 import Timer from '@banx/components/Timer'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { createMultiplyPairFromCollateral } from '@banx/app/multiply/[ticker]/helpers'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { useModal } from '@banx/store/common'

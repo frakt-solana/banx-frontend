@@ -13,7 +13,7 @@ import {
   createLoanListingSubscribeNotificationsTitle,
 } from '@banx/components/modals'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { PATHS, SECONDS_IN_DAY } from '@banx/constants'
 import { getDialectAccessToken } from '@banx/providers/dialect'
 import {

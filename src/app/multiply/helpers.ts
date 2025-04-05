@@ -1,6 +1,6 @@
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { TokenMarketPreview } from '@banx/api/tokens'
+import { TokenMarketPreview } from '@banx/api'
 import { getTokenDecimals, roundByMaxDigit } from '@banx/utils'
 
 export const formatMaxApr = (maxNetApr: number | undefined): string | undefined => {

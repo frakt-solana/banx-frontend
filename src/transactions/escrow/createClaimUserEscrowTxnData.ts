@@ -12,8 +12,8 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
+import { UserEscrow } from '@banx/api'
 import { ClusterStats } from '@banx/api/common'
-import { UserEscrow } from '@banx/api/tokens'
 import { BONDS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
 import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'

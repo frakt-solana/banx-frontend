@@ -13,7 +13,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import { MESSAGES } from '@banx/constants/messages'
 import { STATUS_LOANS_COLOR_MAP, STATUS_LOANS_MAP } from '@banx/utils'
 

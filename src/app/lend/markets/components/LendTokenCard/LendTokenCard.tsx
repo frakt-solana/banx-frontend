@@ -9,7 +9,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
-import { MarketTokenRewards, core } from '@banx/api/tokens'
+import { MarketTokenRewards, core } from '@banx/api'
 import { useMarketTokenRewards } from '@banx/hooks'
 import { Fire, StarSecondary } from '@banx/icons'
 import { useTokenType } from '@banx/store/common'

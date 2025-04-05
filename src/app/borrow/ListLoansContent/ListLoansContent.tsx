@@ -9,7 +9,7 @@ import { DisplayValue, createPercentValueJSX } from '@banx/components/TableCompo
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 import { NumericStepInput } from '@banx/components/inputs'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { HealthColorIncreasing, ZERO_BN, bnToHuman, getColorByPercent } from '@banx/utils'
 
 import InputTokenSelect, { ControlsButtons } from '../components/InputTokenSelect'

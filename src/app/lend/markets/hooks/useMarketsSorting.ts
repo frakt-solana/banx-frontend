@@ -4,7 +4,7 @@ import { orderBy } from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { TokenMarketPreview } from '@banx/api/tokens'
+import { TokenMarketPreview } from '@banx/api'
 
 export enum SortField {
   OFFER_TVL = 'offerTvl',

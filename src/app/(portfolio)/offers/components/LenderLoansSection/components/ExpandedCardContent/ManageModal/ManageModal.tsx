@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import { isTokenLoanTerminating } from '@banx/utils'
 

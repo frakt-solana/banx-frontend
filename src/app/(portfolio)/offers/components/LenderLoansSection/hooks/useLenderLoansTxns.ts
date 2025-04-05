@@ -5,7 +5,7 @@ import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useIsLedger, useModal } from '@banx/store/common'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,

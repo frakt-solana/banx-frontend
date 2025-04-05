@@ -3,7 +3,7 @@ import { calcBorrowerTokenAPR } from 'fbonds-core/lib/fbond-protocol/helpers'
 import { ColumnType } from '@banx/components/Table'
 import { HeaderCell } from '@banx/components/TableComponents'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { bnToNumberSafe } from '@banx/utils'
 
 import { LeverageSimpleOffer } from '../../types'

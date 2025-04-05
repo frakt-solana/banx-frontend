@@ -1,18 +1,12 @@
 import { BondFeatures, BondingCurveType, PairState } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
-import {
-  zNumberToBN,
-  zPubkeyString,
-  zStringToBN,
-  zStringToInt,
-  zStringToPubkey,
-} from '@banx/api/zodSchemas'
+import { zPubkeyString, zStringToBN, zStringToInt, zStringToPubkey } from '@banx/api/zodSchemas'
 import { MarketCategory } from '@banx/constants'
 
 import { TokenMetaSchema } from '../shared'
 
-export const OfferDBSchema = z.object({
+export const StrOfferToBondOfferV3Schema = z.object({
   publicKey: zStringToPubkey,
   assetReceiver: zStringToPubkey,
   baseSpotPrice: zStringToBN,
@@ -43,40 +37,9 @@ export const OfferDBSchema = z.object({
   offerLtvBp: zStringToBN,
 })
 
-export const BondOfferV3Schema = z.object({
-  publicKey: zStringToPubkey,
-  assetReceiver: zStringToPubkey,
-  baseSpotPrice: zNumberToBN,
-  bidCap: zNumberToBN,
-  bidSettlement: zNumberToBN,
-  bondingCurve: z.object({
-    delta: zNumberToBN,
-    bondingType: z.nativeEnum(BondingCurveType),
-  }),
-  buyOrdersQuantity: zNumberToBN,
-  concentrationIndex: zNumberToBN,
-  currentSpotPrice: zNumberToBN,
-  edgeSettlement: zNumberToBN,
-  fundsSolOrTokenBalance: zNumberToBN,
-  hadoMarket: zStringToPubkey,
-  lastTransactedAt: zNumberToBN,
-  mathCounter: zNumberToBN,
-  pairState: z.nativeEnum(PairState),
-  validation: z.object({
-    loanToValueFilter: zNumberToBN,
-    collateralsPerToken: zNumberToBN,
-    maxReturnAmountFilter: zNumberToBN,
-    bondFeatures: z.nativeEnum(BondFeatures),
-  }),
-
-  loanApr: zNumberToBN.default(0),
-  liquidationLtvBp: zNumberToBN,
-  offerLtvBp: zNumberToBN,
-})
-
 export const TokenOfferPreviewSchema = z.object({
   publicKey: z.string(),
-  bondOffer: OfferDBSchema,
+  bondOffer: StrOfferToBondOfferV3Schema,
   tokenMarketPreview: z.object({
     marketPubkey: z.string(),
     collateral: TokenMetaSchema,
@@ -138,7 +101,7 @@ export const BorrowOfferSchemaRaw = z.object({
   liquidationLtvBp: zStringToInt,
 })
 
-export const DBOfferSchema = z.object({
+export const OfferSchemaStr = z.object({
   publicKey: zPubkeyString,
   assetReceiver: zPubkeyString,
   baseSpotPrice: z.string(),

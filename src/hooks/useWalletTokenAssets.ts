@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { useTokenType } from '@banx/store'
 import { ZERO_BN } from '@banx/utils'
 

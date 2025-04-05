@@ -3,7 +3,7 @@ import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { revertTerminationPerpetualLoan } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 import { sendTxnPlaceHolder } from '../helpers'
 

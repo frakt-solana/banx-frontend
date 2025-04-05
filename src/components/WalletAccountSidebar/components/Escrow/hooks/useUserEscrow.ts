@@ -1,7 +1,7 @@
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 
-import { UserEscrow, fetchUserEscrows } from '@banx/api/tokens'
+import { UserEscrow, fetchUserEscrows } from '@banx/api'
 import { useClusterStats } from '@banx/hooks'
 import { queryClient } from '@banx/providers/query'
 import { useTokenType } from '@banx/store'

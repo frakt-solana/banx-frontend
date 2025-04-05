@@ -7,7 +7,7 @@ import EmptyList from '@banx/components/EmptyList'
 import { SortOrder } from '@banx/components/SortDropdown'
 import Table from '@banx/components/Table'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { bnToNumberSafe } from '@banx/utils'
 
 import { LeverageSimpleOffer } from '../../types'

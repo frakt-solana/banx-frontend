@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { pickBy } from 'lodash'
 
-import { fetchExtraTokenReward } from '@banx/api/tokens'
+import { fetchExtraTokenReward } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 
 export const useMarketTokenRewards = (marketPubkey: string) => {

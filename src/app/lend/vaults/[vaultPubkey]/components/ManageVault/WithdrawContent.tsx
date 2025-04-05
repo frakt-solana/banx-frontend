@@ -8,7 +8,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import { getTokenDecimals, stringToBN } from '@banx/utils'
 

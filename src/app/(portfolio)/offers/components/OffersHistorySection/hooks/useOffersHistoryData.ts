@@ -5,7 +5,7 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { activity } from '@banx/api/tokens'
+import { activity } from '@banx/api'
 import { createGlobalState } from '@banx/store'
 import { useTokenType } from '@banx/store/common'
 

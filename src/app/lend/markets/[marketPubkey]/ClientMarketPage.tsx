@@ -16,7 +16,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { Tabs, useTabs } from '@banx/components/Tabs'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenMarketPreview } from '@banx/api/tokens'
+import { TokenMarketPreview } from '@banx/api'
 import { PATHS, TABLET_WIDTH } from '@banx/constants'
 import { useMarketTokenRewards, useTokenMarketsPreview, useWindowSize } from '@banx/hooks'
 import { SOLFilled, USDC } from '@banx/icons'

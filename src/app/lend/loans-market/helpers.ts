@@ -1,6 +1,6 @@
 import { calculateCurrentInterestSolPure } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   caclulateBorrowTokenLoanValue,

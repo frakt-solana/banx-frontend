@@ -12,7 +12,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import { SellToRepayModal } from '@banx/components/modals'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   useCollateralConversionRate,
   useCollateralYield,

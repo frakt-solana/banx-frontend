@@ -1,7 +1,7 @@
 import produce from 'immer'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 
 export interface TokenLoanOptimistic {
   loan: TokenLoan

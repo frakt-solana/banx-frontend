@@ -5,7 +5,7 @@ import { BN } from 'fbonds-core'
 import EmptyList from '@banx/components/EmptyList'
 import Table from '@banx/components/Table'
 
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 import {
   adjustTokenAmountWithUpfrontFee,

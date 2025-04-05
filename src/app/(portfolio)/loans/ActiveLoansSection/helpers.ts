@@ -6,7 +6,7 @@ import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-pro
 import { filter, first, groupBy, map, size, sumBy } from 'lodash'
 import moment from 'moment'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   caclulateBorrowTokenLoanValue,
   calcTokenLoanAprWithRepayFee,

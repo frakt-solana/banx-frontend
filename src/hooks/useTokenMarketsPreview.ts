@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { useTokenType } from '@banx/store'
 
 export const USE_TOKEN_MARKETS_PREVIEW_QUERY_KEY = 'tokenMarketsPreview'

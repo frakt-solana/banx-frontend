@@ -7,7 +7,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import EmptyList from '@banx/components/EmptyList'
 import Table from '@banx/components/Table'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 
 import { getTableColumns } from './columns'
 

@@ -12,7 +12,7 @@ import {
 } from 'solana-transactions-executor'
 
 import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { CollateralToken } from '@banx/api/tokens'
+import { CollateralToken } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { ZERO_BN, getTokenDecimals } from '@banx/utils'
 

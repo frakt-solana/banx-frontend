@@ -5,7 +5,7 @@ import { web3 } from 'fbonds-core'
 import { BondOfferV3, LendingTokenType, PairState } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import { isOfferNewer, isOptimisticOfferExpired, useTokenOffersOptimistic } from '@banx/store'
 import { isOfferStateClosed } from '@banx/utils'
 

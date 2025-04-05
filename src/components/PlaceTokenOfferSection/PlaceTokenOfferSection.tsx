@@ -4,7 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { isEmpty } from 'lodash'
 
-import { MarketTokenRewards } from '@banx/api/tokens'
+import { MarketTokenRewards } from '@banx/api'
 import { getTokenUnit, isBanxSolTokenType } from '@banx/utils'
 
 import { InputErrorMessage, NumericStepInput } from '../inputs'

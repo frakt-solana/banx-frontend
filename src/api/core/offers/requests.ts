@@ -8,8 +8,12 @@ import {
 import { convertToMarketType, parseResponseSafe } from '@banx/api/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
-import { BorrowOfferSchemaRaw, OfferDBSchema, TokenOfferPreviewSchema } from './schemas'
-import { BorrowOfferRaw, OfferDB, TokenOfferPreview } from './types'
+import {
+  BorrowOfferSchemaRaw,
+  StrOfferToBondOfferV3Schema,
+  TokenOfferPreviewSchema,
+} from './schemas'
+import { BorrowOfferRaw, OfferStr, TokenOfferPreview } from './types'
 
 type FetchTokenMarketOffers = (props: {
   marketPubkey?: string
@@ -31,11 +35,11 @@ export const fetchTokenMarketOffers: FetchTokenMarketOffers = async ({
     isPrivate: String(IS_PRIVATE_MARKETS),
   })
 
-  const { data } = await axios.get<{ data: OfferDB[] }>(
+  const { data } = await axios.get<{ data: OfferStr[] }>(
     `${BACKEND_BASE_URL}/bond-offers/${marketPubkey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<BondOfferV3[]>(data?.data, OfferDBSchema.array())
+  return await parseResponseSafe<BondOfferV3[]>(data?.data, StrOfferToBondOfferV3Schema.array())
 }
 
 type FetchTokenOffersPreview = (props: {

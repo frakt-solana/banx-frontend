@@ -11,7 +11,7 @@ import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenOfferPreview, core } from '@banx/api/tokens'
+import { TokenOfferPreview, core } from '@banx/api'
 import { ChevronDown, Coin, CoinPlus, SOLFilled, USDC, Warning } from '@banx/icons'
 import { convertToSynthetic, useSyntheticTokenOffers } from '@banx/store'
 import {

@@ -11,7 +11,7 @@ import moment from 'moment'
 
 import { OnboardingModalContentType } from '@banx/components/modals'
 
-import { TokenMeta } from '@banx/api/tokens'
+import { TokenMeta } from '@banx/api'
 import { leverage } from '@banx/transactions/leverage'
 import { ZERO_BN, bnToNumberSafe, getTokenDecimals } from '@banx/utils'
 

@@ -4,7 +4,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { Button } from '@banx/components/Buttons'
 
-import { TokenMarketPreview } from '@banx/api/tokens'
+import { TokenMarketPreview } from '@banx/api'
 import {
   convertToDecimalString,
   formatTokensPerCollateral,

@@ -4,7 +4,7 @@ import { filter, size } from 'lodash'
 
 import { filterBySearchQuery } from '@banx/components/Search'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import {
   isTokenLoanFrozen,
   isTokenLoanListed,

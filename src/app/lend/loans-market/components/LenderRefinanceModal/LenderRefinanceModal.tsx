@@ -6,7 +6,7 @@ import Table, { ColumnType } from '@banx/components/Table'
 import { HeaderCell } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useModal } from '@banx/store/common'
 
 import { useMarketLoansTransactions } from '../../hooks'

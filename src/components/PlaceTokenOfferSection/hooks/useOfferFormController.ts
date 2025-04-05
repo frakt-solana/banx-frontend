@@ -5,7 +5,7 @@ import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protoco
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { every, isEqual, pick } from 'lodash'
 
-import { TokenMarketPreview } from '@banx/api/tokens'
+import { TokenMarketPreview } from '@banx/api'
 import { SyntheticTokenOffer } from '@banx/store'
 import { formatTokensPerCollateral, formatValueByTokenType, getTokenDecimals } from '@banx/utils'
 

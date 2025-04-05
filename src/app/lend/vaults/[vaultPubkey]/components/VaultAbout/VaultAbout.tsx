@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { Twitter } from '@banx/icons'
 
 import styles from './VaultAbout.module.scss'

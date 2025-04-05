@@ -5,7 +5,7 @@ import { orderBy } from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { TokenOfferPreview } from '@banx/api/tokens'
+import { TokenOfferPreview } from '@banx/api'
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
 import {

@@ -5,7 +5,7 @@ import { uniqueId } from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { useTokenBondOffers } from '@banx/hooks'
 import { useTokenLoansOptimistic } from '@banx/store'
 import { useModal } from '@banx/store/common'

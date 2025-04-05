@@ -5,7 +5,7 @@ import { Slider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api/tokens'
+import { core } from '@banx/api'
 import {
   HealthColorIncreasing,
   calculateTokenLoanLtvByLoanValue,

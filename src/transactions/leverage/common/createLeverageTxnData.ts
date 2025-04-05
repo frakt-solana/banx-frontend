@@ -9,8 +9,8 @@ import { offer as tokenOfferUtils } from 'fbonds-core/lib/fbond-protocol/tokenLe
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
+import { core } from '@banx/api'
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
-import { core } from '@banx/api/tokens'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions'

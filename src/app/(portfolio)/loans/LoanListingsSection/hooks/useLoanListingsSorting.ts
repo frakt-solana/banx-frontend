@@ -4,7 +4,7 @@ import { orderBy } from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { TokenLoan } from '@banx/api/tokens'
+import { TokenLoan } from '@banx/api'
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
 import { calculateTokenLoanLtvByLoanValue, getTokenDecimals, isUsdcTokenType } from '@banx/utils'

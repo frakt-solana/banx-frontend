@@ -5,7 +5,7 @@ import { TxnExecutor } from 'solana-transactions-executor'
 
 import { useUserEscrow } from '@banx/components/WalletAccountSidebar/components'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,

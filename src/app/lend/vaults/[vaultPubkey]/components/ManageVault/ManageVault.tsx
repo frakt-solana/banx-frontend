@@ -6,7 +6,7 @@ import { Button } from '@banx/components/Buttons'
 import { Tabs, useTabs } from '@banx/components/Tabs'
 import { useUserEscrow, useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
-import { VaultPreview } from '@banx/api/tokens'
+import { VaultPreview } from '@banx/api'
 import { useWalletBalance } from '@banx/hooks'
 import { getTokenDecimals, stringToBN } from '@banx/utils'
 
