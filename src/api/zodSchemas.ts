@@ -3,24 +3,31 @@ import { web3 } from 'fbonds-core'
 import { z } from 'zod'
 
 /**
- * BN from string
+ * Transforms a string → BN instance (use only `bn.js`)
  */
-export const SerializedBNSchema = z.string().transform((val) => new BN(val))
+export const zStringToBN = z.string().transform((val) => new BN(val))
 
 /**
- * PublicKey from string
+ * Transforms a number → BN
  */
-export const SerializedPublicKeySchema = z.string().transform((val) => new web3.PublicKey(val))
+export const zNumberToBN = z.number().transform((val) => new BN(val.toString()))
 
 /**
- * Number from string
+ * Transforms a string → Solana PublicKey
  */
-export const StringIntSchema = z.string().transform((val) => parseInt(val))
+export const zStringToPubkey = z.string().transform((val) => new web3.PublicKey(val))
 
-export const StringToNumberSchema = z.string().transform((val) => parseFloat(val))
+/**
+ * Transforms a string → integer
+ */
+export const zStringToInt = z.string().transform((val) => parseInt(val))
 
-export const SerializedIntBNSchema = z.number().transform((value) => {
-  return new BN(value.toString())
-})
+/**
+ * Transforms a string → float
+ */
+export const zStringToFloat = z.string().transform((val) => parseFloat(val))
 
-export const StringPublicKeySchema = z.string()
+/**
+ * Leaves public key string as-is
+ */
+export const zPubkeyString = z.string()

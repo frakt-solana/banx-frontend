@@ -10,12 +10,12 @@ import { z } from 'zod'
 
 import { BondTradeTransactionSchema, FraktBondSchema } from '@banx/api/shared'
 import {
-  SerializedBNSchema,
-  SerializedIntBNSchema,
-  SerializedPublicKeySchema,
-  StringIntSchema,
-  StringPublicKeySchema,
-  StringToNumberSchema,
+  zNumberToBN,
+  zPubkeyString,
+  zStringToBN,
+  zStringToFloat,
+  zStringToInt,
+  zStringToPubkey,
 } from '@banx/api/zodSchemas'
 import { MarketCategory } from '@banx/constants'
 
@@ -29,8 +29,8 @@ export const TokenMetaSchema = z.object({
   totalSupply: z.string(),
   fullyDilutedValuation: z.string(),
   fullyDilutedValuationInMillions: z.string(),
-  interestFee: StringIntSchema,
-  upfrontFee: StringIntSchema,
+  interestFee: zStringToInt,
+  upfrontFee: zStringToInt,
   oraclePriceFeedType: z.nativeEnum(OraclePriceFeedType),
   oraclePriceFeed: z.string().optional(),
 })
@@ -40,18 +40,18 @@ export const TokenLoanSchema = z.object({
   fraktBond: FraktBondSchema,
   bondTradeTransaction: BondTradeTransactionSchema,
   collateral: TokenMetaSchema,
-  collateralPrice: StringToNumberSchema,
+  collateralPrice: zStringToFloat,
   totalRepaidAmount: z.number().optional(),
   pnl: z.number().nullable().optional(),
-  offerLtvBp: StringIntSchema,
-  liquidationLtvBp: StringIntSchema,
+  offerLtvBp: zStringToInt,
+  liquidationLtvBp: zStringToInt,
 })
 
 export const TokenMarketPreviewSchema = z.object({
   marketPubkey: z.string(),
 
   collateral: TokenMetaSchema,
-  collateralPrice: StringIntSchema,
+  collateralPrice: zStringToInt,
 
   collectionName: z.string(),
 
@@ -70,34 +70,34 @@ export const TokenMarketPreviewSchema = z.object({
 })
 
 export const BondOfferV3Schema = z.object({
-  publicKey: SerializedPublicKeySchema,
-  assetReceiver: SerializedPublicKeySchema,
-  baseSpotPrice: SerializedBNSchema,
-  bidCap: SerializedBNSchema,
-  bidSettlement: SerializedBNSchema,
+  publicKey: zStringToPubkey,
+  assetReceiver: zStringToPubkey,
+  baseSpotPrice: zStringToBN,
+  bidCap: zStringToBN,
+  bidSettlement: zStringToBN,
   bondingCurve: z.object({
-    delta: SerializedBNSchema,
+    delta: zStringToBN,
     bondingType: z.nativeEnum(BondingCurveType),
   }),
-  buyOrdersQuantity: SerializedBNSchema,
-  concentrationIndex: SerializedBNSchema,
-  currentSpotPrice: SerializedBNSchema,
-  edgeSettlement: SerializedBNSchema,
-  fundsSolOrTokenBalance: SerializedBNSchema,
-  hadoMarket: SerializedPublicKeySchema,
-  lastTransactedAt: SerializedBNSchema,
-  mathCounter: SerializedBNSchema,
+  buyOrdersQuantity: zStringToBN,
+  concentrationIndex: zStringToBN,
+  currentSpotPrice: zStringToBN,
+  edgeSettlement: zStringToBN,
+  fundsSolOrTokenBalance: zStringToBN,
+  hadoMarket: zStringToPubkey,
+  lastTransactedAt: zStringToBN,
+  mathCounter: zStringToBN,
   pairState: z.nativeEnum(PairState),
   validation: z.object({
-    loanToValueFilter: SerializedBNSchema,
-    collateralsPerToken: SerializedBNSchema,
-    maxReturnAmountFilter: SerializedBNSchema,
+    loanToValueFilter: zStringToBN,
+    collateralsPerToken: zStringToBN,
+    maxReturnAmountFilter: zStringToBN,
     bondFeatures: z.nativeEnum(BondFeatures),
   }),
 
-  loanApr: SerializedBNSchema.default('0'),
-  liquidationLtvBp: SerializedBNSchema,
-  offerLtvBp: SerializedBNSchema,
+  loanApr: zStringToBN.default('0'),
+  liquidationLtvBp: zStringToBN,
+  offerLtvBp: zStringToBN,
 })
 
 export const TokenOfferPreviewSchema = z.object({
@@ -106,7 +106,7 @@ export const TokenOfferPreviewSchema = z.object({
   tokenMarketPreview: z.object({
     marketPubkey: z.string(),
     collateral: TokenMetaSchema,
-    collateralPrice: StringIntSchema,
+    collateralPrice: zStringToInt,
     marketCategory: z.array(z.string().or(z.nativeEnum(MarketCategory))),
   }),
   tokenOfferPreview: z.object({
@@ -128,13 +128,13 @@ export const TokenLoanAuctionsAndListingsSchema = z.object({
 export const CollateralTokenSchema = z.object({
   marketPubkey: z.string(),
   collateral: TokenMetaSchema,
-  collateralPrice: StringIntSchema,
-  amountInWallet: SerializedIntBNSchema,
+  collateralPrice: zStringToInt,
+  amountInWallet: zNumberToBN,
 })
 
 export const DBOfferSchema = z.object({
-  publicKey: StringPublicKeySchema,
-  assetReceiver: StringPublicKeySchema,
+  publicKey: zPubkeyString,
+  assetReceiver: zPubkeyString,
   baseSpotPrice: z.string(),
   bidCap: z.string(),
   bidSettlement: z.string(),
@@ -147,7 +147,7 @@ export const DBOfferSchema = z.object({
   currentSpotPrice: z.string(),
   edgeSettlement: z.string(),
   fundsSolOrTokenBalance: z.string(),
-  hadoMarket: StringPublicKeySchema,
+  hadoMarket: zPubkeyString,
   lastTransactedAt: z.string(),
   mathCounter: z.string(),
   pairState: z.nativeEnum(PairState),
@@ -173,8 +173,8 @@ export const BorrowOfferSchemaRaw = z.object({
   apr: z.string(), //?  BN serialized to decimal string (apr in base points)
   ltv: z.string(), //? BN serialized to decimal string (ltv in base points)
   assetReceiver: z.string(),
-  offerLtvBp: StringIntSchema,
-  liquidationLtvBp: StringIntSchema,
+  offerLtvBp: zStringToInt,
+  liquidationLtvBp: zStringToInt,
 })
 
 export const VaultPreviewSchema = z.object({
@@ -189,10 +189,10 @@ export const VaultPreviewSchema = z.object({
   targetApy: z.number(),
   performance: z.number(),
 
-  reserves: StringIntSchema,
-  requestedWithdrawAmount: StringIntSchema,
-  userTotalDepositedAmount: StringIntSchema,
-  pendingClaimAmount: StringIntSchema,
+  reserves: zStringToInt,
+  requestedWithdrawAmount: zStringToInt,
+  userTotalDepositedAmount: zStringToInt,
+  pendingClaimAmount: zStringToInt,
 
   lendingToken: z.nativeEnum(LendingTokenType),
 
@@ -233,20 +233,20 @@ export const MultiplyMarketDataSchema = z.object({
 })
 
 export const UserEscrowSchema = z.object({
-  publicKey: SerializedPublicKeySchema,
+  publicKey: zStringToPubkey,
   userVaultState: z.nativeEnum(UserVaultState),
-  user: SerializedPublicKeySchema,
+  user: zStringToPubkey,
   lendingTokenType: z.nativeEnum(LendingTokenType),
-  offerLiquidityAmount: SerializedBNSchema,
-  liquidityInLoansAmount: SerializedBNSchema,
-  repaymentsAmount: SerializedBNSchema,
-  interestRewardsAmount: SerializedBNSchema,
-  rentRewards: SerializedBNSchema,
-  fundsInCurrentEpoch: SerializedBNSchema,
-  fundsInNextEpoch: SerializedBNSchema,
-  lastCalculatedSlot: SerializedBNSchema,
-  lastCalculatedTimestamp: SerializedBNSchema,
-  rewardsToHarvest: SerializedBNSchema,
-  rewardsHarvested: SerializedBNSchema,
-  lastTransactedAt: SerializedBNSchema,
+  offerLiquidityAmount: zStringToBN,
+  liquidityInLoansAmount: zStringToBN,
+  repaymentsAmount: zStringToBN,
+  interestRewardsAmount: zStringToBN,
+  rentRewards: zStringToBN,
+  fundsInCurrentEpoch: zStringToBN,
+  fundsInNextEpoch: zStringToBN,
+  lastCalculatedSlot: zStringToBN,
+  lastCalculatedTimestamp: zStringToBN,
+  rewardsToHarvest: zStringToBN,
+  rewardsHarvested: zStringToBN,
+  lastTransactedAt: zStringToBN,
 })
