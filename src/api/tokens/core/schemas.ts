@@ -17,8 +17,7 @@ import {
   StringPublicKeySchema,
   StringToNumberSchema,
 } from '@banx/api/zodSchemas'
-
-import { MarketCategory } from './types'
+import { MarketCategory } from '@banx/constants'
 
 export const TokenMetaSchema = z.object({
   mint: z.string(),

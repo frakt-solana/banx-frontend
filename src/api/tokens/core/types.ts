@@ -39,18 +39,6 @@ export type CollateralToken = Omit<BaseCollateralToken, 'amountInWallet'> & {
 export type DBOffer = z.infer<typeof DBOfferSchema>
 export type BorrowOfferRaw = z.infer<typeof BorrowOfferSchemaRaw>
 
-export enum MarketCategory {
-  All = 'All',
-  LST = 'LST',
-  DeFi = 'DeFi',
-  Meme = 'Meme',
-  Governance = 'Governance',
-  RWA = 'RWA',
-  LP = 'LP',
-  DePin = 'DePin',
-  Gaming = 'Gaming',
-}
-
 interface RewardProgram {
   name: string
   rewardRate: string

@@ -13,8 +13,7 @@ import { Search } from '@banx/components/Search'
 import { SortDropdown, SortDropdownProps } from '@banx/components/SortDropdown'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
-import { MarketCategory } from '@banx/api/tokens'
-import { MARKETS_CATEGORIES } from '@banx/constants'
+import { MARKETS_CATEGORIES, MarketCategory } from '@banx/constants'
 import { Fire, StarSecondary } from '@banx/icons'
 
 import { SortField } from '../../hooks'

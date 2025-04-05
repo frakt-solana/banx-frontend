@@ -5,7 +5,7 @@ import { isEmpty } from 'lodash'
 import { MarketTokenType } from '@banx/components/Dropdowns'
 import { filterBySearchQuery } from '@banx/components/Search'
 
-import { MarketCategory } from '@banx/api/tokens'
+import { MarketCategory } from '@banx/constants'
 import { MESSAGES, NO_OFFERS_IN_MARKET_MESSAGE } from '@banx/constants/messages'
 import { getLendingTokenFromBondingCurve } from '@banx/utils'
 
