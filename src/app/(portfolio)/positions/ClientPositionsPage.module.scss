@@ -1,0 +1,95 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+
+  margin-top: 12px;
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+// * HeaderList * //
+.headerList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.headerMainStat {
+  display: flex;
+  align-items: center;
+  min-width: 290px;
+
+  @media (min-width: 961px) and (max-width: 1240px) {
+    min-width: 176px;
+  }
+}
+
+.headerStatLabel {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+}
+
+.headerStats {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 84px;
+  gap: 16px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.headerAdditionalStat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  max-width: 180px;
+  width: 100%;
+
+  @media (max-width: 1240px) {
+    max-width: 120px;
+  }
+}
+// * HeaderList * //
+
+.filterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 8px 16px;
+  }
+}
+
+.filterContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}

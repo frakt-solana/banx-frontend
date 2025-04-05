@@ -1,0 +1,116 @@
+.modalContent {
+  //? To prevent height jumps on loading
+  min-height: 246px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 960px) {
+    min-height: 212px;
+  }
+}
+.modalContentSlippageVisible {
+  //? To prevent height jumps on loading
+  min-height: 282px;
+
+  @media (max-width: 960px) {
+    min-height: 248px;
+  }
+}
+
+.titleWrapper {
+  display: grid;
+  column-gap: 14px;
+  grid-template-columns: repeat(2, auto);
+  margin-bottom: 18px;
+
+  @media screen and (max-width: 640px) {
+    column-gap: 8px;
+    margin-bottom: 12px;
+  }
+}
+
+.title {
+  font: var(--title-xl);
+  text-transform: uppercase;
+
+  @media screen and (max-width: 640px) {
+    font: var(--title-lg);
+  }
+}
+
+.subtitle {
+  margin-bottom: 6px;
+}
+
+.slippageBtn {
+  svg path {
+    fill: var(--content-primary);
+  }
+}
+.slippageBtnActive {
+  border-color: var(--bg-border-active);
+}
+
+.tabs {
+  grid-column: span 2;
+  background: var(--bg-tertiary);
+  border: var(--border-less-primary);
+  border-radius: 100px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  padding: 4px;
+}
+
+.tab {
+  background: unset;
+  border: unset;
+  border-radius: 100px;
+
+  color: var(--content-secondary);
+  cursor: pointer;
+  font: var(--btn-text-md);
+
+  padding: 4px 8px;
+  outline: unset;
+}
+
+.tabActive {
+  background: var(--action-primary);
+  color: var(--content-primary);
+}
+
+.fixedStatValue {
+  white-space: nowrap;
+
+  @media (max-width: 960px) {
+    max-width: 144px;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+
+  @media (max-width: 960px) {
+    gap: 4px;
+  }
+
+  @media screen and (max-width: 640px) {
+    margin-bottom: 12px;
+  }
+}
+
+.textGreen {
+  color: var(--additional-green-primary-deep);
+}
+.textRed {
+  color: var(--additional-red-primary-deep);
+}
+
+.confirmButton {
+  width: 100%;
+}
