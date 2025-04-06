@@ -1,0 +1,16 @@
+.content {
+  color: var(--content-primary);
+
+  a {
+    border-bottom: 1px solid;
+  }
+
+  h1 {
+    font: var(--important-text-3xl);
+    margin-bottom: 14px;
+
+    @media screen and (max-width: 960px) {
+      font: var(--important-text-2xl);
+    }
+  }
+}

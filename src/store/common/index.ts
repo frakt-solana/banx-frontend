@@ -1,3 +1,4 @@
+export * from './useBanxLogin'
 export * from './useIsLedger'
 export * from './useModal'
 export * from './usePriorityFees'

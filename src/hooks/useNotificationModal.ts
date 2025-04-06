@@ -1,0 +1,47 @@
+import { useEffect } from 'react'
+
+import { useQuery } from '@tanstack/react-query'
+
+import { NotificationModal } from '@banx/components/modals'
+
+import { notifications } from '@banx/api/common'
+import { useModal } from '@banx/store/common'
+
+import { useLocalStorage } from './useLocalStorage'
+
+export const useNotificationModal = () => {
+  const { open, close } = useModal()
+
+  //? Store in localstorage prev notification
+  const [prevModalHtmlContent, setPrevModalHtmlContent] = useLocalStorage<string | null>(
+    '@banx.modalHtmlContent',
+    null,
+  )
+
+  const { data: modalHtmlContent } = useQuery({
+    queryKey: ['modalNotification'],
+    queryFn: () => {
+      return notifications.fetchModalNotification()
+    },
+    refetchInterval: 30 * 60 * 1000,
+    refetchOnWindowFocus: false,
+  })
+
+  useEffect(() => {
+    if (!modalHtmlContent) {
+      return
+    }
+
+    if (modalHtmlContent === prevModalHtmlContent) {
+      return
+    }
+
+    open(NotificationModal, {
+      htmlContent: modalHtmlContent,
+      onCancel: () => {
+        setPrevModalHtmlContent(modalHtmlContent ?? null)
+        close()
+      },
+    })
+  }, [close, modalHtmlContent, open, prevModalHtmlContent, setPrevModalHtmlContent])
+}

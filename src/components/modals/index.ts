@@ -1,7 +1,9 @@
 export * from './AppSettingsModal'
 export * from './BaseModal'
 export * from './EscrowWarningModal'
+export * from './NotificationModal'
 export * from './OnboardingModal'
+export * from './RefferralModal'
 export * from './SellToRepayModal'
 export * from './SubscribeNotificationsModal'
 
