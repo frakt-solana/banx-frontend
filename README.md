@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏦 Banx Frontend
 
-## Getting Started
+Banx is a DeFi application built on Solana that allows users to lend, borrow, and multiply yield against any token.
 
-First, run the development server:
+This is the **frontend** implementation using modern React and TypeScript with the [Next.js App Router](https://nextjs.org/docs/app).
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: SCSS Modules
+- **State Management**: Zustand
+- **Async Logic**: React Query
+- **Validation**: Zod
+- **Solana SDK**: [fbonds-core](https://github.com/frakt-solana/fnd-core) , [banx-vaults-sdk](https://github.com/frakt-solana/banx-vaults)
+
+---
+
+## 📦 Getting Started
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💡 Scripts
 
-## Learn More
+| Command          | Description               |
+| ---------------- | ------------------------- |
+| `yarn dev`       | Start dev server          |
+| `yarn build`     | Production build          |
+| `yarn start`     | Run the app in prod mode  |
+| `yarn lint`      | Run ESLint                |
+| `yarn lint:fix`  | Fix all lint issues       |
+| `yarn build:log` | Build & write log to file |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add your `.env.local` with any custom values. Example:
 
-## Deploy on Vercel
+```
+RPC_LOCALHOST=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+SENTRY_ORG=
+SENTRY_PROJECT=
+SENTRY_AUTH_TOKEN=
+SENTRY_DEPLOY_SOURCEMAPS=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+IS_PRIVATE_MARKETS=
+
+COMPRESS_QUERY_PERSISTER_ON_BUILD=
+```
+
+---
+
+## 🧐 Author
+
+Built by [@iamsphere](https://github.com/iamsphere) and [@sablevsky](https://github.com/sablevsky) with ❤️
