@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
+import { convertToMarketType } from '@banx/api/core'
 import { BACKEND_BASE_URL } from '@banx/constants'
 
-import { convertToMarketType, parseResponseSafe } from '../../base/helpers'
+import { parseResponseSafe } from '../../base/helpers'
 import { AllTotalStatsSchema, UserLoansStatsSchema, UserOffersStatsSchema } from './schemas'
 import {
   AllTotalStats,
@@ -19,7 +20,6 @@ type FetchUserOffersStats = (props: {
   tokenType: 'nft' | 'spl'
 }) => Promise<UserOffersStats | null>
 
-//TODO (TokenLending): Move to common folder
 export const fetchUserOffersStats: FetchUserOffersStats = async ({
   walletPubkey,
   marketType,

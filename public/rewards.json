@@ -1,0 +1,24 @@
+{
+  "7EuPa26AjGdnQ7JcqM3kFhwFR4U2NQTU9guHcmaDF2G": {
+    "lendingTokenType": "banxSol",
+    "description": "This market earns additional rewards: Adrastea restaking",
+    "rewardPrograms": [
+      {
+        "name": "Restaking rewards",
+        "rewardRate": "",
+        "details": "Adrastea automatically identifies the best AVS to delegate liquidity to, so you don’t have to. Simple. In v1, the AVS is predefined by the protocol."
+      }
+    ]
+  },
+  "HqpFfK9Dz6p9Pyt5Ncg8PvGNcw1sKNhQZFqfm5B32Z82": {
+    "lendingTokenType": "banxSol",
+    "description":"This market earns additional rewards: Vault points",
+    "rewardPrograms": [
+      {
+        "name": "Vaults points",
+        "rewardRate": "500K/week",
+        "details": "Vaults points are rewarded for vSOL used in protocol as collateral, as well as liquidity locked in vSOL loans"
+      }
+    ]
+  }
+}
