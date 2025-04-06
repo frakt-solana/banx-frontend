@@ -1,0 +1,176 @@
+// * MyOffers * //
+.allocationContainer {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.allocationContent {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-grow: 1;
+  gap: 24px;
+
+  @media (max-width: 640px) {
+    margin-bottom: 8px;
+    gap: 16px;
+  }
+}
+
+.allocationStatsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.doughnutChart {
+  width: 144px;
+  height: 144px;
+}
+
+.desktopChart {
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.mobileChart {
+  display: none;
+
+  @media (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.actionButton {
+  font: var(--btn-text-md) !important;
+  width: 100%;
+}
+// * MyOffers * //
+
+// * Header * //
+.allocationHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
+
+  @media (max-width: 960px) {
+    margin-bottom: 0;
+  }
+}
+
+.heading {
+  font: var(--title-xl);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--title-md);
+  }
+}
+
+.tooltip {
+  max-width: unset !important;
+  min-width: 328px !important;
+}
+// * Header * //
+
+// * StatsSection * //
+.allocationStats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mainStat {
+  flex-direction: column-reverse;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    gap: 0;
+  }
+}
+
+.mainStatLabel {
+  color: var(--content-primary);
+  font: var(--important-text-sm);
+  line-height: 16px;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.mainStatValue {
+  font: var(--important-text-lg);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-md);
+  }
+}
+// * StatsSection * //
+
+// * AllocationChartStats * //
+.allocationChartStats {
+  display: flex;
+  flex-direction: column;
+
+  & > div:nth-child(odd) {
+    background: var(--bg-secondary);
+  }
+}
+// * AllocationChartStats * //
+
+// * TooltipContent * //
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mainTooltipStats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
+  width: 100%;
+}
+
+.additionalTooltipStats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.separateLine {
+  background: var(--bg-border);
+  height: 40px;
+  width: 1px;
+}
+
+// * TooltipContent * //

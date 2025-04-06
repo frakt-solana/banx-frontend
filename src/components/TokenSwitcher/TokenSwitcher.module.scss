@@ -1,0 +1,22 @@
+// * TokenSwitcher * //
+.selectTokenContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px;
+}
+
+.selectTokenButton {
+  width: 86px;
+
+  &.active {
+    border-color: var(--bg-border-active);
+  }
+
+  svg {
+    path {
+      fill: revert-layer;
+    }
+  }
+}
+// * TokenSwitcher * //

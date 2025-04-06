@@ -1,0 +1,257 @@
+.container {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.manageButton {
+  font: var(--btn-text-md) !important;
+  width: 100%;
+}
+
+.pnlStat {
+  font: var(--important-text-lg);
+
+  &.positive {
+    color: var(--additional-green-primary-deep);
+  }
+
+  &.negative {
+    color: var(--additional-red-primary-deep);
+  }
+
+  @media (max-width: 640px) {
+    font: var(--important-text-md);
+  }
+}
+
+// * Header * //
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+
+  @media (max-width: 960px) {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  font: var(--title-xl);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--title-md);
+  }
+}
+// * Header * //
+
+// * TooltipContent * //
+
+.tooltipStat {
+  flex-direction: column-reverse;
+  white-space: nowrap;
+  gap: 2px;
+}
+
+.tooltipStatLabel {
+  color: var(--pure-white);
+  font: var(--important-text-sm);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.tooltipStatValue {
+  font: var(--important-text-lg);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-md);
+  }
+}
+// * TooltipContent * //
+
+// * StatsSection * //
+.statsContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat {
+  flex-direction: column-reverse;
+
+  @media (max-width: 640px) {
+    gap: 0;
+  }
+}
+
+.alignRight {
+  @extend .stat;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+.statLabel {
+  color: var(--color-primary);
+  font: var(--important-text-sm);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.statValue {
+  font: var(--important-text-lg);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-md);
+  }
+}
+// * StatsSection * //
+
+// * VaultsList * //
+.listContainer {
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  margin: 12px 0;
+  padding: 8px;
+  height: 120px;
+  overflow-y: auto;
+
+  @media (max-width: 640px) {
+    margin: 8px 0;
+    max-height: 120px;
+    height: 100%;
+  }
+}
+
+.emptyList {
+  margin: 0;
+}
+
+.loader {
+  height: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listItem {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+  position: relative;
+}
+
+.listItemBar {
+  background-color: var(--action-primary);
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+
+.listItemInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: var(--z-base);
+}
+
+.listItemLabel {
+  color: var(--content-tertiary);
+  font: var(--important-text-sm);
+  text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.listItemValue {
+  font: var(--body-text-md);
+  z-index: var(--z-base);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+// * VaultsList * //
+
+// * AssetsLogos * //
+.assetsLogosContainer {
+  display: flex;
+  align-items: center;
+}
+
+.assetLogo {
+  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+
+  &.stackedLogo {
+    margin-right: -8px;
+  }
+}
+
+.extraAssetsCount {
+  background-color: var(--additional-silver-secondary);
+  border-radius: 100px;
+  color: var(--additional-silver-primary);
+
+  font: var(--body-text-sm);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+}
+
+.assetsTooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.assetTooltipItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.assetTooltipLogo {
+  border-radius: 100%;
+  height: 16px;
+  width: 16px;
+}
+
+.assetTooltipTicker {
+  font: var(--body-text-md);
+}
+// * AssetsLogos * //
