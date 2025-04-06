@@ -2,6 +2,7 @@ import { BN, web3 } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   calculateCurrentInterestSolPure,
+  calculateDynamicApr,
   calculateLenderPartialPartFromBorrower,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import {
@@ -12,7 +13,7 @@ import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/type
 import moment from 'moment'
 
 import { Loan, convertBondTradeTransactionToCore } from '@banx/api'
-import { SECONDS_IN_72_HOURS, SECONDS_IN_DAY } from '@banx/constants'
+import { DYNAMIC_APR, SECONDS_IN_72_HOURS, SECONDS_IN_DAY } from '@banx/constants'
 
 export enum LoanStatus {
   Active = 'active',
@@ -142,13 +143,26 @@ export const calculateTokenRepaymentCallLenderReceivesAmount = (loan: Loan) => {
     protocolRepayFeeApr: calcTokenLoanAprWithRepayFee(loan),
     soldAt,
     //? Lender APR (without ProtocolFee)
-    // lenderApr: calculateApr({
-    //   loanValue: repaymentCallAmount,
-    //   collectionFloor: loan.collateralPrice,
-    //   marketPubkey: loan.fraktBond.hadoMarket,
-    // }),
-    lenderApr: 100, //TODO: Fix
+    lenderApr: calculateApr({
+      loanValue: repaymentCallAmount,
+      collectionFloor: loan.collateralPrice,
+      marketPubkey: loan.fraktBond.hadoMarket,
+    }),
   })
+}
+
+type CalculateApr = (params: {
+  loanValue: number
+  collectionFloor: number
+  marketPubkey?: string
+}) => number
+/**
+ * Returns apr value in base points: 7380 => 73.8%
+ */
+export const calculateApr: CalculateApr = ({ loanValue, collectionFloor }) => {
+  //? exceptions for some collections with hardcoded APR
+  const staticApr = Math.floor((loanValue / collectionFloor) * BASE_POINTS) || 0
+  return calculateDynamicApr(staticApr, DYNAMIC_APR)
 }
 
 export const caclulateBorrowTokenLoanValue = (loan: Loan, upfrontFeeIncluded = true) => {

@@ -2,7 +2,7 @@ import { BN } from 'fbonds-core'
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { Pyth, Switchboard } from '@banx/icons'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 //? Solana Rent Fees
 export const SOLANA_RENT_FEE_BORROW_AMOUNT_IMPACT = {
