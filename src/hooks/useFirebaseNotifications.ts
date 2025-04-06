@@ -21,9 +21,17 @@ const firebaseConfig = {
 
 const getFirebaseToken = async (): Promise<string> => {
   try {
+    const permission = await Notification.requestPermission()
+
+    if (permission !== 'granted') {
+      console.warn('Notification permission not granted')
+      return ''
+    }
+
     const app = initializeApp(firebaseConfig)
     const messaging = getMessaging(app)
     const token = await getToken(messaging, { vapidKey: FCM.VAPID })
+
     return token
   } catch (error) {
     console.error('Error getting Firebase token:', error)

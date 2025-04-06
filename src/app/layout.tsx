@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 
+import { ErrorBoundary } from '@banx/components/ErrorBoundary'
+
 import { AppLayout } from '@banx/layout'
 import { DialectProvider } from '@banx/providers/dialect'
 import { QueryProvider } from '@banx/providers/query'
@@ -35,13 +37,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${wix.variable}`}>
       <body>
-        <QueryProvider>
-          <SolanaConnectionWalletProvider>
-            <DialectProvider>
-              <AppLayout>{children}</AppLayout>
-            </DialectProvider>
-          </SolanaConnectionWalletProvider>
-        </QueryProvider>
+        <ErrorBoundary>
+          <QueryProvider>
+            <SolanaConnectionWalletProvider>
+              <DialectProvider>
+                <AppLayout>{children}</AppLayout>
+              </DialectProvider>
+            </SolanaConnectionWalletProvider>
+          </QueryProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
