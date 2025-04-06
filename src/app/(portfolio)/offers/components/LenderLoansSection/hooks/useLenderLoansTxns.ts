@@ -4,8 +4,7 @@ import { chain, uniqueId } from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import { useIsLedger, useModal } from '@banx/store/common'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,
@@ -50,7 +49,7 @@ export const useLenderLoansTxns = () => {
 
   const { close } = useModal()
 
-  const terminateTokenLoan = async (loan: TokenLoan, startLiquidation?: boolean) => {
+  const terminateTokenLoan = async (loan: Loan, startLiquidation?: boolean) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -119,7 +118,7 @@ export const useLenderLoansTxns = () => {
     }
   }
 
-  const revertTerminateTokenLoan = async (loan: TokenLoan) => {
+  const revertTerminateTokenLoan = async (loan: Loan) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -181,7 +180,7 @@ export const useLenderLoansTxns = () => {
     }
   }
 
-  const terminateTokenLoans = async (loans: TokenLoan[]) => {
+  const terminateTokenLoans = async (loans: Loan[]) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -242,7 +241,7 @@ export const useLenderLoansTxns = () => {
   }
 
   const instantTokenLoan = async (
-    loan: TokenLoan,
+    loan: Loan,
     bestOffer: BondOfferV3,
     updateOrAddOffer: (offer: BondOfferV3) => void,
   ) => {
@@ -310,7 +309,7 @@ export const useLenderLoansTxns = () => {
     }
   }
 
-  const claimTokenLoans = async (loans: TokenLoan[]) => {
+  const claimTokenLoans = async (loans: Loan[]) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -365,7 +364,7 @@ export const useLenderLoansTxns = () => {
     }
   }
 
-  const claimTokenLoan = async (loan: TokenLoan) => {
+  const claimTokenLoan = async (loan: Loan) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -417,7 +416,7 @@ export const useLenderLoansTxns = () => {
     }
   }
 
-  const sendRepaymentCall = async (loan: TokenLoan, repayPercent: number) => {
+  const sendRepaymentCall = async (loan: Loan, repayPercent: number) => {
     const callAmount = Math.floor(
       (caclulateBorrowTokenLoanValue(loan).toNumber() * repayPercent) / 100,
     )
@@ -500,10 +499,10 @@ export const useLenderLoansTxns = () => {
 }
 
 const createOptimisticLoan = (
-  loan: TokenLoan,
-  newFraktBond: TokenLoan['fraktBond'],
-  newBondTradeTransaction: TokenLoan['bondTradeTransaction'],
-): TokenLoan => {
+  loan: Loan,
+  newFraktBond: Loan['fraktBond'],
+  newBondTradeTransaction: Loan['bondTradeTransaction'],
+): Loan => {
   const currentTimeInSeconds = moment().unix()
 
   const optimisticLoan = {

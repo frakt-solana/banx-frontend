@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { parseResponseSafe } from '@banx/api/helpers'
+import { parseResponseSafe } from '@banx/api/base/helpers'
 import { BACKEND_BASE_URL } from '@banx/constants'
 
 import { UserEscrowSchema } from './schemas'

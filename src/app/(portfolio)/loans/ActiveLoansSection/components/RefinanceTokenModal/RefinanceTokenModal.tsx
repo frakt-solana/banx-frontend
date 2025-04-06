@@ -11,8 +11,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import {
   bnToNumberSafe,
@@ -32,7 +31,7 @@ import styles from './RefinanceTokenModal.module.scss'
 const MAX_LTV_THRESHOLD = 100
 
 interface RefinanceTokenModalProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 const RefinanceTokenModal: FC<RefinanceTokenModalProps> = ({ loan }) => {

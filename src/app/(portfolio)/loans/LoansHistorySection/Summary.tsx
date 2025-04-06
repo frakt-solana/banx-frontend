@@ -29,7 +29,7 @@ export const Summary = () => {
     try {
       setIsDownloading(true)
 
-      const data = await activity.fetchBorrowerTokenActivityCSV({
+      const data = await activity.fetchBorrowerActivityCSV({
         walletPubkey: publicKey?.toBase58() || '',
         tokenType,
       })

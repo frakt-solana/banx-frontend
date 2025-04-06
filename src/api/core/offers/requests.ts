@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { convertToMarketType, parseResponseSafe } from '@banx/api/helpers'
+import { parseResponseSafe } from '@banx/api/base'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
+import { convertToMarketType } from '../shared'
 import { BondOfferFromApiSchema, BorrowOfferSchemaRaw, OfferPreviewSchema } from './schemas'
 import {
   BorrowOfferRaw,

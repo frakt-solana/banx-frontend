@@ -1,15 +1,11 @@
 import { BN } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { calculateNetApr } from '@banx/app/multiply/[ticker]/helpers'
 import { calcTokenLoanAprWithRepayFee, getTokenDecimals } from '@banx/utils'
 
-export const calculateNetAprByLoan = (
-  loan: TokenLoan,
-  conversionRate: number,
-  collateralYield: BN,
-) => {
+export const calculateNetAprByLoan = (loan: Loan, conversionRate: number, collateralYield: BN) => {
   const { decimals: collateralDecimals } = loan.collateral
   const tokenDecimals = getTokenDecimals(loan.bondTradeTransaction.lendingToken)
   const aprRate = calcTokenLoanAprWithRepayFee(loan)

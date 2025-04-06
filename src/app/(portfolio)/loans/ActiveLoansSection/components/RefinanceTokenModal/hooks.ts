@@ -4,8 +4,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { uniqueId } from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import { useTokenBondOffers } from '@banx/hooks'
 import { useTokenLoansOptimistic } from '@banx/store'
 import { useModal } from '@banx/store/common'
@@ -29,7 +28,7 @@ import {
 
 import { useLoansState } from '../../hooks'
 
-export const useRefinanceTokenModal = (loan: TokenLoan) => {
+export const useRefinanceTokenModal = (loan: Loan) => {
   const wallet = useWallet()
   const { connection } = useConnection()
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { parseResponseSafe } from '@banx/api/helpers'
+import { parseResponseSafe } from '@banx/api/base/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
 import { MultiplyMarketDataSchema } from './schemas'

@@ -4,7 +4,7 @@ import { every, uniqueId } from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { useTokenLoansOptimistic } from '@banx/store'
 import { useIsLedger, useModal, useSlippage } from '@banx/store/common'
@@ -52,7 +52,7 @@ export const useLoansTxns = () => {
   const { update: updateLoansOptimistic } = useTokenLoansOptimistic()
   const { selection, clear: clearSelection } = useLoansState()
 
-  const repayLoan = async (loan: TokenLoan) => {
+  const repayLoan = async (loan: Loan) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -183,7 +183,7 @@ export const useLoansTxns = () => {
     }
   }
 
-  const repayPartialLoan = async (loan: TokenLoan, fractionToRepay: number) => {
+  const repayPartialLoan = async (loan: Loan, fractionToRepay: number) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -337,7 +337,7 @@ export const useLoansTxns = () => {
   }
 
   const sellToRepay = async (params: {
-    loan: TokenLoan
+    loan: Loan
     pair: MultiplyPair
     expectedCollateralConversionRate?: number
     onSuccess?: () => void
@@ -419,7 +419,7 @@ export const useLoansTxns = () => {
     }
   }
 
-  const supplyCollateral = async (loan: TokenLoan, collateralAmount: BN) => {
+  const supplyCollateral = async (loan: Loan, collateralAmount: BN) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -497,10 +497,10 @@ export const useLoansTxns = () => {
 }
 
 const createOptimisticLoan = (
-  loan: TokenLoan,
-  newFraktBond: TokenLoan['fraktBond'],
-  newBondTradeTransaction: TokenLoan['bondTradeTransaction'],
-): TokenLoan => {
+  loan: Loan,
+  newFraktBond: Loan['fraktBond'],
+  newBondTradeTransaction: Loan['bondTradeTransaction'],
+): Loan => {
   const currentTimeInSeconds = moment().unix()
 
   return {

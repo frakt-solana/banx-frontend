@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useTokenLoanListingsOptimistic } from '@banx/store'
 import {
   TXN_EXECUTOR_DEFAULT_OPTIONS,
@@ -33,7 +33,7 @@ export const useLoanListingsTransactions = () => {
   const { update: updateLoansOptimistic } = useTokenLoanListingsOptimistic()
   const { selection, clear: clearSelection } = useLoanListingsState()
 
-  const delist = async (loan: TokenLoan) => {
+  const delist = async (loan: Loan) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -144,7 +144,7 @@ export const useLoanListingsTransactions = () => {
   return { delist, delistAll }
 }
 
-const createOptimisticLoan = (loan: TokenLoan): TokenLoan => {
+const createOptimisticLoan = (loan: Loan): Loan => {
   const currentTimeInSeconds = moment().unix()
 
   const optimisticLoan = {

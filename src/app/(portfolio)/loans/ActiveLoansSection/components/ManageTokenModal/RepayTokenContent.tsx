@@ -6,7 +6,7 @@ import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import { NumericStepInput } from '@banx/components/inputs'
 
-import { TokenLoan, core } from '@banx/api'
+import { Loan, core } from '@banx/api'
 import {
   caclulateBorrowTokenLoanValue,
   formatTrailingZeros,
@@ -21,7 +21,7 @@ import { useLoansTxns } from '../../hooks'
 import styles from './ManageTokenModal.module.scss'
 
 interface RepayTokenContentProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 export const RepayTokenContent: FC<RepayTokenContentProps> = ({ loan }) => {
@@ -148,7 +148,7 @@ export const RepayTokenContent: FC<RepayTokenContentProps> = ({ loan }) => {
 
 const DEFAULT_REPAY_PERCENT = 100
 
-const calculateRepaymentStaticValues = (loan: core.TokenLoan) => {
+const calculateRepaymentStaticValues = (loan: core.Loan) => {
   const { bondTradeTransaction } = loan
 
   const repaymentCallActive = isTokenLoanRepaymentCallActive(loan)

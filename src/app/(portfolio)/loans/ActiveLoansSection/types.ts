@@ -1,6 +1,6 @@
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 
 export interface LoansPreview {
   id: string
@@ -18,7 +18,7 @@ export interface LoansPreview {
   lendingToken: LendingTokenType
   oraclePriceFeedType: OraclePriceFeedType
 
-  loans: TokenLoan[]
+  loans: Loan[]
 }
 
 export enum SortField {

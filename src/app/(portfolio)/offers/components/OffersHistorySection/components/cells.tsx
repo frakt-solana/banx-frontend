@@ -14,7 +14,7 @@ import {
 
 import styles from '../OffersHistorySection.module.scss'
 
-export const ReceivedCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan }) => {
+export const ReceivedCell: FC<{ loan: activity.LenderActivity }> = ({ loan }) => {
   const { received, status } = loan
 
   if (status === BondTradeTransactionV2State.PerpetualLiquidatedByClaim) {
@@ -24,7 +24,7 @@ export const ReceivedCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan 
   return <HorizontalCell value={<DisplayValue value={received} placeholder="--" />} />
 }
 
-export const StatusCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan }) => {
+export const StatusCell: FC<{ loan: activity.LenderActivity }> = ({ loan }) => {
   const loanStatus = STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE[loan.status]
   const statusColor = STATUS_LOANS_COLOR_MAP[loanStatus as LoanStatus]
 

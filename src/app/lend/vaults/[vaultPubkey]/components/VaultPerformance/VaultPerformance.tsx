@@ -46,7 +46,7 @@ const VaultPerformance: FC<VaultPerformanceProps> = ({ walletPubkey, lendingToke
 export default VaultPerformance
 
 const getTableColumns = ({ lendingToken }: { lendingToken: LendingTokenType }) => {
-  const columns: ColumnType<activity.LenderTokenActivity>[] = [
+  const columns: ColumnType<activity.LenderActivity>[] = [
     {
       key: 'performance',
       title: <HeaderCell label="Performance" align="left" />,

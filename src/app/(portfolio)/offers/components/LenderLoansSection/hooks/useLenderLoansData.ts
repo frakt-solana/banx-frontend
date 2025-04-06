@@ -6,7 +6,7 @@ import produce from 'immer'
 import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan, fetchLenderLoans } from '@banx/api'
+import { Loan, fetchLenderLoans } from '@banx/api'
 
 import { useLenderLoansOptimistic } from './useLenderLoansOptimistic'
 
@@ -59,7 +59,7 @@ export const useLenderLoansData = () => {
       .value()
   }, [loans, isLoading, walletOptimisticLoans, hiddenLoansPubkeys])
 
-  const updateOrAddLoan = (loan: TokenLoan) => {
+  const updateOrAddLoan = (loan: Loan) => {
     const loanExists = !!findLoan(loan.publicKey, walletPubkey)
     return loanExists ? updateLoans(loan, walletPubkey) : addLoans(loan, walletPubkey)
   }

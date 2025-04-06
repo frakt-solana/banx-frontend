@@ -14,7 +14,7 @@ import {
 import Timer from '@banx/components/Timer'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { createMultiplyPairFromCollateral } from '@banx/app/multiply/[ticker]/helpers'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { useModal } from '@banx/store/common'
@@ -66,7 +66,7 @@ const TooltipRow: FC<TooltipRowProps> = ({
   </div>
 )
 
-export const DebtCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const DebtCell: FC<{ loan: Loan }> = ({ loan }) => {
   const { bondTradeTransaction, fraktBond } = loan
 
   const debtValue = caclulateBorrowTokenLoanValue(loan).toNumber()
@@ -108,7 +108,7 @@ export const DebtCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const LTVCell: FC<{ loan: Loan }> = ({ loan }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
 
   const debtValue = caclulateBorrowTokenLoanValue(loan).toNumber()
@@ -138,7 +138,7 @@ export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const APRCell: FC<{ loan: Loan }> = ({ loan }) => {
   const aprPercent = calcTokenLoanAprWithRepayFee(loan) / 100
 
   return (
@@ -150,7 +150,7 @@ export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const StatusCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const StatusCell: FC<{ loan: Loan }> = ({ loan }) => {
   const loanStatus = getTokenLoanStatus(loan)
   const loanStatusColor = STATUS_LOANS_COLOR_MAP[loanStatus]
 
@@ -166,7 +166,7 @@ export const StatusCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-const getTimeContent = (loan: TokenLoan) => {
+const getTimeContent = (loan: Loan) => {
   const { fraktBond } = loan
 
   if (isTokenLoanActive(loan) || isTokenLoanSelling(loan)) {
@@ -184,7 +184,7 @@ const getTimeContent = (loan: TokenLoan) => {
 }
 
 interface ActionsCellProps {
-  loan: TokenLoan
+  loan: Loan
   disableActions: boolean
 }
 

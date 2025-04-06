@@ -1,6 +1,6 @@
 import { sumBy } from 'lodash'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   LoanStatus,
   STATUS_LOANS_MAP,
@@ -12,7 +12,7 @@ import {
 
 import { calculateWeightedApr, calculateWeightedLtv } from '../../helpers'
 
-export const calculateLoansStats = (loans: TokenLoan[]) => {
+export const calculateLoansStats = (loans: Loan[]) => {
   const totalSelectedLoans = loans.length
 
   const totalClaim = sumBy(loans, (loan) => calculateLentTokenValueWithInterest(loan).toNumber())
@@ -24,7 +24,7 @@ export const calculateLoansStats = (loans: TokenLoan[]) => {
   return { totalSelectedLoans, totalClaim, totalInterest, weightedApr, weightedLtv }
 }
 
-export const getTokenLoanStatus = (loan: TokenLoan) => {
+export const getTokenLoanStatus = (loan: Loan) => {
   if (isTokenLoanLiquidated(loan) && !isTokenLoanSelling(loan)) {
     return LoanStatus.Liquidated
   }

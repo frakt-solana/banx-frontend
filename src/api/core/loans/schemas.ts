@@ -66,7 +66,7 @@ export const FraktBondSchema = z.object({
   hadoMarket: zPubkeyString,
 })
 
-export const TokenLoanSchema = z.object({
+export const LoanSchema = z.object({
   publicKey: z.string(),
   fraktBond: FraktBondSchema,
   bondTradeTransaction: BondTradeTransactionSchema,
@@ -79,6 +79,6 @@ export const TokenLoanSchema = z.object({
 })
 
 export const LoansMarketSchema = z.object({
-  auctions: TokenLoanSchema.array(),
-  listings: TokenLoanSchema.array(),
+  auctions: LoanSchema.array(),
+  listings: LoanSchema.array(),
 })

@@ -15,7 +15,7 @@ import { AprCell, StatusCell } from './cells'
 import styles from './LendTokenActivityTable.module.scss'
 
 export const getTableColumns = () => {
-  const columns: ColumnType<activity.LenderTokenActivity>[] = [
+  const columns: ColumnType<activity.LenderActivity>[] = [
     {
       key: 'collateral',
       title: <HeaderCell label="Collateral" align="left" className={styles.headerCell} />,

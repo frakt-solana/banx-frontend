@@ -7,8 +7,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond, Offer } from '@banx/api'
-import { core } from '@banx/api'
+import { BondTradeTransaction, FraktBond, Loan, Offer } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { parseAccountInfoByPubkey } from '../functions'
@@ -21,7 +20,7 @@ import { sendTxnPlaceHolder } from '../helpers'
  */
 
 export type CreateTerminateTokenTxnDataParams = {
-  loan: core.TokenLoan
+  loan: Loan
   startLiquidation?: boolean
 }
 

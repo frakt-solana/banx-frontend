@@ -2,13 +2,13 @@ import { FC, useMemo } from 'react'
 
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { isTokenLoanRepaymentCallActive, isTokenLoanTerminating } from '@banx/utils'
 
 import styles from './ExpandedCardContent.module.scss'
 
 interface FilterTableSectionProps {
-  loans: TokenLoan[]
+  loans: Loan[]
   onChange: (option: RBOption) => void
   currentOption: RBOption | undefined
 }

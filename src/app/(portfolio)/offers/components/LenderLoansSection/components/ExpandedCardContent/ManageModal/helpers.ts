@@ -5,8 +5,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { chain } from 'lodash'
 import moment from 'moment'
 
-import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan, core } from '@banx/api'
+import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import {
   bnToNumberSafe,
   caclulateBorrowTokenLoanValue,
@@ -22,17 +21,17 @@ import {
 //? constants
 const MAX_LTV_THRESHOLD = 100
 
-export const calculateFreezeExpiredAt = (loan: core.TokenLoan) => {
+export const calculateFreezeExpiredAt = (loan: Loan) => {
   return loan.bondTradeTransaction.soldAt + loan.bondTradeTransaction.terminationFreeze
 }
 
-export const checkIfFreezeExpired = (loan: core.TokenLoan) => {
+export const checkIfFreezeExpired = (loan: Loan) => {
   const freezeExpiredAt = calculateFreezeExpiredAt(loan)
   const currentTimeInSeconds = moment().unix()
   return currentTimeInSeconds > freezeExpiredAt
 }
 
-export const calculateRepaymentStaticValues = (loan: core.TokenLoan) => {
+export const calculateRepaymentStaticValues = (loan: Loan) => {
   const DEFAULT_REPAY_PERCENT = 50
 
   const repaymentCallActive = isTokenLoanRepaymentCallActive(loan)
@@ -63,10 +62,7 @@ export const calculateCollateralsPerTokenByFromLtv = (params: { ltv: BN; tokenPr
   return tokenPrice.mul(BASE_POINTS_BN).div(ltv)
 }
 
-export const calculateCollateralsPerTokenByLoan = (
-  loan: core.TokenLoan,
-  marketTokenDecimals: number,
-): BN => {
+export const calculateCollateralsPerTokenByLoan = (loan: Loan, marketTokenDecimals: number): BN => {
   const lentTokenValueWithInterest = calculateLentTokenValueWithInterest(loan).toNumber()
   const ltvPercent = calculateTokenLoanLtvByLoanValue(loan, lentTokenValueWithInterest)
 
@@ -85,7 +81,7 @@ export const calculateCollateralsPerTokenByLoan = (
 }
 
 export const findBestOffer = (props: {
-  loan: TokenLoan
+  loan: Loan
   offers: BondOfferV3[]
   lendingTokenDecimals: number
   walletPubkey: string

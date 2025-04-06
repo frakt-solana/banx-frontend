@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { TokenMetaSchema } from '@banx/api/core/shared'
 
-export const LenderTokenActivitySchema = z.object({
+export const LenderActivitySchema = z.object({
   id: z.string(),
   publicKey: z.string(),
 
@@ -17,7 +17,7 @@ export const LenderTokenActivitySchema = z.object({
   timestamp: z.number(),
 })
 
-export const TokenBorrowerActivitySchema = z.object({
+export const BorrowerActivitySchema = z.object({
   id: z.string(),
   publicKey: z.string(),
 
@@ -30,11 +30,4 @@ export const TokenBorrowerActivitySchema = z.object({
   repaid: z.number(),
   status: z.string(),
   timestamp: z.number(),
-})
-
-export const TokenActivityCollectionsListSchema = z.object({
-  collectionName: z.string(), //? Rename to collateralTicker
-  collectionImage: z.string(), //? Rename to collateralLogoUrl
-  received: z.number().optional(), //? Rename to totalReceived
-  borrowed: z.number().optional(), //? Rename to totalBorrowed
 })

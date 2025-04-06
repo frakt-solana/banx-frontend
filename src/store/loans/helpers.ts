@@ -1,12 +1,12 @@
 import _ from 'lodash'
 import moment from 'moment'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 
 const LOANS_CACHE_TIME_UNIX = 2 * 60 //? Auto clear optimistic after 2 minutes
 
 export interface TokenLoanOptimistic {
-  loan: core.TokenLoan
+  loan: Loan
   wallet: string
   expiredAt: number
 }
@@ -40,10 +40,10 @@ export const updateLoans = (
   return addLoans(sameLoansRemoved, loansToAddOrUpdate)
 }
 
-export const isLoanNewer = (loanA: core.TokenLoan, loanB: core.TokenLoan) =>
+export const isLoanNewer = (loanA: Loan, loanB: Loan) =>
   loanA.fraktBond.lastTransactedAt >= loanB.fraktBond.lastTransactedAt
 
-export const convertLoanToOptimistic = (loan: core.TokenLoan, walletPublicKey: string) => {
+export const convertLoanToOptimistic = (loan: Loan, walletPublicKey: string) => {
   return {
     loan,
     wallet: walletPublicKey,

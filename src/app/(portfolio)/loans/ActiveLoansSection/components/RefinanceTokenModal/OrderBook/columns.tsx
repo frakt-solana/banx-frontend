@@ -4,7 +4,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { ColumnType } from '@banx/components/Table'
 import { HeaderCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { bnToNumberSafe, insertAtArray } from '@banx/utils'
 
 import { ActionCell, AprCell, BorrowCell, DebtCell } from './cells'
@@ -13,7 +13,7 @@ import styles from './OrderBook.module.scss'
 
 type GetTableColumns = (props: {
   refinance: (offer: BondOfferV3, tokensToRefinance: BN) => void
-  loan: core.TokenLoan
+  loan: Loan
 }) => ColumnType<BondOfferV3>[]
 
 export const getTableColumns: GetTableColumns = ({ refinance, loan }) => {

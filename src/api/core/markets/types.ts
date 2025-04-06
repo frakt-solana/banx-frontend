@@ -1,7 +1,7 @@
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { z } from 'zod'
 
-import { RequestWithPagination, ResponseWithPagination } from '@banx/api/shared'
+import { RequestWithPagination, ResponseWithPagination } from '@banx/api/base'
 
 import { TokenMarketPreviewSchema } from './schemas'
 

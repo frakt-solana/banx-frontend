@@ -10,7 +10,7 @@ import {
   createRefinanceSubscribeNotificationsTitle,
 } from '@banx/components/modals'
 
-import { TokenLoan, core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { getDialectAccessToken } from '@banx/providers/dialect'
 import { useIsLedger, useModal } from '@banx/store'
 import {
@@ -65,7 +65,7 @@ export const useMarketLoansTransactions = () => {
     }
   }
 
-  const lendToBorrow = async (loan: core.TokenLoan) => {
+  const lendToBorrow = async (loan: Loan) => {
     const loadingSnackbarId = uniqueId()
 
     try {
@@ -130,7 +130,7 @@ export const useMarketLoansTransactions = () => {
     }
   }
 
-  const lendToBorrowAll = async (loans: TokenLoan[]) => {
+  const lendToBorrowAll = async (loans: Loan[]) => {
     const loadingSnackbarId = uniqueId()
 
     try {

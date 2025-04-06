@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
@@ -25,7 +25,7 @@ export const useOffersHistoryData = () => {
   const [sortBy, order] = sortOption.value
 
   const fetchData = async (pageParam: number) => {
-    const data = await activity.fetchLenderTokenActivity({
+    const data = await activity.fetchLenderActivity({
       skip: PAGINATION_LIMIT * pageParam,
       limit: PAGINATION_LIMIT,
       sortBy,
@@ -89,29 +89,3 @@ const SORT_OPTIONS: SortOption<SortField>[] = [
   { label: 'Received', value: [SortField.RECEIVED, 'desc'] },
   { label: 'APR', value: [SortField.APR, 'desc'] },
 ]
-
-export const useLenderTokenActivityCollectionsList = () => {
-  const { publicKey } = useWallet()
-  const publicKeyString = publicKey?.toBase58() || ''
-
-  const { tokenType } = useTokenType()
-
-  const { data, isLoading } = useQuery({
-    queryKey: ['lenderTokenActivityCollectionsList', publicKeyString, tokenType],
-    queryFn: () =>
-      activity.fetchTokenActivityCollectionsList({
-        walletPubkey: publicKeyString,
-        userType: 'lender',
-        tokenType,
-      }),
-    enabled: !!publicKeyString,
-    refetchOnWindowFocus: false,
-    refetchInterval: 15 * 1000,
-    staleTime: 15 * 1000,
-  })
-
-  return {
-    data: data ?? [],
-    isLoading,
-  }
-}

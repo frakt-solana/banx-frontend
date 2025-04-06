@@ -15,7 +15,7 @@ import {
 import styles from './LoansHistorySection.module.scss'
 
 interface DebtCellProps {
-  loan: activity.TokenBorrowerActivity
+  loan: activity.BorrowerActivity
   isCardView: boolean
 }
 
@@ -40,7 +40,7 @@ export const DebtCell: FC<DebtCellProps> = ({ loan, isCardView }) => {
   )
 }
 
-export const RepaidCell: FC<{ loan: activity.TokenBorrowerActivity }> = ({ loan }) => {
+export const RepaidCell: FC<{ loan: activity.BorrowerActivity }> = ({ loan }) => {
   const { repaid, status } = loan
 
   if (status === BondTradeTransactionV2State.PerpetualLiquidatedByClaim) {
@@ -50,7 +50,7 @@ export const RepaidCell: FC<{ loan: activity.TokenBorrowerActivity }> = ({ loan 
   return <HorizontalCell value={<DisplayValue value={repaid} placeholder="--" />} />
 }
 
-export const StatusCell: FC<{ loan: activity.TokenBorrowerActivity }> = ({ loan }) => {
+export const StatusCell: FC<{ loan: activity.BorrowerActivity }> = ({ loan }) => {
   const loanStatus = STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE[loan.status]
   const statusColor = STATUS_LOANS_COLOR_MAP[loanStatus as LoanStatus]
 

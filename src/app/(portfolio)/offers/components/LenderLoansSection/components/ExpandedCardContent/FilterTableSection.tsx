@@ -4,7 +4,7 @@ import { mapValues } from 'lodash'
 
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   isTokenLoanLiquidated,
   isTokenLoanRepaymentCallActive,
@@ -16,7 +16,7 @@ import {
 import styles from './ExpandedCardContent.module.scss'
 
 interface FilterTableSectionProps {
-  loans: TokenLoan[]
+  loans: Loan[]
   onChange: (option: RBOption) => void
   currentOption: RBOption | undefined
 }

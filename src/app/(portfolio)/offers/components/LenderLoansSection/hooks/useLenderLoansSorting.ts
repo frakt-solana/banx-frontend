@@ -4,7 +4,7 @@ import { chain, orderBy } from 'lodash'
 
 import { SortOrder } from '@banx/components/SortDropdown'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   calculateLentTokenValueWithInterest,
   calculateTokenLoanLtvByLoanValue,
@@ -17,7 +17,7 @@ import { TableColumnKey } from '../constants'
 
 export type SortColumnOption<T> = { key: T; order: SortOrder }
 
-type SortValueGetter = (loan: TokenLoan) => number
+type SortValueGetter = (loan: Loan) => number
 
 const SORT_OPTIONS: SortColumnOption<TableColumnKey>[] = [
   { key: TableColumnKey.STATUS, order: 'desc' },
@@ -39,7 +39,7 @@ const SORT_VALUE_MAP: Record<TableColumnKey, string | SortValueGetter> = {
   [TableColumnKey.STATUS]: '',
 }
 
-const sortStatusLoans = (loans: TokenLoan[], order: SortOrder) => {
+const sortStatusLoans = (loans: Loan[], order: SortOrder) => {
   const terminatingLoans = chain(loans)
     .filter(isTokenLoanTerminating)
     .sortBy((loan) => loan.fraktBond.refinanceAuctionStartedAt)
@@ -68,7 +68,7 @@ const sortStatusLoans = (loans: TokenLoan[], order: SortOrder) => {
   return order === 'asc' ? combinedLoans : combinedLoans.reverse()
 }
 
-export const useLenderLoansSorting = (loans: TokenLoan[]) => {
+export const useLenderLoansSorting = (loans: Loan[]) => {
   const [sortOption, setSortOption] = useState(SORT_OPTIONS[0])
 
   const sortedLoans = useMemo(() => {

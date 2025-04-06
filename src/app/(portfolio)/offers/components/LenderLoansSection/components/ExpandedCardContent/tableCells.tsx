@@ -12,7 +12,7 @@ import {
 } from '@banx/components/TableComponents'
 import Timer from '@banx/components/Timer'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { useModal } from '@banx/store/common'
 import {
@@ -61,7 +61,7 @@ const TooltipRow: FC<TooltipRowProps> = ({
   </div>
 )
 
-export const ClaimCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const ClaimCell: FC<{ loan: Loan }> = ({ loan }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
 
   const accruedInterest = calculateTokenLoanAccruedInterest(loan)
@@ -96,7 +96,7 @@ export const ClaimCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
 }
 
 interface LTVCellProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 export const LTVCell: FC<LTVCellProps> = ({ loan }) => {
@@ -113,7 +113,7 @@ export const LTVCell: FC<LTVCellProps> = ({ loan }) => {
 }
 
 interface StatusCellProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 export const StatusCell: FC<StatusCellProps> = ({ loan }) => {
@@ -132,7 +132,7 @@ export const StatusCell: FC<StatusCellProps> = ({ loan }) => {
   )
 }
 
-const getTimeContent = (loan: TokenLoan) => {
+const getTimeContent = (loan: Loan) => {
   const currentTimeInSeconds = moment().unix()
   const { terminationStartedAt, soldAt } = loan.bondTradeTransaction
 
@@ -154,7 +154,7 @@ const getTimeContent = (loan: TokenLoan) => {
   return null
 }
 
-export const ActionsCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const ActionsCell: FC<{ loan: Loan }> = ({ loan }) => {
   const { claimTokenLoan } = useLenderLoansTxns()
   const { open } = useModal()
 

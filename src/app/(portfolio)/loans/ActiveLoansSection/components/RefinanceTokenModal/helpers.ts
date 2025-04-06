@@ -1,8 +1,7 @@
 import { BN } from 'fbonds-core'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { convertBondOfferV3ToCore } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import {
   ZERO_BN,
   caclulateBorrowTokenLoanValue,
@@ -10,7 +9,7 @@ import {
   calculateOfferSize,
 } from '@banx/utils'
 
-export const getCurrentLoanInfo = (loan: TokenLoan) => {
+export const getCurrentLoanInfo = (loan: Loan) => {
   const currentDebt = caclulateBorrowTokenLoanValue(loan).toNumber()
   const currentBorrowedAmount = loan.fraktBond.borrowedAmount
   const currentApr = calcTokenLoanAprWithRepayFee(loan)
@@ -27,7 +26,7 @@ export const getCurrentLoanInfo = (loan: TokenLoan) => {
 
 type CalculateTokensToGet = (props: {
   offer: BondOfferV3
-  loan: TokenLoan
+  loan: Loan
   marketTokenDecimals: number
 }) => BN
 

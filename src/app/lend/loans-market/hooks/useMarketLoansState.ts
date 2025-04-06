@@ -1,15 +1,15 @@
 import produce from 'immer'
 import { create } from 'zustand'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 
 type LoansTokenState = {
-  selection: core.TokenLoan[]
-  set: (loans: core.TokenLoan[]) => void
-  find: (loanPubkey: string) => core.TokenLoan | null
-  add: (nft: core.TokenLoan) => void
+  selection: Loan[]
+  set: (loans: Loan[]) => void
+  find: (loanPubkey: string) => Loan | null
+  add: (nft: Loan) => void
   remove: (loanPubkey: string) => void
-  toggle: (loan: core.TokenLoan) => void
+  toggle: (loan: Loan) => void
   clear: () => void
 }
 

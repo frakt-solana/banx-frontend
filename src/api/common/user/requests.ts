@@ -2,10 +2,10 @@ import axios from 'axios'
 import { web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { convertToMarketType, parseResponseSafe } from '@banx/api/helpers'
+import { convertToMarketType, parseResponseSafe } from '@banx/api/base/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
-import { MutationResponse, RequestWithPagination } from '../../shared'
+import { MutationResponse, RequestWithPagination } from '../../base'
 import { AssetType } from '../stats'
 import { getDiscordAvatarUrl } from './helpers'
 import {

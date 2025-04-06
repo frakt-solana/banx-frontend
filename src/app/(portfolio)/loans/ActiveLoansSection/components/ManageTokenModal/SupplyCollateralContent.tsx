@@ -4,7 +4,7 @@ import { Button } from '@banx/components/Buttons'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import TokenInput from '@banx/components/TokenInput'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useCollateralsList } from '@banx/hooks'
 import {
   caclulateBorrowTokenLoanValue,
@@ -17,7 +17,7 @@ import { useLoansTxns } from '../../hooks'
 import styles from './ManageTokenModal.module.scss'
 
 interface SupplyCollateralContentProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 const SupplyCollateralContent: FC<SupplyCollateralContentProps> = ({ loan }) => {
@@ -86,7 +86,7 @@ const SupplyCollateralContent: FC<SupplyCollateralContentProps> = ({ loan }) => 
 
 export default SupplyCollateralContent
 
-const calculateNewLtv = (loan: TokenLoan, collateralAmount: string): number => {
+const calculateNewLtv = (loan: Loan, collateralAmount: string): number => {
   const { fraktBond, collateral } = loan
   const collateralAmountNum = parseFloat(collateralAmount) || 0
 

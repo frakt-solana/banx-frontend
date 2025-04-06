@@ -12,8 +12,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond, Offer } from '@banx/api'
-import { core } from '@banx/api'
+import { BondTradeTransaction, FraktBond, Loan, Offer } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { ZERO_BN, calculateTokenLoanRepayValueOnCertainDate, isBanxSolTokenType } from '@banx/utils'
 
@@ -22,7 +21,7 @@ import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../fun
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateBorrowTokenRefinanceTxnDataParams = {
-  loan: core.TokenLoan
+  loan: Loan
   offer: Offer
   solToRefinance: BN
   aprRate: BN

@@ -4,7 +4,7 @@ import { orderBy } from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
 import { calculateTokenLoanLtvByLoanValue, getTokenDecimals, isUsdcTokenType } from '@banx/utils'
@@ -23,7 +23,7 @@ const SORT_OPTIONS: SortOption<SortField>[] = [
   { label: 'Freeze', value: [SortField.FREEZE, 'desc'] },
 ]
 
-export const useLoanListingsSorting = (loans: TokenLoan[]) => {
+export const useLoanListingsSorting = (loans: Loan[]) => {
   const [sortOption, setSortOption] = useState(SORT_OPTIONS[0])
   const { data: tokenPrice, isLoading: isTokenPriceLoading } = useTokenPrice(WSOL_ADDRESS)
 
@@ -32,7 +32,7 @@ export const useLoanListingsSorting = (loans: TokenLoan[]) => {
 
     const [field, order] = sortOption.value
 
-    const getSortValue = (loan: TokenLoan) => {
+    const getSortValue = (loan: Loan) => {
       const { bondTradeTransaction, fraktBond } = loan
 
       const lendingToken = bondTradeTransaction.lendingToken

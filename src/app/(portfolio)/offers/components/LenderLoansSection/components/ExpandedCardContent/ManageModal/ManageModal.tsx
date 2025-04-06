@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import { isTokenLoanTerminating } from '@banx/utils'
 
@@ -13,7 +13,7 @@ import { RepaymentCallContent } from './RepaymentCallContent'
 import styles from './ManageModal.module.scss'
 
 interface ManageModalProps {
-  loan: core.TokenLoan
+  loan: Loan
 }
 
 const ManageModal: FC<ManageModalProps> = ({ loan }) => {

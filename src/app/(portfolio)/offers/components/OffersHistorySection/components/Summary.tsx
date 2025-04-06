@@ -35,7 +35,7 @@ export const Summary = () => {
     try {
       setIsDownloading(true)
 
-      const data = await activity.fetchLenderTokenActivityCSV({
+      const data = await activity.fetchLenderActivityCSV({
         walletPubkey: publicKey?.toBase58() || '',
         tokenType,
       })

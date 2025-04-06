@@ -12,7 +12,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import { SellToRepayModal } from '@banx/components/modals'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   useCollateralConversionRate,
   useCollateralYield,
@@ -28,7 +28,7 @@ import { calculateNetAprByLoan } from '../../helpers'
 import styles from './LeveragePositionCard.module.scss'
 
 type LeveragePositionCardProps = {
-  loan: TokenLoan
+  loan: Loan
 }
 
 const LeveragePositionCard: FC<LeveragePositionCardProps> = ({ loan }) => {
@@ -65,7 +65,7 @@ const LeveragePositionCard: FC<LeveragePositionCardProps> = ({ loan }) => {
 
 export default LeveragePositionCard
 
-const PositionMainInfo: FC<{ loan: TokenLoan }> = ({ loan }) => {
+const PositionMainInfo: FC<{ loan: Loan }> = ({ loan }) => {
   const { ticker: collareralTicker = '', logoUrl: collateralLogoUrl = '' } = loan.collateral
 
   const collateralSupply = getTokenLoanSupply(loan)
@@ -92,7 +92,7 @@ const PositionMainInfo: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-const PositionAdditionalInfo: FC<{ loan: TokenLoan; pair: MultiplyPair }> = ({ loan, pair }) => {
+const PositionAdditionalInfo: FC<{ loan: Loan; pair: MultiplyPair }> = ({ loan, pair }) => {
   const { connection } = useConnection()
   const { slippageBps } = useSlippage()
 

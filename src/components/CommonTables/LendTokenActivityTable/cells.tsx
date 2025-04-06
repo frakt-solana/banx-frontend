@@ -13,7 +13,7 @@ import {
 
 import styles from './LendTokenActivityTable.module.scss'
 
-export const StatusCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan }) => {
+export const StatusCell: FC<{ loan: activity.LenderActivity }> = ({ loan }) => {
   const loanStatus = STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE[loan.status]
   const statusColor = STATUS_LOANS_COLOR_MAP[loanStatus as LoanStatus]
 
@@ -24,7 +24,7 @@ export const StatusCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan })
   )
 }
 
-export const AprCell: FC<{ loan: activity.LenderTokenActivity }> = ({ loan }) => {
+export const AprCell: FC<{ loan: activity.LenderActivity }> = ({ loan }) => {
   const aprInPercent = loan.apr / 100
 
   return <span className={styles.cellTitle}>{createPercentValueJSX(aprInPercent)}</span>

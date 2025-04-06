@@ -13,7 +13,7 @@ import { activity } from '@banx/api'
 import { ReceivedCell, StatusCell } from './cells'
 
 export const getTableColumns = () => {
-  const columns: ColumnType<activity.LenderTokenActivity>[] = [
+  const columns: ColumnType<activity.LenderActivity>[] = [
     {
       key: 'collateral',
       title: <HeaderCell label="Collateral" align="left" />,

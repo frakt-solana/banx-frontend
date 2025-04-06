@@ -1,12 +1,12 @@
 import * as common from './common'
 
-export * from './shared'
+export * from './base'
 
 export * from './core'
 export * as core from './core'
 
-export * from './tokens/activity'
-export * as activity from './tokens/activity'
+export * from './core/activity'
+export * as activity from './core/activity'
 
 const api = {
   common,

@@ -1,16 +1,11 @@
 import axios from 'axios'
-import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
-import { convertToMarketType } from '@banx/api/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
+import { convertToMarketType } from '../shared'
 import { VaultPreviewSchema } from './schemas'
-import { VaultPreview } from './types'
+import { FetchVaultsPreview, VaultPreview } from './types'
 
-type FetchVaultsPreview = (props: {
-  walletPubkey: string
-  tokenType?: LendingTokenType
-}) => Promise<VaultPreview[]>
 export const fetchVaultsPreview: FetchVaultsPreview = async ({ walletPubkey, tokenType }) => {
   const queryParams = new URLSearchParams({
     getAll: String(true),

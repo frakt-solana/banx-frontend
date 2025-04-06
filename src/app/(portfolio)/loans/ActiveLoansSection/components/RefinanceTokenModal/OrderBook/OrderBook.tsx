@@ -7,7 +7,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import EmptyList from '@banx/components/EmptyList'
 import Table from '@banx/components/Table'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 
 import { getTableColumns } from './columns'
 
@@ -15,7 +15,7 @@ import styles from './OrderBook.module.scss'
 
 interface OrderBookProps {
   offers: BondOfferV3[]
-  loan: core.TokenLoan
+  loan: Loan
   isLoading: boolean
   refinance: (offer: BondOfferV3, tokensToRefinance: BN) => void
 }

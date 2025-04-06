@@ -3,13 +3,13 @@ import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { removePerpetualListingSpl } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateDelistTokenTxnDataParams = {
-  loan: TokenLoan
+  loan: Loan
 }
 
 type CreateDelistTokenTxnData = (

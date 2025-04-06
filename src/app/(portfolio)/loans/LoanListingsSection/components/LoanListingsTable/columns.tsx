@@ -7,14 +7,14 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { HealthColorIncreasing, getColorByPercent, getTokenLoanSupply } from '@banx/utils'
 
 import { APRCell, ActionsCell, FreezeCell, LTVCell } from './cells'
 
-type GetTableColumns = (props: { isCardView: boolean }) => ColumnType<TokenLoan>[]
+type GetTableColumns = (props: { isCardView: boolean }) => ColumnType<Loan>[]
 export const getTableColumns: GetTableColumns = ({ isCardView }) => {
-  const columns: ColumnType<TokenLoan>[] = [
+  const columns: ColumnType<Loan>[] = [
     {
       key: 'collateral',
       title: <HeaderCell label="Collateral" align="left" />,

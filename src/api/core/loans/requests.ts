@@ -1,17 +1,18 @@
 import axios from 'axios'
 
-import { convertToMarketType, parseResponseSafe } from '@banx/api/helpers'
+import { parseResponseSafe } from '@banx/api/base/helpers'
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
-import { LoansMarketSchema, TokenLoanSchema } from './schemas'
+import { convertToMarketType } from '../shared'
+import { LoanSchema, LoansMarketSchema } from './schemas'
 import {
   FetchBorrowerLoanListings,
   FetchBorrowerLoans,
   FetchLenderLoans,
   FetchLoansMarket,
+  Loan,
   LoansMarket,
   LoansMarketResponse,
-  TokenLoan,
 } from './types'
 
 export const fetchBorrowerLoans: FetchBorrowerLoans = async ({
@@ -28,11 +29,11 @@ export const fetchBorrowerLoans: FetchBorrowerLoans = async ({
     queryParams.append('marketType', convertToMarketType(tokenType))
   }
 
-  const { data } = await axios.get<{ data: TokenLoan[] }>(
+  const { data } = await axios.get<{ data: Loan[] }>(
     `${BACKEND_BASE_URL}/spl-loans/borrower-v2/${walletPublicKey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<TokenLoan[]>(data?.data, TokenLoanSchema.array())
+  return await parseResponseSafe<Loan[]>(data?.data, LoanSchema.array())
 }
 
 export const fetchBorrowerLoanListings: FetchBorrowerLoanListings = async ({
@@ -49,11 +50,11 @@ export const fetchBorrowerLoanListings: FetchBorrowerLoanListings = async ({
     queryParams.append('marketType', convertToMarketType(tokenType))
   }
 
-  const { data } = await axios.get<{ data: TokenLoan[] }>(
+  const { data } = await axios.get<{ data: Loan[] }>(
     `${BACKEND_BASE_URL}/spl-loans/borrower-requests/${walletPubkey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<TokenLoan[]>(data.data, TokenLoanSchema.array())
+  return await parseResponseSafe<Loan[]>(data.data, LoanSchema.array())
 }
 
 export const fetchLenderLoans: FetchLenderLoans = async ({
@@ -70,11 +71,11 @@ export const fetchLenderLoans: FetchLenderLoans = async ({
     queryParams.append('marketType', convertToMarketType(tokenType))
   }
 
-  const { data } = await axios.get<{ data: TokenLoan[] }>(
+  const { data } = await axios.get<{ data: Loan[] }>(
     `${BACKEND_BASE_URL}/spl-loans/lender/${walletPublicKey}?${queryParams.toString()}`,
   )
 
-  return await parseResponseSafe<TokenLoan[]>(data.data, TokenLoanSchema.array())
+  return await parseResponseSafe<Loan[]>(data.data, LoanSchema.array())
 }
 
 export const fetchLoansMarket: FetchLoansMarket = async ({ tokenType, getAll = true }) => {

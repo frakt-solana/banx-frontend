@@ -9,7 +9,7 @@ import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 import { Button } from '@banx/components/Buttons'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   adjustTokenAmountWithUpfrontFee,
   bnToNumberSafe,
@@ -24,7 +24,7 @@ import { calculateTokensToGet } from '../helpers'
 import styles from './OrderBook.module.scss'
 
 interface BorrowCellProps {
-  loan: core.TokenLoan
+  loan: Loan
   offer: BondOfferV3
 }
 
@@ -62,7 +62,7 @@ export const BorrowCell: FC<BorrowCellProps> = ({ loan, offer }) => {
 
 interface AprCellProps {
   offer: BondOfferV3
-  loan: core.TokenLoan
+  loan: Loan
 }
 
 export const AprCell: FC<AprCellProps> = ({ offer, loan }) => {
@@ -73,7 +73,7 @@ export const AprCell: FC<AprCellProps> = ({ offer, loan }) => {
 }
 
 interface DebtCellProps {
-  loan: core.TokenLoan
+  loan: Loan
   offer: BondOfferV3
 }
 
@@ -91,7 +91,7 @@ export const DebtCell: FC<DebtCellProps> = ({ offer, loan }) => {
 }
 
 interface ActionCellProps {
-  loan: core.TokenLoan
+  loan: Loan
   offer: BondOfferV3
   refinance: (offer: BondOfferV3, tokensToRefinance: BN) => void
 }

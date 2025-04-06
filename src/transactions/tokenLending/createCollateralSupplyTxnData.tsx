@@ -7,15 +7,14 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { BondTradeTransaction, FraktBond, Loan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions/helpers'
 
 import { parseAccountInfoByPubkey } from '../functions'
 
 export type CreateCollateralSupplyTxnDataParams = {
-  loan: TokenLoan
+  loan: Loan
   collateralAmount: BN
 }
 

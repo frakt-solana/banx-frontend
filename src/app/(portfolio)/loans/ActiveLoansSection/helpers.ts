@@ -6,7 +6,7 @@ import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-pro
 import { filter, first, groupBy, map, size, sumBy } from 'lodash'
 import moment from 'moment'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   caclulateBorrowTokenLoanValue,
   calcTokenLoanAprWithRepayFee,
@@ -20,7 +20,7 @@ import {
 import { PARTIAL_REPAY_ACCOUNT_CREATION_FEE } from './constants'
 import { LoansPreview } from './types'
 
-export const buildLoansPreviewGroupedByMint = (loans: TokenLoan[]): LoansPreview[] => {
+export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] => {
   const groupedLoans = groupBy(
     loans,
     (loan) => `${loan.collateral.mint}-${loan.bondTradeTransaction.lendingToken}`,
@@ -64,7 +64,7 @@ export const buildLoansPreviewGroupedByMint = (loans: TokenLoan[]): LoansPreview
   })
 }
 
-export const calculateWeightedLtv = (loans: TokenLoan[]) => {
+export const calculateWeightedLtv = (loans: Loan[]) => {
   const totalLtvValues = loans.map((loan) => {
     const loanValue = caclulateBorrowTokenLoanValue(loan).toNumber()
     return calculateTokenLoanLtvByLoanValue(loan, loanValue)
@@ -75,7 +75,7 @@ export const calculateWeightedLtv = (loans: TokenLoan[]) => {
   return calcWeightedAverage(totalLtvValues, totalRepayValues)
 }
 
-export const calculateWeightedApr = (loans: TokenLoan[]) => {
+export const calculateWeightedApr = (loans: Loan[]) => {
   const totalAprValues = map(loans, (loan) => calcTokenLoanAprWithRepayFee(loan) / 100)
   const totalRepayValues = map(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
 
@@ -83,13 +83,13 @@ export const calculateWeightedApr = (loans: TokenLoan[]) => {
 }
 
 //? This fee is associated with account creation. It's used to display the correct value when the SOL token type is used.
-const getPartialRepayRentFee = (loan: TokenLoan) => {
+const getPartialRepayRentFee = (loan: Loan) => {
   return isBanxSolTokenType(loan.bondTradeTransaction.lendingToken)
     ? PARTIAL_REPAY_ACCOUNT_CREATION_FEE
     : 0
 }
 
-export const calculateAccruedInterest = (loan: TokenLoan) => {
+export const calculateAccruedInterest = (loan: Loan) => {
   const { solAmount, soldAt } = loan.bondTradeTransaction
 
   const aprRate = calcTokenLoanAprWithRepayFee(loan)
@@ -102,7 +102,7 @@ export const calculateAccruedInterest = (loan: TokenLoan) => {
   })
 }
 
-const calculateUnpaidInterest = (loan: TokenLoan) => {
+const calculateUnpaidInterest = (loan: Loan) => {
   const { lenderFullRepaidAmount } = loan.bondTradeTransaction
 
   const accruedInterest = calculateAccruedInterest(loan)
@@ -115,7 +115,7 @@ const calculateUnpaidInterest = (loan: TokenLoan) => {
   return percentToRepay >= 1 ? unpaidInterest + rentFee : 0
 }
 
-const calcPercentToPay = (loan: TokenLoan, iterestToPay: number) => {
+const calcPercentToPay = (loan: Loan, iterestToPay: number) => {
   const { soldAt, solAmount } = loan.bondTradeTransaction
 
   const aprRate = calcTokenLoanAprWithRepayFee(loan)
@@ -129,14 +129,14 @@ const calcPercentToPay = (loan: TokenLoan, iterestToPay: number) => {
   return (partOfLoan / solAmount) * 100
 }
 
-export const caclFractionToRepay = (loan: TokenLoan) => {
+export const caclFractionToRepay = (loan: Loan) => {
   const iterestToPay = calculateUnpaidInterest(loan)
   const percentToRepay = calcPercentToPay(loan, iterestToPay)
 
   return Math.ceil(percentToRepay * 100)
 }
 
-export const caclFractionToRepayForRepaymentCall = (loan: TokenLoan) => {
+export const caclFractionToRepayForRepaymentCall = (loan: Loan) => {
   const debtWithoutFee = caclulateBorrowTokenLoanValue(loan, false).toNumber()
   const repaymentCallAmount = loan.bondTradeTransaction.repaymentCallAmount
 
@@ -144,7 +144,7 @@ export const caclFractionToRepayForRepaymentCall = (loan: TokenLoan) => {
   return Math.ceil(unroundedRepaymentPercentage * 100)
 }
 
-export const calcTokenTotalValueToPay = (loan: TokenLoan) => {
+export const calcTokenTotalValueToPay = (loan: Loan) => {
   if (isTokenLoanRepaymentCallActive(loan)) {
     return loan.bondTradeTransaction.repaymentCallAmount
   }

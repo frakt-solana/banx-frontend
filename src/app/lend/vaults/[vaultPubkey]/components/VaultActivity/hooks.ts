@@ -18,7 +18,7 @@ export const useVaultActivity = (props: {
   const { publicKey } = useWallet()
 
   const fetchData = async (pageParam: number) => {
-    const data = await activity.fetchLenderTokenActivity({
+    const data = await activity.fetchLenderActivity({
       skip: PAGINATION_LIMIT * pageParam,
       limit: PAGINATION_LIMIT,
       state: state,

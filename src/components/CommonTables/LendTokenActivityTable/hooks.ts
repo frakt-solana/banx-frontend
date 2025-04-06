@@ -29,7 +29,7 @@ export const useLendTokenActivity = (marketPubkey: string) => {
   const currentMarket = marketsPreview.find((market) => market.marketPubkey === marketPubkey)
 
   const fetchData = async (pageParam: number) => {
-    const data = await activity.fetchLenderTokenActivity({
+    const data = await activity.fetchLenderActivity({
       skip: PAGINATION_LIMIT * pageParam,
       limit: PAGINATION_LIMIT,
       state: eventType,

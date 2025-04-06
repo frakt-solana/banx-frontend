@@ -9,7 +9,7 @@ import {
 } from '@banx/components/TableComponents'
 import NumericInput from '@banx/components/inputs/NumericInput'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import { Pencil } from '@banx/icons'
 import {
@@ -26,7 +26,7 @@ import { calculateLendToBorrowValue } from '../../helpers'
 
 import styles from './LenderRefinanceModal.module.scss'
 
-export const CollateralCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const CollateralCell: FC<{ loan: Loan }> = ({ loan }) => {
   return (
     <CollateralTokenCell
       amount={getTokenLoanSupply(loan)}
@@ -38,14 +38,14 @@ export const CollateralCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const FreezeCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const FreezeCell: FC<{ loan: Loan }> = ({ loan }) => {
   const freezeDays = loan.bondTradeTransaction.terminationFreeze / SECONDS_IN_DAY
   const freezeValue = isTokenLoanFrozen(loan) ? `${freezeDays} days` : '--'
 
   return <HorizontalCell value={freezeValue} className={styles.bodyCellText} />
 }
 
-export const LtvCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const LtvCell: FC<{ loan: Loan }> = ({ loan }) => {
   const lentValue = calculateLendToBorrowValue(loan)
   const ltv = calculateTokenLoanLtvByLoanValue(loan, lentValue)
 
@@ -59,12 +59,12 @@ export const LtvCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
 }
 
 interface LiquidationLtvCellProps {
-  loan: TokenLoan
+  loan: Loan
   editingLoanPubkey: string | null
   tempLiquidationLtv: string
   setTempLiquidationLtv: (value: string) => void
-  onEdit: (loan: TokenLoan) => void
-  onSave: (loan: TokenLoan) => void
+  onEdit: (loan: Loan) => void
+  onSave: (loan: Loan) => void
 }
 
 export const LiquidationLtvCell: FC<LiquidationLtvCellProps> = ({

@@ -6,7 +6,7 @@ import { filter } from 'lodash'
 import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   isTokenLoanLiquidated,
   isTokenLoanListed,
@@ -25,7 +25,7 @@ import { getTableColumns } from './columns'
 import styles from './ExpandedCardContent.module.scss'
 
 interface ExpandedCardContentProps {
-  loans: TokenLoan[]
+  loans: Loan[]
 }
 
 const HEADER_ROW_HEIGHT = 26
@@ -74,7 +74,7 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
   )
 
   const onRowClick = useCallback(
-    (loan: TokenLoan) => {
+    (loan: Loan) => {
       const canSelect =
         !isTokenLoanLiquidated(loan) &&
         !isTokenLoanTerminating(loan) &&
@@ -122,28 +122,28 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
       onRowClick,
       activeRowParams: [
         {
-          condition: (loan: TokenLoan) => isTokenLoanTerminating(loan),
+          condition: (loan: Loan) => isTokenLoanTerminating(loan),
           className: styles.loanTerminating,
           cardClassName: styles.loanTerminating,
         },
         {
-          condition: (loan: TokenLoan) => isTokenLoanLiquidated(loan),
+          condition: (loan: Loan) => isTokenLoanLiquidated(loan),
           className: styles.loanLiquidated,
           cardClassName: styles.loanLiquidated,
         },
         {
-          condition: (loan: TokenLoan) =>
+          condition: (loan: Loan) =>
             isTokenLoanUnderWater(loan) && !isTokenLoanRepaymentCallActive(loan),
           className: styles.loanUnderwater,
           cardClassName: styles.loanUnderwater,
         },
         {
-          condition: (loan: TokenLoan) => isTokenLoanRepaymentCallActive(loan),
+          condition: (loan: Loan) => isTokenLoanRepaymentCallActive(loan),
           className: styles.loanRepaymentCallActive,
           cardClassName: styles.loanRepaymentCallActive,
         },
         {
-          condition: (loan: TokenLoan) => isTokenLoanSelling(loan),
+          condition: (loan: Loan) => isTokenLoanSelling(loan),
           className: styles.loanSelling,
           cardClassName: styles.loanSelling,
         },

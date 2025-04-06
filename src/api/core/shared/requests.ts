@@ -3,9 +3,10 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { BACKEND_BASE_URL, IS_PRIVATE_MARKETS } from '@banx/constants'
 
-import { convertToMarketType, parseResponseSafe } from '../../helpers'
+import { parseResponseSafe } from '../../base/helpers'
 import { CollateralTokenSchema } from './schemas'
 import { CollateralToken } from './types'
+import { convertToMarketType } from './utils'
 
 export const fetchCollateralsList = async (props: {
   walletPubkey?: string

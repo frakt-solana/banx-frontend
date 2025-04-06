@@ -1,12 +1,12 @@
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { getTokenDecimals } from '@banx/utils'
 
 /**
  * @returns user collateral amount with decimals
  */
-export const calculateUserCollateralAmount = (loan: TokenLoan) => {
+export const calculateUserCollateralAmount = (loan: Loan) => {
   const leverage = loan.fraktBond.leverageBasePoints / BASE_POINTS / 100
   const totalLoanCollateralAmount = loan.fraktBond.fbondTokenSupply
 
@@ -16,7 +16,7 @@ export const calculateUserCollateralAmount = (loan: TokenLoan) => {
 /**
  * @returns initialCollateralRate as float number
  */
-export const calculateInitialCollateralRate = (loan: TokenLoan) => {
+export const calculateInitialCollateralRate = (loan: Loan) => {
   const collateralDecimals = loan.collateral.decimals
   const tokenDecimals = getTokenDecimals(loan.bondTradeTransaction.lendingToken)
 

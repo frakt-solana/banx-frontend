@@ -9,7 +9,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
-import { TokenLoan, core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
 import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils'
 
@@ -19,7 +19,7 @@ import { LenderRefinanceModal } from './LenderRefinanceModal'
 
 import styles from '../ClientMarketLoansPage.module.scss'
 
-export const MarketLoansSummary: FC<{ loans: TokenLoan[] }> = ({ loans: rawLoans }) => {
+export const MarketLoansSummary: FC<{ loans: Loan[] }> = ({ loans: rawLoans }) => {
   const { publicKey, connected } = useWallet()
   const { open: openModal } = useModal()
   const { toggleVisibility } = useWalletSidebar()
@@ -80,7 +80,7 @@ export const MarketLoansSummary: FC<{ loans: TokenLoan[] }> = ({ loans: rawLoans
   )
 }
 
-const calculateSummaryInfo = (loans: core.TokenLoan[]) => {
+const calculateSummaryInfo = (loans: Loan[]) => {
   const totalDebt = sumBy(loans, (loan) => calculateLendToBorrowValue(loan))
 
   const totalLoanValue = map(loans, (loan) => calculateLendToBorrowValue(loan))

@@ -11,7 +11,7 @@ import { Button } from '@banx/components/Buttons'
 import { createDisplayValueJSX } from '@banx/components/TableComponents'
 import Timer from '@banx/components/Timer'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useTokenBondOffers } from '@banx/hooks'
 import {
   calculateLentTokenValueWithInterest,
@@ -28,7 +28,7 @@ import { calculateFreezeExpiredAt, checkIfFreezeExpired, findBestOffer } from '.
 
 import styles from './ManageModal.module.scss'
 
-export const ClosureContent: FC<{ loan: core.TokenLoan }> = ({ loan }) => {
+export const ClosureContent: FC<{ loan: Loan }> = ({ loan }) => {
   const { publicKey } = useWallet()
 
   const lendingToken = loan.bondTradeTransaction.lendingToken

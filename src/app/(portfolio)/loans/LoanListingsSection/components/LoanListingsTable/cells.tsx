@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { Button } from '@banx/components/Buttons'
 import { HorizontalCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   HealthColorIncreasing,
@@ -17,7 +17,7 @@ import { useLoanListingsTransactions } from '../../hooks'
 
 import styles from './LoanListingsTable.module.scss'
 
-export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const LTVCell: FC<{ loan: Loan }> = ({ loan }) => {
   const borrowedValue = loan.fraktBond.borrowedAmount
 
   const ltvPercent = calculateTokenLoanLtvByLoanValue(loan, borrowedValue)
@@ -30,13 +30,13 @@ export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const APRCell: FC<{ loan: Loan }> = ({ loan }) => {
   const aprPercent = calcTokenLoanAprWithRepayFee(loan) / 100
 
   return <HorizontalCell value={createPercentValueJSX(aprPercent)} isHighlighted />
 }
 
-export const FreezeCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const FreezeCell: FC<{ loan: Loan }> = ({ loan }) => {
   const terminationFreezeInDays = loan.bondTradeTransaction.terminationFreeze / SECONDS_IN_DAY
   const freezeDuration = isTokenLoanFrozen(loan) ? `${terminationFreezeInDays} days` : '--'
 
@@ -44,7 +44,7 @@ export const FreezeCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
 }
 
 interface ActionsCellProps {
-  loan: TokenLoan
+  loan: Loan
   isCardView: boolean
 }
 

@@ -1,6 +1,6 @@
 import { sumBy } from 'lodash'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   LoanStatus,
   STATUS_LOANS_MAP,
@@ -12,7 +12,7 @@ import {
 
 import { calcTokenTotalValueToPay, calculateWeightedApr } from '../../helpers'
 
-export const getPayInterestActionText = (loans: TokenLoan[]) => {
+export const getPayInterestActionText = (loans: Loan[]) => {
   if (loans.length === 0) return 'Pay'
 
   const hasActiveRepaymentCall = loans.some(isTokenLoanRepaymentCallActive)
@@ -24,7 +24,7 @@ export const getPayInterestActionText = (loans: TokenLoan[]) => {
   return 'Pay'
 }
 
-export const calculateLoansStats = (loans: TokenLoan[]) => {
+export const calculateLoansStats = (loans: Loan[]) => {
   const totalSelectedLoans = loans.length
 
   const totalDebt = sumBy(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
@@ -35,7 +35,7 @@ export const calculateLoansStats = (loans: TokenLoan[]) => {
   return { totalSelectedLoans, totalDebt, totalWeeklyFee, totalValueToPay, weightedApr }
 }
 
-export const getTokenLoanStatus = (loan: TokenLoan) => {
+export const getTokenLoanStatus = (loan: Loan) => {
   //? Show 'Active' since the loan sale doesn't affect the borrower
   if (isTokenLoanSelling(loan)) return LoanStatus.Active
 

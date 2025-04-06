@@ -11,7 +11,7 @@ import {
 import Timer from '@banx/components/Timer'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { Hourglass, Snowflake } from '@banx/icons'
 import {
@@ -28,8 +28,8 @@ import { APRCell, ActionsCell, DebtCell, LTVCell } from './cells'
 import styles from './LoansMarketTable.module.scss'
 
 interface GetTableColumnsProps {
-  toggleLoanInSelection: (loan: TokenLoan) => void
-  findLoanInSelection: (loanPubkey: string) => TokenLoan | null
+  toggleLoanInSelection: (loan: Loan) => void
+  findLoanInSelection: (loanPubkey: string) => Loan | null
   onSelectAll: () => void
   isCardView: boolean
   hasSelectedLoans: boolean
@@ -42,7 +42,7 @@ export const getTableColumns = ({
   hasSelectedLoans,
   toggleLoanInSelection,
 }: GetTableColumnsProps) => {
-  const columns: ColumnType<TokenLoan>[] = [
+  const columns: ColumnType<Loan>[] = [
     {
       key: 'collateral',
       title: (
@@ -123,7 +123,7 @@ export const getTableColumns = ({
   return columns
 }
 
-const createRightContentJSX = (loan: TokenLoan) => {
+const createRightContentJSX = (loan: Loan) => {
   if ((isTokenLoanListed(loan) && !isTokenLoanFrozen(loan)) || isTokenLoanSelling(loan)) {
     return null
   }

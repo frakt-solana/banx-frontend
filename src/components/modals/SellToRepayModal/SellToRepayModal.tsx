@@ -10,7 +10,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { useTabs } from '@banx/components/Tabs'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useLoansTxns } from '@banx/app/(portfolio)/loans/ActiveLoansSection/hooks'
 import { useCollateralConversionRate } from '@banx/app/multiply/[ticker]/hooks'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
@@ -29,7 +29,7 @@ import { calculateInitialCollateralRate, calculateUserCollateralAmount } from '.
 import styles from './SellToRepayModal.module.scss'
 
 type SellToRepayModalProps = {
-  loan: TokenLoan
+  loan: Loan
   pair: MultiplyPair
 }
 

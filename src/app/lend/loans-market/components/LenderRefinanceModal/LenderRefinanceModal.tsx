@@ -6,7 +6,7 @@ import Table, { ColumnType } from '@banx/components/Table'
 import { HeaderCell } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
 
 import { useMarketLoansTransactions } from '../../hooks'
@@ -15,24 +15,24 @@ import { CollateralCell, FreezeCell, LiquidationLtvCell, LtvCell } from './compo
 import styles from './LenderRefinanceModal.module.scss'
 
 interface LenderRefinanceModalProps {
-  loans: TokenLoan[]
+  loans: Loan[]
 }
 
 export const LenderRefinanceModal: FC<LenderRefinanceModalProps> = ({ loans: initialLoans }) => {
   const { close: closeModal } = useModal()
   const { lendToBorrowAll } = useMarketLoansTransactions()
 
-  const [loans, setLoans] = useState<TokenLoan[]>([...initialLoans])
+  const [loans, setLoans] = useState<Loan[]>([...initialLoans])
 
   const [editingLoanPubkey, setEditingLoanPubkey] = useState<string | null>(null)
   const [tempLiquidationLtv, setTempLiquidationLtv] = useState('')
 
-  const handleEditClick = (loan: TokenLoan) => {
+  const handleEditClick = (loan: Loan) => {
     setEditingLoanPubkey(loan.publicKey)
     setTempLiquidationLtv((loan.liquidationLtvBp / 100).toFixed(0))
   }
 
-  const handleSaveChanges = (loan: TokenLoan) => {
+  const handleSaveChanges = (loan: Loan) => {
     const newLiquidationLtvBp =
       tempLiquidationLtv.trim() === '' ? 0 : parseFloat(tempLiquidationLtv) * 100
 
@@ -88,12 +88,12 @@ type GetTableColumnsParams = {
   editingLoanPubkey: string | null
   tempLiquidationLtv: string
   setTempLiquidationLtv: (val: string) => void
-  onEdit: (loan: TokenLoan) => void
-  onSave: (loan: TokenLoan) => void
+  onEdit: (loan: Loan) => void
+  onSave: (loan: Loan) => void
 }
 
 export const getTableColumns = (props: GetTableColumnsParams) => {
-  const columns: ColumnType<TokenLoan>[] = [
+  const columns: ColumnType<Loan>[] = [
     {
       key: 'collateral',
       title: <HeaderCell label="Collateral" className={styles.headerCellText} align="left" />,
@@ -119,7 +119,7 @@ export const getTableColumns = (props: GetTableColumnsParams) => {
   return columns
 }
 
-const calculateTableHeight = (data: TokenLoan[]) => {
+const calculateTableHeight = (data: Loan[]) => {
   const HEADER_ROW_HEIGHT = 20
   const ROW_HEIGHT = 38
   const MAX_TABLE_HEIGHT = 296

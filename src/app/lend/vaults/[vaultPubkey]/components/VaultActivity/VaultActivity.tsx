@@ -53,7 +53,7 @@ const VaultActivity: FC<VaultActivityProps> = ({ walletPubkey, lendingToken }) =
 export default VaultActivity
 
 const getTableColumns = ({ lendingToken }: { lendingToken: LendingTokenType }) => {
-  const columns: ColumnType<activity.LenderTokenActivity>[] = [
+  const columns: ColumnType<activity.LenderActivity>[] = [
     {
       key: 'collateral',
       title: <HeaderCell label="Collateral" align="left" />,

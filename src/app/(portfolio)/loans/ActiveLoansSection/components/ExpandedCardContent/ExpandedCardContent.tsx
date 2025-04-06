@@ -6,7 +6,7 @@ import { filter } from 'lodash'
 import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { isTokenLoanRepaymentCallActive, isTokenLoanTerminating } from '@banx/utils'
 
 import { useLoansSorting, useLoansState } from '../../hooks'
@@ -17,7 +17,7 @@ import { getTableColumns } from './columns'
 import styles from './ExpandedCardContent.module.scss'
 
 interface ExpandedCardContentProps {
-  loans: TokenLoan[]
+  loans: Loan[]
 }
 
 const HEADER_ROW_HEIGHT = 26
@@ -56,7 +56,7 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
   )
 
   const onRowClick = useCallback(
-    (loan: TokenLoan) => toggleLoanInSelection(loan, walletPubkey),
+    (loan: Loan) => toggleLoanInSelection(loan, walletPubkey),
     [toggleLoanInSelection, walletPubkey],
   )
 

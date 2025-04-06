@@ -8,7 +8,7 @@ import { CounterSlider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 
 import { TokenLoanOptimistic, useLoansTxns } from '../../hooks'
 import { calculateLoansStats, getPayInterestActionText } from './helpers'
@@ -16,9 +16,9 @@ import { calculateLoansStats, getPayInterestActionText } from './helpers'
 import styles from './ExpandedCardContent.module.scss'
 
 interface SummaryProps {
-  loans: core.TokenLoan[]
+  loans: Loan[]
   selectedLoansOptimistics: TokenLoanOptimistic[]
-  setSelection: (loans: core.TokenLoan[], walletPublicKey: string) => void
+  setSelection: (loans: Loan[], walletPublicKey: string) => void
 }
 
 export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics, setSelection }) => {

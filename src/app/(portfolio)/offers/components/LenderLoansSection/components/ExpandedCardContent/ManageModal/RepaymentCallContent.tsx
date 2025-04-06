@@ -5,7 +5,7 @@ import { Slider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   HealthColorIncreasing,
   calculateTokenLoanLtvByLoanValue,
@@ -17,7 +17,7 @@ import { calculateRepaymentStaticValues } from './helpers'
 
 import styles from './ManageModal.module.scss'
 
-export const RepaymentCallContent: FC<{ loan: core.TokenLoan }> = ({ loan }) => {
+export const RepaymentCallContent: FC<{ loan: Loan }> = ({ loan }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
 
   const { sendRepaymentCall } = useLenderLoansTxns()

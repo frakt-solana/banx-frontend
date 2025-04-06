@@ -9,8 +9,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { TokenLoan } from '@banx/api'
+import { BondTradeTransaction, FraktBond, Loan } from '@banx/api'
 import { DEFAULT_JUP_QUOTE_PARAMS } from '@banx/api/common'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
@@ -20,7 +19,7 @@ import { createRepayTokenLoanTxnData } from '@banx/transactions/tokenLending'
 import { caclulateBorrowTokenLoanValue, isBanxSolTokenType } from '@banx/utils'
 
 export type CreateSellToRepayTokenLoanTxnDataParams = {
-  loan: TokenLoan
+  loan: Loan
   pair: MultiplyPair
   expectedCollateralConversionRate?: number //? Used for lrtsSOL swap
   slippageBps: number
@@ -103,7 +102,7 @@ export const parseSellToRepayTokenLoanSimulatedAccounts = (
 }
 
 type FetchQuoteProps = (props: {
-  loan: TokenLoan
+  loan: Loan
   pair: MultiplyPair
   jupiterClient: SwapApi
   slippageBps: number
@@ -193,7 +192,7 @@ const fetchExactInQuote: FetchQuoteProps = async (props) => {
  * Checks if the user has enough collateral to satisfy the ExactOut quote requirements.
  * @returns {boolean} - True if the user has enough collateral, otherwise false.
  */
-const canSatisfyExactOutCollateral = (quote: QuoteResponse, loan: TokenLoan): boolean => {
+const canSatisfyExactOutCollateral = (quote: QuoteResponse, loan: Loan): boolean => {
   const userCollateralSupply = loan.fraktBond.fbondTokenSupply
 
   const routeItem = quote.routePlan?.[0]

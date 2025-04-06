@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { MutationResponse } from '../../shared'
+import { MutationResponse } from '../../base'
 import {
   BonkWithdrawalSchema,
   LeaderboardDataSchema,

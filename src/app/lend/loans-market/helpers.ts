@@ -1,6 +1,6 @@
 import { calculateCurrentInterestSolPure } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   caclulateBorrowTokenLoanValue,
@@ -8,13 +8,13 @@ import {
   isTokenLoanListed,
 } from '@banx/utils'
 
-export const calculateLendToBorrowValue = (loan: core.TokenLoan) => {
+export const calculateLendToBorrowValue = (loan: Loan) => {
   return isTokenLoanListed(loan)
     ? calculateTokenLoanValueWithUpfrontFee(loan).toNumber()
     : caclulateBorrowTokenLoanValue(loan).toNumber()
 }
 
-export const calcTokenWeeklyInterest = (loan: core.TokenLoan) => {
+export const calcTokenWeeklyInterest = (loan: Loan) => {
   const { soldAt, amountOfBonds } = loan.bondTradeTransaction
 
   return calculateCurrentInterestSolPure({

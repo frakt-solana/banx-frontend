@@ -6,15 +6,14 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction } from '@banx/api'
-import { core } from '@banx/api'
+import { BondTradeTransaction, Loan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateRepaymentCallTokenTxnDataParams = {
-  loan: core.TokenLoan
+  loan: Loan
   callAmount: number
 }
 

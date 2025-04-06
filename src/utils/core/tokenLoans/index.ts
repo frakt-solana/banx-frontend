@@ -11,7 +11,7 @@ import {
 import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
-import { convertBondTradeTransactionToCore, core } from '@banx/api'
+import { Loan, convertBondTradeTransactionToCore } from '@banx/api'
 import { SECONDS_IN_72_HOURS, SECONDS_IN_DAY } from '@banx/constants'
 
 export enum LoanStatus {
@@ -52,39 +52,39 @@ export const STATUS_LOANS_COLOR_MAP: Record<LoanStatus, string> = {
   [LoanStatus.Selling]: 'var(--additional-lava-primary-deep)',
 }
 
-export const isTokenLoanFrozen = (loan: core.TokenLoan) => {
+export const isTokenLoanFrozen = (loan: Loan) => {
   return !!loan.bondTradeTransaction.terminationFreeze
 }
 
-export const isTokenLoanListed = (loan: core.TokenLoan) => {
+export const isTokenLoanListed = (loan: Loan) => {
   return (
     loan.bondTradeTransaction.bondTradeTransactionState ===
     BondTradeTransactionV2State.PerpetualBorrowerListing
   )
 }
 
-export const isTokenLoanRepaid = (loan: core.TokenLoan) => {
+export const isTokenLoanRepaid = (loan: Loan) => {
   return (
     loan.bondTradeTransaction.bondTradeTransactionState ===
     BondTradeTransactionV2State.PerpetualRepaid
   )
 }
 
-export const isTokenLoanTerminating = (loan: core.TokenLoan) => {
+export const isTokenLoanTerminating = (loan: Loan) => {
   return (
     loan.bondTradeTransaction.bondTradeTransactionState ===
     BondTradeTransactionV2State.PerpetualManualTerminating
   )
 }
 
-export const isTokenLoanSelling = (loan: core.TokenLoan) => {
+export const isTokenLoanSelling = (loan: Loan) => {
   return (
     loan.bondTradeTransaction.bondTradeTransactionState ===
     BondTradeTransactionV2State.PerpetualSellingLoan
   )
 }
 
-export const isTokenLoanLiquidated = (loan: core.TokenLoan) => {
+export const isTokenLoanLiquidated = (loan: Loan) => {
   if (!loan.fraktBond.refinanceAuctionStartedAt) return false
 
   const currentTimeInSeconds = moment().unix()
@@ -92,7 +92,7 @@ export const isTokenLoanLiquidated = (loan: core.TokenLoan) => {
   return currentTimeInSeconds > expiredAt
 }
 
-export const isTokenLoanActive = (loan: core.TokenLoan) => {
+export const isTokenLoanActive = (loan: Loan) => {
   const { bondTradeTransactionState } = loan.bondTradeTransaction
 
   return (
@@ -101,12 +101,12 @@ export const isTokenLoanActive = (loan: core.TokenLoan) => {
   )
 }
 
-export const getTokenLoanSupply = (loan: core.TokenLoan) => {
+export const getTokenLoanSupply = (loan: Loan) => {
   const collateralSupply = loan.fraktBond.fbondTokenSupply / Math.pow(10, loan.collateral.decimals)
   return collateralSupply
 }
 
-export const calculateTokenLoanLtvByLoanValue = (loan: core.TokenLoan, value: number) => {
+export const calculateTokenLoanLtvByLoanValue = (loan: Loan, value: number) => {
   const collateralSupply = getTokenLoanSupply(loan)
 
   const ltvRatio = value / collateralSupply
@@ -115,7 +115,7 @@ export const calculateTokenLoanLtvByLoanValue = (loan: core.TokenLoan, value: nu
   return ltvPercent
 }
 
-export const isTokenLoanUnderWater = (loan: core.TokenLoan) => {
+export const isTokenLoanUnderWater = (loan: Loan) => {
   const LTV_THRESHOLD = 100
 
   const loanValue = calculateLentTokenValueWithInterest(loan).toNumber()
@@ -124,7 +124,7 @@ export const isTokenLoanUnderWater = (loan: core.TokenLoan) => {
   return ltvPercent > LTV_THRESHOLD
 }
 
-export const isTokenLoanRepaymentCallActive = (loan: core.TokenLoan) => {
+export const isTokenLoanRepaymentCallActive = (loan: Loan) => {
   if (!loan.bondTradeTransaction.repaymentCallAmount || isTokenLoanTerminating(loan)) return false
 
   const repayValue = caclulateBorrowTokenLoanValue(loan).toNumber()
@@ -134,7 +134,7 @@ export const isTokenLoanRepaymentCallActive = (loan: core.TokenLoan) => {
 /**
   As we need to show how much lender receives. We need to calculate this value from repaymentCallAmount (how much borrower should pay)
  */
-export const calculateTokenRepaymentCallLenderReceivesAmount = (loan: core.TokenLoan) => {
+export const calculateTokenRepaymentCallLenderReceivesAmount = (loan: Loan) => {
   const { repaymentCallAmount, soldAt } = loan.bondTradeTransaction
 
   return calculateLenderPartialPartFromBorrower({
@@ -151,7 +151,7 @@ export const calculateTokenRepaymentCallLenderReceivesAmount = (loan: core.Token
   })
 }
 
-export const caclulateBorrowTokenLoanValue = (loan: core.TokenLoan, upfrontFeeIncluded = true) => {
+export const caclulateBorrowTokenLoanValue = (loan: Loan, upfrontFeeIncluded = true) => {
   const repayValueBN = calculateTokenLoanRepayValueOnCertainDate({
     loan,
     upfrontFeeIncluded,
@@ -162,7 +162,7 @@ export const caclulateBorrowTokenLoanValue = (loan: core.TokenLoan, upfrontFeeIn
 }
 
 type CalculateTokenLoanRepayValueOnCertainDate = (params: {
-  loan: core.TokenLoan
+  loan: Loan
   upfrontFeeIncluded?: boolean
   date: number //? Unix timestamp
 }) => BN
@@ -188,19 +188,19 @@ export const calculateTokenLoanRepayValueOnCertainDate: CalculateTokenLoanRepayV
     return new BN(loanValue).add(new BN(calculatedInterest))
   }
 
-export const calculateTokenLoanValueWithUpfrontFee = (loan: core.TokenLoan) => {
+export const calculateTokenLoanValueWithUpfrontFee = (loan: Loan) => {
   const { solAmount, feeAmount } = loan.bondTradeTransaction
   return new BN(solAmount).add(new BN(feeAmount))
 }
 
-export const calculateLentTokenValueWithInterest = (loan: core.TokenLoan) => {
+export const calculateLentTokenValueWithInterest = (loan: Loan) => {
   const loanValueWithUpfrontFee = calculateTokenLoanValueWithUpfrontFee(loan)
   const accruedInterest = calculateTokenLoanAccruedInterest(loan)
 
   return loanValueWithUpfrontFee.add(accruedInterest)
 }
 
-export const calculateTokenLoanAccruedInterest = (loan: core.TokenLoan) => {
+export const calculateTokenLoanAccruedInterest = (loan: Loan) => {
   const { amountOfBonds, soldAt } = loan.bondTradeTransaction
 
   const loanValueWithUpfrontFee = calculateTokenLoanValueWithUpfrontFee(loan)
@@ -215,7 +215,7 @@ export const calculateTokenLoanAccruedInterest = (loan: core.TokenLoan) => {
   return new BN(accruedInterest)
 }
 
-export const calcTokenWeeklyFeeWithRepayFee = (loan: core.TokenLoan) => {
+export const calcTokenWeeklyFeeWithRepayFee = (loan: Loan) => {
   const { soldAt } = loan.bondTradeTransaction
 
   return calculateCurrentInterestSolPure({
@@ -242,7 +242,7 @@ export const adjustTokenAmountWithUpfrontFee = (amount: BN, upfrontFee: BN, addF
   return amount.mul(adjustedPoints).div(BASE_POINTS_BN)
 }
 
-const calcRepayFeeAprForTokenLoan = (loan: core.TokenLoan): number => {
+const calcRepayFeeAprForTokenLoan = (loan: Loan): number => {
   const protocolRepayFee = calcRepayFeeAprFromBondTradeTransaction(
     convertBondTradeTransactionToCore(loan.bondTradeTransaction),
     new web3.PublicKey(loan.fraktBond.hadoMarket),
@@ -251,7 +251,7 @@ const calcRepayFeeAprForTokenLoan = (loan: core.TokenLoan): number => {
   return protocolRepayFee
 }
 
-export const calcTokenLoanAprWithRepayFee = (loan: core.TokenLoan): number => {
+export const calcTokenLoanAprWithRepayFee = (loan: Loan): number => {
   const baseLoanApr = loan.bondTradeTransaction.amountOfBonds
   const repayAprFee = calcRepayFeeAprForTokenLoan(loan)
 

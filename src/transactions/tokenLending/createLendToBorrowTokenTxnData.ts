@@ -8,7 +8,7 @@ import {
 import moment from 'moment'
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
-import { TokenLoan, UserEscrow } from '@banx/api'
+import { Loan, UserEscrow } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import {
   ZERO_BN,
@@ -24,7 +24,7 @@ import { banxSol } from '../index'
 
 type CreateBulkLendToBorrowTokenTxnsData = (
   params: {
-    loans: TokenLoan[]
+    loans: Loan[]
     userEscrow: UserEscrow | undefined
   },
   walletAndConnection: WalletAndConnection,
@@ -93,7 +93,7 @@ export const createBulkLendToBorrowTokenTxnsData: CreateBulkLendToBorrowTokenTxn
 }
 
 export type CreateLendToBorrowTokenTxnDataParams = {
-  loan: TokenLoan
+  loan: Loan
   fundsFromWallet: BN
   fundsFromEscrow: BN
 }

@@ -1,14 +1,14 @@
 import produce from 'immer'
 import { create } from 'zustand'
 
-import { core } from '@banx/api'
+import { Loan } from '@banx/api'
 
 export interface TokenLoanOptimistic {
-  loan: core.TokenLoan
+  loan: Loan
   wallet: string
 }
 
-const convertLoanToOptimistic = (loan: core.TokenLoan, walletPublicKey: string) => {
+const convertLoanToOptimistic = (loan: Loan, walletPublicKey: string) => {
   return {
     loan,
     wallet: walletPublicKey,
@@ -17,11 +17,11 @@ const convertLoanToOptimistic = (loan: core.TokenLoan, walletPublicKey: string) 
 
 interface SelectedTokenLoansState {
   selection: TokenLoanOptimistic[]
-  set: (selection: core.TokenLoan[], walletPublicKey: string) => void
+  set: (selection: Loan[], walletPublicKey: string) => void
   find: (loanPubkey: string, walletPublicKey: string) => TokenLoanOptimistic | null
-  add: (loan: core.TokenLoan, walletPublicKey: string) => void
+  add: (loan: Loan, walletPublicKey: string) => void
   remove: (loanPubkey: string, walletPublicKey: string) => void
-  toggle: (loan: core.TokenLoan, walletPublicKey: string) => void
+  toggle: (loan: Loan, walletPublicKey: string) => void
   clear: () => void
 }
 
@@ -66,7 +66,7 @@ export const useLenderLoansState = create<SelectedTokenLoansState>((set, get) =>
       }),
     )
   },
-  toggle: (loan: core.TokenLoan, walletPublicKey) => {
+  toggle: (loan: Loan, walletPublicKey) => {
     if (!walletPublicKey) return
 
     const { find, add, remove } = get()

@@ -9,7 +9,7 @@ import { TxnExecutor } from 'solana-transactions-executor'
 
 import { AppSettingsModal } from '@banx/components/modals'
 
-import { CollateralToken, core } from '@banx/api'
+import { CollateralToken, Loan, fetchMultiplyMarketData } from '@banx/api'
 import { fetchConversionRate } from '@banx/api/common'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { useCollateralsList, useTokenBondOffers, useWalletCollateralBalance } from '@banx/hooks'
@@ -216,7 +216,7 @@ export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
           if (!accountInfoByPubkey) return
           const { bondOffer, bondTradeTransaction, fraktBond } =
             parseTokenBorrowSimulatedAccounts(accountInfoByPubkey)
-          const optimisticLoan: core.TokenLoan = {
+          const optimisticLoan: Loan = {
             publicKey: fraktBond.publicKey,
             fraktBond: {
               ...fraktBond,
@@ -446,7 +446,7 @@ export const useMultiplyPair = (collateralMint: string) => {
 export const useMultiplyMarketData = (marketPublicKey: string, minPositionSize = 0) => {
   const { data, isLoading } = useQuery({
     queryKey: ['fetchMultiplyMarketData', marketPublicKey, minPositionSize],
-    queryFn: () => core.fetchMultiplyMarketData({ marketPubkey: marketPublicKey, minPositionSize }),
+    queryFn: () => fetchMultiplyMarketData({ marketPubkey: marketPublicKey, minPositionSize }),
     enabled: !!marketPublicKey,
     refetchOnWindowFocus: false,
     staleTime: 60_000,

@@ -18,7 +18,7 @@ import { Search } from '@banx/components/Search'
 import Table from '@banx/components/Table'
 import Tooltip from '@banx/components/Tooltip'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { PATHS } from '@banx/constants'
 import { MESSAGES } from '@banx/constants/messages'
 import { Hourglass, Snowflake } from '@banx/icons'
@@ -90,7 +90,7 @@ export const ClientMarketLoansPage = () => {
   })
 
   const onRowClick = useCallback(
-    (loan: TokenLoan) => {
+    (loan: Loan) => {
       const canSelect = loan.bondTradeTransaction.user !== walletPubkey
       if (!canSelect) return
 

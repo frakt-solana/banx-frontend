@@ -4,7 +4,7 @@ import { get, set } from 'idb-keyval'
 import _ from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 
 import {
   TokenLoanOptimistic,
@@ -20,9 +20,9 @@ const BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY = '@banx.tokenLoanListingsOpti
 interface TokenLoanListingsOptimistic {
   optimisticLoans: TokenLoanOptimistic[]
   find: (publicKey: string, walletPublicKey: string) => TokenLoanOptimistic | undefined
-  add: (loans: TokenLoan[], walletPublicKey: string) => void
+  add: (loans: Loan[], walletPublicKey: string) => void
   remove: (publicKeys: string[], walletPublicKey: string) => void
-  update: (loans: TokenLoan[], walletPublicKey: string) => void
+  update: (loans: Loan[], walletPublicKey: string) => void
   setState: (optimisticLoans: TokenLoanOptimistic[]) => void
 }
 
@@ -52,7 +52,7 @@ const useTokenLoanListingsOptimisticStore = create<TokenLoanListingsOptimistic>(
     return findLoan(optimisticLoans, publicKey, walletPublicKey)
   },
 
-  update: (loans: TokenLoan[], walletPublicKey) => {
+  update: (loans: Loan[], walletPublicKey) => {
     if (!walletPublicKey) return
     set((state) => {
       const nextLoans = updateLoans(

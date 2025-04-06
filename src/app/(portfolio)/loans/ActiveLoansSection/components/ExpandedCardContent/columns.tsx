@@ -9,7 +9,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   HealthColorIncreasing,
   getColorByPercent,
@@ -25,7 +25,7 @@ import styles from './ExpandedCardContent.module.scss'
 
 interface GetTableColumnsProps {
   findLoanInSelection: (loanPubkey: string) => TokenLoanOptimistic | null
-  onRowClick: (loan: TokenLoan) => void
+  onRowClick: (loan: Loan) => void
   onSelectAll: () => void
   hasSelectedLoans: boolean
   onSort: (value: SortColumnOption<TableColumnKey>) => void
@@ -44,7 +44,7 @@ export const getTableColumns = ({
 }: GetTableColumnsProps) => {
   const isOracleMarket = oraclePriceFeedType !== 'none'
 
-  const columns: ColumnType<TokenLoan>[] = [
+  const columns: ColumnType<Loan>[] = [
     {
       key: 'collateral',
       title: (
@@ -137,7 +137,7 @@ export const getTableColumns = ({
           selectedSortOption={selectedSortOption}
         />
       ),
-      render: (loan: TokenLoan) => {
+      render: (loan: Loan) => {
         const liquidationLtv = loan.liquidationLtvBp / 100
         const color = liquidationLtv ? getColorByPercent(liquidationLtv, HealthColorIncreasing) : ''
 

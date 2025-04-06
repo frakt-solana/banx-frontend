@@ -12,7 +12,7 @@ import {
 import { TooltipWrapper } from '@banx/components/Tooltip'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useModal } from '@banx/store'
 import {
   HealthColorIncreasing,
@@ -26,7 +26,7 @@ import { LenderRefinanceModal } from '../LenderRefinanceModal'
 import styles from './LoansMarketTable.module.scss'
 
 interface DebtCellProps {
-  loan: TokenLoan
+  loan: Loan
 }
 
 export const DebtCell: FC<DebtCellProps> = ({ loan }) => {
@@ -35,7 +35,7 @@ export const DebtCell: FC<DebtCellProps> = ({ loan }) => {
   return <HorizontalCell value={<DisplayValue value={lentValue} />} />
 }
 
-export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const LTVCell: FC<{ loan: Loan }> = ({ loan }) => {
   const lentValue = calculateLendToBorrowValue(loan)
   const ltv = calculateTokenLoanLtvByLoanValue(loan, lentValue)
 
@@ -47,7 +47,7 @@ export const LTVCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
   )
 }
 
-export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
+export const APRCell: FC<{ loan: Loan }> = ({ loan }) => {
   return (
     <HorizontalCell
       value={createPercentValueJSX(loan.bondTradeTransaction.amountOfBonds / 100)}
@@ -57,7 +57,7 @@ export const APRCell: FC<{ loan: TokenLoan }> = ({ loan }) => {
 }
 
 interface ActionsCellProps {
-  loan: TokenLoan
+  loan: Loan
   isCardView: boolean
   disabledAction: boolean
 }

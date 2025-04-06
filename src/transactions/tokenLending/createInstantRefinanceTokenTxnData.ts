@@ -8,15 +8,14 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { Offer } from '@banx/api'
-import { core } from '@banx/api'
+import { Loan, Offer } from '@banx/api'
 import { BONDS } from '@banx/constants'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateInstantRefinanceTokenTxnDataParams = {
-  loan: core.TokenLoan
+  loan: Loan
   bestOffer: Offer
   aprRate: number
 }

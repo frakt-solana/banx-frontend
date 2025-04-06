@@ -1,7 +1,7 @@
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
 import { filter, first, groupBy, map, size, sumBy } from 'lodash'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import {
   calcWeightedAverage,
   calculateLentTokenValueWithInterest,
@@ -15,7 +15,7 @@ import {
 
 import { LoansPreview } from './types'
 
-export const buildLoansPreviewGroupedByMint = (loans: TokenLoan[]): LoansPreview[] => {
+export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] => {
   const groupedLoans = groupBy(
     loans,
     (loan) => `${loan.collateral.mint}-${loan.bondTradeTransaction.lendingToken}`,
@@ -68,7 +68,7 @@ export const buildLoansPreviewGroupedByMint = (loans: TokenLoan[]): LoansPreview
   })
 }
 
-export const calculateWeightedLtv = (loans: TokenLoan[]) => {
+export const calculateWeightedLtv = (loans: Loan[]) => {
   const totalLtvValues = loans.map((loan) => {
     const loanValue = calculateLentTokenValueWithInterest(loan).toNumber()
     return calculateTokenLoanLtvByLoanValue(loan, loanValue)
@@ -79,7 +79,7 @@ export const calculateWeightedLtv = (loans: TokenLoan[]) => {
   return calcWeightedAverage(totalLtvValues, totalLoanValues)
 }
 
-export const calculateWeightedApr = (loans: TokenLoan[]) => {
+export const calculateWeightedApr = (loans: Loan[]) => {
   const totalAprValues = map(loans, (loan) => loan.bondTradeTransaction.amountOfBonds / 100)
   const totalLoanValues = map(loans, (loan) => calculateLentTokenValueWithInterest(loan).toNumber())
 

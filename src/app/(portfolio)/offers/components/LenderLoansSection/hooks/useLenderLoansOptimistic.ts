@@ -4,19 +4,19 @@ import { produce } from 'immer'
 import { filter } from 'lodash'
 import { create } from 'zustand'
 
-import { TokenLoan } from '@banx/api'
+import { Loan } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
 
 export interface LoanOptimistic {
-  loan: TokenLoan
+  loan: Loan
   wallet: string
 }
 
 interface TokenLenderLoansOptimisticState {
   loans: LoanOptimistic[]
-  addLoans: (loan: TokenLoan, walletPublicKey: string) => void
+  addLoans: (loan: Loan, walletPublicKey: string) => void
   findLoan: (loanPubkey: string, walletPublicKey: string) => LoanOptimistic | null
-  updateLoans: (loan: TokenLoan, walletPublicKey: string) => void
+  updateLoans: (loan: Loan, walletPublicKey: string) => void
 }
 
 const useLenderTokenLoansOptimisticState = create<TokenLenderLoansOptimisticState>((set, get) => ({
@@ -74,7 +74,7 @@ export const useLenderLoansOptimistic = () => {
   }
 }
 
-const convertLoanToOptimistic = (loan: TokenLoan, walletPublicKey: string) => {
+const convertLoanToOptimistic = (loan: Loan, walletPublicKey: string) => {
   return {
     loan,
     wallet: walletPublicKey,

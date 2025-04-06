@@ -8,8 +8,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { core } from '@banx/api'
+import { BondTradeTransaction, FraktBond, Loan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { banxSol, parseAccountInfoByPubkey } from '@banx/transactions'
 import {
@@ -21,7 +20,7 @@ import {
 import { sendTxnPlaceHolder } from '../helpers'
 
 export type CreateRepayPartialTokenLoanTxnDataParams = {
-  loan: core.TokenLoan
+  loan: Loan
   fractionToRepay: number //? F.E 50% => 5000
 }
 
