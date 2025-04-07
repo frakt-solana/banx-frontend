@@ -158,10 +158,10 @@ export const ActionsCell: FC<{ loan: Loan }> = ({ loan }) => {
   const { claimTokenLoan } = useLenderLoansTxns()
   const { open } = useModal()
 
-  const isLoanTerminating = isLoanTerminating(loan)
-  const isLoanLiquidated = isLoanLiquidated(loan)
+  const loanTerminating = isLoanTerminating(loan)
+  const loanLiquidated = isLoanLiquidated(loan)
 
-  const canClaim = isLoanLiquidated && isLoanTerminating
+  const canClaim = loanLiquidated && loanTerminating
 
   const showModal = () => {
     open(ManageModal, { loan })

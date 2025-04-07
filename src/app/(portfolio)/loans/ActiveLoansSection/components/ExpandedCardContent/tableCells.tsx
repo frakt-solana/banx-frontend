@@ -193,10 +193,10 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
 
   const { sellToRepay } = useLoansTxns()
 
-  const isLoanTerminating = isLoanTerminating(loan)
-  const isLoanUnderWater = isLoanUnderwater(loan)
+  const loanTerminating = isLoanTerminating(loan)
+  const loanUnderwater = isLoanUnderwater(loan)
 
-  const tooltipTitle = isLoanUnderWater
+  const tooltipTitle = loanUnderwater
     ? 'Cannot sell this loan as the LTV exceeds 100%. Selling this loan would result in a net loss because the debt surpasses the value of the collateral'
     : null
 
@@ -212,7 +212,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
         <Button
           size="medium"
           className={styles.actionSellButton}
-          disabled={isLoanUnderWater}
+          disabled={loanUnderwater}
           onClick={(event) => {
             sellToRepay({ loan, pair })
             event.stopPropagation()
@@ -230,7 +230,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
           event.stopPropagation()
         }}
       >
-        {isLoanTerminating ? 'Extend' : 'Rollover'}
+        {loanTerminating ? 'Extend' : 'Rollover'}
       </Button>
       <Button
         size="medium"

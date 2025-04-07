@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { TokenMarketPreview, core } from '@banx/api'
 import { useTokenMarketsPreview } from '@banx/hooks'
 import { isOfferNewer, isOptimisticOfferExpired, useTokenOffersOptimistic } from '@banx/store'
-import { isBondOfferV3Closed } from '@banx/utils/core/tokenOffers'
+import { isBondOfferV3Closed } from '@banx/utils/core/offers'
 
 export const useOffersPreviewData = () => {
   const { publicKey } = useWallet()
