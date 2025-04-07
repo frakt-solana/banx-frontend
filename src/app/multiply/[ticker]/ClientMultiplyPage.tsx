@@ -15,6 +15,7 @@ import TokenInput from '@banx/components/TokenInput'
 
 import { CollateralToken } from '@banx/api'
 import { PATHS } from '@banx/constants'
+import { useRenderTimer } from '@banx/hooks'
 import { Settings } from '@banx/icons'
 import { useTokenType } from '@banx/store'
 
@@ -27,6 +28,8 @@ import { MultiplyPair } from './types'
 import styles from './ClientMultiplyPage.module.scss'
 
 export const ClientMultiplyPage = () => {
+  useRenderTimer('ClientMultiplyPage')
+
   const { ticker: urlTicker = '' } = useParams<{ ticker: string }>()
   const customPairInUse = urlTicker !== 'any'
 

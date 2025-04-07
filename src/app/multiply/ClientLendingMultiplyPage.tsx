@@ -14,7 +14,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
 import { PATHS } from '@banx/constants'
-import { useTheme, useTokenMarketsPreview } from '@banx/hooks'
+import { useRenderTimer, useTheme, useTokenMarketsPreview } from '@banx/hooks'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
 import { isUsdcTokenType } from '@banx/utils'
 
@@ -30,6 +30,8 @@ import { convertToUsdcTvl, formatMaxApr } from './helpers'
 import styles from './ClientLendingMultiplyPage.module.scss'
 
 export const ClientLendingMultiplyPage = () => {
+  useRenderTimer('ClientLendingMultiplyPage')
+
   const router = useRouter()
   const { tokenType } = useTokenType()
   const { marketsPreview } = useTokenMarketsPreview(LendingTokenType.Usdc)

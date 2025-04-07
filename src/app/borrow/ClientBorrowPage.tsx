@@ -3,12 +3,16 @@
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
 import { Tabs, useTabs } from '@banx/components/Tabs'
 
+import { useRenderTimer } from '@banx/hooks'
+
 import InstantBorrowContent from './InstantBorrowContent/InstantBorrowContent'
 import ListLoansContent from './ListLoansContent/ListLoansContent'
 
 import styles from './ClientBorrowPage.module.scss'
 
 export const ClientBorrowPage = () => {
+  useRenderTimer('ClientBorrowPage')
+
   const {
     value: currentTabValue,
     setValue,

@@ -5,7 +5,7 @@ import EmptyList from '@banx/components/EmptyList'
 import { Loader } from '@banx/components/Loader'
 
 import { PATHS } from '@banx/constants'
-import { useFakeInfinityScroll } from '@banx/hooks'
+import { useFakeInfinityScroll, useRenderTimer } from '@banx/hooks'
 
 import FilterSection from './components/FilterSection'
 import LendTokenCard from './components/LendTokenCard'
@@ -15,6 +15,8 @@ import { useMarketsView } from './hooks'
 import styles from './ClientMarketsPage.module.scss'
 
 export const ClientMarketsPage = () => {
+  useRenderTimer('ClientMarketsPage')
+
   const {
     marketsPreview,
     onCardClick,

@@ -13,6 +13,7 @@ import { Tabs, useTabs } from '@banx/components/Tabs'
 
 import { VaultPreview } from '@banx/api'
 import { PATHS } from '@banx/constants'
+import { useRenderTimer } from '@banx/hooks'
 import { formatCompact, getTokenDecimals, getTokenUnit } from '@banx/utils'
 
 import { TOOLTIP_TEXTS } from '../constants'
@@ -28,6 +29,8 @@ import { useLiquidityPoolTxns } from './hooks'
 import styles from './ClientLendVaultsPage.module.scss'
 
 export const ClientLendVaultsPage = () => {
+  useRenderTimer('ClientLendVaultsPage')
+
   const { vaultPubkey = '' } = useParams<{ vaultPubkey: string }>()
   const { vaultsPreview } = useVaultsPreview()
 

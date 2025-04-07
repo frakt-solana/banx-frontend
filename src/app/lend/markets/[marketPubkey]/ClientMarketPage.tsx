@@ -18,7 +18,12 @@ import Tooltip from '@banx/components/Tooltip'
 
 import { TokenMarketPreview } from '@banx/api'
 import { PATHS, TABLET_WIDTH } from '@banx/constants'
-import { useMarketTokenRewards, useTokenMarketsPreview, useWindowSize } from '@banx/hooks'
+import {
+  useMarketTokenRewards,
+  useRenderTimer,
+  useTokenMarketsPreview,
+  useWindowSize,
+} from '@banx/hooks'
 import { SOLFilled, USDC } from '@banx/icons'
 import { useTokenType } from '@banx/store/common'
 import { getOracleIcon, getTokenDecimals, getTokenTicker, isUsdcTokenType } from '@banx/utils'
@@ -26,6 +31,8 @@ import { getOracleIcon, getTokenDecimals, getTokenTicker, isUsdcTokenType } from
 import styles from './ClientMarketPage.module.scss'
 
 export const ClientMarketPage = () => {
+  useRenderTimer('ClientMarketPage')
+
   const { marketPubkey = '' } = useParams<{ marketPubkey: string }>()
   const { marketRewards } = useMarketTokenRewards(marketPubkey)
 

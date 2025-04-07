@@ -21,6 +21,7 @@ import Tooltip from '@banx/components/Tooltip'
 import { Loan } from '@banx/api'
 import { PATHS } from '@banx/constants'
 import { MESSAGES } from '@banx/constants/messages'
+import { useRenderTimer } from '@banx/hooks'
 import { Hourglass, Snowflake } from '@banx/icons'
 import { ViewState, buildUrlWithModeAndToken, useTableView } from '@banx/store'
 
@@ -31,6 +32,8 @@ import { useMarketLoansState, useMarketLoansView } from './hooks'
 import styles from './ClientMarketLoansPage.module.scss'
 
 export const ClientMarketLoansPage = () => {
+  useRenderTimer('ClientMarketLoansPage')
+
   const { publicKey: walletPublicKey } = useWallet()
   const walletPubkey = walletPublicKey?.toBase58() ?? ''
   const { viewState } = useTableView()
