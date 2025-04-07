@@ -6,8 +6,8 @@ import {
   STATUS_LOANS_MAP,
   calculateLentTokenValueWithInterest,
   calculateTokenLoanAccruedInterest,
-  isTokenLoanLiquidated,
-  isTokenLoanSelling,
+  isLoanLiquidated,
+  isLoanSelling,
 } from '@banx/utils'
 
 import { calculateWeightedApr, calculateWeightedLtv } from '../../helpers'
@@ -25,7 +25,7 @@ export const calculateLoansStats = (loans: Loan[]) => {
 }
 
 export const getTokenLoanStatus = (loan: Loan) => {
-  if (isTokenLoanLiquidated(loan) && !isTokenLoanSelling(loan)) {
+  if (isLoanLiquidated(loan) && !isLoanSelling(loan)) {
     return LoanStatus.Liquidated
   }
 

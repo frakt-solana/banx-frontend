@@ -6,11 +6,11 @@ import {
   calcWeightedAverage,
   calculateLentTokenValueWithInterest,
   calculateTokenLoanLtvByLoanValue,
-  isTokenLoanLiquidated,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
-  isTokenLoanUnderWater,
+  isLoanLiquidated,
+  isLoanRepaymentCallActive,
+  isLoanSelling,
+  isLoanTerminating,
+  isLoanUnderwater,
 } from '@banx/utils'
 
 import { LoansPreview } from './types'
@@ -33,11 +33,11 @@ export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] =>
     const totalClaim = sumBy(loans, (loan) => calculateLentTokenValueWithInterest(loan).toNumber())
     const totalRepaid = sumBy(loans, (loan) => loan.bondTradeTransaction.lenderFullRepaidAmount)
 
-    const terminatingLoansAmount = size(filter(loans, isTokenLoanTerminating))
-    const repaymentCallsAmount = size(filter(loans, isTokenLoanRepaymentCallActive))
-    const sellingLoansAmount = size(filter(loans, isTokenLoanSelling))
-    const underwaterLoansAmount = size(filter(loans, isTokenLoanUnderWater))
-    const liquidatedLoansAmount = size(filter(loans, isTokenLoanLiquidated))
+    const terminatingLoansAmount = size(filter(loans, isLoanTerminating))
+    const repaymentCallsAmount = size(filter(loans, isLoanRepaymentCallActive))
+    const sellingLoansAmount = size(filter(loans, isLoanSelling))
+    const underwaterLoansAmount = size(filter(loans, isLoanUnderwater))
+    const liquidatedLoansAmount = size(filter(loans, isLoanLiquidated))
 
     const [collateralMint, lendingToken] = key.split('-') as [string, LendingTokenType]
 

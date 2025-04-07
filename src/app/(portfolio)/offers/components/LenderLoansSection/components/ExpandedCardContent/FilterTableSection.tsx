@@ -6,11 +6,11 @@ import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
 import { Loan } from '@banx/api'
 import {
-  isTokenLoanLiquidated,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
-  isTokenLoanUnderWater,
+  isLoanLiquidated,
+  isLoanRepaymentCallActive,
+  isLoanSelling,
+  isLoanTerminating,
+  isLoanUnderwater,
 } from '@banx/utils'
 
 import styles from './ExpandedCardContent.module.scss'
@@ -31,11 +31,11 @@ export enum FilterStatus {
 }
 
 export const LOAN_FILTERS = {
-  [FilterStatus.LIQUIDATED]: isTokenLoanLiquidated,
-  [FilterStatus.TERMINATING]: isTokenLoanTerminating,
-  [FilterStatus.LISTED]: isTokenLoanSelling,
-  [FilterStatus.REPAYMENT_CALL]: isTokenLoanRepaymentCallActive,
-  [FilterStatus.UNDERWATER]: isTokenLoanUnderWater,
+  [FilterStatus.LIQUIDATED]: isLoanLiquidated,
+  [FilterStatus.TERMINATING]: isLoanTerminating,
+  [FilterStatus.LISTED]: isLoanSelling,
+  [FilterStatus.REPAYMENT_CALL]: isLoanRepaymentCallActive,
+  [FilterStatus.UNDERWATER]: isLoanUnderwater,
   [FilterStatus.ALL]: () => true,
 }
 

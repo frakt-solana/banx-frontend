@@ -24,10 +24,10 @@ import {
   calculateTokenLoanLtvByLoanValue,
   calculateTokenLoanValueWithUpfrontFee,
   getColorByPercent,
-  isTokenLoanActive,
-  isTokenLoanLiquidated,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
+  isLoanActive,
+  isLoanLiquidated,
+  isLoanSelling,
+  isLoanTerminating,
 } from '@banx/utils'
 
 import { useLenderLoansTxns } from '../../hooks'
@@ -136,17 +136,17 @@ const getTimeContent = (loan: Loan) => {
   const currentTimeInSeconds = moment().unix()
   const { terminationStartedAt, soldAt } = loan.bondTradeTransaction
 
-  if (isTokenLoanTerminating(loan) && !isTokenLoanLiquidated(loan)) {
+  if (isLoanTerminating(loan) && !isLoanLiquidated(loan)) {
     const auctionEndTime = loan.fraktBond.refinanceAuctionStartedAt + SECONDS_IN_72_HOURS
     return <Timer expiredAt={auctionEndTime} />
   }
 
-  if (isTokenLoanSelling(loan)) {
+  if (isLoanSelling(loan)) {
     const timeSinceActivation = currentTimeInSeconds - terminationStartedAt
     return calculateTimeFromNow(timeSinceActivation)
   }
 
-  if (isTokenLoanActive(loan) || isTokenLoanLiquidated(loan)) {
+  if (isLoanActive(loan) || isLoanLiquidated(loan)) {
     const timeSinceActivation = currentTimeInSeconds - soldAt
     return calculateTimeFromNow(timeSinceActivation)
   }
@@ -158,8 +158,8 @@ export const ActionsCell: FC<{ loan: Loan }> = ({ loan }) => {
   const { claimTokenLoan } = useLenderLoansTxns()
   const { open } = useModal()
 
-  const isLoanTerminating = isTokenLoanTerminating(loan)
-  const isLoanLiquidated = isTokenLoanLiquidated(loan)
+  const isLoanTerminating = isLoanTerminating(loan)
+  const isLoanLiquidated = isLoanLiquidated(loan)
 
   const canClaim = isLoanLiquidated && isLoanTerminating
 

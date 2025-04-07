@@ -7,7 +7,7 @@ import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
 
 import { Loan } from '@banx/api'
-import { isTokenLoanRepaymentCallActive, isTokenLoanTerminating } from '@banx/utils'
+import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils'
 
 import { useLoansSorting, useLoansState } from '../../hooks'
 import { FilterStatus, FilterTableSection } from './FilterTableSection'
@@ -66,11 +66,11 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
     if (!currentOption) return loans
 
     if (currentOption.value === FilterStatus.TERMINATING) {
-      return filter(loans, isTokenLoanTerminating)
+      return filter(loans, isLoanTerminating)
     }
 
     if (currentOption.value === FilterStatus.REPAYMENT_CALL) {
-      return filter(loans, isTokenLoanRepaymentCallActive)
+      return filter(loans, isLoanRepaymentCallActive)
     }
 
     return loans
@@ -101,11 +101,11 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
       onRowClick,
       activeRowParams: [
         {
-          condition: isTokenLoanTerminating,
+          condition: isLoanTerminating,
           className: styles.terminated,
         },
         {
-          condition: isTokenLoanRepaymentCallActive,
+          condition: isLoanRepaymentCallActive,
           className: styles.repaymentCallActive,
         },
       ],

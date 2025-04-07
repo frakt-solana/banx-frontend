@@ -5,11 +5,11 @@ import { SECONDS_IN_DAY } from '@banx/constants'
 import {
   caclulateBorrowTokenLoanValue,
   calculateTokenLoanValueWithUpfrontFee,
-  isTokenLoanListed,
+  isLoanListed,
 } from '@banx/utils'
 
 export const calculateLendToBorrowValue = (loan: Loan) => {
-  return isTokenLoanListed(loan)
+  return isLoanListed(loan)
     ? calculateTokenLoanValueWithUpfrontFee(loan).toNumber()
     : caclulateBorrowTokenLoanValue(loan).toNumber()
 }

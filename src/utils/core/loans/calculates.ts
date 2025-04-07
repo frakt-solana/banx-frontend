@@ -9,131 +9,26 @@ import {
   calcBorrowerTokenAPR,
   calcRepayFeeAprFromBondTradeTransaction,
 } from 'fbonds-core/lib/fbond-protocol/helpers'
-import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
 import { Loan, convertBondTradeTransactionToCore } from '@banx/api'
-import { DYNAMIC_APR, SECONDS_IN_72_HOURS, SECONDS_IN_DAY } from '@banx/constants'
-
-export enum LoanStatus {
-  Active = 'active',
-  Refinanced = 'refinanced',
-  RefinancedActive = 'refinanced active',
-  Repaid = 'repaid',
-  PartialRepaid = 'partial repaid',
-  Liquidated = 'liquidated',
-  Terminating = 'terminating',
-  Selling = 'Listed',
-}
-
-export const STATUS_LOANS_MAP: Record<string, LoanStatus> = {
-  [BondTradeTransactionV2State.PerpetualActive]: LoanStatus.Active,
-  [BondTradeTransactionV2State.PerpetualRefinancedActive]: LoanStatus.Active,
-  [BondTradeTransactionV2State.PerpetualRepaid]: LoanStatus.Repaid,
-  [BondTradeTransactionV2State.PerpetualRefinanceRepaid]: LoanStatus.Refinanced,
-  [BondTradeTransactionV2State.PerpetualPartialRepaid]: LoanStatus.PartialRepaid,
-  [BondTradeTransactionV2State.PerpetualLiquidatedByClaim]: LoanStatus.Liquidated,
-  [BondTradeTransactionV2State.PerpetualManualTerminating]: LoanStatus.Terminating,
-  [BondTradeTransactionV2State.PerpetualSellingLoan]: LoanStatus.Selling,
-}
-
-export const STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE: Record<string, string> = {
-  ...STATUS_LOANS_MAP,
-  [BondTradeTransactionV2State.PerpetualRefinancedActive]: LoanStatus.RefinancedActive,
-}
-
-export const STATUS_LOANS_COLOR_MAP: Record<LoanStatus, string> = {
-  [LoanStatus.Active]: 'var(--additional-green-primary-deep)',
-  [LoanStatus.Refinanced]: 'var(--additional-green-primary-deep)',
-  [LoanStatus.RefinancedActive]: 'var(--additional-green-primary-deep)',
-  [LoanStatus.Repaid]: 'var(--additional-green-primary-deep)',
-  [LoanStatus.PartialRepaid]: 'var(--additional-green-primary-deep)',
-  [LoanStatus.Terminating]: 'var(--additional-red-primary-deep)',
-  [LoanStatus.Liquidated]: 'var(--additional-red-primary-deep)',
-  [LoanStatus.Selling]: 'var(--additional-lava-primary-deep)',
-}
-
-export const isTokenLoanFrozen = (loan: Loan) => {
-  return !!loan.bondTradeTransaction.terminationFreeze
-}
-
-export const isTokenLoanListed = (loan: Loan) => {
-  return (
-    loan.bondTradeTransaction.bondTradeTransactionState ===
-    BondTradeTransactionV2State.PerpetualBorrowerListing
-  )
-}
-
-export const isTokenLoanRepaid = (loan: Loan) => {
-  return (
-    loan.bondTradeTransaction.bondTradeTransactionState ===
-    BondTradeTransactionV2State.PerpetualRepaid
-  )
-}
-
-export const isTokenLoanTerminating = (loan: Loan) => {
-  return (
-    loan.bondTradeTransaction.bondTradeTransactionState ===
-    BondTradeTransactionV2State.PerpetualManualTerminating
-  )
-}
-
-export const isTokenLoanSelling = (loan: Loan) => {
-  return (
-    loan.bondTradeTransaction.bondTradeTransactionState ===
-    BondTradeTransactionV2State.PerpetualSellingLoan
-  )
-}
-
-export const isTokenLoanLiquidated = (loan: Loan) => {
-  if (!loan.fraktBond.refinanceAuctionStartedAt) return false
-
-  const currentTimeInSeconds = moment().unix()
-  const expiredAt = loan.fraktBond.refinanceAuctionStartedAt + SECONDS_IN_72_HOURS
-  return currentTimeInSeconds > expiredAt
-}
-
-export const isTokenLoanActive = (loan: Loan) => {
-  const { bondTradeTransactionState } = loan.bondTradeTransaction
-
-  return (
-    bondTradeTransactionState === BondTradeTransactionV2State.PerpetualActive ||
-    bondTradeTransactionState === BondTradeTransactionV2State.PerpetualRefinancedActive
-  )
-}
+import { DYNAMIC_APR, SECONDS_IN_DAY } from '@banx/constants'
 
 export const getTokenLoanSupply = (loan: Loan) => {
-  const collateralSupply = loan.fraktBond.fbondTokenSupply / Math.pow(10, loan.collateral.decimals)
-  return collateralSupply
+  const { fraktBond, collateral } = loan
+  return fraktBond.fbondTokenSupply / Math.pow(10, collateral.decimals)
 }
 
 export const calculateTokenLoanLtvByLoanValue = (loan: Loan, value: number) => {
   const collateralSupply = getTokenLoanSupply(loan)
-
   const ltvRatio = value / collateralSupply
-  const ltvPercent = (ltvRatio / loan.collateralPrice) * 100
 
-  return ltvPercent
-}
-
-export const isTokenLoanUnderWater = (loan: Loan) => {
-  const LTV_THRESHOLD = 100
-
-  const loanValue = calculateLentTokenValueWithInterest(loan).toNumber()
-  const ltvPercent = calculateTokenLoanLtvByLoanValue(loan, loanValue)
-
-  return ltvPercent > LTV_THRESHOLD
-}
-
-export const isTokenLoanRepaymentCallActive = (loan: Loan) => {
-  if (!loan.bondTradeTransaction.repaymentCallAmount || isTokenLoanTerminating(loan)) return false
-
-  const repayValue = caclulateBorrowTokenLoanValue(loan).toNumber()
-  return !!(loan.bondTradeTransaction.repaymentCallAmount / repayValue)
+  return (ltvRatio / loan.collateralPrice) * 100
 }
 
 /**
-  As we need to show how much lender receives. We need to calculate this value from repaymentCallAmount (how much borrower should pay)
+  As we need to show how much lender receives.
+  We need to calculate this value from repaymentCallAmount (how much borrower should pay)
  */
 export const calculateTokenRepaymentCallLenderReceivesAmount = (loan: Loan) => {
   const { repaymentCallAmount, soldAt } = loan.bondTradeTransaction
@@ -271,3 +166,5 @@ export const calcTokenLoanAprWithRepayFee = (loan: Loan): number => {
 
   return calcBorrowerTokenAPR(baseLoanApr, repayAprFee)
 }
+
+//? ========= APR calculations =========

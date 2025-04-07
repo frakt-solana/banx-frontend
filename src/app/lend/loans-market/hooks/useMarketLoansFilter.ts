@@ -5,12 +5,7 @@ import { filter, size } from 'lodash'
 import { filterBySearchQuery } from '@banx/components/Search'
 
 import { Loan } from '@banx/api'
-import {
-  isTokenLoanFrozen,
-  isTokenLoanListed,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
-} from '@banx/utils'
+import { isLoanFrozen, isLoanListed, isLoanSelling, isLoanTerminating } from '@banx/utils'
 
 type LoanPredicate = (loan: Loan) => boolean
 
@@ -38,8 +33,8 @@ export const useMarketLoansFilter = (loans: Loan[]) => {
   const filteredLoans = useMemo(() => {
     const applyFilter = (sourceLoans: Loan[]) => {
       const baseLoans = getBaseLoans(sourceLoans)
-      const auctionLoans = filter(sourceLoans, isTokenLoanTerminating)
-      const frozenLoans = filter(sourceLoans, isTokenLoanFrozen)
+      const auctionLoans = filter(sourceLoans, isLoanTerminating)
+      const frozenLoans = filter(sourceLoans, isLoanFrozen)
 
       const auctionFilterResult = isAuctionFilterEnabled ? auctionLoans : []
       const freezeFilterResult = isFreezeFilterEnabled ? frozenLoans : []
@@ -54,8 +49,8 @@ export const useMarketLoansFilter = (loans: Loan[]) => {
   const getLoanAmount = (predicate: LoanPredicate) =>
     size(filter(filteredBySearchQuery, predicate)) || null
 
-  const auctionLoansAmount = getLoanAmount(isTokenLoanTerminating)
-  const freezeLoansAmount = getLoanAmount(isTokenLoanFrozen)
+  const auctionLoansAmount = getLoanAmount(isLoanTerminating)
+  const freezeLoansAmount = getLoanAmount(isLoanFrozen)
 
   return {
     filteredLoans,
@@ -76,8 +71,8 @@ export const useMarketLoansFilter = (loans: Loan[]) => {
 
 //? Selects active loans: listed or selling, and not frozen.
 const getBaseLoans = (loans: Loan[]) => {
-  const isListedOrSelling = (loan: Loan) => isTokenLoanListed(loan) || isTokenLoanSelling(loan)
-  const isNotFrozen = (loan: Loan) => !isTokenLoanFrozen(loan)
+  const isListedOrSelling = (loan: Loan) => isLoanListed(loan) || isLoanSelling(loan)
+  const isNotFrozen = (loan: Loan) => !isLoanFrozen(loan)
 
   return loans.filter((loan) => isListedOrSelling(loan) && isNotFrozen(loan))
 }

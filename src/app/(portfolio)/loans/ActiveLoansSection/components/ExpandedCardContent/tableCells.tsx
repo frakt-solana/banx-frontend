@@ -28,10 +28,10 @@ import {
   calculateTokenLoanLtvByLoanValue,
   getColorByPercent,
   getTokenDecimals,
-  isTokenLoanActive,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
-  isTokenLoanUnderWater,
+  isLoanActive,
+  isLoanSelling,
+  isLoanTerminating,
+  isLoanUnderwater,
 } from '@banx/utils'
 
 import { calculateAccruedInterest } from '../../helpers'
@@ -169,13 +169,13 @@ export const StatusCell: FC<{ loan: Loan }> = ({ loan }) => {
 const getTimeContent = (loan: Loan) => {
   const { fraktBond } = loan
 
-  if (isTokenLoanActive(loan) || isTokenLoanSelling(loan)) {
+  if (isLoanActive(loan) || isLoanSelling(loan)) {
     const currentTimeInSeconds = moment().unix()
     const timeSinceActivationInSeconds = currentTimeInSeconds - fraktBond.activatedAt
     return calculateTimeFromNow(timeSinceActivationInSeconds)
   }
 
-  if (isTokenLoanTerminating(loan)) {
+  if (isLoanTerminating(loan)) {
     const expiredAt = fraktBond.refinanceAuctionStartedAt + SECONDS_IN_72_HOURS
     return <Timer expiredAt={expiredAt} />
   }
@@ -193,8 +193,8 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
 
   const { sellToRepay } = useLoansTxns()
 
-  const isLoanTerminating = isTokenLoanTerminating(loan)
-  const isLoanUnderWater = isTokenLoanUnderWater(loan)
+  const isLoanTerminating = isLoanTerminating(loan)
+  const isLoanUnderWater = isLoanUnderwater(loan)
 
   const tooltipTitle = isLoanUnderWater
     ? 'Cannot sell this loan as the LTV exceeds 100%. Selling this loan would result in a net loss because the debt surpasses the value of the collateral'

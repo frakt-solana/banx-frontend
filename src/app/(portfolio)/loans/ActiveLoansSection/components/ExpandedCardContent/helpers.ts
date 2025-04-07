@@ -6,8 +6,8 @@ import {
   STATUS_LOANS_MAP,
   caclulateBorrowTokenLoanValue,
   calcTokenWeeklyFeeWithRepayFee,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanSelling,
+  isLoanRepaymentCallActive,
+  isLoanSelling,
 } from '@banx/utils'
 
 import { calcTokenTotalValueToPay, calculateWeightedApr } from '../../helpers'
@@ -15,8 +15,8 @@ import { calcTokenTotalValueToPay, calculateWeightedApr } from '../../helpers'
 export const getPayInterestActionText = (loans: Loan[]) => {
   if (loans.length === 0) return 'Pay'
 
-  const hasActiveRepaymentCall = loans.some(isTokenLoanRepaymentCallActive)
-  const noActiveRepaymentCalls = loans.every((loan) => !isTokenLoanRepaymentCallActive(loan))
+  const hasActiveRepaymentCall = loans.some(isLoanRepaymentCallActive)
+  const noActiveRepaymentCalls = loans.every((loan) => !isLoanRepaymentCallActive(loan))
 
   if (hasActiveRepaymentCall && !noActiveRepaymentCalls) return 'Repayment call'
   if (noActiveRepaymentCalls) return 'Pay interest'
@@ -37,7 +37,7 @@ export const calculateLoansStats = (loans: Loan[]) => {
 
 export const getTokenLoanStatus = (loan: Loan) => {
   //? Show 'Active' since the loan sale doesn't affect the borrower
-  if (isTokenLoanSelling(loan)) return LoanStatus.Active
+  if (isLoanSelling(loan)) return LoanStatus.Active
 
   return STATUS_LOANS_MAP[loan.bondTradeTransaction.bondTradeTransactionState]
 }

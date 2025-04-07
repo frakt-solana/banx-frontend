@@ -15,7 +15,7 @@ import {
   calculateTokenLoanRepayValueOnCertainDate,
   calculateTokenLoanValueWithUpfrontFee,
   isBanxSolTokenType,
-  isTokenLoanListed,
+  isLoanListed,
   removeDuplicatedPublicKeys,
 } from '@banx/utils'
 
@@ -42,7 +42,7 @@ export const createBulkLendToBorrowTokenTxnsData: CreateBulkLendToBorrowTokenTxn
       },
       loan,
     ) => {
-      const isListed = isTokenLoanListed(loan)
+      const isListed = isLoanListed(loan)
 
       const loanValue = isListed
         ? calculateTokenLoanValueWithUpfrontFee(loan)

@@ -18,9 +18,9 @@ import {
   formatValueByTokenType,
   getTokenDecimals,
   getTokenUnit,
-  isTokenLoanActive,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
+  isLoanActive,
+  isLoanSelling,
+  isLoanTerminating,
 } from '@banx/utils'
 
 import { useLenderLoansTxns } from '../../../hooks'
@@ -58,9 +58,9 @@ export const ClosureContent: FC<{ loan: Loan }> = ({ loan }) => {
   }, [loan, offers, lendingTokenDecimals, publicKey])
 
   const loanStatus = {
-    isActive: isTokenLoanActive(loan),
-    isSelling: isTokenLoanSelling(loan),
-    isTerminating: isTokenLoanTerminating(loan),
+    isActive: isLoanActive(loan),
+    isSelling: isLoanSelling(loan),
+    isTerminating: isLoanTerminating(loan),
   }
 
   const canRefinance = !isEmpty(bestOffer) && !loanStatus.isTerminating

@@ -15,5 +15,5 @@ export const calcWeightedAverage = (nums: number[], weights: number[]) => {
   return weightedAverage || 0
 }
 
-export * from './tokenLoans'
+export * from './loans'
 export * from './tokenOffers'

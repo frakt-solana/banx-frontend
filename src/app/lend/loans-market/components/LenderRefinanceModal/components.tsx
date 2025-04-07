@@ -17,9 +17,9 @@ import {
   calculateTokenLoanLtvByLoanValue,
   getColorByPercent,
   getTokenLoanSupply,
-  isTokenLoanFrozen,
-  isTokenLoanListed,
-  isTokenLoanSelling,
+  isLoanFrozen,
+  isLoanListed,
+  isLoanSelling,
 } from '@banx/utils'
 
 import { calculateLendToBorrowValue } from '../../helpers'
@@ -40,7 +40,7 @@ export const CollateralCell: FC<{ loan: Loan }> = ({ loan }) => {
 
 export const FreezeCell: FC<{ loan: Loan }> = ({ loan }) => {
   const freezeDays = loan.bondTradeTransaction.terminationFreeze / SECONDS_IN_DAY
-  const freezeValue = isTokenLoanFrozen(loan) ? `${freezeDays} days` : '--'
+  const freezeValue = isLoanFrozen(loan) ? `${freezeDays} days` : '--'
 
   return <HorizontalCell value={freezeValue} className={styles.bodyCellText} />
 }
@@ -81,7 +81,7 @@ export const LiquidationLtvCell: FC<LiquidationLtvCellProps> = ({
   const isOracleMarket = loan.collateral?.oraclePriceFeedType !== 'none'
 
   //? Lender can edit only if loan is not listed by borrower or lender
-  const canEdit = isOracleMarket && !isTokenLoanListed(loan) && !isTokenLoanSelling(loan)
+  const canEdit = isOracleMarket && !isLoanListed(loan) && !isLoanSelling(loan)
 
   if (isEditing) {
     return (

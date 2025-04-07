@@ -29,7 +29,7 @@ import {
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  isTokenLoanListed,
+  isLoanListed,
 } from '@banx/utils'
 
 import { useMarketLoansData } from './useMarketLoansData'
@@ -98,7 +98,7 @@ export const useMarketLoansTransactions = () => {
 
           if (confirmed.length) {
             return confirmed.forEach(({ params, signature }) => {
-              const isOldLoanListed = isTokenLoanListed(params.loan)
+              const isOldLoanListed = isLoanListed(params.loan)
 
               const message = isOldLoanListed
                 ? 'Loan successfully funded'

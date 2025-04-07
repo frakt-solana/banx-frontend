@@ -8,9 +8,9 @@ import { Loan } from '@banx/api'
 import {
   calculateLentTokenValueWithInterest,
   calculateTokenLoanLtvByLoanValue,
-  isTokenLoanLiquidated,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanTerminating,
+  isLoanLiquidated,
+  isLoanRepaymentCallActive,
+  isLoanTerminating,
 } from '@banx/utils'
 
 import { TableColumnKey } from '../constants'
@@ -41,13 +41,13 @@ const SORT_VALUE_MAP: Record<TableColumnKey, string | SortValueGetter> = {
 
 const sortStatusLoans = (loans: Loan[], order: SortOrder) => {
   const terminatingLoans = chain(loans)
-    .filter(isTokenLoanTerminating)
+    .filter(isLoanTerminating)
     .sortBy((loan) => loan.fraktBond.refinanceAuctionStartedAt)
     .reverse()
     .value()
 
   const repaymentCallLoans = chain(loans)
-    .filter(isTokenLoanRepaymentCallActive)
+    .filter(isLoanRepaymentCallActive)
     .sortBy((loan) => loan.bondTradeTransaction.repaymentCallAmount)
     .reverse()
     .value()
@@ -55,9 +55,7 @@ const sortStatusLoans = (loans: Loan[], order: SortOrder) => {
   const otherLoans = chain(loans)
     .filter(
       (loan) =>
-        !isTokenLoanTerminating(loan) &&
-        !isTokenLoanLiquidated(loan) &&
-        !isTokenLoanRepaymentCallActive(loan),
+        !isLoanTerminating(loan) && !isLoanLiquidated(loan) && !isLoanRepaymentCallActive(loan),
     )
     .sortBy((loan) => loan.fraktBond.activatedAt)
     .reverse()

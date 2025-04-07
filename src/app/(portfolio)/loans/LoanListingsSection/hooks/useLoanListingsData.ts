@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import { fetchBorrowerLoanListings } from '@banx/api'
 import { isLoanNewer, isOptimisticLoanExpired, useTokenLoanListingsOptimistic } from '@banx/store'
-import { isTokenLoanListed } from '@banx/utils'
+import { isLoanListed } from '@banx/utils'
 
 export const USE_USER_TOKEN_LOAN_LISTINGS_QUERY_KEY = 'userTokenLoanListings'
 
@@ -70,7 +70,7 @@ export const useLoanListingsData = () => {
       .groupBy((loan) => loan.publicKey)
       .map((groupedLoans) => _.maxBy(groupedLoans, (loan) => loan.fraktBond.lastTransactedAt))
       .compact()
-      .filter((loan) => isTokenLoanListed(loan))
+      .filter((loan) => isLoanListed(loan))
       .value()
   }, [data, walletOptimisticLoans])
 

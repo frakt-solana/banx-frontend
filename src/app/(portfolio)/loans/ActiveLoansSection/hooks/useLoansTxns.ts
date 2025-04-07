@@ -35,7 +35,7 @@ import {
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  isTokenLoanRepaymentCallActive,
+  isLoanRepaymentCallActive,
 } from '@banx/utils'
 
 import { caclFractionToRepay, caclFractionToRepayForRepaymentCall } from '../helpers'
@@ -257,7 +257,7 @@ export const useLoansTxns = () => {
     const loansWithCalculatedUnpaidInterest = selection
       .map(({ loan }) => ({
         loan,
-        fractionToRepay: isTokenLoanRepaymentCallActive(loan)
+        fractionToRepay: isLoanRepaymentCallActive(loan)
           ? caclFractionToRepayForRepaymentCall(loan)
           : caclFractionToRepay(loan),
       }))
@@ -265,7 +265,7 @@ export const useLoansTxns = () => {
 
     const allLoansAreWithoutRepaymentCall = every(
       selection,
-      ({ loan }) => !isTokenLoanRepaymentCallActive(loan),
+      ({ loan }) => !isLoanRepaymentCallActive(loan),
     )
 
     try {

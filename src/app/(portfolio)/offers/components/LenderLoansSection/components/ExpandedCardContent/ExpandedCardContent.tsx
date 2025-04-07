@@ -8,12 +8,12 @@ import Table from '@banx/components/Table'
 
 import { Loan } from '@banx/api'
 import {
-  isTokenLoanLiquidated,
-  isTokenLoanListed,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanSelling,
-  isTokenLoanTerminating,
-  isTokenLoanUnderWater,
+  isLoanLiquidated,
+  isLoanListed,
+  isLoanRepaymentCallActive,
+  isLoanSelling,
+  isLoanTerminating,
+  isLoanUnderwater,
 } from '@banx/utils'
 
 import { useLenderLoansSorting, useLenderLoansState } from '../../hooks'
@@ -51,12 +51,11 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
     clearSelection()
   }, [clearSelection])
 
-  const loansToClaim = useMemo(() => loans.filter((loan) => isTokenLoanLiquidated(loan)), [loans])
+  const loansToClaim = useMemo(() => loans.filter((loan) => isLoanLiquidated(loan)), [loans])
 
   const loansToTerminate = useMemo(() => {
     return loans.filter(
-      (loan) =>
-        !isTokenLoanTerminating(loan) && !isTokenLoanListed(loan) && checkIfFreezeExpired(loan),
+      (loan) => !isLoanTerminating(loan) && !isLoanListed(loan) && checkIfFreezeExpired(loan),
     )
   }, [loans])
 
@@ -76,9 +75,9 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
   const onRowClick = useCallback(
     (loan: Loan) => {
       const canSelect =
-        !isTokenLoanLiquidated(loan) &&
-        !isTokenLoanTerminating(loan) &&
-        !isTokenLoanListed(loan) &&
+        !isLoanLiquidated(loan) &&
+        !isLoanTerminating(loan) &&
+        !isLoanListed(loan) &&
         checkIfFreezeExpired(loan)
 
       if (!canSelect) return
@@ -122,28 +121,27 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
       onRowClick,
       activeRowParams: [
         {
-          condition: (loan: Loan) => isTokenLoanTerminating(loan),
+          condition: (loan: Loan) => isLoanTerminating(loan),
           className: styles.loanTerminating,
           cardClassName: styles.loanTerminating,
         },
         {
-          condition: (loan: Loan) => isTokenLoanLiquidated(loan),
+          condition: (loan: Loan) => isLoanLiquidated(loan),
           className: styles.loanLiquidated,
           cardClassName: styles.loanLiquidated,
         },
         {
-          condition: (loan: Loan) =>
-            isTokenLoanUnderWater(loan) && !isTokenLoanRepaymentCallActive(loan),
+          condition: (loan: Loan) => isLoanUnderwater(loan) && !isLoanRepaymentCallActive(loan),
           className: styles.loanUnderwater,
           cardClassName: styles.loanUnderwater,
         },
         {
-          condition: (loan: Loan) => isTokenLoanRepaymentCallActive(loan),
+          condition: (loan: Loan) => isLoanRepaymentCallActive(loan),
           className: styles.loanRepaymentCallActive,
           cardClassName: styles.loanRepaymentCallActive,
         },
         {
-          condition: (loan: Loan) => isTokenLoanSelling(loan),
+          condition: (loan: Loan) => isLoanSelling(loan),
           className: styles.loanSelling,
           cardClassName: styles.loanSelling,
         },

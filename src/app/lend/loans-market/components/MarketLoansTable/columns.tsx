@@ -18,9 +18,9 @@ import {
   HealthColorIncreasing,
   getColorByPercent,
   getTokenLoanSupply,
-  isTokenLoanFrozen,
-  isTokenLoanListed,
-  isTokenLoanSelling,
+  isLoanFrozen,
+  isLoanListed,
+  isLoanSelling,
 } from '@banx/utils'
 
 import { APRCell, ActionsCell, DebtCell, LTVCell } from './cells'
@@ -88,7 +88,7 @@ export const getTableColumns = ({
       title: <HeaderCell label="Freeze" />,
       render: (loan) => {
         const terminationFreezeInDays = loan.bondTradeTransaction.terminationFreeze / SECONDS_IN_DAY
-        const freezeValue = isTokenLoanFrozen(loan) ? `${terminationFreezeInDays} days` : '--'
+        const freezeValue = isLoanFrozen(loan) ? `${terminationFreezeInDays} days` : '--'
         return <HorizontalCell value={freezeValue} />
       },
     },
@@ -97,7 +97,7 @@ export const getTableColumns = ({
       title: <HeaderCell label="Ends in" />,
       render: (loan) => {
         const expiredAt = loan.fraktBond.refinanceAuctionStartedAt + SECONDS_IN_72_HOURS
-        const showTimer = !isTokenLoanSelling(loan) && !isTokenLoanListed(loan)
+        const showTimer = !isLoanSelling(loan) && !isLoanListed(loan)
 
         return showTimer ? <Timer expiredAt={expiredAt} /> : '--'
       },
@@ -124,17 +124,17 @@ export const getTableColumns = ({
 }
 
 const createRightContentJSX = (loan: Loan) => {
-  if ((isTokenLoanListed(loan) && !isTokenLoanFrozen(loan)) || isTokenLoanSelling(loan)) {
+  if ((isLoanListed(loan) && !isLoanFrozen(loan)) || isLoanSelling(loan)) {
     return null
   }
 
-  const tooltipText = isTokenLoanFrozen(loan)
+  const tooltipText = isLoanFrozen(loan)
     ? `This loan has a freeze period during which it can't be terminated`
     : 'This loan is available for a limited amount of time'
 
   return (
     <Tooltip title={tooltipText}>
-      {isTokenLoanFrozen(loan) ? (
+      {isLoanFrozen(loan) ? (
         <Snowflake className={styles.snowflakeIcon} />
       ) : (
         <Hourglass className={styles.hourglassIcon} />

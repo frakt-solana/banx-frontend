@@ -13,8 +13,8 @@ import {
   calcWeightedAverage,
   calculateTokenLoanLtvByLoanValue,
   isBanxSolTokenType,
-  isTokenLoanRepaymentCallActive,
-  isTokenLoanTerminating,
+  isLoanRepaymentCallActive,
+  isLoanTerminating,
 } from '@banx/utils'
 
 import { PARTIAL_REPAY_ACCOUNT_CREATION_FEE } from './constants'
@@ -37,8 +37,8 @@ export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] =>
 
     const totalDebt = sumBy(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
 
-    const terminatingLoansAmount = size(filter(loans, isTokenLoanTerminating))
-    const repaymentCallsAmount = size(filter(loans, isTokenLoanRepaymentCallActive))
+    const terminatingLoansAmount = size(filter(loans, isLoanTerminating))
+    const repaymentCallsAmount = size(filter(loans, isLoanRepaymentCallActive))
 
     const [collateralMint, lendingToken] = key.split('-') as [string, LendingTokenType]
 
@@ -145,7 +145,7 @@ export const caclFractionToRepayForRepaymentCall = (loan: Loan) => {
 }
 
 export const calcTokenTotalValueToPay = (loan: Loan) => {
-  if (isTokenLoanRepaymentCallActive(loan)) {
+  if (isLoanRepaymentCallActive(loan)) {
     return loan.bondTradeTransaction.repaymentCallAmount
   }
 

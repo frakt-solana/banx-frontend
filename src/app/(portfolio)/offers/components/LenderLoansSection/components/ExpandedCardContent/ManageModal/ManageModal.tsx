@@ -5,7 +5,7 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
-import { isTokenLoanTerminating } from '@banx/utils'
+import { isLoanTerminating } from '@banx/utils'
 
 import { ClosureContent } from './ClosureContent'
 import { RepaymentCallContent } from './RepaymentCallContent'
@@ -23,7 +23,7 @@ const ManageModal: FC<ManageModalProps> = ({ loan }) => {
     {
       label: 'Repayment call',
       value: TabName.REPAYMENT,
-      disabled: isTokenLoanTerminating(loan),
+      disabled: isLoanTerminating(loan),
     },
     {
       label: 'Closure',

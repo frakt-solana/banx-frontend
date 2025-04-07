@@ -10,7 +10,7 @@ import {
   calcTokenLoanAprWithRepayFee,
   calculateTokenLoanLtvByLoanValue,
   getColorByPercent,
-  isTokenLoanFrozen,
+  isLoanFrozen,
 } from '@banx/utils'
 
 import { useLoanListingsTransactions } from '../../hooks'
@@ -38,7 +38,7 @@ export const APRCell: FC<{ loan: Loan }> = ({ loan }) => {
 
 export const FreezeCell: FC<{ loan: Loan }> = ({ loan }) => {
   const terminationFreezeInDays = loan.bondTradeTransaction.terminationFreeze / SECONDS_IN_DAY
-  const freezeDuration = isTokenLoanFrozen(loan) ? `${terminationFreezeInDays} days` : '--'
+  const freezeDuration = isLoanFrozen(loan) ? `${terminationFreezeInDays} days` : '--'
 
   return <HorizontalCell value={freezeDuration} />
 }

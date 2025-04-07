@@ -15,7 +15,7 @@ import {
   calculateTokenLoanLtvByLoanValue,
   calculateTokenRepaymentCallLenderReceivesAmount,
   formatTokensPerCollateral,
-  isTokenLoanRepaymentCallActive,
+  isLoanRepaymentCallActive,
 } from '@banx/utils'
 
 //? constants
@@ -34,7 +34,7 @@ export const checkIfFreezeExpired = (loan: Loan) => {
 export const calculateRepaymentStaticValues = (loan: Loan) => {
   const DEFAULT_REPAY_PERCENT = 50
 
-  const repaymentCallActive = isTokenLoanRepaymentCallActive(loan)
+  const repaymentCallActive = isLoanRepaymentCallActive(loan)
 
   const repaymentCallLenderReceives = calculateTokenRepaymentCallLenderReceivesAmount(loan)
 

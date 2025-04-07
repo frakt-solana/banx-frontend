@@ -46,5 +46,3 @@ export const stringToBN = (value: string, decimals = 9): BN => {
 
   return integer.add(fractional)
 }
-
-export const sumBNs = (values: BN[]): BN => values.reduce((acc, value) => acc.add(value), ZERO_BN)

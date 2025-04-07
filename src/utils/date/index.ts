@@ -53,7 +53,7 @@ export const splitTimeDifferenceToUnits = (difference: Duration | null): Countdo
  */
 export const formatCountdownUnits = (countdownUnits: CountdownUnits, format: string): string => {
   const unitsToShow = _.split(format, ':')
-  //TODO: Add regular expression for better format validation
+  
   if (unitsToShow.length === 0) throw new Error('Incorrect time format')
 
   const { days, hours, minutes, seconds } = countdownUnits

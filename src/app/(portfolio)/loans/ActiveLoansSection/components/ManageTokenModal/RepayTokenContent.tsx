@@ -13,7 +13,7 @@ import {
   getColorByPercent,
   getTokenDecimals,
   getTokenUnit,
-  isTokenLoanRepaymentCallActive,
+  isLoanRepaymentCallActive,
 } from '@banx/utils'
 
 import { useLoansTxns } from '../../hooks'
@@ -151,7 +151,7 @@ const DEFAULT_REPAY_PERCENT = 100
 const calculateRepaymentStaticValues = (loan: core.Loan) => {
   const { bondTradeTransaction } = loan
 
-  const repaymentCallActive = isTokenLoanRepaymentCallActive(loan)
+  const repaymentCallActive = isLoanRepaymentCallActive(loan)
   const repaymentCallAmount = bondTradeTransaction.repaymentCallAmount
 
   //? For partial repayment loans, feeAmount is not included in the debt calculation

@@ -3,7 +3,7 @@ import { FC, useMemo } from 'react'
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
 import { Loan } from '@banx/api'
-import { isTokenLoanRepaymentCallActive, isTokenLoanTerminating } from '@banx/utils'
+import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils'
 
 import styles from './ExpandedCardContent.module.scss'
 
@@ -24,11 +24,8 @@ export const FilterTableSection: FC<FilterTableSectionProps> = ({
   onChange,
   currentOption,
 }) => {
-  const isTerminateDisabled = useMemo(() => !loans.some(isTokenLoanTerminating), [loans])
-  const isRepaymentCallDisabled = useMemo(
-    () => !loans.some(isTokenLoanRepaymentCallActive),
-    [loans],
-  )
+  const isTerminateDisabled = useMemo(() => !loans.some(isLoanTerminating), [loans])
+  const isRepaymentCallDisabled = useMemo(() => !loans.some(isLoanRepaymentCallActive), [loans])
 
   const options = useMemo(
     () => [

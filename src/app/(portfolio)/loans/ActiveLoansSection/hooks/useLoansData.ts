@@ -14,7 +14,7 @@ import {
   useTokenLoansOptimistic,
   useTokenType,
 } from '@banx/store'
-import { isTokenLoanLiquidated, isTokenLoanRepaid } from '@banx/utils'
+import { isLoanLiquidated, isLoanRepaid } from '@banx/utils'
 
 export const useLoansData = (strictTokenType?: LendingTokenType) => {
   const { publicKey: walletPublicKey } = useWallet()
@@ -83,8 +83,8 @@ export const useLoansData = (strictTokenType?: LendingTokenType) => {
       .groupBy((loan) => loan.publicKey)
       .map((groupedLoans) => _.maxBy(groupedLoans, (loan) => loan.fraktBond.lastTransactedAt))
       .compact()
-      .filter((loan) => !isTokenLoanRepaid(loan))
-      .filter((loan) => !isTokenLoanLiquidated(loan))
+      .filter((loan) => !isLoanRepaid(loan))
+      .filter((loan) => !isLoanLiquidated(loan))
       .value()
   }, [data, walletOptimisticLoans])
 
