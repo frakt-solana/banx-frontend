@@ -20,13 +20,13 @@ import {
 
 import { TableColumnKey } from '../../constants'
 import { SortColumnOption } from '../../hooks/useLenderLoansSorting'
-import { TokenLoanOptimistic } from '../../hooks/useLenderLoansState'
+import { LoanOptimistic } from '../../hooks/useLenderLoansState'
 import { ActionsCell, ClaimCell, LTVCell, StatusCell } from './tableCells'
 
 import styles from './ExpandedCardContent.module.scss'
 
 interface GetTableColumnsProps {
-  findLoanInSelection: (loanPubkey: string) => TokenLoanOptimistic | null
+  findLoanInSelection: (loanPubkey: string) => LoanOptimistic | null
   onRowClick: (loan: Loan) => void
   onSelectAll: () => void
   hasSelectedLoans: boolean

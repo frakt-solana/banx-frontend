@@ -5,25 +5,25 @@ import { Loan } from '@banx/api'
 
 const LOANS_CACHE_TIME_UNIX = 2 * 60 //? Auto clear optimistic after 2 minutes
 
-export interface TokenLoanOptimistic {
+export interface LoanOptimistic {
   loan: Loan
   wallet: string
   expiredAt: number
 }
 
-export const isOptimisticLoanExpired = (loan: TokenLoanOptimistic, walletPublicKey: string) =>
+export const isOptimisticLoanExpired = (loan: LoanOptimistic, walletPublicKey: string) =>
   loan.expiredAt < moment().unix() && loan.wallet === walletPublicKey
 
-export const addLoans = (loansState: TokenLoanOptimistic[], loansToAdd: TokenLoanOptimistic[]) => {
+export const addLoans = (loansState: LoanOptimistic[], loansToAdd: LoanOptimistic[]) => {
   const sameLoansRemoved = _.uniqBy([...loansState, ...loansToAdd], ({ loan }) => loan.publicKey)
   return sameLoansRemoved
 }
 
-export const removeLoans = (loansState: TokenLoanOptimistic[], loansPubkeysToRemove: string[]) =>
+export const removeLoans = (loansState: LoanOptimistic[], loansPubkeysToRemove: string[]) =>
   loansState.filter(({ loan }) => !loansPubkeysToRemove.includes(loan.publicKey))
 
 export const findLoan = (
-  loansState: TokenLoanOptimistic[],
+  loansState: LoanOptimistic[],
   loanPublicKey: string,
   walletPublicKey: string,
 ) =>
@@ -31,10 +31,7 @@ export const findLoan = (
     ({ loan, wallet }) => loan.publicKey === loanPublicKey && wallet === walletPublicKey,
   )
 
-export const updateLoans = (
-  loansState: TokenLoanOptimistic[],
-  loansToAddOrUpdate: TokenLoanOptimistic[],
-) => {
+export const updateLoans = (loansState: LoanOptimistic[], loansToAddOrUpdate: LoanOptimistic[]) => {
   const publicKeys = loansToAddOrUpdate.map(({ loan }) => loan.publicKey)
   const sameLoansRemoved = removeLoans(loansState, publicKeys)
   return addLoans(sameLoansRemoved, loansToAddOrUpdate)

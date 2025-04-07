@@ -11,7 +11,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
 
-import { TokenLoanOptimistic, useLenderLoansTxns } from '../../hooks'
+import { LoanOptimistic, useLenderLoansTxns } from '../../hooks'
 import { calculateLoansStats } from './helpers'
 
 import styles from './ExpandedCardContent.module.scss'
@@ -19,7 +19,7 @@ import styles from './ExpandedCardContent.module.scss'
 interface SummaryProps {
   loansToClaim: Loan[]
   loansToTerminate: Loan[]
-  selectedLoansOptimistics: TokenLoanOptimistic[]
+  selectedLoansOptimistics: LoanOptimistic[]
   setSelection: (loans: Loan[], walletPublicKey: string) => void
   lendingToken: LendingTokenType
 }

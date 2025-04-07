@@ -10,14 +10,14 @@ import { DisplayValue, createPercentValueJSX } from '@banx/components/TableCompo
 
 import { Loan } from '@banx/api'
 
-import { TokenLoanOptimistic, useLoansTxns } from '../../hooks'
+import { LoanOptimistic, useLoansTxns } from '../../hooks'
 import { calculateLoansStats, getPayInterestActionText } from './helpers'
 
 import styles from './ExpandedCardContent.module.scss'
 
 interface SummaryProps {
   loans: Loan[]
-  selectedLoansOptimistics: TokenLoanOptimistic[]
+  selectedLoansOptimistics: LoanOptimistic[]
   setSelection: (loans: Loan[], walletPublicKey: string) => void
 }
 

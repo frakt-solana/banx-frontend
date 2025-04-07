@@ -3,7 +3,7 @@ import { create } from 'zustand'
 
 import { Loan } from '@banx/api'
 
-export interface TokenLoanOptimistic {
+export interface LoanOptimistic {
   loan: Loan
   wallet: string
 }
@@ -16,9 +16,9 @@ const convertLoanToOptimistic = (loan: Loan, walletPublicKey: string) => {
 }
 
 interface SelectedTokenLoansState {
-  selection: TokenLoanOptimistic[]
+  selection: LoanOptimistic[]
   set: (selection: Loan[], walletPublicKey: string) => void
-  find: (loanPubkey: string, walletPublicKey: string) => TokenLoanOptimistic | null
+  find: (loanPubkey: string, walletPublicKey: string) => LoanOptimistic | null
   add: (loan: Loan, walletPublicKey: string) => void
   remove: (loanPubkey: string, walletPublicKey: string) => void
   toggle: (loan: Loan, walletPublicKey: string) => void
@@ -66,7 +66,7 @@ export const useLenderLoansState = create<SelectedTokenLoansState>((set, get) =>
       }),
     )
   },
-  toggle: (loan: Loan, walletPublicKey) => {
+  toggle: (loan, walletPublicKey) => {
     if (!walletPublicKey) return
 
     const { find, add, remove } = get()

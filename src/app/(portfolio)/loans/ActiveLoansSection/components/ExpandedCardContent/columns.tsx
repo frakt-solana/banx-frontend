@@ -18,13 +18,13 @@ import {
 } from '@banx/utils'
 
 import { TableColumnKey } from '../../constants'
-import { SortColumnOption, TokenLoanOptimistic } from '../../hooks'
+import { LoanOptimistic, SortColumnOption } from '../../hooks'
 import { APRCell, ActionsCell, DebtCell, LTVCell, StatusCell } from './tableCells'
 
 import styles from './ExpandedCardContent.module.scss'
 
 interface GetTableColumnsProps {
-  findLoanInSelection: (loanPubkey: string) => TokenLoanOptimistic | null
+  findLoanInSelection: (loanPubkey: string) => LoanOptimistic | null
   onRowClick: (loan: Loan) => void
   onSelectAll: () => void
   hasSelectedLoans: boolean

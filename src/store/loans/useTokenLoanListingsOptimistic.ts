@@ -7,7 +7,7 @@ import { create } from 'zustand'
 import { Loan } from '@banx/api'
 
 import {
-  TokenLoanOptimistic,
+  LoanOptimistic,
   addLoans,
   convertLoanToOptimistic,
   findLoan,
@@ -18,12 +18,12 @@ import {
 const BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY = '@banx.tokenLoanListingsOptimistics'
 
 interface TokenLoanListingsOptimistic {
-  optimisticLoans: TokenLoanOptimistic[]
-  find: (publicKey: string, walletPublicKey: string) => TokenLoanOptimistic | undefined
+  optimisticLoans: LoanOptimistic[]
+  find: (publicKey: string, walletPublicKey: string) => LoanOptimistic | undefined
   add: (loans: Loan[], walletPublicKey: string) => void
   remove: (publicKeys: string[], walletPublicKey: string) => void
   update: (loans: Loan[], walletPublicKey: string) => void
-  setState: (optimisticLoans: TokenLoanOptimistic[]) => void
+  setState: (optimisticLoans: LoanOptimistic[]) => void
 }
 
 const useTokenLoanListingsOptimisticStore = create<TokenLoanListingsOptimistic>((set, get) => ({
@@ -91,7 +91,7 @@ export const useTokenLoanListingsOptimistic = () => {
   return { loans: optimisticLoans, add, remove, find, update }
 }
 
-const setOptimisticLoansIdb = async (loans: TokenLoanOptimistic[]) => {
+const setOptimisticLoansIdb = async (loans: LoanOptimistic[]) => {
   try {
     await set(BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY, loans)
   } catch {
@@ -101,7 +101,7 @@ const setOptimisticLoansIdb = async (loans: TokenLoanOptimistic[]) => {
 
 const getOptimisticLoansIdb = async () => {
   try {
-    return ((await get(BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY)) || []) as TokenLoanOptimistic[]
+    return ((await get(BANX_TOKEN_LOAN_LISTINGS_OPTIMISTICS_LS_KEY)) || []) as LoanOptimistic[]
   } catch {
     return []
   }
