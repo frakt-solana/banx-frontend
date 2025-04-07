@@ -40,12 +40,8 @@
 
   label {
     color: var(--content-secondary);
-    padding: 7px 16px;
+    padding: 2px 12px;
     text-align: center;
-
-    @media (max-width: 640px) {
-      padding: 4px 16px;
-    }
   }
 
   &:hover {

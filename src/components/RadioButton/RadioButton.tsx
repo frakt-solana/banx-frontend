@@ -42,8 +42,8 @@ export const RadioButton: FC<RadioButtonProps> = ({
           >
             <input
               type="radio"
+              name="radio-group"
               id={value}
-              name={value}
               value={value}
               checked={checked}
               disabled={disabled || option.disabled}
