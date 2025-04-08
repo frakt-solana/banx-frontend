@@ -1,15 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
 import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 
 import { PATHS } from '@banx/constants'
 
 import ActiveOffersSection from './components/ActiveOffersSection'
-import LenderLoansSection from './components/LenderLoansSection'
-import OffersHistorySection from './components/OffersHistorySection'
 
 import styles from './ClientLenderOffersPage.module.scss'
+
+const LenderLoansSection = dynamic(() => import('./components/LenderLoansSection'), { ssr: false })
+const OffersHistorySection = dynamic(() => import('./components/OffersHistorySection'), {
+  ssr: false,
+})
 
 export const ClientLenderOffersPage = () => {
   const { value: currentTabValue, ...tabsProps } = useTabs({

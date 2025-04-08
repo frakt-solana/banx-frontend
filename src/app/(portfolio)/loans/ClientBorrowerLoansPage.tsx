@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 
+import dynamic from 'next/dynamic'
 import { create } from 'zustand'
 
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
@@ -10,10 +11,11 @@ import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 import { PATHS } from '@banx/constants'
 
 import ActiveLoansSection from './ActiveLoansSection'
-import LoanListingsTable from './LoanListingsSection'
-import LoansHistorySection from './LoansHistorySection'
 
 import styles from './ClientBorrowerLoansPage.module.scss'
+
+const LoanListingsTable = dynamic(() => import('./LoanListingsSection'), { ssr: false })
+const LoansHistorySection = dynamic(() => import('./LoansHistorySection'), { ssr: false })
 
 enum TokenLoansTabName {
   LOANS = 'loans',

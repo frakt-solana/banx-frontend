@@ -1,12 +1,12 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+
 import { Tab, Tabs, useTabs } from '@banx/components/Tabs'
 
 import { Plug } from './assets'
-import EarnTab from './components/EarnTab'
 import Header from './components/LeaderboardHeader'
 import ReferralTab from './components/ReferralTab'
-import RewardsTab from './components/RewardsTab'
 
 import styles from './ClientRewardsPage.module.scss'
 
@@ -16,6 +16,9 @@ export enum TabName {
   Earn = 'earn',
   Referral = 'referral',
 }
+
+const RewardsTab = dynamic(() => import('./components/RewardsTab'), { ssr: false })
+const EarnTab = dynamic(() => import('./components/EarnTab'), { ssr: false })
 
 export const ClientRewardsPage = () => {
   const { value: currentTabValue, ...tabsProps } = useTabs({

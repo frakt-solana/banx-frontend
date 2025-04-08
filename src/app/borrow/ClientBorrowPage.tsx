@@ -1,14 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
 import { Tabs, useTabs } from '@banx/components/Tabs'
 
 import { useRenderTimer } from '@banx/hooks'
 
 import InstantBorrowContent from './InstantBorrowContent/InstantBorrowContent'
-import ListLoansContent from './ListLoansContent/ListLoansContent'
 
 import styles from './ClientBorrowPage.module.scss'
+
+const ListLoansContent = dynamic(
+  () => import('./ListLoansContent/ListLoansContent').then((mod) => mod.default),
+  { ssr: false },
+)
 
 export const ClientBorrowPage = () => {
   useRenderTimer('ClientBorrowPage')

@@ -1,5 +1,5 @@
-import { ClientLendVaultsPage } from './ClientLendVaultsPage'
+import { ClientLendVaultPage } from './ClientLendVaultPage'
 
 export default function Page() {
-  return <ClientLendVaultsPage />
+  return <ClientLendVaultPage />
 }

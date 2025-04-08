@@ -59,7 +59,7 @@ const ErrorPlaceholder: FC<ErrorPlaceholderProps> = ({ error }) => {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <ResponsiveImage className={styles.image} src={sadPepeImg} alt="Sad Pepe" />
+        <ResponsiveImage className={styles.image} src={sadPepeImg.src} alt="Sad Pepe" />
         <h1 className={styles.title}>{`Something's crushed. But we'll fix that ASAP`}</h1>
         <h2 className={styles.subtitle}>
           You can create a support ticket on{' '}

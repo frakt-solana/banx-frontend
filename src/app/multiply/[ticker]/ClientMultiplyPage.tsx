@@ -3,6 +3,7 @@
 import { FC, useState } from 'react'
 
 import { capitalize } from 'lodash'
+import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
@@ -20,12 +21,15 @@ import { Settings } from '@banx/icons'
 import { useTokenType } from '@banx/store'
 
 import { MultiplierSlider } from './components/MultiplierSlider'
-import { OrderBook } from './components/OrderBook'
 import { Summary } from './components/Summary'
 import { useLeverage, useSelectedCollateralInfo } from './hooks'
 import { MultiplyPair } from './types'
 
 import styles from './ClientMultiplyPage.module.scss'
+
+const OrderBook = dynamic(() => import('./components/OrderBook').then((mod) => mod.OrderBook), {
+  ssr: false,
+})
 
 export const ClientMultiplyPage = () => {
   useRenderTimer('ClientMultiplyPage')
@@ -42,7 +46,7 @@ export const ClientMultiplyPage = () => {
   return (
     <div className={styles.pageWrapper}>
       <BreadcrumbHeader
-        breadcrumbs={[{ title: 'Multiply', path: PATHS.LEVERAGE_BASE }, { title: breadcrumbTitle }]}
+        breadcrumbs={[{ title: 'Multiply', path: PATHS.ROOT }, { title: breadcrumbTitle }]}
         onboardContentType={onboardContentType}
         faqType="multiply"
       />
