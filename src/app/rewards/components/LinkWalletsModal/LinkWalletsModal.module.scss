@@ -1,0 +1,295 @@
+.modal {
+  :global {
+    z-index: 2;
+
+    .ant-modal-body {
+      padding: 0 !important;
+      height: 384px !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
+
+      @media screen and (max-width: 960px) {
+        height: unset !important;
+        max-height: 384px !important;
+      }
+    }
+
+    .ant-modal-content {
+      padding: 0;
+    }
+  }
+}
+
+.modalTitle {
+  color: var(--content-primary);
+  font: var(--title-xl);
+  text-transform: uppercase;
+  border-bottom: var(--border-less-primary);
+
+  padding: 24px 24px 12px;
+
+  @media screen and (max-width: 640px) {
+    font: var(--title-lg);
+    padding: 16px 16px 8px;
+  }
+}
+
+.linkWalletsControlsContainer {
+  padding: 12px 24px 24px;
+  border-top: var(--border-less-primary);
+
+  @media screen and (max-width: 640px) {
+    padding: 8px 16px 16px;
+  }
+}
+
+.explanation {
+  background: var(--additional-blue-secondary);
+  border: 1px solid var(--additional-blue-primary);
+  font: var(--body-text-md);
+  padding: 8px 16px;
+}
+
+//? Linked wallets table component
+.linkedWalletsTableContainer {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.linkedWalletsTable {
+  border-collapse: collapse;
+  font: var(--body-text-md);
+  min-width: 400px;
+  width: 100%;
+
+  @media screen and (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: var(--bg-secondary);
+      }
+    }
+  }
+
+  th,
+  td {
+    padding: 12px 8px;
+    vertical-align: middle;
+
+    &:first-child {
+      padding-left: 24px;
+    }
+    &:last-child {
+      padding-right: 24px;
+    }
+
+    @media screen and (max-width: 640px) {
+      padding: 6px 0;
+      &:first-child {
+        padding-left: 16px;
+      }
+      &:last-child {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  th {
+    color: var(--content-secondary);
+    font: var(--important-text-sm);
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    text-align: right;
+    &:first-child {
+      text-align: left;
+    }
+
+    @media screen and (max-width: 640px) {
+      font: var(--important-text-xs);
+    }
+  }
+
+  td {
+    text-align: right;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+}
+
+.linkedWalletKey {
+  font: var(--important-text-md);
+  position: relative;
+
+  @media screen and (max-width: 640px) {
+    font: var(--important-text-sm);
+  }
+}
+.linkedWalletKeyActive {
+  &::before {
+    display: block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--additional-green-primary);
+    z-index: 1;
+    border-radius: 50%;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media screen and (max-width: 640px) {
+      left: 4px;
+    }
+  }
+}
+
+.linkedWalletBoost {
+  color: var(--pure-purple);
+  font: var(--important-text-md);
+}
+
+.linkedWalletRightContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.houseIco {
+  width: 24px;
+  height: 24px;
+  path {
+    fill: var(--content-secondary);
+  }
+}
+.unlinkBtn {
+  min-height: 24px !important;
+  min-width: 24px !important;
+  max-height: 24px !important;
+  max-width: 24px !important;
+
+  svg {
+    height: 16px !important;
+    width: 16px !important;
+  }
+
+  //? Hide unlink btn on mobile
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+}
+.unlinkLoader {
+  display: block;
+  background: var(--bg-tertiary);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    animation: rotate 1s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+//? Linked wallets table component
+
+//? Verify wallet block
+.verifyWalletBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+
+  button,
+  p {
+    width: 100%;
+  }
+}
+//? Verify wallet block
+
+//? Linking block
+.linkingBlockStart {
+  button {
+    width: 100%;
+  }
+}
+
+.linkingBlockChange {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  p {
+    width: 100%;
+  }
+}
+
+.linkingBlockNewWallet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  p {
+    width: 100%;
+  }
+}
+
+.linkingBlockSelectWallet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  button {
+    width: 100%;
+  }
+}
+
+.linkingBtns {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 12px;
+}
+
+.cancelLinkingBtn {
+  background-color: var(--additional-red-primary-sub) !important;
+  color: var(--content-primary) !important;
+
+  &:hover {
+    border: 1px solid var(--additional-red-primary) !important;
+  }
+}
+//? Linking block
+
+//? Wallets list
+.walletsList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 12px;
+}
+.walletItem {
+  row-gap: 0;
+  font: var(--btn-text-sm);
+}
+//? Wallets list

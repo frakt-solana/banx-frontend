@@ -19,5 +19,5 @@ export const PATHS = {
 
   PORTFOLIO: '/portfolio',
   ADVENTURES: '/adventures',
-  LEADERBOARD: '/leaderboard',
+  REWARDS: '/rewards',
 } as const

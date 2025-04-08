@@ -1,0 +1,124 @@
+.table {
+  min-width: 304px;
+
+  @media (max-width: 640px) {
+    tr > td,
+    tr > th {
+      &:first-child {
+        width: 168px;
+      }
+    }
+  }
+}
+
+.userInfoCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pointsTitleCell {
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+}
+
+.indicator {
+  display: flex;
+  border-radius: 100px;
+  height: 8px;
+  min-width: 8px;
+}
+
+.userRank {
+  font: var(--important-text-sm);
+  min-width: 30px;
+  text-align: right;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+    min-width: 26px;
+  }
+}
+
+.userAvatar {
+  height: 30px;
+  width: 30px;
+
+  @media (max-width: 640px) {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.userWalletAddress {
+  font: var(--important-text-sm);
+
+  @media (max-width: 640px) {
+    font: var(--important-text-xs);
+  }
+}
+
+.highlightUser {
+  background: var(--additional-green-secondary) !important;
+}
+
+.emptyList {
+  margin: 16px 24px 12px;
+  text-align: left;
+}
+
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 12px;
+
+  @media (max-width: 640px) {
+    padding: 16px 16px 12px;
+  }
+}
+
+.emptyDiv {
+  width: 100%;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.radioButton label {
+  padding: 4px 10px;
+}
+
+.switcher {
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+
+  background: var(--bg-tertiary);
+  border: 1px solid var(--bg-border);
+  border-radius: 100px;
+  padding: 2px;
+  user-select: none;
+
+  .modesWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    span {
+      padding: 4px;
+      font: var(--body-text-sm);
+      border-radius: 100px;
+      min-width: 64px;
+      text-align: center;
+    }
+  }
+
+  .active {
+    color: var(--pure-black);
+    background: var(--accent-primary);
+  }
+}

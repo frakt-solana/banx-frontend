@@ -71,11 +71,11 @@ export const TOKEN_NAVIGATION_LINKS: Array<NavigationLink> = [
   },
   {
     label: 'Rewards',
-    pathname: PATHS.LEADERBOARD,
+    pathname: PATHS.REWARDS,
     subLinks: [
       {
         label: 'Rewards',
-        pathname: PATHS.LEADERBOARD,
+        pathname: PATHS.REWARDS,
         description: 'Get rewards for active protocol use',
       },
       {
