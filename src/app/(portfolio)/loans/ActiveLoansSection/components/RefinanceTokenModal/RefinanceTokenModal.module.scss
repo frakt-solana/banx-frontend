@@ -2,7 +2,7 @@
 .refinanceModal {
   :global {
     .ant-modal-content {
-      padding: 0;
+      padding: 0 !important;
       min-height: 244px;
     }
   }

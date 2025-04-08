@@ -321,7 +321,7 @@
 .customStatLabel {
   font: var(--important-text-sm);
   text-align: center;
-  text-transform: none;
+  text-transform: none !important;
 
   &--default {
     color: var(--content-primary);

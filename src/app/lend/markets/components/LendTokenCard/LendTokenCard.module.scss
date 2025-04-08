@@ -128,7 +128,7 @@
 
 .additionalInfoStatLabelWrapper {
   @media (min-width: 961px) {
-    display: none;
+    display: none !important;
   }
 }
 
