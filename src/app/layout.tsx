@@ -1,10 +1,13 @@
 import { ReactNode } from 'react'
 
+import { App as AntdProvider } from 'antd'
+
 import { ErrorBoundary } from '@banx/components/ErrorBoundary'
 
 import { AppLayout } from '@banx/layout'
 import { DialectProvider } from '@banx/providers/dialect'
 import { QueryProvider } from '@banx/providers/query'
+import { SnackbarProvider } from '@banx/providers/snackbar'
 import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
 import '@banx/scss/index.scss'
 
@@ -41,7 +44,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <QueryProvider>
             <SolanaConnectionWalletProvider>
               <DialectProvider>
-                <AppLayout>{children}</AppLayout>
+                <AntdProvider>
+                  <SnackbarProvider>
+                    <AppLayout>{children}</AppLayout>
+                  </SnackbarProvider>
+                </AntdProvider>
               </DialectProvider>
             </SolanaConnectionWalletProvider>
           </QueryProvider>

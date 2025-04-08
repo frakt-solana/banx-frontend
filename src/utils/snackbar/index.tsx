@@ -1,6 +1,5 @@
 import { Key, ReactNode } from 'react'
 
-import { notification } from 'antd'
 import { NotificationPlacement } from 'antd/es/notification/interface'
 import classNames from 'classnames'
 import { uniqueId } from 'lodash'
@@ -14,6 +13,7 @@ import {
   SnackMessage,
   SnackMessageProps,
 } from './components'
+import { getNotificationApi } from './global'
 
 import styles from './Snackbar.module.scss'
 
@@ -46,11 +46,9 @@ export const enqueueSnackbar: EnqueueSnackbar = ({
   solanaExplorerPath,
   copyButtonProps,
 }) => {
-  const key = customKey || uniqueId()
+  const notification = getNotificationApi()
 
-  notification.config({
-    maxCount: 5, //? Max Notification show, drop oldest if exceed limit
-  })
+  const key = customKey || uniqueId()
 
   const notificationIcon =
     type === 'loading' ? (
@@ -81,7 +79,7 @@ export const enqueueSnackbar: EnqueueSnackbar = ({
   return key
 }
 
-export const destroySnackbar = (key?: Key) => notification.destroy(key)
+export const destroySnackbar = (key?: Key) => getNotificationApi().destroy(key)
 
 export const enqueueTransactionSent = (signature: string) =>
   enqueueSnackbar({
