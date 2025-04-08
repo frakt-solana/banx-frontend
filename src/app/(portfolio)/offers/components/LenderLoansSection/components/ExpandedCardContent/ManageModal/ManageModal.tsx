@@ -5,7 +5,7 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
-import { isLoanTerminating } from '@banx/utils'
+import { isLoanTerminating } from '@banx/utils/core'
 
 import { ClosureContent } from './ClosureContent'
 import { RepaymentCallContent } from './RepaymentCallContent'

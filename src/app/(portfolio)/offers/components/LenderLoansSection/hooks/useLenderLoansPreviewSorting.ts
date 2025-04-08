@@ -6,7 +6,7 @@ import { SortOption } from '@banx/components/SortDropdown'
 
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
-import { getTokenDecimals, isUsdcTokenType } from '@banx/utils'
+import { getTokenDecimals, isUsdcTokenType } from '@banx/utils/tokens'
 
 import { SORT_PREVIEW_OPTIONS, SortPreviewField } from '../constants'
 import { LoansPreview } from '../types'

@@ -7,7 +7,8 @@ import { RefferralModal } from '@banx/components/modals'
 
 import { user } from '@banx/api/common'
 import { useBanxLogin, useIsLedger, useModal } from '@banx/store/common'
-import { enqueueSnackbar, generateSignature } from '@banx/utils'
+import { generateSignature } from '@banx/utils/auth'
+import { enqueueSnackbar } from '@banx/utils/snackbar'
 
 export const useReferralLink = () => {
   const wallet = useWallet()

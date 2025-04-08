@@ -1,5 +1,5 @@
 import { BN, web3 } from 'fbonds-core'
-import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
+import { LOOKUP_TABLE, ZERO_BN } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
   optimisticUpdateBondOfferBonding,
   updateLiquidityToUserVault,
@@ -16,7 +16,8 @@ import { Offer, convertBondOfferV3ToCore, convertCoreOfferToBondOfferV3 } from '
 import { fetchTokenBalance } from '@banx/api/common'
 import { BANX_SOL_ADDRESS, BONDS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
-import { ZERO_BN, calculateOfferSize, isBanxSolTokenType } from '@banx/utils'
+import { calculateOfferSize } from '@banx/utils/core'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../../functions'
 import { sendTxnPlaceHolder } from '../../helpers'

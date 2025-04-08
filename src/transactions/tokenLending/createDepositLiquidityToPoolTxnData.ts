@@ -13,7 +13,8 @@ import {
 } from 'solana-transactions-executor'
 
 import { UserEscrow } from '@banx/api'
-import { ZERO_BN, isBanxSolTokenType } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { banxSol } from '..'
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'

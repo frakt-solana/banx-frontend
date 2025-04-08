@@ -1,4 +1,4 @@
-import { SnackbarType } from '@banx/utils'
+import { SnackbarType } from '@banx/utils/snackbar'
 
 export enum TxnErrorHumanName {
   TRANSACTION_REJECTED = 'Transaction rejected',

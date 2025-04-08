@@ -6,14 +6,9 @@ import { capitalize } from 'lodash'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import Tooltip from '@banx/components/Tooltip'
 
-import {
-  bnToHuman,
-  convertToDecimalString,
-  formatCollateralTokenValue,
-  getOracleIcon,
-  isExponentialNotation,
-  shortenAddress,
-} from '@banx/utils'
+import { bnToHuman } from '@banx/utils/bn'
+import { convertToDecimalString, isExponentialNotation, shortenAddress } from '@banx/utils/common'
+import { formatCollateralTokenValue, getOracleIcon } from '@banx/utils/tokens'
 
 import { BaseToken } from './ModalTokenSelect'
 

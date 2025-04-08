@@ -8,7 +8,7 @@ import { SortOrder } from '@banx/components/SortDropdown'
 import Table from '@banx/components/Table'
 
 import { CollateralToken } from '@banx/api'
-import { bnToNumberSafe } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
 
 import { LeverageSimpleOffer } from '../../types'
 import { ColumnKey, getTableColumns } from './getTableColumns'

@@ -3,7 +3,7 @@ import { FC, useMemo } from 'react'
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
 import { Loan } from '@banx/api'
-import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils'
+import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils/core'
 
 import styles from './ExpandedCardContent.module.scss'
 

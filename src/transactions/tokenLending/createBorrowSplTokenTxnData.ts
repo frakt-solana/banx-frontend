@@ -8,8 +8,7 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { BorrowOfferRaw, CollateralToken } from '@banx/api'
+import { BondTradeTransaction, BorrowOfferRaw, CollateralToken, FraktBond } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import {
   accountConverterBNAndPublicKey,
@@ -17,7 +16,8 @@ import {
   parseAccountInfoByPubkey,
   sendTxnPlaceHolder,
 } from '@banx/transactions'
-import { adjustTokenAmountWithUpfrontFee, isBanxSolTokenType } from '@banx/utils'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 export type CreateBorrowTokenTxnDataParams = {
   collateral: CollateralToken

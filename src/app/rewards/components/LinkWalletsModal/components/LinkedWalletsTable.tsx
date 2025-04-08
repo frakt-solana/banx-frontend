@@ -6,7 +6,7 @@ import { Button } from '@banx/components/Buttons'
 
 import { user } from '@banx/api/common'
 import { House, LoaderCircle, Unlink } from '@banx/icons'
-import { formatNumbersWithCommas, shortenAddress } from '@banx/utils'
+import { formatNumbersWithCommas, shortenAddress } from '@banx/utils/common'
 
 import { useLinkWalletsModal } from '../hooks'
 

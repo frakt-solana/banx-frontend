@@ -7,14 +7,10 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { NumericStepInput } from '@banx/components/inputs'
 
 import { Loan, core } from '@banx/api'
-import {
-  caclulateBorrowTokenLoanValue,
-  formatTrailingZeros,
-  getColorByPercent,
-  getTokenDecimals,
-  getTokenUnit,
-  isLoanRepaymentCallActive,
-} from '@banx/utils'
+import { getColorByPercent } from '@banx/utils/colors'
+import { formatTrailingZeros } from '@banx/utils/common'
+import { caclulateBorrowTokenLoanValue, isLoanRepaymentCallActive } from '@banx/utils/core'
+import { getTokenDecimals, getTokenUnit } from '@banx/utils/tokens'
 
 import { useLoansTxns } from '../../hooks'
 

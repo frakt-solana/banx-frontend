@@ -12,7 +12,7 @@ import {
 } from '@banx/components/TableComponents'
 
 import { VaultPreview } from '@banx/api'
-import { HealthColorIncreasing, getColorByPercent } from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 
 import { TvlProgressIndicator } from '../../../components/TvlProgressIndicator'
 

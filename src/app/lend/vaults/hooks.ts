@@ -13,7 +13,7 @@ import { SortOption } from '@banx/components/SortDropdown'
 import { VaultPreview, fetchVaultsPreview } from '@banx/api'
 import { MESSAGES } from '@banx/constants'
 import { queryClient } from '@banx/providers/query'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 const USE_VAULTS_PREVIW_QUERY_KEY = 'vaultsPreview'
 const createUserVaultQueryKey = (walletPubkey: string, strictLendingToken?: LendingTokenType) => [

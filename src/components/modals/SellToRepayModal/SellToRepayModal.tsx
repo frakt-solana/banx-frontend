@@ -16,12 +16,10 @@ import { useCollateralConversionRate } from '@banx/app/multiply/[ticker]/hooks'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { Settings } from '@banx/icons'
 import { useModal, useSlippage } from '@banx/store/common'
-import {
-  caclulateBorrowTokenLoanValue,
-  formatCompact,
-  getTokenDecimals,
-  toFixedNoNegativeZero,
-} from '@banx/utils'
+import { formatCompact } from '@banx/utils/common'
+import { caclulateBorrowTokenLoanValue } from '@banx/utils/core'
+import { toFixedNoNegativeZero } from '@banx/utils/numbers'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { SLIPPAGE_TABS } from '../AppSettingsModal'
 import { calculateInitialCollateralRate, calculateUserCollateralAmount } from './helpers'

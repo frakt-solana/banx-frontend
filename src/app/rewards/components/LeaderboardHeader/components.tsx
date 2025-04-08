@@ -9,7 +9,7 @@ import Tooltip from '@banx/components/Tooltip'
 import { PATHS } from '@banx/constants'
 import { Link as LinkIcon } from '@banx/icons'
 import { useModal } from '@banx/store/common'
-import { formatNumbersWithCommas, shortenAddress } from '@banx/utils'
+import { formatNumbersWithCommas, shortenAddress } from '@banx/utils/common'
 
 import { LinkWalletsModal } from '../LinkWalletsModal'
 

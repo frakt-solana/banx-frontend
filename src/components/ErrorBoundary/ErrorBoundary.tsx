@@ -7,7 +7,7 @@ import { Button } from '@banx/components/Buttons'
 import sadPepeImg from '@banx/assets/SadPepe.png'
 import { DISCORD } from '@banx/constants'
 import { errorLogsToString } from '@banx/transactions'
-import { copyToClipboard } from '@banx/utils'
+import { copyToClipboard } from '@banx/utils/common'
 
 import { ResponsiveImage } from '../ResponsiveImage'
 

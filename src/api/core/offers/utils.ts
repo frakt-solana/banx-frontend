@@ -9,7 +9,7 @@ import { convertValuesInAccount } from 'solana-transactions-parser'
 import { z } from 'zod'
 
 import { zNumberToBN, zStringToPubkey } from '@banx/api/zodSchemas'
-import { bnToNumberSafe } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
 
 import { Offer, OfferApi } from './types'
 

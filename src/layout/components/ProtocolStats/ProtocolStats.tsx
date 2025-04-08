@@ -6,7 +6,8 @@ import { createDisplayValueJSX } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
 import { stats } from '@banx/api/common'
-import { formatCompact, formatNumbersWithCommas, getTokenDecimals } from '@banx/utils'
+import { formatCompact, formatNumbersWithCommas } from '@banx/utils/common'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from './ProtocolStats.module.scss'
 

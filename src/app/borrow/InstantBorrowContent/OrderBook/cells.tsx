@@ -8,7 +8,7 @@ import { calcBorrowerTokenAPR } from 'fbonds-core/lib/fbond-protocol/helpers'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { adjustTokenAmountWithUpfrontFee } from '@banx/utils'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
 
 import { BorrowOffer } from '../hooks'
 

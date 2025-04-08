@@ -8,7 +8,8 @@ import { DisplayValue, createPercentValueJSX } from '@banx/components/TableCompo
 
 import { activity } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
-import { createDownloadLink, isBanxSolTokenType } from '@banx/utils'
+import { createDownloadLink } from '@banx/utils/common'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { useUserTokenOffersStats } from '../../../hooks'
 

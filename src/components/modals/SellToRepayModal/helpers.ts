@@ -1,7 +1,7 @@
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 
 import { Loan } from '@banx/api'
-import { getTokenDecimals } from '@banx/utils'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 /**
  * @returns user collateral amount with decimals

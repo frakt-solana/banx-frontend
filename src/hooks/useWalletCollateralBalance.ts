@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { web3 } from 'fbonds-core'
 
 import { fetchTokenBalance } from '@banx/api/common'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 export const useWalletCollateralBalance = (tokenMint: web3.PublicKey) => {
   const { publicKey, connected } = useWallet()

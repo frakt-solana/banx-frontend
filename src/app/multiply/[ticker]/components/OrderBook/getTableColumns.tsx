@@ -4,7 +4,7 @@ import { ColumnType } from '@banx/components/Table'
 import { HeaderCell } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { bnToNumberSafe } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
 
 import { LeverageSimpleOffer } from '../../types'
 import { SortColumnOption } from './OrderBook'

@@ -11,7 +11,7 @@ import {
   isLoanSelling,
   isLoanTerminating,
   isLoanUnderwater,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { LoansPreview } from './types'
 

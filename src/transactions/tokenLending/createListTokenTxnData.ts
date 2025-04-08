@@ -11,10 +11,10 @@ import {
   WalletAndConnection,
 } from 'solana-transactions-executor'
 
-import { BondTradeTransaction, FraktBond } from '@banx/api'
-import { CollateralToken } from '@banx/api'
+import { BondTradeTransaction, CollateralToken, FraktBond } from '@banx/api'
 import { BONDS } from '@banx/constants'
-import { ZERO_BN, getTokenDecimals } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'

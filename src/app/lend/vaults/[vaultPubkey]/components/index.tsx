@@ -7,7 +7,8 @@ import { Button } from '@banx/components/Buttons'
 import NumericInput from '@banx/components/inputs/NumericInput'
 
 import { SOL, USDC, Wallet } from '@banx/icons'
-import { formatCompact, getTokenDecimals, getTokenTicker } from '@banx/utils'
+import { formatCompact } from '@banx/utils/common'
+import { getTokenDecimals, getTokenTicker } from '@banx/utils/tokens'
 
 import styles from './ManageVault/ManageVault.module.scss'
 

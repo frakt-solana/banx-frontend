@@ -8,7 +8,7 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import ThemeSwitcher from '@banx/layout/components/ThemeSwitcher'
 import { PriorityLevel, useModal, usePriorityFees, useSlippage } from '@banx/store'
-import { enqueueSnackbar } from '@banx/utils'
+import { enqueueSnackbar } from '@banx/utils/snackbar'
 
 import { PRIORITY_TYPED_TABS, SLIPPAGE_TABS } from './constants'
 

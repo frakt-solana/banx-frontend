@@ -26,7 +26,12 @@ import {
 } from '@banx/hooks'
 import { SOLFilled, USDC } from '@banx/icons'
 import { useTokenType } from '@banx/store/common'
-import { getOracleIcon, getTokenDecimals, getTokenTicker, isUsdcTokenType } from '@banx/utils'
+import {
+  getOracleIcon,
+  getTokenDecimals,
+  getTokenTicker,
+  isUsdcTokenType,
+} from '@banx/utils/tokens'
 
 import styles from './ClientMarketPage.module.scss'
 

@@ -4,7 +4,7 @@ import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 
 import { user } from '@banx/api/common'
 import placeholderBanxImg from '@banx/assets/PlaceholderBanx.png'
-import { formatNumbersWithCommas, shortenAddress } from '@banx/utils'
+import { formatNumbersWithCommas, shortenAddress } from '@banx/utils/common'
 
 import styles from './LeaderboardTab.module.scss'
 

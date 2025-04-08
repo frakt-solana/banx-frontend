@@ -6,11 +6,8 @@ import TokenInput from '@banx/components/TokenInput'
 
 import { Loan } from '@banx/api'
 import { useCollateralsList } from '@banx/hooks'
-import {
-  caclulateBorrowTokenLoanValue,
-  calculateTokenLoanLtvByLoanValue,
-  stringToBN,
-} from '@banx/utils'
+import { stringToBN } from '@banx/utils/bn'
+import { caclulateBorrowTokenLoanValue, calculateTokenLoanLtvByLoanValue } from '@banx/utils/core'
 
 import { useLoansTxns } from '../../hooks'
 

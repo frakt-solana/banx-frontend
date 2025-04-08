@@ -15,13 +15,11 @@ import { Loan } from '@banx/api'
 import { useTokenBondOffers } from '@banx/hooks'
 import {
   calculateLentTokenValueWithInterest,
-  formatValueByTokenType,
-  getTokenDecimals,
-  getTokenUnit,
   isLoanActive,
   isLoanSelling,
   isLoanTerminating,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { formatValueByTokenType, getTokenDecimals, getTokenUnit } from '@banx/utils/tokens'
 
 import { useLenderLoansTxns } from '../../../hooks'
 import { calculateFreezeExpiredAt, checkIfFreezeExpired, findBestOffer } from './helpers'

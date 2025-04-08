@@ -7,7 +7,7 @@ import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
 
 import { Loan } from '@banx/api'
-import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils'
+import { isLoanRepaymentCallActive, isLoanTerminating } from '@banx/utils/core'
 
 import { useLoansSorting, useLoansState } from '../../hooks'
 import { FilterStatus, FilterTableSection } from './FilterTableSection'

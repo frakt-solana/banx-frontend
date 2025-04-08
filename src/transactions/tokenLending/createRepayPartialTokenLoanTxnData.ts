@@ -11,11 +11,8 @@ import {
 import { BondTradeTransaction, FraktBond, Loan } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { banxSol, parseAccountInfoByPubkey } from '@banx/transactions'
-import {
-  calculateTokenLoanRepayValueOnCertainDate,
-  isBanxSolTokenType,
-  isSolTokenType,
-} from '@banx/utils'
+import { calculateTokenLoanRepayValueOnCertainDate } from '@banx/utils/core'
+import { isBanxSolTokenType, isSolTokenType } from '@banx/utils/tokens'
 
 import { sendTxnPlaceHolder } from '../helpers'
 

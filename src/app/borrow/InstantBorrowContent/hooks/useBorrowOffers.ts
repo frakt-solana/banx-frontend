@@ -10,7 +10,8 @@ import _ from 'lodash'
 
 import { BorrowOfferRaw, CollateralToken, core } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
-import { ZERO_BN, getTokenDecimals } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { BorrowToken } from '../../constants'
 import { MIN_OFFER_SIZE } from '../constants'

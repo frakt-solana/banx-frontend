@@ -10,14 +10,14 @@ import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor
 
 import { Loan, UserEscrow } from '@banx/api'
 import { BONDS } from '@banx/constants'
+import { ZERO_BN } from '@banx/utils/bn'
 import {
-  ZERO_BN,
   calculateTokenLoanRepayValueOnCertainDate,
   calculateTokenLoanValueWithUpfrontFee,
-  isBanxSolTokenType,
   isLoanListed,
-  removeDuplicatedPublicKeys,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { removeDuplicatedPublicKeys } from '@banx/utils/publicKey'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { sendTxnPlaceHolder } from '../helpers'
 import { banxSol } from '../index'

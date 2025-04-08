@@ -30,9 +30,8 @@ import {
   enqueueSnackbar,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  getTokenUnit,
-  isBanxSolTokenType,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
+import { getTokenUnit, isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { BanxSolEpochContent, EscrowTabs } from './components'
 import { TabName, useUserEscrowContent, useUserEscrowInfo } from './hooks'

@@ -4,19 +4,16 @@ import classNames from 'classnames'
 import { capitalize, sumBy } from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
+import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
 import { ChevronDown, CoinCrashed, CoinPlus, SOLFilled, USDC, Warning } from '@banx/icons'
-import {
-  HealthColorIncreasing,
-  formatCompact,
-  getColorByPercent,
-  getOracleIcon,
-  getTokenLoanSupply,
-  isUsdcTokenType,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { formatCompact } from '@banx/utils/common'
+import { getTokenLoanSupply } from '@banx/utils/core'
+import { getOracleIcon, isUsdcTokenType } from '@banx/utils/tokens'
 
 import { TOOLTIP_TEXTS } from '../../constants'
 import { LoansPreview } from '../../types'
@@ -85,7 +82,7 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
   return (
     <div className={styles.mainInfoContainer}>
       <div className={styles.collateralImageWrapper}>
-        <img src={collateralLogoUrl} className={styles.collateralImage} />
+        <ResponsiveImage src={collateralLogoUrl} className={styles.collateralImage} />
         <Icon className={styles.lendingTokenImage} />
       </div>
       <div className={styles.mainInfoContent}>

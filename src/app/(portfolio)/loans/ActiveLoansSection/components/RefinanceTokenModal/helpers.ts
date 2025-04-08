@@ -2,12 +2,12 @@ import { BN } from 'fbonds-core'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { Loan, convertBondOfferV3ToCore } from '@banx/api'
+import { ZERO_BN } from '@banx/utils/bn'
 import {
-  ZERO_BN,
   caclulateBorrowTokenLoanValue,
   calcTokenLoanAprWithRepayFee,
   calculateOfferSize,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 export const getCurrentLoanInfo = (loan: Loan) => {
   const currentDebt = caclulateBorrowTokenLoanValue(loan).toNumber()

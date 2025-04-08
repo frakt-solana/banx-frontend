@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { useSearchParams } from 'next/navigation'
 import { create } from 'zustand'
 
-import { TICKER_TO_TOKEN, TOKEN_TICKER } from '@banx/utils'
+import { TICKER_TO_TOKEN, TOKEN_TICKER } from '@banx/utils/tokens'
 
 export const buildUrlWithModeAndToken = (
   pathname: string,

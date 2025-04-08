@@ -8,7 +8,7 @@ import { createDisplayValueJSX } from '@banx/components/TableComponents'
 import { Modal } from '@banx/components/modals/BaseModal'
 
 import { useModal } from '@banx/store'
-import { formatValueByTokenType, getTokenUnit } from '@banx/utils'
+import { formatValueByTokenType, getTokenUnit } from '@banx/utils/tokens'
 
 import styles from './EscrowWarningModal.module.scss'
 

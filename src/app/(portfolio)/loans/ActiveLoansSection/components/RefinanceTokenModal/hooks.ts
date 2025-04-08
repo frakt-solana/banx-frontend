@@ -24,7 +24,7 @@ import {
   enqueueSnackbar,
   enqueueTransactionSent,
   enqueueWaitingConfirmation,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { useLoansState } from '../../hooks'
 

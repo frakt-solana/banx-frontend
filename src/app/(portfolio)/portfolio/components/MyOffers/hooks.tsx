@@ -8,7 +8,7 @@ import { UserPortfolio } from '@banx/api/common'
 import { PATHS } from '@banx/constants'
 import { buildUrlWithModeAndToken } from '@banx/store'
 import { useTokenType } from '@banx/store/common'
-import { getTokenDecimals } from '@banx/utils'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import {
   ALLOCATION_STATUS_COLORS,

@@ -2,7 +2,7 @@ import { BN } from 'fbonds-core'
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { core } from '@banx/api'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 export interface BorrowToken {
   collateral: core.TokenMeta

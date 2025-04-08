@@ -10,7 +10,8 @@ import { StatInfo } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { ZERO_BN, bnToNumberSafe, formatDecimalWithSubscript, getTokenDecimals } from '@banx/utils'
+import { ZERO_BN, bnToNumberSafe } from '@banx/utils/bn'
+import { formatDecimalWithSubscript, getTokenDecimals } from '@banx/utils/tokens'
 
 import {
   calcPositionLiquidationPrice,

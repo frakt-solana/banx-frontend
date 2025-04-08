@@ -17,17 +17,16 @@ import {
   createUpdateUserEscrowTxnData,
   parseUpdateUserEscrowSimulatedAccounts,
 } from '@banx/transactions/escrow'
+import { stringToBN, ZERO_BN } from '@banx/utils/bn'
+import { formatTrailingZeros } from '@banx/utils/common'
 import {
-  ZERO_BN,
   destroySnackbar,
   enqueueConfirmationError,
   enqueueSnackbar,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  formatTrailingZeros,
-  getTokenDecimals,
-  stringToBN,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { getInputErrorMessage } from '../helpers'
 import { useUserEscrowInfo } from './useUserEscrow'

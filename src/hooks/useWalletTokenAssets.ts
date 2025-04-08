@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { core } from '@banx/api'
 import { useTokenType } from '@banx/store'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 export const useWalletTokenAssets = () => {
   const { publicKey } = useWallet()

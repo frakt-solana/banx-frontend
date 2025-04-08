@@ -5,7 +5,7 @@ import { filter, size } from 'lodash'
 import { filterBySearchQuery } from '@banx/components/Search'
 
 import { Loan } from '@banx/api'
-import { isLoanFrozen, isLoanListed, isLoanSelling, isLoanTerminating } from '@banx/utils'
+import { isLoanFrozen, isLoanListed, isLoanSelling, isLoanTerminating } from '@banx/utils/core'
 
 type LoanPredicate = (loan: Loan) => boolean
 

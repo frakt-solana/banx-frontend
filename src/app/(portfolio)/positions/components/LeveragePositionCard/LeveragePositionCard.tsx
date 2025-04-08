@@ -20,7 +20,8 @@ import {
 } from '@banx/app/multiply/[ticker]/hooks'
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { useModal, useSlippage } from '@banx/store/common'
-import { caclulateBorrowTokenLoanValue, formatCompact, getTokenLoanSupply } from '@banx/utils'
+import { formatCompact } from '@banx/utils/common'
+import { caclulateBorrowTokenLoanValue, getTokenLoanSupply } from '@banx/utils/core'
 
 import { TOOLTIP_TEXTS } from '../../constants'
 import { calculateNetAprByLoan } from '../../helpers'

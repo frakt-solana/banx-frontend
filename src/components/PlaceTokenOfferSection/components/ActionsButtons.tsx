@@ -10,7 +10,7 @@ import { useUserEscrow, useWalletSidebar } from '@banx/components/WalletAccountS
 import { EscrowWarningModal } from '@banx/components/modals/EscrowWarningModal'
 
 import { useModal } from '@banx/store/common'
-import { getTokenDecimals } from '@banx/utils'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from '../PlaceTokenOfferSection.module.scss'
 

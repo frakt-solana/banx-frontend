@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import { fetchBorrowerLoanListings } from '@banx/api'
 import { isLoanNewer, isOptimisticLoanExpired, useTokenLoanListingsOptimistic } from '@banx/store'
-import { isLoanListed } from '@banx/utils'
+import { isLoanListed } from '@banx/utils/core'
 
 export const USE_USER_TOKEN_LOAN_LISTINGS_QUERY_KEY = 'userTokenLoanListings'
 

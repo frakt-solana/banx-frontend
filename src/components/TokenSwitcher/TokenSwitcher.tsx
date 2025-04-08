@@ -3,7 +3,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { SOL, USDC } from '@banx/icons'
 import { useTokenType } from '@banx/store/common'
-import { isBanxSolTokenType, isUsdcTokenType } from '@banx/utils'
+import { isBanxSolTokenType, isUsdcTokenType } from '@banx/utils/tokens'
 
 import { Button } from '../Buttons'
 

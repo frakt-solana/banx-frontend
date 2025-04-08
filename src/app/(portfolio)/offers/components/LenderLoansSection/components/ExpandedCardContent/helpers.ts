@@ -8,7 +8,7 @@ import {
   calculateTokenLoanAccruedInterest,
   isLoanLiquidated,
   isLoanSelling,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { calculateWeightedApr, calculateWeightedLtv } from '../../helpers'
 

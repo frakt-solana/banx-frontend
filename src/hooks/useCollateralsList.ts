@@ -8,7 +8,8 @@ import _ from 'lodash'
 import { CollateralToken, core } from '@banx/api'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { useTokenType } from '@banx/store'
-import { bnToHuman, isBanxSolTokenType } from '@banx/utils'
+import { bnToHuman } from '@banx/utils/bn'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 export const useCollateralsList = (strictTokenType?: LendingTokenType) => {
   const { publicKey } = useWallet()

@@ -11,7 +11,7 @@ import {
   isLoanLiquidated,
   isLoanRepaymentCallActive,
   isLoanTerminating,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { TableColumnKey } from '../constants'
 

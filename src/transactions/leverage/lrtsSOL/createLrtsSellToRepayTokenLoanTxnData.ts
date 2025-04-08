@@ -14,7 +14,7 @@ import { BONDS, WSOL_ADDRESS } from '@banx/constants'
 import { parseAccountInfoByPubkey, sendTxnPlaceHolder } from '@banx/transactions'
 import { getJupSwapIxns } from '@banx/transactions/jup'
 import { createRepayTokenLoanTxnData } from '@banx/transactions/tokenLending'
-import { caclulateBorrowTokenLoanValue } from '@banx/utils'
+import { caclulateBorrowTokenLoanValue } from '@banx/utils/core'
 
 import { SSOL_MINT } from '.'
 import { CreateSellToRepayTokenLoanTxnData } from '../common/createSellToRepayTokenLoanTxnData'

@@ -13,7 +13,8 @@ import { OnboardingModalContentType } from '@banx/components/modals'
 
 import { TokenMeta } from '@banx/api'
 import { leverage } from '@banx/transactions/leverage'
-import { ZERO_BN, bnToNumberSafe, getTokenDecimals } from '@banx/utils'
+import { ZERO_BN, bnToNumberSafe } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { MIN_MULTIPLIER_VALUE, QUOTE_PARAMS_CONFIG_MAP } from './constants'
 import { LeverageSimpleOffer, MultiplyPair } from './types'

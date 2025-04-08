@@ -6,8 +6,8 @@ import { chain } from 'lodash'
 import moment from 'moment'
 
 import { Loan, convertBondOfferV3ToCore } from '@banx/api'
+import { bnToNumberSafe } from '@banx/utils/bn'
 import {
-  bnToNumberSafe,
   caclulateBorrowTokenLoanValue,
   calcOfferLtvPercent,
   calculateLentTokenValueWithInterest,
@@ -16,7 +16,7 @@ import {
   calculateTokenRepaymentCallLenderReceivesAmount,
   formatTokensPerCollateral,
   isLoanRepaymentCallActive,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 //? constants
 const MAX_LTV_THRESHOLD = 100

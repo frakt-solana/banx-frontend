@@ -14,14 +14,8 @@ import Tooltip from '@banx/components/Tooltip'
 import { Loan } from '@banx/api'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { Hourglass, Snowflake } from '@banx/icons'
-import {
-  HealthColorIncreasing,
-  getColorByPercent,
-  getTokenLoanSupply,
-  isLoanFrozen,
-  isLoanListed,
-  isLoanSelling,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { getTokenLoanSupply, isLoanFrozen, isLoanListed, isLoanSelling } from '@banx/utils/core'
 
 import { APRCell, ActionsCell, DebtCell, LTVCell } from './cells'
 

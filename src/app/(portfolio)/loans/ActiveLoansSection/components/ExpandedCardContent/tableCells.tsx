@@ -18,21 +18,20 @@ import { Loan } from '@banx/api'
 import { createMultiplyPairFromCollateral } from '@banx/app/multiply/[ticker]/helpers'
 import { SECONDS_IN_72_HOURS } from '@banx/constants'
 import { useModal } from '@banx/store/common'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 import {
-  HealthColorIncreasing,
   STATUS_LOANS_COLOR_MAP,
   caclulateBorrowTokenLoanValue,
   calcTokenLoanAprWithRepayFee,
   calcTokenWeeklyFeeWithRepayFee,
-  calculateTimeFromNow,
   calculateTokenLoanLtvByLoanValue,
-  getColorByPercent,
-  getTokenDecimals,
   isLoanActive,
   isLoanSelling,
   isLoanTerminating,
   isLoanUnderwater,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { calculateTimeFromNow } from '@banx/utils/date'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { calculateAccruedInterest } from '../../helpers'
 import { useLoansTxns } from '../../hooks'

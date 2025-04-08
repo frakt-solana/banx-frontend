@@ -11,7 +11,7 @@ import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
 import { Loan } from '@banx/api'
 import { useModal } from '@banx/store/common'
-import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils'
+import { calcWeightedAverage, calculateTokenLoanLtvByLoanValue } from '@banx/utils/core'
 
 import { calcTokenWeeklyInterest, calculateLendToBorrowValue } from '../helpers'
 import { useMarketLoansState } from '../hooks/useMarketLoansState'

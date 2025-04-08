@@ -5,7 +5,8 @@ import { ColumnType } from '@banx/components/Table'
 import { HeaderCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
-import { bnToNumberSafe, insertAtArray } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
+import { insertAtArray } from '@banx/utils/common'
 
 import { ActionCell, AprCell, BorrowCell, DebtCell } from './cells'
 

@@ -12,7 +12,7 @@ import { UserEscrow } from '@banx/api'
 import { fetchTokenBalance } from '@banx/api/common'
 import { BANX_SOL_ADDRESS } from '@banx/constants'
 import { banxSol } from '@banx/transactions'
-import { isBanxSolTokenType } from '@banx/utils'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'

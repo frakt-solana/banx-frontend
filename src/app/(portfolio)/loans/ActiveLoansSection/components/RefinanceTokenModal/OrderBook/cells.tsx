@@ -10,14 +10,14 @@ import { Button } from '@banx/components/Buttons'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
+import { bnToNumberSafe } from '@banx/utils/bn'
 import {
   adjustTokenAmountWithUpfrontFee,
-  bnToNumberSafe,
   caclulateBorrowTokenLoanValue,
   calcOfferLtvPercent,
   formatTokensPerCollateral,
-  getTokenDecimals,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { calculateTokensToGet } from '../helpers'
 

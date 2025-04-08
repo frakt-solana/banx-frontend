@@ -28,6 +28,7 @@ import {
   parseRepayLoanSimulatedAccounts,
   parseRepayPartialLoanSimulatedAccounts,
 } from '@banx/transactions/tokenLending'
+import { isLoanRepaymentCallActive } from '@banx/utils/core'
 import {
   destroySnackbar,
   enqueueConfirmationError,
@@ -35,8 +36,7 @@ import {
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  isLoanRepaymentCallActive,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { caclFractionToRepay, caclFractionToRepayForRepaymentCall } from '../helpers'
 import { useLoansState } from './useLoansState'

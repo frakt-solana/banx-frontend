@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 import { core } from '@banx/api'
 import { isOfferNewer, isOptimisticOfferExpired, useTokenOffersOptimistic } from '@banx/store'
-import { isOfferStateClosed } from '@banx/utils'
+import { isOfferStateClosed } from '@banx/utils/core'
 
 type UseTokenBondOffersProps = {
   marketPubkey: web3.PublicKey | undefined

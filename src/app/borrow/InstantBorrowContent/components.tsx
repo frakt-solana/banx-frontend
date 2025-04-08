@@ -12,14 +12,9 @@ import { CollateralToken } from '@banx/api'
 import { useDebounce } from '@banx/hooks'
 import { Wallet } from '@banx/icons'
 import { useModal, useTokenType } from '@banx/store/common'
-import {
-  HealthColorIncreasing,
-  ZERO_BN,
-  bnToHuman,
-  formatValueByTokenType,
-  getColorByPercent,
-  getTokenUnit,
-} from '@banx/utils'
+import { ZERO_BN, bnToHuman } from '@banx/utils/bn'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { formatValueByTokenType, getTokenUnit } from '@banx/utils/tokens'
 
 import { SelectTokenButton } from '../components/InputTokenSelect'
 import ModalTokenSelect from '../components/ModalTokenSelect'

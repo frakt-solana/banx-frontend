@@ -15,12 +15,8 @@ import {
 import { OfferPreview } from '@banx/api'
 import { Pencil } from '@banx/icons'
 import { SyntheticTokenOffer } from '@banx/store'
-import {
-  calcOfferLtvPercent,
-  formatTokensPerCollateral,
-  getTokenDecimals,
-  getTokenUnit,
-} from '@banx/utils'
+import { calcOfferLtvPercent, formatTokensPerCollateral } from '@banx/utils/core'
+import { getTokenDecimals, getTokenUnit } from '@banx/utils/tokens'
 
 import styles from './OrderBook.module.scss'
 

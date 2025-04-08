@@ -16,7 +16,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { PATHS } from '@banx/constants'
 import { useRenderTimer, useTheme, useTokenMarketsPreview } from '@banx/hooks'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
-import { isUsdcTokenType } from '@banx/utils'
+import { isUsdcTokenType } from '@banx/utils/tokens'
 
 import { ADRASOL_PAIR, JLP_PAIR, LRTS_PAIR, VSOL_PAIR, WFRAGSOL_PAIR } from './[ticker]/constants'
 import { useMultiplyMarketData } from './[ticker]/hooks'

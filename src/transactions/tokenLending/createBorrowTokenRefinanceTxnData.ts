@@ -14,7 +14,9 @@ import {
 
 import { BondTradeTransaction, FraktBond, Loan, Offer } from '@banx/api'
 import { BONDS } from '@banx/constants'
-import { ZERO_BN, calculateTokenLoanRepayValueOnCertainDate, isBanxSolTokenType } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
+import { calculateTokenLoanRepayValueOnCertainDate } from '@banx/utils/core'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { banxSol } from '..'
 import { accountConverterBNAndPublicKey, parseAccountInfoByPubkey } from '../functions'

@@ -15,7 +15,8 @@ import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { sendTxnPlaceHolder } from '@banx/transactions'
 import { deserializeJupInstruction } from '@banx/transactions/jup'
-import { bnToNumberSafe, getTokenDecimals } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { getFlashLoanIxns } from '../flashLoan'
 

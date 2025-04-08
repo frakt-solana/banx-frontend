@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { Duration } from 'moment'
 
-import { CountdownUnits, getTimeDifference, splitTimeDifferenceToUnits } from '@banx/utils'
+import { CountdownUnits, getTimeDifference, splitTimeDifferenceToUnits } from '@banx/utils/date'
 
 export const useCountdown = (endTimeUnix: number): CountdownUnits => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)

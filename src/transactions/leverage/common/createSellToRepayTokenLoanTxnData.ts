@@ -16,7 +16,8 @@ import { BONDS, USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
 import { parseAccountInfoByPubkey, sendTxnPlaceHolder } from '@banx/transactions'
 import { getJupSwapIxns } from '@banx/transactions/jup'
 import { createRepayTokenLoanTxnData } from '@banx/transactions/tokenLending'
-import { caclulateBorrowTokenLoanValue, isBanxSolTokenType } from '@banx/utils'
+import { caclulateBorrowTokenLoanValue } from '@banx/utils/core'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 export type CreateSellToRepayTokenLoanTxnDataParams = {
   loan: Loan

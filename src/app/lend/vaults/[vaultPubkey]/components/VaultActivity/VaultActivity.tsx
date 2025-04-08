@@ -15,7 +15,7 @@ import {
 
 import { activity } from '@banx/api'
 import { MESSAGES } from '@banx/constants/messages'
-import { STATUS_LOANS_COLOR_MAP, STATUS_LOANS_MAP } from '@banx/utils'
+import { STATUS_LOANS_COLOR_MAP, STATUS_LOANS_MAP } from '@banx/utils/core'
 
 import { useVaultActivity } from './hooks'
 

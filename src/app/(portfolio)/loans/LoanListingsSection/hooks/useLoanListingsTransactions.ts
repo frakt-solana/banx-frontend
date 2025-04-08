@@ -22,7 +22,7 @@ import {
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { useLoanListingsState } from './useLoanListingsState'
 

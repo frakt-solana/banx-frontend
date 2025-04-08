@@ -1,4 +1,4 @@
-import { captureSentryTxnError } from '@banx/utils'
+import { captureSentryTxnError } from '@banx/utils/sentry'
 
 import { errorLogsToString } from '.'
 import { enqueueTxnErrorSnackbar } from './enqueueErrorSnackbar'

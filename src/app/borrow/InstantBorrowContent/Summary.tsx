@@ -6,7 +6,7 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { adjustTokenAmountWithUpfrontFee } from '@banx/utils'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
 
 import { getSummaryInfo } from './helpers'
 import { BorrowOffer } from './hooks'

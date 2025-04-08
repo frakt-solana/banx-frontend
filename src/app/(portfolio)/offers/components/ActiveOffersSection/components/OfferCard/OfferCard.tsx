@@ -14,18 +14,14 @@ import Tooltip from '@banx/components/Tooltip'
 import { OfferPreview, core } from '@banx/api'
 import { ChevronDown, Coin, CoinPlus, SOLFilled, USDC, Warning } from '@banx/icons'
 import { convertToSynthetic, useSyntheticTokenOffers } from '@banx/store'
+import { ZERO_BN, bnToNumberSafe } from '@banx/utils/bn'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 import {
-  HealthColorIncreasing,
-  ZERO_BN,
-  bnToNumberSafe,
   calcOfferLtvPercent,
   formatTokensPerCollateral,
-  getColorByPercent,
   getLendingTokenFromBondingCurve,
-  getOracleIcon,
-  getTokenDecimals,
-  isUsdcTokenType,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { getOracleIcon, getTokenDecimals, isUsdcTokenType } from '@banx/utils/tokens'
 
 import ExpandedCardContent from '../ExpandedCardContent'
 

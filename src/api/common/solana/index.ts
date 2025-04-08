@@ -3,7 +3,7 @@ import { chain, sum } from 'lodash'
 import moment from 'moment'
 
 import { BONDS, MINUTES_IN_HOUR } from '@banx/constants'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 const SAMPLE_HISTORY_HOURS_AMOUNT = 6
 

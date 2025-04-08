@@ -8,7 +8,9 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import { CollateralToken } from '@banx/api'
 import { useModal } from '@banx/store'
-import { bnToHuman, formatCollateralTokenValue, shortenAddress } from '@banx/utils'
+import { bnToHuman } from '@banx/utils/bn'
+import { shortenAddress } from '@banx/utils/common'
+import { formatCollateralTokenValue } from '@banx/utils/tokens'
 
 import { ResponsiveImage } from '../ResponsiveImage'
 

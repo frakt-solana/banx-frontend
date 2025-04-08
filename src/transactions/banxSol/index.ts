@@ -8,7 +8,7 @@ import {
 import { CreateTxnData, WalletAndConnection } from 'solana-transactions-executor'
 
 import { BONDS } from '@banx/constants'
-import { removeDuplicatedPublicKeys } from '@banx/utils'
+import { removeDuplicatedPublicKeys } from '@banx/utils/publicKey'
 
 import { sendTxnPlaceHolder } from '../helpers'
 

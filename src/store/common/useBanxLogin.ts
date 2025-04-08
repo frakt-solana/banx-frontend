@@ -5,7 +5,7 @@ import moment from 'moment'
 import { create } from 'zustand'
 
 import { user } from '@banx/api/common'
-import { parseBanxLoginJwt } from '@banx/utils'
+import { parseBanxLoginJwt } from '@banx/utils/auth'
 
 const AUTH_MESSAGE = 'Hello! Please sign this message to proceed!'
 

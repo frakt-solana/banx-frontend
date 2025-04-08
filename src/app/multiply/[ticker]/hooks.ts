@@ -21,19 +21,15 @@ import {
 } from '@banx/transactions'
 import { CreateLeverageParams } from '@banx/transactions/leverage/common/createLeverageTxnData'
 import { parseTokenBorrowSimulatedAccounts } from '@banx/transactions/tokenLending'
+import { ZERO_BN, bnToHuman, bnToNumberSafe, stringToBN } from '@banx/utils/bn'
 import {
-  ZERO_BN,
-  bnToHuman,
-  bnToNumberSafe,
   destroySnackbar,
   enqueueConfirmationError,
   enqueueSnackbar,
   enqueueTransactionSent,
   enqueueWaitingConfirmation,
-  getTokenDecimals,
-  getTokenUnit,
-  stringToBN,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
+import { getTokenDecimals, getTokenUnit } from '@banx/utils/tokens'
 
 import { MIN_MULTIPLIER_VALUE, MULTIPLY_PAIRS } from './constants'
 import {

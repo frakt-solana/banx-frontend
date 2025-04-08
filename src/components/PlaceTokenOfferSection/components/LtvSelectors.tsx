@@ -5,12 +5,9 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import { Button } from '@banx/components/Buttons'
 
 import { TokenMarketPreview } from '@banx/api'
-import {
-  convertToDecimalString,
-  formatTokensPerCollateral,
-  formatTrailingZeros,
-  getTokenDecimals,
-} from '@banx/utils'
+import { convertToDecimalString, formatTrailingZeros } from '@banx/utils/common'
+import { formatTokensPerCollateral } from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from '../PlaceTokenOfferSection.module.scss'
 

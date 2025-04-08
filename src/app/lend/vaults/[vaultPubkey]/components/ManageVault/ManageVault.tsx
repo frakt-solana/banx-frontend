@@ -8,7 +8,8 @@ import { useUserEscrow, useWalletSidebar } from '@banx/components/WalletAccountS
 
 import { VaultPreview } from '@banx/api'
 import { useWalletBalance } from '@banx/hooks'
-import { getTokenDecimals, stringToBN } from '@banx/utils'
+import { stringToBN } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { Input } from '..'
 import { useLiquidityPoolTxns } from '../../hooks'

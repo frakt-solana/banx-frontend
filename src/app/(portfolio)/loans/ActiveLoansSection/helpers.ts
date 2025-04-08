@@ -12,10 +12,10 @@ import {
   calcTokenLoanAprWithRepayFee,
   calcWeightedAverage,
   calculateTokenLoanLtvByLoanValue,
-  isBanxSolTokenType,
   isLoanRepaymentCallActive,
   isLoanTerminating,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { PARTIAL_REPAY_ACCOUNT_CREATION_FEE } from './constants'
 import { LoansPreview } from './types'

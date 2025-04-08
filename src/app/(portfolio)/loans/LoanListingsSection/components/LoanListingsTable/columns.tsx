@@ -8,7 +8,8 @@ import {
 } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
-import { HealthColorIncreasing, getColorByPercent, getTokenLoanSupply } from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { getTokenLoanSupply } from '@banx/utils/core'
 
 import { APRCell, ActionsCell, FreezeCell, LTVCell } from './cells'
 

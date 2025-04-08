@@ -4,7 +4,7 @@ import { BN } from 'fbonds-core'
 
 import { fetchTokenBalance } from '@banx/api/common'
 import { WSOL_ADDRESS } from '@banx/constants'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 import { BORROW_TOKENS_LIST } from './constants'
 

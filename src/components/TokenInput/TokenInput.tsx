@@ -10,7 +10,7 @@ import NumericInput from '@banx/components/inputs/NumericInput'
 import { CollateralToken } from '@banx/api'
 import { ChevronDown, Wallet } from '@banx/icons'
 import { useModal } from '@banx/store'
-import { ZERO_BN, bnToHuman } from '@banx/utils'
+import { ZERO_BN, bnToHuman } from '@banx/utils/bn'
 
 import { ResponsiveImage } from '../ResponsiveImage'
 import ModalTokenSelect from './ModalTokenSelect'

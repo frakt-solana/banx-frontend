@@ -7,12 +7,9 @@ import Table from '@banx/components/Table'
 
 import { CollateralToken } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
-import {
-  adjustTokenAmountWithUpfrontFee,
-  bnToHuman,
-  getTokenDecimals,
-  stringToBN,
-} from '@banx/utils'
+import { bnToHuman, stringToBN } from '@banx/utils/bn'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { updateOfferBasedOnBorrow } from '../helpers'
 import { BorrowOffer, useSortedOffers } from '../hooks'

@@ -22,6 +22,7 @@ import {
   CreateLendToBorrowTokenTxnDataParams,
   createBulkLendToBorrowTokenTxnsData,
 } from '@banx/transactions/tokenLending'
+import { isLoanListed } from '@banx/utils/core'
 import {
   destroySnackbar,
   enqueueConfirmationError,
@@ -29,8 +30,7 @@ import {
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-  isLoanListed,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { useMarketLoansData } from './useMarketLoansData'
 import { useMarketLoansState } from './useMarketLoansState'

@@ -14,7 +14,7 @@ import {
   useTokenLoansOptimistic,
   useTokenType,
 } from '@banx/store'
-import { isLoanLiquidated, isLoanRepaid } from '@banx/utils'
+import { isLoanLiquidated, isLoanRepaid } from '@banx/utils/core'
 
 export const useLoansData = (strictTokenType?: LendingTokenType) => {
   const { publicKey: walletPublicKey } = useWallet()

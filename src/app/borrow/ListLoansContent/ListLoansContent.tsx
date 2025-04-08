@@ -10,7 +10,8 @@ import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 import { NumericStepInput } from '@banx/components/inputs'
 
 import { CollateralToken } from '@banx/api'
-import { HealthColorIncreasing, ZERO_BN, bnToHuman, getColorByPercent } from '@banx/utils'
+import { ZERO_BN, bnToHuman } from '@banx/utils/bn'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 
 import InputTokenSelect, { ControlsButtons } from '../components/InputTokenSelect'
 import { useListLoansContent } from './hooks'

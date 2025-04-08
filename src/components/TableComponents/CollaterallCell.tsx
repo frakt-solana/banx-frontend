@@ -4,7 +4,8 @@ import classNames from 'classnames'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { SOLFilled, USDC } from '@banx/icons'
-import { formatCompact, isUsdcTokenType } from '@banx/utils'
+import { formatCompact } from '@banx/utils/common'
+import { isUsdcTokenType } from '@banx/utils/tokens'
 
 import Checkbox from '../Checkbox'
 import { ResponsiveImage } from '../ResponsiveImage'

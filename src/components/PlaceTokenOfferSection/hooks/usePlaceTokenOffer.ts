@@ -7,7 +7,7 @@ import { isEmpty } from 'lodash'
 
 import { useTokenBondOffers, useTokenMarketsPreview } from '@banx/hooks'
 import { createEmptySyntheticTokenOffer, useSyntheticTokenOffers } from '@banx/store'
-import { getTokenDecimals } from '@banx/utils'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { FIELD_CONFIG, useFormStateChecks, useOfferFormController } from './useOfferFormController'
 import { useTokenOfferTransactions } from './useTokenOfferTransaction'

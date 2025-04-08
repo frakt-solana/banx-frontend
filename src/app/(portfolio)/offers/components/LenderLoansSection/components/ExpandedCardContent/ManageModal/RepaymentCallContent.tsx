@@ -6,11 +6,8 @@ import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
-import {
-  HealthColorIncreasing,
-  calculateTokenLoanLtvByLoanValue,
-  getColorByPercent,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { calculateTokenLoanLtvByLoanValue } from '@banx/utils/core'
 
 import { useLenderLoansTxns } from '../../../hooks'
 import { calculateRepaymentStaticValues } from './helpers'

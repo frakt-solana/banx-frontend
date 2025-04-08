@@ -2,7 +2,7 @@ import { ColumnType } from '@banx/components/Table'
 import { DisplayValue, HeaderCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { insertAtArray } from '@banx/utils'
+import { insertAtArray } from '@banx/utils/common'
 
 import { BorrowOffer, ColumnKey, SortColumnOption } from '../hooks'
 import { AprCell, MaxBorrowCell } from './cells'

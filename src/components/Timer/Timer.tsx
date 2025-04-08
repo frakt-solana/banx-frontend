@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useCountdown } from '@banx/hooks'
-import { CountdownUnits, formatCountdownUnits } from '@banx/utils'
+import { CountdownUnits, formatCountdownUnits } from '@banx/utils/date'
 
 import styles from './Timer.module.scss'
 

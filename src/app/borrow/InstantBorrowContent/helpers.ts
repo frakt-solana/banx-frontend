@@ -6,7 +6,8 @@ import moment from 'moment'
 
 import { CollateralToken } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
-import { adjustTokenAmountWithUpfrontFee, bnToHuman, stringToBN } from '@banx/utils'
+import { bnToHuman, stringToBN } from '@banx/utils/bn'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
 
 import { BorrowToken } from '../constants'
 import { BorrowOffer } from './hooks'

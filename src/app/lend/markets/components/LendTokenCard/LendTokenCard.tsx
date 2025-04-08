@@ -13,7 +13,8 @@ import { MarketTokenRewards, core } from '@banx/api'
 import { useMarketTokenRewards } from '@banx/hooks'
 import { Fire, StarSecondary } from '@banx/icons'
 import { useTokenType } from '@banx/store/common'
-import { formatTokensPerCollateral, getOracleIcon, getTokenDecimals } from '@banx/utils'
+import { formatTokensPerCollateral } from '@banx/utils/core'
+import { getOracleIcon, getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from './LendTokenCard.module.scss'
 

@@ -11,12 +11,9 @@ import {
 } from '@banx/components/TableComponents'
 
 import { Loan } from '@banx/api'
-import {
-  HealthColorIncreasing,
-  getColorByPercent,
-  getTokenLoanSupply,
-  insertAtArray,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { insertAtArray } from '@banx/utils/common'
+import { getTokenLoanSupply } from '@banx/utils/core'
 
 import { TableColumnKey } from '../../constants'
 import { SortColumnOption } from '../../hooks/useLenderLoansSorting'

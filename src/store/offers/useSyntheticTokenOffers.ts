@@ -5,7 +5,8 @@ import produce from 'immer'
 import { create } from 'zustand'
 
 import { convertBondOfferV3ToCore } from '@banx/api'
-import { bnToNumberSafe, calculateOfferSize } from '@banx/utils'
+import { bnToNumberSafe } from '@banx/utils/bn'
+import { calculateOfferSize } from '@banx/utils/core'
 
 export interface SyntheticTokenOffer {
   isEdit: boolean //? if offer exits on blochain and in edit mode

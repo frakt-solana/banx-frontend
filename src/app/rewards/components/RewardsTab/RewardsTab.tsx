@@ -14,7 +14,7 @@ import { user } from '@banx/api/common'
 import { PATHS } from '@banx/constants'
 import { CircleCheck } from '@banx/icons'
 import { defaultTxnErrorHandler } from '@banx/transactions'
-import { enqueueSnackbar } from '@banx/utils'
+import { enqueueSnackbar } from '@banx/utils/snackbar'
 
 import { updateBonkWithdrawOptimistic, useSeasonUserRewards } from '../../hooks'
 import AnybodiesImg from './assets/Anybodies.png'

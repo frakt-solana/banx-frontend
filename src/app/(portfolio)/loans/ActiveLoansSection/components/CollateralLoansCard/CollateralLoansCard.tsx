@@ -10,15 +10,10 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
 import { ChevronDown, Coin, CoinPlus, SOLFilled, USDC } from '@banx/icons'
-import {
-  HealthColorIncreasing,
-  formatCompact,
-  getColorByPercent,
-  getOracleIcon,
-  getTokenDecimals,
-  getTokenLoanSupply,
-  isUsdcTokenType,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { formatCompact } from '@banx/utils/common'
+import { getTokenLoanSupply } from '@banx/utils/core'
+import { getOracleIcon, getTokenDecimals, isUsdcTokenType } from '@banx/utils/tokens'
 
 import { TOOLTIP_TEXTS } from '../../constants'
 import { LoansPreview } from '../../types'

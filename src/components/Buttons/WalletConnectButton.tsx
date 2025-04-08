@@ -1,7 +1,7 @@
 import { useWallet } from '@solana/wallet-adapter-react'
 
 import { Wallet } from '@banx/icons'
-import { shortenAddress } from '@banx/utils'
+import { shortenAddress } from '@banx/utils/common'
 
 import { useWalletSidebar } from '../WalletAccountSidebar'
 import { Button } from './Button'

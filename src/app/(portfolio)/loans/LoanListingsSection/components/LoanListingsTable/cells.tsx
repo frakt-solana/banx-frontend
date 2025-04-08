@@ -5,13 +5,12 @@ import { HorizontalCell, createPercentValueJSX } from '@banx/components/TableCom
 
 import { Loan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 import {
-  HealthColorIncreasing,
   calcTokenLoanAprWithRepayFee,
   calculateTokenLoanLtvByLoanValue,
-  getColorByPercent,
   isLoanFrozen,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { useLoanListingsTransactions } from '../../hooks'
 

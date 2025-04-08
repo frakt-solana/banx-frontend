@@ -9,7 +9,7 @@ import moment from 'moment'
 
 import { UserEscrow } from '@banx/api'
 import { ClusterStats } from '@banx/api/common'
-import { getTokenDecimals, getTokenTicker } from '@banx/utils'
+import { getTokenDecimals, getTokenTicker } from '@banx/utils/tokens'
 
 import { TabName } from './hooks'
 

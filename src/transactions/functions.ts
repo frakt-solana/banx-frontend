@@ -18,7 +18,7 @@ import {
 
 import { helius } from '@banx/api/common'
 import { getPriorityFeeLevel } from '@banx/store'
-import { ZERO_BN } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
 
 import { BANX_ACCOUNTS_NAMES_AND_DISCRIMINATORS, banxCoder } from './constants'
 

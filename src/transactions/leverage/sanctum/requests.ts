@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { BN } from 'fbonds-core'
 
-import { ZERO_BN, convertApyToApr } from '@banx/utils'
+import { ZERO_BN } from '@banx/utils/bn'
+import { convertApyToApr } from '@banx/utils/common'
 
 const SANCTUM_EXTRA_API_URL = 'https://extra-api.sanctum.so'
 

@@ -31,8 +31,8 @@ import {
   enqueueSnackbar,
   enqueueTransactionSent,
   enqueueWaitingConfirmation,
-  getTokenDecimals,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 export const useTokenOfferTransactions = ({
   offer,

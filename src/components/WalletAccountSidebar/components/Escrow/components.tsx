@@ -12,7 +12,8 @@ import Timer from '@banx/components/Timer'
 import { useClusterStats } from '@banx/hooks'
 import { BanxSOL } from '@banx/icons'
 import { useTokenType } from '@banx/store'
-import { CountdownUnits, formatCountdownUnits, formatValueByTokenType } from '@banx/utils'
+import { CountdownUnits, formatCountdownUnits } from '@banx/utils/date'
+import { formatValueByTokenType } from '@banx/utils/tokens'
 
 import { TabName, useUserEscrowInfo } from './hooks'
 

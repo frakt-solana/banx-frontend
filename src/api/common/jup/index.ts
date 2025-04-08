@@ -3,7 +3,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { MultiplyPair } from '@banx/app/multiply/[ticker]/types'
 import { USDC_ADDRESS, WSOL_ADDRESS } from '@banx/constants'
-import { getTokenDecimals } from '@banx/utils'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 export type CustomQuoteParams = Partial<Omit<QuoteGetRequest, 'amount' | 'slippageBps'>>
 

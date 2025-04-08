@@ -6,7 +6,8 @@ import moment from 'moment'
 
 import { CollateralToken } from '@banx/api'
 import { DAYS_IN_YEAR, ONE_WEEK_IN_SECONDS } from '@banx/constants'
-import { bnToHuman, getTokenDecimals } from '@banx/utils'
+import { bnToHuman } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 interface GetSummaryProps {
   collateralAmount: number

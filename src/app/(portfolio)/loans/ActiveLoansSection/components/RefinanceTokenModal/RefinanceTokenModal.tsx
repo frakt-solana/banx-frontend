@@ -13,13 +13,13 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import { Loan, convertBondOfferV3ToCore } from '@banx/api'
 import { useModal } from '@banx/store/common'
+import { bnToNumberSafe } from '@banx/utils/bn'
 import {
-  bnToNumberSafe,
   calcOfferLtvPercent,
   calculateOfferSize,
   formatTokensPerCollateral,
-  getTokenDecimals,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import OrderBook from './OrderBook'
 import { getCurrentLoanInfo } from './helpers'

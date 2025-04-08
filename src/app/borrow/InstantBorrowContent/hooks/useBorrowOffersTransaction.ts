@@ -37,7 +37,7 @@ import {
   enqueueSnackbar,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { BorrowOffer } from './useBorrowOffers'
 

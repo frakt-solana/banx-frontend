@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { StatInfo, StatsInfoProps } from '@banx/components/StatInfo'
 import { TooltipWrapper } from '@banx/components/Tooltip'
 
-import { deepMergeStyles } from '@banx/utils'
+import { deepMergeStyles } from '@banx/utils/common'
 
 import { StatContext, StatEntry, TOKEN_CONTENT_MAP } from '../constants'
 

@@ -7,7 +7,8 @@ import { every, isEqual, pick } from 'lodash'
 
 import { TokenMarketPreview } from '@banx/api'
 import { SyntheticTokenOffer } from '@banx/store'
-import { formatTokensPerCollateral, formatValueByTokenType, getTokenDecimals } from '@banx/utils'
+import { formatTokensPerCollateral } from '@banx/utils/core'
+import { formatValueByTokenType, getTokenDecimals } from '@banx/utils/tokens'
 
 const DEFAULT_APR_PERCENT = 30
 

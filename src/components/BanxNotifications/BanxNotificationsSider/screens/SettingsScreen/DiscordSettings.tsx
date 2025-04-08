@@ -7,7 +7,7 @@ import { user } from '@banx/api/common'
 import { DISCORD } from '@banx/constants'
 import { useDiscordUser } from '@banx/hooks'
 import { Alert } from '@banx/icons'
-import { shortenAddress } from '@banx/utils'
+import { shortenAddress } from '@banx/utils/common'
 
 import styles from './SettingsScreen.module.scss'
 

@@ -6,13 +6,10 @@ import { useParams } from 'next/navigation'
 
 import { useCollateralsList } from '@banx/hooks'
 import { useModal, useTokenType } from '@banx/store/common'
-import {
-  adjustTokenAmountWithUpfrontFee,
-  bnToHuman,
-  getTokenDecimals,
-  limitDecimalPlaces,
-  stringToBN,
-} from '@banx/utils'
+import { bnToHuman, stringToBN } from '@banx/utils/bn'
+import { limitDecimalPlaces } from '@banx/utils/common'
+import { adjustTokenAmountWithUpfrontFee } from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { BorrowToken } from '../../constants'
 import { useBorrowTokensList } from '../../hooks'

@@ -7,8 +7,8 @@ import {
 } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { Offer } from '@banx/api'
-import { convertToDecimalString, formatTrailingZeros } from '@banx/utils'
 import { ZERO_BN } from '@banx/utils/bn'
+import { convertToDecimalString, formatTrailingZeros } from '@banx/utils/common'
 
 export const isOfferStateClosed = (pairState: PairState) => {
   return (

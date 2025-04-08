@@ -8,7 +8,7 @@ import { DisplayValue } from '@banx/components/TableComponents'
 
 import { activity } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
-import { createDownloadLink } from '@banx/utils'
+import { createDownloadLink } from '@banx/utils/common'
 
 import { useLoansStatsData } from '../ActiveLoansSection/hooks'
 

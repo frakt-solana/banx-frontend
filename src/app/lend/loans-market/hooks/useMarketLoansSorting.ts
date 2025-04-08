@@ -5,7 +5,7 @@ import { orderBy } from 'lodash'
 import { SortOption } from '@banx/components/SortDropdown'
 
 import { Loan } from '@banx/api'
-import { calculateTokenLoanLtvByLoanValue } from '@banx/utils'
+import { calculateTokenLoanLtvByLoanValue } from '@banx/utils/core'
 
 import { calculateLendToBorrowValue } from '../helpers'
 

@@ -10,7 +10,8 @@ import { Modal } from '@banx/components/modals/BaseModal'
 
 import { VaultPreview } from '@banx/api'
 import { useModal } from '@banx/store/common'
-import { getTokenDecimals, stringToBN } from '@banx/utils'
+import { stringToBN } from '@banx/utils/bn'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { Input } from '..'
 import { useLiquidityPoolTxns } from '../../hooks'

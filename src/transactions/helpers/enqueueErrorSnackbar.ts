@@ -1,6 +1,6 @@
 import { TxnError } from 'solana-transactions-executor'
 
-import { enqueueSnackbar } from '@banx/utils'
+import { enqueueSnackbar } from '@banx/utils/snackbar'
 
 import { createErrorLogsString } from '.'
 import { TxnErrorHumanName } from '../types'

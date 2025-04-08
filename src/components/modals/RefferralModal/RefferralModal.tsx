@@ -20,7 +20,7 @@ import {
 } from '@banx/hooks'
 import { CircleCheck, Paste } from '@banx/icons'
 import { useIsLedger, useModal } from '@banx/store/common'
-import { pasteFromClipboard } from '@banx/utils'
+import { pasteFromClipboard } from '@banx/utils/common'
 
 import { ReferralInput } from './components'
 import { useGetUserWalletByRefCode } from './hooks'

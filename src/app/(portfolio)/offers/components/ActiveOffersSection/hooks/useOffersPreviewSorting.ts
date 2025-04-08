@@ -8,14 +8,13 @@ import { SortOption } from '@banx/components/SortDropdown'
 import { OfferPreview } from '@banx/api'
 import { WSOL_ADDRESS } from '@banx/constants'
 import { useTokenPrice } from '@banx/hooks'
+import { bnToNumberSafe } from '@banx/utils/bn'
 import {
-  bnToNumberSafe,
   calcOfferLtvPercent,
   formatTokensPerCollateral,
   getLendingTokenFromBondingCurve,
-  getTokenDecimals,
-  isUsdcTokenType,
-} from '@banx/utils'
+} from '@banx/utils/core'
+import { getTokenDecimals, isUsdcTokenType } from '@banx/utils/tokens'
 
 export enum SortField {
   IN_LOANS = 'inLoans',

@@ -6,7 +6,7 @@ import UserAvatar from '@banx/components/UserAvatar'
 import { useDiscordUser } from '@banx/hooks'
 import { Copy, SignOut } from '@banx/icons'
 import { useIsLedger } from '@banx/store'
-import { copyToClipboard, shortenAddress } from '@banx/utils'
+import { copyToClipboard, shortenAddress } from '@banx/utils/common'
 
 import styles from '../WalletAccountSidebar.module.scss'
 

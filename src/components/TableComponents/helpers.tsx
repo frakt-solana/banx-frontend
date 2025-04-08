@@ -9,7 +9,7 @@ import {
   formatDecimalWithSubscript,
   formatValueByTokenType,
   getTokenUnit,
-} from '@banx/utils'
+} from '@banx/utils/tokens'
 
 import styles from './TableCells.module.scss'
 

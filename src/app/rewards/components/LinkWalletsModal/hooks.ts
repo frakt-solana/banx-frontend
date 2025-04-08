@@ -5,7 +5,8 @@ import { create } from 'zustand'
 
 import { user } from '@banx/api/common'
 import { useBanxLogin, useIsLedger, useModal } from '@banx/store/common'
-import { enqueueSnackbar, generateSignature } from '@banx/utils'
+import { generateSignature } from '@banx/utils/auth'
+import { enqueueSnackbar } from '@banx/utils/snackbar'
 
 import { useLinkedWallets } from '../../hooks'
 

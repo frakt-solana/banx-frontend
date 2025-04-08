@@ -8,7 +8,7 @@ import {
   calcTokenWeeklyFeeWithRepayFee,
   isLoanRepaymentCallActive,
   isLoanSelling,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { calcTokenTotalValueToPay, calculateWeightedApr } from '../../helpers'
 

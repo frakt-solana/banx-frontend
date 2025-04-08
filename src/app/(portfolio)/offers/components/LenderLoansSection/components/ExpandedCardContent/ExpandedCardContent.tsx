@@ -14,7 +14,7 @@ import {
   isLoanSelling,
   isLoanTerminating,
   isLoanUnderwater,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { useLenderLoansSorting, useLenderLoansState } from '../../hooks'
 import { FilterStatus, FilterTableSection, LOAN_FILTERS } from './FilterTableSection'

@@ -12,15 +12,14 @@ import NumericInput from '@banx/components/inputs/NumericInput'
 import { Loan } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
 import { Pencil } from '@banx/icons'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
 import {
-  HealthColorIncreasing,
   calculateTokenLoanLtvByLoanValue,
-  getColorByPercent,
   getTokenLoanSupply,
   isLoanFrozen,
   isLoanListed,
   isLoanSelling,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import { calculateLendToBorrowValue } from '../../helpers'
 

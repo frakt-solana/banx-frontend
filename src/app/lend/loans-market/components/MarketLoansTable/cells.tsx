@@ -14,11 +14,8 @@ import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
 import { Loan } from '@banx/api'
 import { useModal } from '@banx/store'
-import {
-  HealthColorIncreasing,
-  calculateTokenLoanLtvByLoanValue,
-  getColorByPercent,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { calculateTokenLoanLtvByLoanValue } from '@banx/utils/core'
 
 import { calculateLendToBorrowValue } from '../../helpers'
 import { LenderRefinanceModal } from '../LenderRefinanceModal'

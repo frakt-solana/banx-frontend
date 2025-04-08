@@ -38,8 +38,8 @@ import {
   enqueueSnackbar,
   enqueueTransactionSent,
   enqueueWaitingConfirmation,
-  getTokenDecimals,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 type UseListLoan = (params: {
   collateralToken: CollateralToken | undefined

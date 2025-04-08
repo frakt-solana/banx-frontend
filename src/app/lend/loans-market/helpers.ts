@@ -6,7 +6,7 @@ import {
   caclulateBorrowTokenLoanValue,
   calculateTokenLoanValueWithUpfrontFee,
   isLoanListed,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 export const calculateLendToBorrowValue = (loan: Loan) => {
   return isLoanListed(loan)

@@ -26,15 +26,15 @@ import {
   parseRepaymentCallSimulatedAccounts,
   parseTerminateSimulatedAccounts,
 } from '@banx/transactions/tokenLending'
+import { caclulateBorrowTokenLoanValue } from '@banx/utils/core'
 import {
-  caclulateBorrowTokenLoanValue,
   destroySnackbar,
   enqueueConfirmationError,
   enqueueSnackbar,
   enqueueTransactionSent,
   enqueueTransactionsSent,
   enqueueWaitingConfirmation,
-} from '@banx/utils'
+} from '@banx/utils/snackbar'
 
 import { useLenderLoansData } from './useLenderLoansData'
 import { useLenderLoansState } from './useLenderLoansState'

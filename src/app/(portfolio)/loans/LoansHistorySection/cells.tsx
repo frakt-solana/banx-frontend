@@ -10,7 +10,7 @@ import {
   LoanStatus,
   STATUS_LOANS_COLOR_MAP,
   STATUS_LOANS_MAP_WITH_REFINANCED_ACTIVE,
-} from '@banx/utils'
+} from '@banx/utils/core'
 
 import styles from './LoansHistorySection.module.scss'
 

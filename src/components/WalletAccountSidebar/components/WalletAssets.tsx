@@ -5,13 +5,9 @@ import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 
 import { CollateralToken } from '@banx/api'
 import { useWalletTokenAssets } from '@banx/hooks'
-import {
-  bnToHuman,
-  convertToDecimalString,
-  formatCollateralTokenValue,
-  isExponentialNotation,
-  shortenAddress,
-} from '@banx/utils'
+import { bnToHuman } from '@banx/utils/bn'
+import { convertToDecimalString, isExponentialNotation, shortenAddress } from '@banx/utils/common'
+import { formatCollateralTokenValue } from '@banx/utils/tokens'
 
 import styles from '../WalletAccountSidebar.module.scss'
 

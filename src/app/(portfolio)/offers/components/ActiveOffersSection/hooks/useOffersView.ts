@@ -7,7 +7,7 @@ import { filterBySearchQuery } from '@banx/components/Search'
 
 import { MarketCategory } from '@banx/constants'
 import { MESSAGES, NO_OFFERS_IN_MARKET_MESSAGE } from '@banx/constants/messages'
-import { getLendingTokenFromBondingCurve } from '@banx/utils'
+import { getLendingTokenFromBondingCurve } from '@banx/utils/core'
 
 import { useOffersPreviewData } from './useOffersPreviewData'
 import { useOffersPreviewSorting } from './useOffersPreviewSorting'

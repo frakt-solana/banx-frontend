@@ -11,12 +11,9 @@ import { DisplayValue } from '@banx/components/TableComponents'
 
 import { MarketTokenRewards, TokenMarketPreview } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
-import {
-  HealthColorIncreasing,
-  calcOfferLtvPercent,
-  getColorByPercent,
-  getTokenDecimals,
-} from '@banx/utils'
+import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
+import { calcOfferLtvPercent } from '@banx/utils/core'
+import { getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from '../PlaceTokenOfferSection.module.scss'
 

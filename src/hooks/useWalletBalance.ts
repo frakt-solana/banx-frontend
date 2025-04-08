@@ -4,7 +4,7 @@ import { web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { BANX_SOL_ADDRESS, BONDS, USDC_ADDRESS } from '@banx/constants'
-import { isBanxSolTokenType, isUsdcTokenType } from '@banx/utils'
+import { isBanxSolTokenType, isUsdcTokenType } from '@banx/utils/tokens'
 
 type UseNativeAccount = ({ isLive }: { isLive?: boolean }) => web3.AccountInfo<Buffer> | null
 const useNativeAccount: UseNativeAccount = ({ isLive = true }) => {
