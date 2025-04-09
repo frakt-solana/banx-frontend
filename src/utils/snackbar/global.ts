@@ -1,6 +1,7 @@
+import { notification as notificationGlobal } from 'antd'
 import type { NotificationInstance } from 'antd/es/notification/interface'
 
-let notificationApi: NotificationInstance | null = null
+let notificationApi: NotificationInstance | null = notificationGlobal
 
 export const setNotificationApi = (api: NotificationInstance) => {
   notificationApi = api

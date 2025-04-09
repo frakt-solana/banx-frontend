@@ -5,7 +5,7 @@ import { BN } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { chain } from 'lodash'
+import _ from 'lodash'
 
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
@@ -47,7 +47,7 @@ const RefinanceTokenModal: FC<RefinanceTokenModalProps> = ({ loan }) => {
     const upfrontFee = new BN(currentDebt).mul(new BN(marketUpfrontFee)).div(new BN(BASE_POINTS))
 
     return (
-      chain(offers)
+      _.chain(offers)
         //? (1) Exclude the user's own offers
         .filter((offer) => wallet?.publicKey?.toBase58() !== offer.assetReceiver.toBase58())
         //? (2) Exclude offers that cannot cover the upfront fee of the previous loan
