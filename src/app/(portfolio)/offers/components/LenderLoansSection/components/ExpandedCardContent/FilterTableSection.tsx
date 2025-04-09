@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react'
 
-import { mapValues } from 'lodash'
+import _ from 'lodash'
 
 import { RBOption, RadioButton } from '@banx/components/RadioButton'
 
@@ -45,7 +45,7 @@ export const FilterTableSection: FC<FilterTableSectionProps> = ({
   currentOption,
 }) => {
   const disabledStatuses = useMemo(
-    () => mapValues(LOAN_FILTERS, (checkFn) => !loans.some(checkFn)),
+    () => _.mapValues(LOAN_FILTERS, (checkFn) => !loans.some(checkFn)),
     [loans],
   )
 

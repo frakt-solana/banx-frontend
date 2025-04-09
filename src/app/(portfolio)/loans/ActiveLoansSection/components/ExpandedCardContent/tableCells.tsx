@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 
 import { Button } from '@banx/components/Buttons'
@@ -159,7 +159,7 @@ export const StatusCell: FC<{ loan: Loan }> = ({ loan }) => {
     <div className={styles.statusCell}>
       <span className={styles.statusCellTimeText}>{timeContent}</span>
       <span style={{ color: loanStatusColor }} className={styles.bodyCellText}>
-        {capitalize(loanStatus)}
+        {_.capitalize(loanStatus)}
       </span>
     </div>
   )

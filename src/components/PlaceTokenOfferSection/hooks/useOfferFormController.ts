@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { MAX_APR_SPL, MIN_APR_SPL } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { every, isEqual, pick } from 'lodash'
+import _ from 'lodash'
 
 import { TokenMarketPreview } from '@banx/api'
 import { SyntheticTokenOffer } from '@banx/store'
@@ -56,7 +56,7 @@ export const useOfferFormController = (props: {
   }, [initialValues])
 
   const hasFormChanges = useMemo(
-    () => !isEqual(formState, initialValues),
+    () => !_.isEqual(formState, initialValues),
     [formState, initialValues],
   )
 
@@ -131,13 +131,13 @@ export const useFormStateChecks = ({
   initialValues: FormState
   fieldConfig: FormFields[]
 }) => {
-  const filteredFormState = pick(formState, fieldConfig)
+  const filteredFormState = _.pick(formState, fieldConfig)
 
   const areFieldsFilled = useMemo(() => {
-    return every(filteredFormState, (value) => Boolean(value) && value !== '0')
+    return _.every(filteredFormState, (value) => Boolean(value) && value !== '0')
   }, [filteredFormState])
 
-  const hasChanges = useMemo(() => !isEqual(formState, initialValues), [formState, initialValues])
+  const hasChanges = useMemo(() => !_.isEqual(formState, initialValues), [formState, initialValues])
 
   const errorMessage = useMemo(() => {
     const ltvError = getLtvErrorMessage(

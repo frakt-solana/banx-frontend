@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { filter, size } from 'lodash'
+import _ from 'lodash'
 
 import { filterBySearchQuery } from '@banx/components/Search'
 
@@ -33,8 +33,8 @@ export const useMarketLoansFilter = (loans: Loan[]) => {
   const filteredLoans = useMemo(() => {
     const applyFilter = (sourceLoans: Loan[]) => {
       const baseLoans = getBaseLoans(sourceLoans)
-      const auctionLoans = filter(sourceLoans, isLoanTerminating)
-      const frozenLoans = filter(sourceLoans, isLoanFrozen)
+      const auctionLoans = _.filter(sourceLoans, isLoanTerminating)
+      const frozenLoans = _.filter(sourceLoans, isLoanFrozen)
 
       const auctionFilterResult = isAuctionFilterEnabled ? auctionLoans : []
       const freezeFilterResult = isFreezeFilterEnabled ? frozenLoans : []
@@ -47,7 +47,7 @@ export const useMarketLoansFilter = (loans: Loan[]) => {
   }, [filteredBySearchQuery, isAuctionFilterEnabled, isFreezeFilterEnabled])
 
   const getLoanAmount = (predicate: LoanPredicate) =>
-    size(filter(filteredBySearchQuery, predicate)) || null
+    _.size(_.filter(filteredBySearchQuery, predicate)) || null
 
   const auctionLoansAmount = getLoanAmount(isLoanTerminating)
   const freezeLoansAmount = getLoanAmount(isLoanFrozen)

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { capitalize, isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
@@ -64,14 +64,14 @@ const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
           </Tooltip>
         )}
 
-        {!isEmpty(marketRewards) && (
+        {!_.isEmpty(marketRewards) && (
           <Tooltip title={marketRewards.description}>
             <StarSecondary />
           </Tooltip>
         )}
 
         {isOracleMarket && (
-          <Tooltip title={`Price feed from the ${capitalize(market.oraclePriceFeedType)} oracle`}>
+          <Tooltip title={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
             {getOracleIcon(market.oraclePriceFeedType)}
           </Tooltip>
         )}

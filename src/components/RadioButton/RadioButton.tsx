@@ -47,6 +47,7 @@ export const RadioButton: FC<RadioButtonProps> = ({
               value={value}
               checked={checked}
               disabled={disabled || option.disabled}
+              defaultChecked={checked}
             />
             <label htmlFor={value}>{option.label}</label>
           </div>

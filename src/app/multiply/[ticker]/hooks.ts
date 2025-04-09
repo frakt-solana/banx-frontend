@@ -4,7 +4,7 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 import { BN, web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty, uniqueId } from 'lodash'
+import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { AppSettingsModal } from '@banx/components/modals'
@@ -151,7 +151,7 @@ export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
   const { add: addLoansOptimistic } = useTokenLoansOptimistic()
 
   const simpleOffers: LeverageSimpleOffer[] = useMemo(() => {
-    if (isEmpty(offers) || collateralConversionRate === 0) return []
+    if (_.isEmpty(offers) || collateralConversionRate === 0) return []
 
     return createLeverageSimpleOffers({
       offers,
@@ -169,7 +169,7 @@ export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
   const totalCollateralAmount = userEnteredCollateralAmount.mul(new BN(multiplierValue))
 
   const onLeverageBorrow = async () => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
     setBorrowBtnLoading(true)
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
 
-import { debounce } from 'lodash'
+import _ from 'lodash'
 
 import { useIntersection } from '@banx/hooks'
 
@@ -24,7 +24,7 @@ export const useFakeInfinityScroll = <T>({
   const [itemsPerScroll, setItemsPerScroll] = useState<number>(initialItemsPerScroll)
 
   useEffect(() => {
-    const handleIntersection = debounce(() => {
+    const handleIntersection = _.debounce(() => {
       if (inView && rawData.length >= itemsPerScroll && enabled) {
         setItemsPerScroll((prevItemsPerScroll) => prevItemsPerScroll + initialItemsPerScroll)
       }

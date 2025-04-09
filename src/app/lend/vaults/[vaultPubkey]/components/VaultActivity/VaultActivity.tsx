@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 
 import EmptyList from '@banx/components/EmptyList'
 import Table, { ColumnType } from '@banx/components/Table'
@@ -92,7 +92,7 @@ const getTableColumns = ({ lendingToken }: { lendingToken: LendingTokenType }) =
 
         return (
           <span style={{ color: statusColor }} className={styles.cellText}>
-            {capitalize(loanStatus)}
+            {_.capitalize(loanStatus)}
           </span>
         )
       },

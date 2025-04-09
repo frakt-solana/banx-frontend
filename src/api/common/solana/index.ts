@@ -1,5 +1,5 @@
 import { BN, web3 } from 'fbonds-core'
-import { chain, sum } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 
 import { BONDS, MINUTES_IN_HOUR } from '@banx/constants'
@@ -45,7 +45,7 @@ export const getClusterStats: GetClusterStats = async ({ connection }) => {
 
   const { slotIndex, slotsInEpoch, absoluteSlot, blockHeight, epoch } = epochInfo
 
-  const samples = chain(performanceSamples)
+  const samples = _.chain(performanceSamples)
     .filter((sample) => sample.numSlots !== 0)
     .map((sample) => sample.samplePeriodSecs / sample.numSlots)
     .slice(0, MINUTES_IN_HOUR)
@@ -54,7 +54,7 @@ export const getClusterStats: GetClusterStats = async ({ connection }) => {
   const avgSlotTime_1min = samples?.[0] ?? 0
 
   const samplesInHour = samples.length < MINUTES_IN_HOUR ? samples.length : MINUTES_IN_HOUR
-  const avgSlotTime_1h = sum(samples) / samplesInHour
+  const avgSlotTime_1h = _.sum(samples) / samplesInHour
 
   const [clusterTime, epochStartedAt] = await Promise.all([
     connection.getBlockTime(absoluteSlot).catch(() => undefined),

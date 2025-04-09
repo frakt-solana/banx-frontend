@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { sumBy } from 'lodash'
+import _ from 'lodash'
 
 import { MarketTokenType } from '@banx/components/Dropdowns'
 import { filterBySearchQuery } from '@banx/components/Search'
@@ -61,12 +61,12 @@ export const useLoansPreviewFilter = (loansPreviews: LoansPreview[]) => {
   )
 
   const terminatingLoansAmount = useMemo(
-    () => sumBy(filteredBySearchQuery, (preview) => preview.terminatingLoansAmount || 0),
+    () => _.sumBy(filteredBySearchQuery, (preview) => preview.terminatingLoansAmount || 0),
     [filteredBySearchQuery],
   )
 
   const repaymentCallsAmount = useMemo(
-    () => sumBy(filteredBySearchQuery, (preview) => preview.repaymentCallsAmount || 0),
+    () => _.sumBy(filteredBySearchQuery, (preview) => preview.repaymentCallsAmount || 0),
     [filteredBySearchQuery],
   )
 

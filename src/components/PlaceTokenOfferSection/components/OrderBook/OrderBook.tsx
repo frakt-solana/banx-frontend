@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { map, merge } from 'lodash'
+import _ from 'lodash'
 
 import { Loader } from '@banx/components/Loader'
 import Tooltip from '@banx/components/Tooltip/Tooltip'
@@ -33,7 +33,7 @@ const OrderBook: FC<OrderBookProps> = ({ market, lendingToken, offerPubkey = '',
   return (
     <div className={classNames(styles.orderBook, className)}>
       <div className={styles.labelsWrapper}>
-        {map(marketLabels, (label, key) => (
+        {_.map(marketLabels, (label, key) => (
           <Label key={key} title={label.title} tooltip={label.tooltip} />
         ))}
       </div>
@@ -105,4 +105,4 @@ const ORACLE_MARKET_LABELS = {
 }
 
 const getMarketLabels = (isOracleMarket: boolean): Record<string, LabelConfig> =>
-  isOracleMarket ? merge({}, BASE_LABELS, ORACLE_MARKET_LABELS) : BASE_LABELS
+  isOracleMarket ? _.merge({}, BASE_LABELS, ORACLE_MARKET_LABELS) : BASE_LABELS

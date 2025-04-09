@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { BN } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calcBorrowerTokenAPR } from 'fbonds-core/lib/fbond-protocol/helpers'
-import { flow } from 'lodash'
+import _ from 'lodash'
 import { divide } from 'lodash/fp'
 
 import { StatInfo } from '@banx/components/StatInfo'
@@ -79,11 +79,11 @@ export const Summary: FC<SummaryProps> = ({
   const upfrontFeePercent = marketUpfrontFee / 100
 
   const liquidationLtv = selectedOffer?.liquidationLtvBp
-    ? flow(bnToNumberSafe, divide(BASE_POINTS))(selectedOffer.liquidationLtvBp)
+    ? _.flow(bnToNumberSafe, divide(BASE_POINTS))(selectedOffer.liquidationLtvBp)
     : undefined
 
   const loanLtv = selectedOffer
-    ? flow(calculateTokenLoanBorrowAmount, bnToNumberSafe, divide(bnToNumberSafe(borrowAmount)))(
+    ? _.flow(calculateTokenLoanBorrowAmount, bnToNumberSafe, divide(bnToNumberSafe(borrowAmount)))(
         totalCollateralAmount,
         conversionRate,
         marketTokenDecimals,

@@ -1,5 +1,5 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
-import { chain, uniqueId } from 'lodash'
+import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { useBanxNotificationsSider } from '@banx/components/BanxNotifications'
@@ -66,7 +66,7 @@ export const useMarketLoansTransactions = () => {
   }
 
   const lendToBorrow = async (loan: Loan) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -131,7 +131,7 @@ export const useMarketLoansTransactions = () => {
   }
 
   const lendToBorrowAll = async (loans: Loan[]) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -158,7 +158,7 @@ export const useMarketLoansTransactions = () => {
           if (confirmed.length) {
             enqueueSnackbar({ message: 'Loans successfully funded', type: 'success' })
 
-            const pubkeysToHidden = chain(confirmed)
+            const pubkeysToHidden = _.chain(confirmed)
               .map(({ params }) => params.loan.publicKey)
               .compact()
               .value()

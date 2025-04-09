@@ -1,6 +1,6 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/types'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
@@ -34,7 +34,7 @@ export const useLoanListingsTransactions = () => {
   const { selection, clear: clearSelection } = useLoanListingsState()
 
   const delist = async (loan: Loan) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -88,7 +88,7 @@ export const useLoanListingsTransactions = () => {
   }
 
   const delistAll = async () => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

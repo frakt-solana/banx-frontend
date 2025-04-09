@@ -1,6 +1,6 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BN } from 'fbonds-core'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { useUserEscrow } from '@banx/components/WalletAccountSidebar/components'
@@ -51,7 +51,7 @@ export const useLiquidityPoolTxns = (vaultPreview: VaultPreview) => {
   const { userEscrow, updateUserEscrowOptimistic } = useUserEscrow()
 
   const deposit = async ({ amount, onSuccess }: { amount: BN; onSuccess?: () => void }) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -121,7 +121,7 @@ export const useLiquidityPoolTxns = (vaultPreview: VaultPreview) => {
   }
 
   const withdraw = async ({ amount, onSuccess }: { amount: BN; onSuccess?: () => void }) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -192,7 +192,7 @@ export const useLiquidityPoolTxns = (vaultPreview: VaultPreview) => {
   }
 
   const claim = async (amount: BN) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

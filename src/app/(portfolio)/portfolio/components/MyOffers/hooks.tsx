@@ -1,4 +1,4 @@
-import { every, map } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { DoughnutChartProps } from '@banx/components/Charts'
@@ -27,11 +27,11 @@ export const useOffersAllocation = (offers: UserPortfolio['offers'] | undefined)
   const { tokenType } = useTokenType()
 
   const allocationData = createAllocationsData(escrow, active, underwater, terminating)
-  const allocationValues = map(
+  const allocationValues = _.map(
     allocationData,
     ({ value }) => value / 10 ** getTokenDecimals(tokenType),
   )
-  const hasNoAllocation = every(allocationValues, (value) => value === 0)
+  const hasNoAllocation = _.every(allocationValues, (value) => value === 0)
 
   //? Chart configuration
   const chartData: DoughnutChartProps = createChartData(allocationValues, totalFunds)
@@ -69,7 +69,7 @@ const createAllocationsData = (
     [AllocationStatus.Terminating]: terminating,
   }
 
-  return map(allocationStatusToValueMap, (value, status) => ({
+  return _.map(allocationStatusToValueMap, (value, status) => ({
     label: ALLOCATION_STATUS_DISPLAY_NAMES[status as AllocationStatus],
     key: status,
     value,
@@ -88,4 +88,4 @@ const createChartData = (values: number[], totalFunds: number): DoughnutChartPro
   className: styles.doughnutChart,
 })
 
-const isAllZero = (values: number[]) => every(values, (value) => value === 0)
+const isAllZero = (values: number[]) => _.every(values, (value) => value === 0)

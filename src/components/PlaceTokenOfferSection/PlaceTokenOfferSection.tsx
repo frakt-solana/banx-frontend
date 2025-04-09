@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { MarketTokenRewards } from '@banx/api'
 import { getTokenUnit, isBanxSolTokenType } from '@banx/utils/tokens'
@@ -111,7 +111,7 @@ const PlaceTokenOfferSection: FC<PlaceTokenOfferSectionProps> = (props) => {
         tokensPerCollateral={values.tokensPerCollateral}
       />
 
-      {!isEmpty(marketRewards) && <ExtraRewards data={marketRewards} />}
+      {!_.isEmpty(marketRewards) && <ExtraRewards data={marketRewards} />}
 
       <ActionsButtons
         isEditMode={isEditMode}

@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react'
 
 import classNames from 'classnames'
-import { capitalize, sumBy } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
@@ -71,7 +71,7 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
   const isOracleMarket = oraclePriceFeedType !== 'none'
 
   const totalCollateralAmount = useMemo(() => {
-    return sumBy(loansPreview.loans, (loan) => getTokenLoanSupply(loan))
+    return _.sumBy(loansPreview.loans, (loan) => getTokenLoanSupply(loan))
   }, [loansPreview])
 
   const formattedTotalCollateralAmount = formatCompact(totalCollateralAmount.toString(), 2)
@@ -95,7 +95,7 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
         </span>
       </div>
       {isOracleMarket && (
-        <Tooltip title={`Price feed from the ${capitalize(oraclePriceFeedType)} oracle`}>
+        <Tooltip title={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
           {getOracleIcon(oraclePriceFeedType)}
         </Tooltip>
       )}

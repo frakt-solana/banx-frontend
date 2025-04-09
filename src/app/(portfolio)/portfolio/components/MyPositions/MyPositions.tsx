@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@banx/components/Buttons'
@@ -35,8 +35,8 @@ const MyPositions: FC<MyPositionsProps> = ({ positions, isLoading }) => {
   }
 
   const actionButtonProps = {
-    onClick: isEmpty(list) ? goToLeveragePage : goToPositionsPage,
-    text: isEmpty(list) ? 'Start leveraging assets' : 'Manage my positions',
+    onClick: _.isEmpty(list) ? goToLeveragePage : goToPositionsPage,
+    text: _.isEmpty(list) ? 'Start leveraging assets' : 'Manage my positions',
   }
 
   return (

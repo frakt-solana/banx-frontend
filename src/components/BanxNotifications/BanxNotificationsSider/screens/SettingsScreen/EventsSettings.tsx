@@ -2,7 +2,7 @@ import {
   WalletNotificationSubscription,
   useNotificationSubscriptions,
 } from '@dialectlabs/react-sdk'
-import { debounce } from 'lodash'
+import _ from 'lodash'
 
 import { Toggle } from '@banx/components/Toggle'
 
@@ -33,7 +33,7 @@ const useEventsSettings = () => {
     }
   }
 
-  const debouncedUpdateSettings = debounce(updateSettings, 300)
+  const debouncedUpdateSettings = _.debounce(updateSettings, 300)
 
   return {
     notificationSubscriptions,

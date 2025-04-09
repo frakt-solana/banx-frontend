@@ -1,7 +1,7 @@
-import { reduce } from 'lodash'
+import _ from 'lodash'
 
 export const calcWeightedAverage = (nums: number[], weights: number[]) => {
-  const [sum, weightSum] = reduce(
+  const [sum, weightSum] = _.reduce(
     weights,
     (acc, weight, i) => {
       acc[0] += nums[i] * weight

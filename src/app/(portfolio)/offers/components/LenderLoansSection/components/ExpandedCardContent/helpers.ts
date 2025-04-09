@@ -1,4 +1,4 @@
-import { sumBy } from 'lodash'
+import _ from 'lodash'
 
 import { Loan } from '@banx/api'
 import {
@@ -15,8 +15,8 @@ import { calculateWeightedApr, calculateWeightedLtv } from '../../helpers'
 export const calculateLoansStats = (loans: Loan[]) => {
   const totalSelectedLoans = loans.length
 
-  const totalClaim = sumBy(loans, (loan) => calculateLentTokenValueWithInterest(loan).toNumber())
-  const totalInterest = sumBy(loans, (loan) => calculateTokenLoanAccruedInterest(loan).toNumber())
+  const totalClaim = _.sumBy(loans, (loan) => calculateLentTokenValueWithInterest(loan).toNumber())
+  const totalInterest = _.sumBy(loans, (loan) => calculateTokenLoanAccruedInterest(loan).toNumber())
 
   const weightedApr = calculateWeightedApr(loans)
   const weightedLtv = calculateWeightedLtv(loans)

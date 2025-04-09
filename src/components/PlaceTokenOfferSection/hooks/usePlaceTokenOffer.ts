@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { useTokenBondOffers, useTokenMarketsPreview } from '@banx/hooks'
 import { createEmptySyntheticTokenOffer, useSyntheticTokenOffers } from '@banx/store'
@@ -48,7 +48,7 @@ export const usePlaceTokenOffer = ({
   }, [market, numericValues.tokensPerCollateral])
 
   useEffect(() => {
-    if (!syntheticOffer || isEmpty(numericValues)) return
+    if (!syntheticOffer || _.isEmpty(numericValues)) return
     const { apr, offerSize, offerLiquidationLtv, offerLtv } = numericValues
 
     const lendingTokenDecimals = getTokenDecimals(lendingToken)

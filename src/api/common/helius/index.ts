@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { web3 } from 'fbonds-core'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 
 type HeliusPriorityFeeLevels =
   | 'Min'
@@ -36,7 +36,7 @@ export const getHeliusPriorityFeeEstimate: GetHeliusPriorityFeeEstimate = async 
   try {
     const { data } = await axios.post<HeliusPriorityFeeEstimateResponse>(connection.rpcEndpoint, {
       jsonrpc: '2.0',
-      id: uniqueId(),
+      id: _.uniqueId(),
       method: 'getPriorityFeeEstimate',
       params: [
         {
@@ -84,7 +84,7 @@ export type ProofType = {
 export const getHeliusAssetProof: GetHeliusAssetProof = async ({ assetId, connection }) => {
   const { data } = await axios.post<HeliusAssetProofResponse>(connection.rpcEndpoint, {
     jsonrpc: '2.0',
-    id: uniqueId(),
+    id: _.uniqueId(),
     method: 'getAssetProof',
     params: {
       id: assetId,

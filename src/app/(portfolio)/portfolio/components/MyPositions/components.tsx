@@ -2,7 +2,7 @@ import { FC, JSX } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
 import classNames from 'classnames'
-import { isEmpty, sortBy } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import EmptyList from '@banx/components/EmptyList'
@@ -89,7 +89,7 @@ interface PositionsListProps {
 export const PositionsList: FC<PositionsListProps> = ({ positions, totalFunds, isLoading }) => {
   const { connected } = useWallet()
 
-  const sortedPositions = sortBy(positions ?? [], (position) => position.funds).reverse()
+  const sortedPositions = _.sortBy(positions ?? [], (position) => position.funds).reverse()
 
   if (!connected)
     return (
@@ -101,10 +101,10 @@ export const PositionsList: FC<PositionsListProps> = ({ positions, totalFunds, i
   return (
     <div className={styles.listContainer}>
       {isLoading && <Loader size="small" className={styles.loader} />}
-      {!isLoading && isEmpty(positions) && (
+      {!isLoading && _.isEmpty(positions) && (
         <EmptyList message="No multiplier positions available yet" className={styles.emptyList} />
       )}
-      {!isLoading && !isEmpty(positions) && (
+      {!isLoading && !_.isEmpty(positions) && (
         <ul className={styles.list}>
           {sortedPositions.map((position) => (
             <PositionListItem key={position.name} position={position} totalFunds={totalFunds} />

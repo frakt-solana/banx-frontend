@@ -4,7 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 import { BN } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty, orderBy } from 'lodash'
+import _ from 'lodash'
 
 import { MarketTokenType } from '@banx/components/Dropdowns'
 import { filterBySearchQuery } from '@banx/components/Search'
@@ -170,8 +170,8 @@ export const useLendVaultsContent = () => {
 
   const { sortedData, sortParams } = useSortedVaultsPreview(filteredVaults)
 
-  const isNoVaults = !isLoading && isEmpty(vaultsPreview)
-  const isFilteredListEmpty = !isLoading && isEmpty(filteredVaults)
+  const isNoVaults = !isLoading && _.isEmpty(vaultsPreview)
+  const isFilteredListEmpty = !isLoading && _.isEmpty(filteredVaults)
 
   const emptyMessage = (() => {
     if (isNoVaults) return MESSAGES.NO_VAULTS_AVAILABLE
@@ -225,7 +225,7 @@ export const useSortedVaultsPreview = (vaultsPreview: VaultPreview[]) => {
     const [field, order] = sortOption.value
 
     const sortValueGetter = SORT_VALUE_MAP[field]
-    return orderBy(vaultsPreview, sortValueGetter, order)
+    return _.orderBy(vaultsPreview, sortValueGetter, order)
   }, [sortOption, vaultsPreview])
 
   const onChangeSortOption = (option: SortOption<SortField>) => {

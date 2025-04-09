@@ -1,7 +1,7 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BN } from 'fbonds-core'
 import { BondFeatures, BondOfferV3, LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
@@ -66,7 +66,7 @@ export const useTokenOfferTransactions = ({
   const lendingTokenDecimals = getTokenDecimals(lendingToken)
 
   const createOffer = async (depositAmountToVault?: BN) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -140,7 +140,7 @@ export const useTokenOfferTransactions = ({
   const updateOffer = async (depositAmountToVault?: BN) => {
     if (!offer) return
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -212,7 +212,7 @@ export const useTokenOfferTransactions = ({
   const removeOffer = async () => {
     if (!offer) return
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

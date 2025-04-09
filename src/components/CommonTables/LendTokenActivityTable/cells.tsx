@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 
 import { createPercentValueJSX } from '@banx/components/TableComponents'
 
@@ -19,7 +19,7 @@ export const StatusCell: FC<{ loan: activity.LenderActivity }> = ({ loan }) => {
 
   return (
     <span style={{ color: statusColor }} className={styles.cellTitle}>
-      {capitalize(loanStatus)}
+      {_.capitalize(loanStatus)}
     </span>
   )
 }

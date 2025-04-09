@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 
-import { debounce, orderBy } from 'lodash'
+import _ from 'lodash'
 import { TableVirtuosoHandle } from 'react-virtuoso'
 
 import EmptyList from '@banx/components/EmptyList'
@@ -56,7 +56,7 @@ export const OrderBook: FC<OrderBookProps> = ({
   const virtuosoHandleRef = useRef<TableVirtuosoHandle | null>(null)
   const scrollToIndexDebounced = useMemo(
     () =>
-      debounce(
+      _.debounce(
         (index: number) =>
           virtuosoHandleRef.current?.scrollToIndex({
             index,
@@ -126,7 +126,7 @@ const useSortedOffers = (offers: LeverageSimpleOffer[]) => {
     const { key, order } = sortOption
     const sortValueGetter = SORT_VALUE_MAP[key]
 
-    return orderBy(offers, sortValueGetter, order)
+    return _.orderBy(offers, sortValueGetter, order)
   }, [sortOption, offers])
 
   const onChangeSortOption = (option: SortColumnOption<ColumnKey>) => {

@@ -1,4 +1,4 @@
-import { every, map } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { DoughnutChartProps } from '@banx/components/Charts'
@@ -60,7 +60,7 @@ const createLoansData = (
     [LoanStatus.Liquidation]: liquidationCount,
   }
 
-  return map(loansStatusToValueMap, (value, key) => ({
+  return _.map(loansStatusToValueMap, (value, key) => ({
     label: LOAN_STATUS_DISPLAY_NAMES[key as LoanStatus],
     key: key as LoanStatus,
     value,
@@ -78,4 +78,4 @@ const createChartData = (values: number[], totalLoans: number): DoughnutChartPro
   },
 })
 
-const isAllZero = (values: number[]) => every(values, (value) => value === 0)
+const isAllZero = (values: number[]) => _.every(values, (value) => value === 0)

@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/browser'
-import { Dictionary } from 'lodash'
+import _ from 'lodash'
 import { TxnError } from 'solana-transactions-executor'
 
 import { SENTRY } from '@banx/constants'
@@ -35,7 +35,7 @@ type CaptureSentryTxnError = (props: {
   additionalData?: unknown
   walletPubkey?: string
   transactionName?: string
-  params?: Dictionary<unknown>
+  params?: _.Dictionary<unknown>
 }) => void
 
 export const captureSentryTxnError: CaptureSentryTxnError = ({

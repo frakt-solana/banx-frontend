@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { BondTradeTransactionV2State } from 'fbonds-core/lib/fbond-protocol/types'
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 
 import { DisplayValue, HorizontalCell } from '@banx/components/TableComponents'
 
@@ -56,7 +56,7 @@ export const StatusCell: FC<{ loan: activity.BorrowerActivity }> = ({ loan }) =>
 
   return (
     <span style={{ color: statusColor }} className={styles.statusCellTitle}>
-      {capitalize(loanStatus)}
+      {_.capitalize(loanStatus)}
     </span>
   )
 }

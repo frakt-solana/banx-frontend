@@ -1,7 +1,7 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BN, web3 } from 'fbonds-core'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { Loan, convertBondOfferV3ToCore } from '@banx/api'
@@ -47,7 +47,7 @@ export const useRefinanceTokenModal = (loan: Loan) => {
   })
 
   const refinance = async (offer: BondOfferV3, tokensToRefinance: BN) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

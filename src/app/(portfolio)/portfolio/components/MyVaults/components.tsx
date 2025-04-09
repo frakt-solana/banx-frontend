@@ -2,7 +2,7 @@ import { FC, JSX } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
 import classNames from 'classnames'
-import { isEmpty, sortBy } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import EmptyList from '@banx/components/EmptyList'
@@ -91,7 +91,7 @@ interface PositionsListProps {
 export const VaultsList: FC<PositionsListProps> = ({ vaults, totalFunds, isLoading }) => {
   const { connected } = useWallet()
 
-  const sortedVaults = sortBy(vaults ?? [], (vault) => vault.funds).reverse()
+  const sortedVaults = _.sortBy(vaults ?? [], (vault) => vault.funds).reverse()
 
   if (!connected)
     return (
@@ -103,10 +103,10 @@ export const VaultsList: FC<PositionsListProps> = ({ vaults, totalFunds, isLoadi
   return (
     <div className={styles.listContainer}>
       {isLoading && <Loader size="small" className={styles.loader} />}
-      {!isLoading && isEmpty(vaults) && (
+      {!isLoading && _.isEmpty(vaults) && (
         <EmptyList message="No vaults here for now" className={styles.emptyList} />
       )}
-      {!isLoading && !isEmpty(vaults) && (
+      {!isLoading && !_.isEmpty(vaults) && (
         <ul className={styles.list}>
           {sortedVaults.map((vault) => (
             <VaultListItem key={vault.name} vault={vault} totalFunds={totalFunds} />

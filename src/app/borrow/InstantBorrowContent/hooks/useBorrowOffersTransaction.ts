@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 import { TxnExecutor } from 'solana-transactions-executor'
 
@@ -77,7 +77,7 @@ export const useBorrowOffersTransaction = () => {
   }
 
   const borrow = async (offer: BorrowOffer, collateral: CollateralToken) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       setIsBorrowing(true)

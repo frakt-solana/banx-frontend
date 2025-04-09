@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { BreadcrumbHeader } from '@banx/components/BreadcrumbHeader'
@@ -48,8 +48,8 @@ export const ClientPositionsPage = () => {
     ])
   }, [filteredByLendingToken, searchQuery])
 
-  const isNoLoans = isEmpty(leverageLoans) && !isLoading
-  const isFilteredListEmpty = isEmpty(filteredBySearchQuery) && !isLoading
+  const isNoLoans = _.isEmpty(leverageLoans) && !isLoading
+  const isFilteredListEmpty = _.isEmpty(filteredBySearchQuery) && !isLoading
 
   const filteredListEmptyMessage = (() => {
     if (isFilteredListEmpty && searchQuery) return MESSAGES.EMPTY_SEARCH_RESULTS

@@ -2,7 +2,7 @@ import { BN } from 'fbonds-core'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
-import { chain } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 
 import { Loan, convertBondOfferV3ToCore } from '@banx/api'
@@ -93,7 +93,7 @@ export const findBestOffer = (props: {
   const loanApr = loan.bondTradeTransaction.amountOfBonds
 
   return (
-    chain(offers)
+    _.chain(offers)
       //? 1) Exclude user’s own offers
       .filter((offer) => offer.assetReceiver.toBase58() !== walletPubkey)
 

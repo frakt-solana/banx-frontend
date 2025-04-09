@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from 'react'
 
-import { isFinite, toNumber } from 'lodash'
+import _ from 'lodash'
 
 import { Input, InputProps } from './Input'
 
@@ -29,7 +29,7 @@ const NumericInput: FC<NumericInputProps> = ({
     if (positiveOnly && inputValue.startsWith('-')) return
     if (integerOnly && inputValue.includes('.')) return
 
-    if (inputValue === '-' || inputValue === '' || isFinite(toNumber(inputValue))) {
+    if (inputValue === '-' || inputValue === '' || isFinite(_.toNumber(inputValue))) {
       onChange(inputValue)
     }
   }

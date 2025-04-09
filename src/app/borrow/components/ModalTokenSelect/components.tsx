@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import Tooltip from '@banx/components/Tooltip'
@@ -34,7 +34,7 @@ export const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => {
           </span>
         </div>
         {isOracleMarket && (
-          <Tooltip title={`Price feed from the ${capitalize(oracleType)} oracle`}>
+          <Tooltip title={`Price feed from the ${_.capitalize(oracleType)} oracle`}>
             {getOracleIcon(oracleType)}
           </Tooltip>
         )}

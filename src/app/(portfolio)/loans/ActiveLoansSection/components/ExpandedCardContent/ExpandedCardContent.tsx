@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { filter } from 'lodash'
+import _ from 'lodash'
 
 import { RBOption } from '@banx/components/RadioButton'
 import Table from '@banx/components/Table'
@@ -66,11 +66,11 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
     if (!currentOption) return loans
 
     if (currentOption.value === FilterStatus.TERMINATING) {
-      return filter(loans, isLoanTerminating)
+      return _.filter(loans, isLoanTerminating)
     }
 
     if (currentOption.value === FilterStatus.REPAYMENT_CALL) {
-      return filter(loans, isLoanRepaymentCallActive)
+      return _.filter(loans, isLoanRepaymentCallActive)
     }
 
     return loans

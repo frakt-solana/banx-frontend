@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { sumBy } from 'lodash'
+import _ from 'lodash'
 
 import UserAvatar from '@banx/components/UserAvatar'
 
@@ -27,8 +27,8 @@ const Header = () => {
     }
 
     return {
-      lenderPoints: sumBy(linkedWallets, ({ lenderPoints }) => lenderPoints),
-      borrowerPoints: sumBy(linkedWallets, ({ borrowerPoints }) => borrowerPoints),
+      lenderPoints: _.sumBy(linkedWallets, ({ lenderPoints }) => lenderPoints),
+      borrowerPoints: _.sumBy(linkedWallets, ({ borrowerPoints }) => borrowerPoints),
     }
   }, [linkedWallets])
 

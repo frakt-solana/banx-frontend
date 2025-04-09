@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 import classNames from 'classnames'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { ViewState, useTableView } from '@banx/store'
 
@@ -43,7 +43,7 @@ const Table = <DataType extends object, SortType>({
 
       {!loading && (
         <div className={classNames(styles.tableWrapper, classNameTableWrapper)}>
-          {!isEmpty(data) && (
+          {!_.isEmpty(data) && (
             <ViewComponent
               virtuosoHandleRef={virtuosoHandleRef}
               data={data}

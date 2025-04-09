@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { LendTokenActivityTable } from '@banx/components/CommonTables'
@@ -37,7 +37,9 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({
 
   return (
     <div
-      className={classNames(styles.container, { [styles.rewardsContent]: !isEmpty(marketRewards) })}
+      className={classNames(styles.container, {
+        [styles.rewardsContent]: !_.isEmpty(marketRewards),
+      })}
     >
       <div className={styles.placeOfferContainer}>
         <Button

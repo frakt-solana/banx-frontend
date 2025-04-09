@@ -1,6 +1,6 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BN } from 'fbonds-core'
-import { every, uniqueId } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
@@ -53,7 +53,7 @@ export const useLoansTxns = () => {
   const { selection, clear: clearSelection } = useLoansState()
 
   const repayLoan = async (loan: Loan) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -118,7 +118,7 @@ export const useLoansTxns = () => {
   }
 
   const repayAllLoans = async () => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     const selectedLoans = selection.map((loan) => loan.loan)
 
@@ -184,7 +184,7 @@ export const useLoansTxns = () => {
   }
 
   const repayPartialLoan = async (loan: Loan, fractionToRepay: number) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -252,7 +252,7 @@ export const useLoansTxns = () => {
   }
 
   const repayUnpaidLoansInterest = async () => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     const loansWithCalculatedUnpaidInterest = selection
       .map(({ loan }) => ({
@@ -263,7 +263,7 @@ export const useLoansTxns = () => {
       }))
       .filter(({ fractionToRepay }) => fractionToRepay >= 1)
 
-    const allLoansAreWithoutRepaymentCall = every(
+    const allLoansAreWithoutRepaymentCall = _.every(
       selection,
       ({ loan }) => !isLoanRepaymentCallActive(loan),
     )
@@ -344,7 +344,7 @@ export const useLoansTxns = () => {
   }) => {
     const { loan, pair, expectedCollateralConversionRate, onSuccess } = params
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -420,7 +420,7 @@ export const useLoansTxns = () => {
   }
 
   const supplyCollateral = async (loan: Loan, collateralAmount: BN) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

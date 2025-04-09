@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { produce } from 'immer'
-import { filter } from 'lodash'
+import _ from 'lodash'
 import { create } from 'zustand'
 
 import { Loan } from '@banx/api'
@@ -63,7 +63,7 @@ export const useLenderLoansOptimistic = () => {
   //? As zustand stores loans until user refreshes the page, we need to filter optimistics by tokenType
   //? To prevent loans duplication on tokenType switching
   const loansFilteredByTokenType = useMemo(() => {
-    return filter(loans, ({ loan }) => loan.bondTradeTransaction.lendingToken === tokenType)
+    return _.filter(loans, ({ loan }) => loan.bondTradeTransaction.lendingToken === tokenType)
   }, [loans, tokenType])
 
   return {

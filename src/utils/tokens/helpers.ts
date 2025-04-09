@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
-import { find, findIndex, repeat } from 'lodash'
+import _ from 'lodash'
 
 import { convertToDecimalString, formatNumbersWithCommas } from '../common'
 import {
@@ -60,7 +60,7 @@ export const getDecimalPlaces = (value: number, tokenType: LendingTokenType): nu
   if (!value) return 0
 
   const limits = DECIMAL_PLACES_LIMITS[tokenType]
-  return find(limits, ({ limit }) => value > limit)?.decimalPlaces ?? DEFAULT_DECIMAL_PLACES
+  return _.find(limits, ({ limit }) => value > limit)?.decimalPlaces ?? DEFAULT_DECIMAL_PLACES
 }
 
 export const getTokenDecimals = (tokenType: LendingTokenType): number => {
@@ -104,7 +104,7 @@ export const formatDecimalWithSubscript = (decimalNumber: number) => {
     return decimalAsString
   }
 
-  const countLeadingZeros = findIndex(fractionalPart, (digit) => digit !== '0')
+  const countLeadingZeros = _.findIndex(fractionalPart, (digit) => digit !== '0')
 
   const convertToSubscript = (value: number): string => {
     const subscripts = '₀₁₂₃₄₅₆₇₈₉'
@@ -118,7 +118,7 @@ export const formatDecimalWithSubscript = (decimalNumber: number) => {
   const leadingZerosSubscript =
     countLeadingZeros > MIN_LEADING_ZEROS_FOR_SUBSCRIPT
       ? `0${convertToSubscript(countLeadingZeros)}`
-      : repeat('0', countLeadingZeros)
+      : _.repeat('0', countLeadingZeros)
 
   const remainingFraction = fractionalPart.slice(countLeadingZeros)
 
@@ -136,7 +136,7 @@ export const formatCollateralTokenValue = (value: number) => {
   }
 
   const decimalPlaces =
-    find(COLLATERAL_DECIMAL_PLACES_LIMITS, ({ limit }) => value > limit)?.decimalPlaces ??
+    _.find(COLLATERAL_DECIMAL_PLACES_LIMITS, ({ limit }) => value > limit)?.decimalPlaces ??
     DEFAULT_DECIMAL_PLACES
 
   const formattedValueWithDecimals = value.toFixed(decimalPlaces)

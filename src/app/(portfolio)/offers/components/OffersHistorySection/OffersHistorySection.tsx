@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { MARKET_OPTIONS_WITHOUT_ALL, TokenDropdown } from '@banx/components/Dropdowns'
@@ -46,7 +46,7 @@ const OffersHistorySection = () => {
         customJSX={customJSX}
         showCard
       />
-      {!isEmpty(loans) && !loading && <Summary />}
+      {!_.isEmpty(loans) && !loading && <Summary />}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
-import { pickBy } from 'lodash'
+import _ from 'lodash'
 
 import { fetchExtraTokenReward } from '@banx/api'
 import { useTokenType } from '@banx/store/common'
@@ -19,7 +19,7 @@ export const useMarketTokenRewards = (marketPubkey: string) => {
   const marketRewards = isMatchingTokenType ? data[marketPubkey] : undefined
 
   const allRewardsDataByMarket = useMemo(() => {
-    return pickBy(data, (value) => value.lendingTokenType === tokenType)
+    return _.pickBy(data, (value) => value.lendingTokenType === tokenType)
   }, [data, tokenType])
 
   return { allRewardsData: allRewardsDataByMarket, marketRewards, isLoading }

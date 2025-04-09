@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { useTokenType } from '@banx/store/common'
 
@@ -15,7 +15,7 @@ export const useOffersHistoryView = () => {
     }
   }
 
-  const isNoLoans = isEmpty(loans) && !isLoading
+  const isNoLoans = _.isEmpty(loans) && !isLoading
 
   return {
     loans,

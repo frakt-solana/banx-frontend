@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { MESSAGES, NO_LOANS_IN_MARKET_MESSAGE } from '@banx/constants/messages'
 
@@ -39,8 +39,8 @@ export const useLenderLoansView = () => {
 
   const { sortedLoansPreviews, sortParams } = useLenderLoansPreviewSorting(filteredLoansPreviews)
 
-  const isNoLoans = isEmpty(loans) && !isLoading
-  const isFilteredListEmpty = isEmpty(filteredLoansPreviews) && !isLoading
+  const isNoLoans = _.isEmpty(loans) && !isLoading
+  const isFilteredListEmpty = _.isEmpty(filteredLoansPreviews) && !isLoading
 
   const filteredListEmptyMessage = (() => {
     if (isFilteredListEmpty && searchQuery) return MESSAGES.EMPTY_SEARCH_RESULTS

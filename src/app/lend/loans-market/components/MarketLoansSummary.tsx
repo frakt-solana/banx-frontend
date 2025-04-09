@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import { map, sumBy } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { CounterSlider } from '@banx/components/Slider'
@@ -81,13 +81,13 @@ export const MarketLoansSummary: FC<{ loans: Loan[] }> = ({ loans: rawLoans }) =
 }
 
 const calculateSummaryInfo = (loans: Loan[]) => {
-  const totalDebt = sumBy(loans, (loan) => calculateLendToBorrowValue(loan))
+  const totalDebt = _.sumBy(loans, (loan) => calculateLendToBorrowValue(loan))
 
-  const totalLoanValue = map(loans, (loan) => calculateLendToBorrowValue(loan))
-  const totalWeeklyInterest = sumBy(loans, (loan) => calcTokenWeeklyInterest(loan))
+  const totalLoanValue = _.map(loans, (loan) => calculateLendToBorrowValue(loan))
+  const totalWeeklyInterest = _.sumBy(loans, (loan) => calcTokenWeeklyInterest(loan))
 
-  const totalAprArray = map(loans, (loan) => loan.bondTradeTransaction.amountOfBonds / 100)
-  const totalLtvArray = map(loans, (loan) =>
+  const totalAprArray = _.map(loans, (loan) => loan.bondTradeTransaction.amountOfBonds / 100)
+  const totalLtvArray = _.map(loans, (loan) =>
     calculateTokenLoanLtvByLoanValue(loan, calculateLendToBorrowValue(loan)),
   )
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BN } from 'fbonds-core'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
 import { useWalletBalance } from '@banx/hooks'
@@ -17,7 +17,7 @@ import {
   createUpdateUserEscrowTxnData,
   parseUpdateUserEscrowSimulatedAccounts,
 } from '@banx/transactions/escrow'
-import { stringToBN, ZERO_BN } from '@banx/utils/bn'
+import { ZERO_BN, stringToBN } from '@banx/utils/bn'
 import { formatTrailingZeros } from '@banx/utils/common'
 import {
   destroySnackbar,
@@ -77,7 +77,7 @@ export const useUserEscrowContent = () => {
   const update = async (amount: BN) => {
     if (amount.lt(ZERO_BN)) return
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

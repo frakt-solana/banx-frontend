@@ -1,7 +1,7 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { MIN_APR_SPL } from 'fbonds-core/lib/fbond-protocol/constants'
 import { calcLenderTokenApr } from 'fbonds-core/lib/fbond-protocol/helpers'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { useRouter } from 'next/navigation'
 import { TxnExecutor } from 'solana-transactions-executor'
@@ -95,7 +95,7 @@ export const useListLoan: UseListLoan = ({
   const listLoan = async () => {
     if (!collateralToken) return
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

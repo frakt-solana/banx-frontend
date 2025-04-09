@@ -3,7 +3,7 @@ import {
   calculatePartOfLoanBodyFromInterest,
 } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { LendingTokenType, OraclePriceFeedType } from 'fbonds-core/lib/fbond-protocol/types'
-import { filter, first, groupBy, map, size, sumBy } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 
 import { Loan } from '@banx/api'
@@ -21,7 +21,7 @@ import { PARTIAL_REPAY_ACCOUNT_CREATION_FEE } from './constants'
 import { LoansPreview } from './types'
 
 export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] => {
-  const groupedLoans = groupBy(
+  const groupedLoans = _.groupBy(
     loans,
     (loan) => `${loan.collateral.mint}-${loan.bondTradeTransaction.lendingToken}`,
   )
@@ -30,15 +30,15 @@ export const buildLoansPreviewGroupedByMint = (loans: Loan[]): LoansPreview[] =>
     const weightedLtv = calculateWeightedLtv(loans)
     const weightedApr = calculateWeightedApr(loans)
 
-    const { collateralPrice = 0, collateral } = first(loans) || {}
+    const { collateralPrice = 0, collateral } = _.first(loans) || {}
 
     const collateralTicker = collateral?.ticker || ''
     const collateralLogoUrl = collateral?.logoUrl || ''
 
-    const totalDebt = sumBy(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
+    const totalDebt = _.sumBy(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
 
-    const terminatingLoansAmount = size(filter(loans, isLoanTerminating))
-    const repaymentCallsAmount = size(filter(loans, isLoanRepaymentCallActive))
+    const terminatingLoansAmount = _.size(_.filter(loans, isLoanTerminating))
+    const repaymentCallsAmount = _.size(_.filter(loans, isLoanRepaymentCallActive))
 
     const [collateralMint, lendingToken] = key.split('-') as [string, LendingTokenType]
 
@@ -76,8 +76,8 @@ export const calculateWeightedLtv = (loans: Loan[]) => {
 }
 
 export const calculateWeightedApr = (loans: Loan[]) => {
-  const totalAprValues = map(loans, (loan) => calcTokenLoanAprWithRepayFee(loan) / 100)
-  const totalRepayValues = map(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
+  const totalAprValues = _.map(loans, (loan) => calcTokenLoanAprWithRepayFee(loan) / 100)
+  const totalRepayValues = _.map(loans, (loan) => caclulateBorrowTokenLoanValue(loan).toNumber())
 
   return calcWeightedAverage(totalAprValues, totalRepayValues)
 }

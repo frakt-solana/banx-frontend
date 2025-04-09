@@ -1,4 +1,4 @@
-import { flowRight, mergeWith } from 'lodash'
+import _ from 'lodash'
 
 // shorten the checksummed version of the input address to have 4 characters at start and end
 export const shortenAddress = (address: string, chars = 4): string => {
@@ -79,7 +79,7 @@ export const isExponentialNotation = (n: number) => {
 export const convertToDecimalString = (n: number, precision = 0) => {
   if (!isExponentialNotation(n)) return n.toString()
 
-  const powOfE = flowRight(Math.abs, Math.floor, Math.log10, Math.abs)(n)
+  const powOfE = _.flowRight(Math.abs, Math.floor, Math.log10, Math.abs)(n)
   return n.toFixed(powOfE + precision)
 }
 
@@ -91,7 +91,7 @@ export const deepMergeStyles = <T extends Record<string, string>>(
   baseStyles: T,
   overrideStyles?: Partial<T>,
 ): T => {
-  return mergeWith({}, baseStyles, overrideStyles, (objValue, srcValue) => {
+  return _.mergeWith({}, baseStyles, overrideStyles, (objValue, srcValue) => {
     if (objValue && srcValue) {
       return `${objValue} ${srcValue}`
     }

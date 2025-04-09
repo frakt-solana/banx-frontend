@@ -2,7 +2,7 @@ import { Key, ReactNode } from 'react'
 
 import { NotificationPlacement } from 'antd/es/notification/interface'
 import classNames from 'classnames'
-import { uniqueId } from 'lodash'
+import _ from 'lodash'
 import { ConfirmTransactionErrorReason } from 'solana-transactions-executor'
 
 import { CloseModal, LoaderCircle } from '@banx/icons'
@@ -48,7 +48,7 @@ export const enqueueSnackbar: EnqueueSnackbar = ({
 }) => {
   const notification = getNotificationApi()
 
-  const key = customKey || uniqueId()
+  const key = customKey || _.uniqueId()
 
   const notificationIcon =
     type === 'loading' ? (

@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { MESSAGES } from '@banx/constants/messages'
 import { useTokenType } from '@banx/store/common'
@@ -26,10 +26,10 @@ export const useMarketLoansView = () => {
 
   const { sortedLoans, sortParams } = useMarketLoansSorting(filteredLoans)
 
-  const isNoLoans = !isLoading && isEmpty(loans)
+  const isNoLoans = !isLoading && _.isEmpty(loans)
   const isFilteredListEmpty =
     !isLoading &&
-    isEmpty(filteredLoans) &&
+    _.isEmpty(filteredLoans) &&
     (!isAuctionFilterEnabled || !isFreezeFilterEnabled || !!searchQuery)
 
   const filteredListEmptyMessage = (() => {

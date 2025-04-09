@@ -1,5 +1,5 @@
 import { web3 } from 'fbonds-core'
-import { uniqWith } from 'lodash'
+import _ from 'lodash'
 
 export const arePublicKeysEqual = (
   publicKeyA: web3.PublicKey,
@@ -8,4 +8,4 @@ export const arePublicKeysEqual = (
 
 export const removeDuplicatedPublicKeys = (
   publicKeys: Array<web3.PublicKey>,
-): Array<web3.PublicKey> => uniqWith(publicKeys, arePublicKeysEqual)
+): Array<web3.PublicKey> => _.uniqWith(publicKeys, arePublicKeysEqual)

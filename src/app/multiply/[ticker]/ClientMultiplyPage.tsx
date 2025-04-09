@@ -2,7 +2,7 @@
 
 import { FC, useState } from 'react'
 
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 
@@ -41,7 +41,7 @@ export const ClientMultiplyPage = () => {
     useSelectedCollateralInfo(customPairInUse ? urlTicker : undefined)
 
   const onboardContentType = customPairInUse ? pair?.onboardingContent : 'multiply'
-  const breadcrumbTitle = customPairInUse ? urlTicker : capitalize(urlTicker)
+  const breadcrumbTitle = customPairInUse ? urlTicker : _.capitalize(urlTicker)
 
   return (
     <div className={styles.pageWrapper}>

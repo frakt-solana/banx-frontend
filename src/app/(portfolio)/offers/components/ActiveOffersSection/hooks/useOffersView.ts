@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { MarketTokenType } from '@banx/components/Dropdowns'
 import { filterBySearchQuery } from '@banx/components/Search'
@@ -60,8 +60,8 @@ export const useOffersView = () => {
 
   const { sortParams, sortedOffers } = useOffersPreviewSorting(filteredOffers)
 
-  const isNoOffers = isEmpty(offersPreview) && !isLoading
-  const isFilteredListEmpty = isEmpty(filteredOffers) && !isLoading
+  const isNoOffers = _.isEmpty(offersPreview) && !isLoading
+  const isFilteredListEmpty = _.isEmpty(filteredOffers) && !isLoading
 
   const filteredListEmptyMessage = (() => {
     if (isFilteredListEmpty && searchQuery) return MESSAGES.EMPTY_SEARCH_RESULTS

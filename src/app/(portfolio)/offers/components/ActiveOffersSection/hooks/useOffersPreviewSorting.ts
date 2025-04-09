@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
-import { orderBy } from 'lodash'
+import _ from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
@@ -55,7 +55,7 @@ export const useOffersPreviewSorting = (offers: OfferPreview[]) => {
       return 0
     }
 
-    return orderBy(offers, getSortValue, order)
+    return _.orderBy(offers, getSortValue, order)
   }, [sortOption, isTokenPriceLoading, offers, tokenPrice])
 
   const onChangeSortOption = (option: SortOption<SortField>) => {

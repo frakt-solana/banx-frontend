@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { orderBy } from 'lodash'
+import _ from 'lodash'
 
 import { SortOption } from '@banx/components/SortDropdown'
 
@@ -32,7 +32,7 @@ export const useMarketsSorting = (markets: TokenMarketPreview[]) => {
     const [field, order] = sortOption.value
 
     const sortValueGetter = SORT_VALUE_MAP[field]
-    return orderBy(markets, sortValueGetter, order)
+    return _.orderBy(markets, sortValueGetter, order)
   }, [sortOption, markets])
 
   const onChangeSortOption = (option: SortOption<SortField>) => {

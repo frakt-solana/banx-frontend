@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { chain, orderBy } from 'lodash'
+import _ from 'lodash'
 
 import { SortOrder } from '@banx/components/SortDropdown'
 
@@ -40,19 +40,19 @@ const SORT_VALUE_MAP: Record<TableColumnKey, string | SortValueGetter> = {
 }
 
 const sortStatusLoans = (loans: Loan[], order: SortOrder) => {
-  const terminatingLoans = chain(loans)
+  const terminatingLoans = _.chain(loans)
     .filter(isLoanTerminating)
     .sortBy((loan) => loan.fraktBond.refinanceAuctionStartedAt)
     .reverse()
     .value()
 
-  const repaymentCallLoans = chain(loans)
+  const repaymentCallLoans = _.chain(loans)
     .filter(isLoanRepaymentCallActive)
     .sortBy((loan) => loan.bondTradeTransaction.repaymentCallAmount)
     .reverse()
     .value()
 
-  const otherLoans = chain(loans)
+  const otherLoans = _.chain(loans)
     .filter(
       (loan) =>
         !isLoanTerminating(loan) && !isLoanLiquidated(loan) && !isLoanRepaymentCallActive(loan),
@@ -78,7 +78,7 @@ export const useLenderLoansSorting = (loans: Loan[]) => {
 
     return key === TableColumnKey.STATUS
       ? sortStatusLoans(loans, order)
-      : orderBy(loans, sortValueGetter, order)
+      : _.orderBy(loans, sortValueGetter, order)
   }, [sortOption, loans])
 
   const onChangeSortOption = (option: SortColumnOption<TableColumnKey>) => {

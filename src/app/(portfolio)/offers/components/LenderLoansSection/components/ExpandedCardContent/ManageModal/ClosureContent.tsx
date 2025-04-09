@@ -5,7 +5,7 @@ import { Skeleton } from 'antd'
 import classNames from 'classnames'
 import { web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { createDisplayValueJSX } from '@banx/components/TableComponents'
@@ -61,7 +61,7 @@ export const ClosureContent: FC<{ loan: Loan }> = ({ loan }) => {
     isTerminating: isLoanTerminating(loan),
   }
 
-  const canRefinance = !isEmpty(bestOffer) && !loanStatus.isTerminating
+  const canRefinance = !_.isEmpty(bestOffer) && !loanStatus.isTerminating
 
   const canList = !loanStatus.isTerminating && !loanStatus.isSelling
 

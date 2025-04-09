@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { MESSAGES, PATHS } from '@banx/constants'
@@ -37,8 +37,8 @@ export const useMarketsView = () => {
 
   const { sortedMarkets, sortParams } = useMarketsSorting(filteredMarkets)
 
-  const isNoMarkets = !isLoading && isEmpty(marketsPreview)
-  const isFilteredListEmpty = !isLoading && isEmpty(filteredMarkets)
+  const isNoMarkets = !isLoading && _.isEmpty(marketsPreview)
+  const isFilteredListEmpty = !isLoading && _.isEmpty(filteredMarkets)
 
   const emptyMessage = (() => {
     if (isNoMarkets) return MESSAGES.NO_MARKETS_AVAILABLE

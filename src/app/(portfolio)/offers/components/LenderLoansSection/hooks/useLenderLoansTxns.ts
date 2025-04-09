@@ -1,6 +1,6 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { BondOfferV3 } from 'fbonds-core/lib/fbond-protocol/types'
-import { chain, uniqueId } from 'lodash'
+import _ from 'lodash'
 import moment from 'moment'
 import { TxnExecutor } from 'solana-transactions-executor'
 
@@ -50,7 +50,7 @@ export const useLenderLoansTxns = () => {
   const { close } = useModal()
 
   const terminateTokenLoan = async (loan: Loan, startLiquidation?: boolean) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -119,7 +119,7 @@ export const useLenderLoansTxns = () => {
   }
 
   const revertTerminateTokenLoan = async (loan: Loan) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -181,7 +181,7 @@ export const useLenderLoansTxns = () => {
   }
 
   const terminateTokenLoans = async (loans: Loan[]) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -247,7 +247,7 @@ export const useLenderLoansTxns = () => {
   ) => {
     if (!bestOffer) return
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -310,7 +310,7 @@ export const useLenderLoansTxns = () => {
   }
 
   const claimTokenLoans = async (loans: Loan[]) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -336,7 +336,7 @@ export const useLenderLoansTxns = () => {
           if (confirmed.length) {
             enqueueSnackbar({ message: 'Collaterals successfully claimed', type: 'success' })
 
-            const mintsToHidden = chain(confirmed)
+            const mintsToHidden = _.chain(confirmed)
               .map(({ params }) => params.loan.publicKey)
               .compact()
               .value()
@@ -365,7 +365,7 @@ export const useLenderLoansTxns = () => {
   }
 
   const claimTokenLoan = async (loan: Loan) => {
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })
@@ -421,7 +421,7 @@ export const useLenderLoansTxns = () => {
       (caclulateBorrowTokenLoanValue(loan).toNumber() * repayPercent) / 100,
     )
 
-    const loadingSnackbarId = uniqueId()
+    const loadingSnackbarId = _.uniqueId()
 
     try {
       const walletAndConnection = createExecutorWalletAndConnection({ wallet, connection })

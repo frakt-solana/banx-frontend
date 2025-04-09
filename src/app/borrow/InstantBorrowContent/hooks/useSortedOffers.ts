@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { orderBy } from 'lodash'
+import _ from 'lodash'
 
 import { SortOrder } from '@banx/components/SortDropdown'
 
@@ -40,7 +40,7 @@ export const useSortedOffers = (offers: BorrowOffer[]) => {
     const { key, order } = sortOption
     const sortValueGetter = SORT_VALUE_MAP[key]
 
-    return orderBy(offers, sortValueGetter, order)
+    return _.orderBy(offers, sortValueGetter, order)
   }, [sortOption, offers])
 
   const onChangeSortOption = (option: SortColumnOption<ColumnKey>) => {

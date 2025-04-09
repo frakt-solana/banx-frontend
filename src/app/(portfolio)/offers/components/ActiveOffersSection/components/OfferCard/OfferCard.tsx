@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import classNames from 'classnames'
 import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
-import { capitalize } from 'lodash'
+import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
@@ -95,7 +95,7 @@ const MarketMainInfo: FC<{ offerPreview: core.OfferPreview }> = ({ offerPreview 
         <DexscreenerLink mint={offerPreview.tokenMarketPreview.collateral.mint} />
         {isOracleMarket && (
           <Tooltip
-            title={`Price feed from the ${capitalize(collateral.oraclePriceFeedType)} oracle`}
+            title={`Price feed from the ${_.capitalize(collateral.oraclePriceFeedType)} oracle`}
           >
             {getOracleIcon(collateral.oraclePriceFeedType)}
           </Tooltip>

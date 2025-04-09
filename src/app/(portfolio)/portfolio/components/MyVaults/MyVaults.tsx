@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { isEmpty } from 'lodash'
+import _ from 'lodash'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@banx/components/Buttons'
@@ -32,7 +32,7 @@ const MyVaults: FC<MyVaultsProps> = ({ vaults, isLoading }) => {
 
   const actionButtonProps = {
     onClick: goToVaultsPage,
-    text: isEmpty(list) ? 'Invest in vaults' : 'Manage my vaults',
+    text: _.isEmpty(list) ? 'Invest in vaults' : 'Manage my vaults',
   }
 
   return (
