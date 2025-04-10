@@ -1,5 +1,3 @@
-'use client'
-
 import { FC, PropsWithChildren } from 'react'
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'

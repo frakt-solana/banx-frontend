@@ -1,19 +1,10 @@
 import { ReactNode } from 'react'
 
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
-
-import { ErrorBoundary } from '@banx/components/ErrorBoundary'
-
 import { AppLayout } from '@banx/layout'
-import { DialectProvider } from '@banx/providers/dialect'
-import { QueryProvider } from '@banx/providers/query'
-import { SnackbarProvider } from '@banx/providers/snackbar'
-import { SolanaConnectionWalletProvider } from '@banx/providers/solana'
+import { BanxProviders } from '@banx/providers/BanxProviders'
 import '@banx/scss/index.scss'
 
 import { syne, wix } from './fonts'
-
-import '@mantine/core/styles.css'
 
 export const metadata = {
   title: 'Banx | Lend and Borrow against any asset on Solana 🫰 💰',
@@ -40,24 +31,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${wix.variable}`} {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript />
-      </head>
+    <html lang="en" className={`${syne.variable} ${wix.variable}`}>
       <body>
-        <MantineProvider>
-          <ErrorBoundary>
-            <QueryProvider>
-              <SolanaConnectionWalletProvider>
-                <DialectProvider>
-                  <SnackbarProvider>
-                    <AppLayout>{children}</AppLayout>
-                  </SnackbarProvider>
-                </DialectProvider>
-              </SolanaConnectionWalletProvider>
-            </QueryProvider>
-          </ErrorBoundary>
-        </MantineProvider>
+        <BanxProviders>
+          <AppLayout>{children}</AppLayout>
+        </BanxProviders>
       </body>
     </html>
   )

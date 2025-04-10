@@ -1,5 +1,3 @@
-'use client'
-
 import { FC, PropsWithChildren, useEffect, useMemo, useState } from 'react'
 
 import { ConfigProps, DialectNoBlockchainSdk } from '@dialectlabs/react-sdk'
