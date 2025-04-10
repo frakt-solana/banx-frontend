@@ -59,7 +59,7 @@ export const LenderRefinanceModal: FC<LenderRefinanceModalProps> = ({ loans: ini
   const tableHeight = calculateTableHeight(loans)
 
   return (
-    <Modal className={styles.modal} open onCancel={closeModal} width={572}>
+    <Modal opened onClose={closeModal}>
       <h3 className={styles.modalTitle}>Please confirm the terms</h3>
       <div style={{ height: tableHeight }}>
         <Table

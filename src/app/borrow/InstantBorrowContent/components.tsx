@@ -49,7 +49,7 @@ export const WarningModal: FC<WarningModalProps> = ({ offer, onSubmit, collatera
   }
 
   return (
-    <Modal className={styles.warningModal} open onCancel={closeModal} width={496}>
+    <Modal opened onClose={closeModal} classNames={{ content: styles.warningModalContent }}>
       <div className={styles.warningModalBody}>
         <h3 className={styles.warningModalTitle}>Please pay attention!</h3>
 

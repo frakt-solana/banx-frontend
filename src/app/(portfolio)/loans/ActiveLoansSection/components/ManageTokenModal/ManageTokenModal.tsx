@@ -25,7 +25,7 @@ export const ManageTokenModal: FC<ManageTokenModalProps> = ({ loan }) => {
   } = useTabs({ tabs: TABS, defaultValue: TabName.Repay })
 
   return (
-    <Modal open onCancel={closeModal} className={styles.modal}>
+    <Modal opened onClose={closeModal}>
       <Tabs value={currentTabValue} tabs={tabs} setValue={setValue} className={styles.tabs} />
       <div className={styles.modalContent}>
         {currentTabValue === TabName.Repay && <RepayTokenContent loan={loan} />}

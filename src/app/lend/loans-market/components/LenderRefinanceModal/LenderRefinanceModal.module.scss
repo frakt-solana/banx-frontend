@@ -1,17 +1,4 @@
 // * RefinanceModal * //
-.modal :global {
-  z-index: 2;
-
-  .ant-modal-body {
-    padding: 0 !important;
-  }
-
-  .ant-modal-content {
-    background: var(--bg-tertiary);
-    padding: 0 !important;
-  }
-}
-
 .modalTitle {
   display: flex;
   align-items: center;

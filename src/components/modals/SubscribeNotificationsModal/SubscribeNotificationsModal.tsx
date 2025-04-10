@@ -19,7 +19,7 @@ export const SubscribeNotificationsModal: FC<SubscribeNotificationsModalProps> =
   onActionClick,
 }) => {
   return (
-    <Modal open centered onCancel={onCancel} maskClosable={false} width={572} footer={false}>
+    <Modal opened onClose={onCancel} classNames={{ body: styles.modalBody }}>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.content}>{message}</p>
       {onActionClick && (

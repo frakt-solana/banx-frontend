@@ -1,12 +1,4 @@
 // * ManageTokenModal * //
-.modal {
-  :global {
-    .ant-modal-content {
-      padding: 0 !important;
-    }
-  }
-}
-
 .modalContent {
   background-color: var(--bg-tertiary);
   border-bottom-right-radius: 6px;

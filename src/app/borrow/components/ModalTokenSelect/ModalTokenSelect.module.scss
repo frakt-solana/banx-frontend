@@ -3,14 +3,6 @@
   flex-direction: column;
 }
 
-// * Modal *//
-.modal :global {
-  .ant-modal-content {
-    padding: 0 !important;
-  }
-}
-// * Modal *//
-
 .searchInputWrapper {
   position: relative;
   margin: 12px 24px;

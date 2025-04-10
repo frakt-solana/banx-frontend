@@ -45,7 +45,7 @@ export const AppSettingsModal = () => {
   }
 
   return (
-    <Modal open onCancel={closeModal} width={500}>
+    <Modal opened onClose={closeModal} classNames={{ content: styles.modalContent }}>
       <h2 className={styles.title}>Settings</h2>
       <TabsContent {...slippageTabsValues} title="Max slippage" />
       <TabsContent {...priorityTabsValues} title="Priority mode" />

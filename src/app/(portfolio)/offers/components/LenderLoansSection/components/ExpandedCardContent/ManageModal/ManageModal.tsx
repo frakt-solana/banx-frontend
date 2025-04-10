@@ -37,7 +37,7 @@ const ManageModal: FC<ManageModalProps> = ({ loan }) => {
   })
 
   return (
-    <Modal className={styles.modal} open onCancel={close} width={572}>
+    <Modal opened onClose={close}>
       <Tabs className={styles.tabs} value={currentTabValue} {...tabProps} />
       {currentTabValue === TabName.REPAYMENT && <RepaymentCallContent loan={loan} />}
       {currentTabValue === TabName.CLOSURE && <ClosureContent loan={loan} />}

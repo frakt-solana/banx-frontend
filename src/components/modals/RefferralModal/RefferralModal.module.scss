@@ -43,18 +43,6 @@ $animation-duration: 0.3s;
   z-index: 2;
 }
 
-.modal {
-  :global {
-    .ant-modal-body {
-      padding: 0 !important;
-    }
-
-    .ant-modal-content {
-      padding: 0 !important;
-    }
-  }
-}
-
 .referralModalContent {
   display: flex;
   flex-direction: column;

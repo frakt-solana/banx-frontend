@@ -1,29 +1,40 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { Modal as ModalAnt, ModalProps as ModalAntProps } from 'antd'
-import classNames from 'classnames'
+import { Modal as MantineModal, ModalProps as MantineModalProps } from '@mantine/core'
 
-import { CloseConfirmModal } from '@banx/icons'
+import { deepMergeStyles } from '@banx/utils/common'
 
 import styles from './BaseModal.module.scss'
 
-interface ModalProps extends ModalAntProps {
-  className?: string
-}
+type ModalProps = PropsWithChildren<
+  MantineModalProps & {
+    opened: boolean
+    onClose: () => void
+    classNames?: MantineModalProps['classNames']
+  }
+>
+export const Modal: FC<ModalProps> = ({ opened, onClose, children, classNames, ...rest }) => {
+  const mergedClassNames = deepMergeStyles(
+    {
+      content: styles.modal,
+    },
+    classNames,
+  )
 
-export const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, className, ...props }) => {
   return (
-    <ModalAnt
-      {...props}
-      className={classNames(styles.modal, className)}
-      wrapClassName={styles.wrap}
-      closeIcon={<CloseConfirmModal className={styles.closeIcon} />}
-      maskTransitionName="" //? Disable the animation for the modal backdrop (mask) appearance
-      transitionName="" //? Disable the default animation for modal appearance
-      footer={false}
+    <MantineModal
+      opened={opened}
+      onClose={onClose}
+      withCloseButton={false}
+      classNames={mergedClassNames}
       centered
+      overlayProps={{ blur: 5 }}
+      padding={0}
+      closeOnClickOutside
+      closeOnEscape
+      {...rest}
     >
       {children}
-    </ModalAnt>
+    </MantineModal>
   )
 }

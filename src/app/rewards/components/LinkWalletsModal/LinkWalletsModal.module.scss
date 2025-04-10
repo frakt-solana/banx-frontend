@@ -1,24 +1,13 @@
-.modal {
-  :global {
-    z-index: 2;
+.modalBody {
+  height: 384px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
 
-    .ant-modal-body {
-      padding: 0 !important;
-      height: 384px !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: stretch;
-
-      @media screen and (max-width: 960px) {
-        height: unset !important;
-        max-height: 384px !important;
-      }
-    }
-
-    .ant-modal-content {
-      padding: 0 !important;
-    }
+  @media screen and (max-width: 960px) {
+    height: unset;
+    max-height: 384px;
   }
 }
 
@@ -27,8 +16,8 @@
   font: var(--title-xl);
   text-transform: uppercase;
   border-bottom: var(--border-less-primary);
-
   padding: 24px 24px 12px;
+  text-align: center;
 
   @media screen and (max-width: 640px) {
     font: var(--title-lg);

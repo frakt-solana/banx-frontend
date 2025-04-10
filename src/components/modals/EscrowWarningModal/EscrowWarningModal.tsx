@@ -42,7 +42,7 @@ export const EscrowWarningModal: FC<EscrowWarningModalProps> = ({
   const displayAmountToUpdate = createDisplayValueJSX(formattedValues.amountToUpdate, tokenUnit)
 
   return (
-    <Modal className={styles.modal} open onCancel={closeModal} width={496}>
+    <Modal opened onClose={closeModal} classNames={{ body: styles.modalContent }}>
       <h3>Please pay attention!</h3>
       <p>
         You only have {displayEscrowBalance} in escrow instead of {displayOfferSize} size you want

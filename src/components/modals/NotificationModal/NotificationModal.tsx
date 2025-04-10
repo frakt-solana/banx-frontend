@@ -20,7 +20,7 @@ export const NotificationModal: FC<NotificationModalProps> = ({ htmlContent, onC
   }, [htmlContent, onCancel])
 
   return (
-    <Modal open centered onCancel={onCancel} maskClosable={false} width={500} footer={false}>
+    <Modal opened onClose={onCancel} classNames={{ body: styles.modalBody }}>
       <div
         className={styles.content}
         ref={contentRef}

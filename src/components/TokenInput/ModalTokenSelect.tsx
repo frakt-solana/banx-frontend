@@ -64,7 +64,7 @@ const ModalTokenSelect = ({
   }, [])
 
   return (
-    <Modal className={styles.modal} open width={468} onCancel={closeModal}>
+    <Modal opened onClose={closeModal}>
       <div className={styles.searchInputWrapper}>
         <SearchOutlined className={styles.searchIcon} />
         <Input

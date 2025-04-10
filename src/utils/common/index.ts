@@ -87,11 +87,11 @@ export const insertAtArray = <T>(arr: T[], index: number, element: T): T[] => {
   return [...arr.slice(0, index), element, ...arr.slice(index)]
 }
 
-export const deepMergeStyles = <T extends Record<string, string>>(
-  baseStyles: T,
-  overrideStyles?: Partial<T>,
-): T => {
-  return _.mergeWith({}, baseStyles, overrideStyles, (objValue, srcValue) => {
+export const deepMergeStyles = <T extends string>(
+  base: Partial<Record<T, string>>,
+  override?: Partial<Record<T, string>>,
+): Partial<Record<T, string>> => {
+  return _.mergeWith({}, base, override, (objValue, srcValue) => {
     if (objValue && srcValue) {
       return `${objValue} ${srcValue}`
     }

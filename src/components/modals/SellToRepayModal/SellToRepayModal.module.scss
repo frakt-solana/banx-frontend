@@ -1,3 +1,11 @@
+.modalBody {
+  padding: 24px;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+  }
+}
+
 .modalContent {
   //? To prevent height jumps on loading
   min-height: 246px;

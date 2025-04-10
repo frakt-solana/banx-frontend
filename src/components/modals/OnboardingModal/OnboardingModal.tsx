@@ -32,7 +32,7 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({
   const content = CONTENT[contentType]
 
   return (
-    <Modal open centered maskClosable={false} width={572} footer={false} onCancel={onCancel}>
+    <Modal opened onClose={onCancel} classNames={{ body: styles.modalBody }}>
       <div className={styles.modalContent}>
         <h3 className={styles.title}>{content.title}</h3>
         <Carousel

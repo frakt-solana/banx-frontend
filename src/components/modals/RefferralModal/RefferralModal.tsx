@@ -63,7 +63,7 @@ export const RefferralModal = () => {
   }
 
   return (
-    <Modal open onCancel={onCloseModal} className={styles.modal} width={408}>
+    <Modal opened onClose={onCloseModal}>
       <div className={styles.content}>
         <div
           className={styles.referralModalContent}

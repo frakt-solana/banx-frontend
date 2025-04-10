@@ -116,7 +116,7 @@ export const SellToRepayModal: FC<SellToRepayModalProps> = ({ loan, pair }) => {
   const lendingToken = loan.bondTradeTransaction.lendingToken
 
   return (
-    <Modal open centered onCancel={closeModal} maskClosable={false} width={496}>
+    <Modal opened onClose={closeModal} classNames={{ body: styles.modalBody }}>
       <div
         className={classNames(styles.modalContent, {
           [styles.modalContentSlippageVisible]: slippageTabsVisible,

@@ -52,7 +52,7 @@ export const LinkWalletsModal = () => {
   }, [publicKey, linkedWalletsData, savedLinkingState, isDiffWalletConnected])
 
   return (
-    <Modal className={styles.modal} open onCancel={onCloseModal} width={572}>
+    <Modal opened onClose={onCloseModal} classNames={{ body: styles.modalBody }}>
       <h3 className={styles.modalTitle}>Link wallets to see your total rewards</h3>
       {!!isLoading && <Loader />}
       {!isLoading && (

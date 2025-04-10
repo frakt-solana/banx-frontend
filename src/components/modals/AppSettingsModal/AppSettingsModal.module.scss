@@ -1,3 +1,11 @@
+.modalContent {
+  padding: 24px;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+  }
+}
+
 .content {
   display: flex;
   flex-direction: column;

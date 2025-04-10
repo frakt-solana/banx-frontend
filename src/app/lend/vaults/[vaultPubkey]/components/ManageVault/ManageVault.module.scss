@@ -208,6 +208,14 @@
 // * ControlsButtons * //
 
 // * WarningModal * //
+.warningModal {
+  padding: 24px;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+  }
+}
+
 .warningModalContent {
   display: flex;
   flex-direction: column;

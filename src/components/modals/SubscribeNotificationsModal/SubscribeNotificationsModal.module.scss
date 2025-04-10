@@ -1,3 +1,11 @@
+.modalBody {
+  padding: 24px;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+  }
+}
+
 .title {
   color: var(--content-primary);
   text-align: center;

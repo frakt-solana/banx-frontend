@@ -20,6 +20,14 @@ $animation-duration: 0.3s;
   }
 }
 
+.modalBody {
+  padding: 24px;
+
+  @media (max-width: 960px) {
+    padding: 16px;
+  }
+}
+
 .modalContent {
   background-color: var(--bg-tertiary);
   border-radius: 6px;

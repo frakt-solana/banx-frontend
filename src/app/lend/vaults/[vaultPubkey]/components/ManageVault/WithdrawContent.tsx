@@ -131,7 +131,7 @@ const WarningModal: FC<WarningModalProps> = ({ vaultPreview, withdrawAmount, onS
   const pendingAmount = withdrawAmount - availableToClaim
 
   return (
-    <Modal open onCancel={closeModal} width={496}>
+    <Modal opened onClose={closeModal} classNames={{ content: styles.warningModal }}>
       <div className={styles.warningModalContent}>
         <h3 className={styles.warningModalTitle}>Please pay attention!</h3>
         <span className={styles.warningModalText}>

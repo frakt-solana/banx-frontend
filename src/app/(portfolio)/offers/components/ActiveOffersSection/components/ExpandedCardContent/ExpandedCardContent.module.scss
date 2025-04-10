@@ -42,14 +42,10 @@
   }
 }
 
-.modal :global {
-  .ant-modal-body {
-    height: 440px;
-  }
+.modalBody {
+  height: 440px;
+}
 
-  .ant-modal-content {
-    background: var(--bg-tertiary);
-    padding: 0 !important;
-    overflow: hidden;
-  }
+.modalContent {
+  overflow: hidden;
 }

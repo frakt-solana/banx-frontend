@@ -1,28 +1,6 @@
-// * ManageModal * //
-.modal :global {
-  z-index: 2;
-
-  .ant-modal-body {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-
-    @media (min-width: 961px) {
-      // min-height: 336px; //? min-height for modal with tabs enabled
-      min-height: 240px;
-    }
-  }
-
-  .ant-modal-content {
-    background-color: var(--bg-tertiary);
-    padding: 0 !important;
-  }
-}
-
 .tabs {
   flex-wrap: nowrap;
 }
-// * ManageModal * //
 
 .freezeTimerWrapper {
   background: var(--additional-blue-secondary);
