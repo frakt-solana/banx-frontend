@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
-import { App as AntdProvider } from 'antd'
 
 import { ErrorBoundary } from '@banx/components/ErrorBoundary'
 
@@ -51,11 +50,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <QueryProvider>
               <SolanaConnectionWalletProvider>
                 <DialectProvider>
-                  <AntdProvider>
-                    <SnackbarProvider>
-                      <AppLayout>{children}</AppLayout>
-                    </SnackbarProvider>
-                  </AntdProvider>
+                  <SnackbarProvider>
+                    <AppLayout>{children}</AppLayout>
+                  </SnackbarProvider>
                 </DialectProvider>
               </SolanaConnectionWalletProvider>
             </QueryProvider>
