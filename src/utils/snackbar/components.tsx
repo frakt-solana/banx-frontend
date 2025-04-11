@@ -8,7 +8,6 @@ import {
   IconLoader,
 } from '@tabler/icons-react'
 import classNames from 'classnames'
-import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { SolanaFMLink } from '@banx/components/SolanaLinks'
@@ -16,7 +15,6 @@ import { SolanaFMLink } from '@banx/components/SolanaLinks'
 import { Copy } from '@banx/icons'
 
 import { copyToClipboard } from '../common'
-import { enqueueSnackbar } from './'
 import { SnackbarProps, SnackbarType } from './types'
 
 import styles from './Snackbar.module.scss'
@@ -66,12 +64,6 @@ export const SnackDescription: FC<SnackDescriptionProps> = ({
 
   const onBtnClick = () => {
     copyToClipboard(textToCopy || '')
-    enqueueSnackbar({
-      message: 'Copied to clipboard',
-      type: 'success',
-      autoHideDuration: 1000,
-      customKey: _.uniqueId('copied_'),
-    })
   }
 
   return (

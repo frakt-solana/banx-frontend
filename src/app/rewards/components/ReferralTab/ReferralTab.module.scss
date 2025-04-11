@@ -171,7 +171,8 @@
 }
 
 .referralInviteInfoSkeleton {
-  min-height: 32px;
+  height: 32px !important;
+  width: 100% !important;
 }
 
 // * RewardsContent * //

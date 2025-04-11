@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-import { NotificationPlacement } from 'antd/es/notification/interface'
-
 export type SnackbarType = 'info' | 'success' | 'warning' | 'error' | 'loading'
 
 export type CopyButtonProps = Partial<{
@@ -45,8 +43,6 @@ interface SnackbarBehavior {
   autoHideDuration?: number
   /** Prevent auto-close */
   persist?: boolean
-  /** Notification position on screen */
-  placement?: NotificationPlacement
   /** Show or hide close button */
   closable?: boolean
 }

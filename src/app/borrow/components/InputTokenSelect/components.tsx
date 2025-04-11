@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Skeleton } from 'antd'
+import { Skeleton } from '@mantine/core'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
@@ -24,7 +24,7 @@ export const SelectTokenButton = <T extends BaseToken>({
   className,
 }: SelectTokenButtonProps<T>) => {
   if (!token) {
-    return <Skeleton.Button style={{ width: 100 }} className={className} />
+    return <Skeleton className={classNames(styles.skeletonSelectTokenButton, className)} />
   }
 
   return (

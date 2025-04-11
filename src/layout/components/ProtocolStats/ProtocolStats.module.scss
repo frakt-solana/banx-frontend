@@ -58,16 +58,18 @@
 }
 
 .skeletonProtocolStats {
-  border-radius: 6px;
-  margin-left: 12px;
+  border-radius: 6px !important;
+  margin-left: 24px;
+  height: 32px !important;
   width: 100px !important;
-  height: 32px;
-
-  span {
-    min-width: unset !important;
-  }
 
   @media (max-width: 640px) {
+    margin-left: 4px;
     width: 32px !important;
+
+    &::after,
+    &::before {
+      background-color: transparent !important;
+    }
   }
 }

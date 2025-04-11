@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
+import { Skeleton } from '@mantine/core'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { Skeleton } from 'antd'
 import classNames from 'classnames'
 import { web3 } from 'fbonds-core'
 
@@ -133,7 +133,7 @@ const RewardsContent: FC<RewardsSectionProps> = ({
   return (
     <div className={styles.rewardsContent}>
       {connected && isLoadingPersonalData && (
-        <Skeleton.Input className={styles.referralInviteInfoSkeleton} />
+        <Skeleton className={styles.referralInviteInfoSkeleton} />
       )}
 
       {(!connected || !isLoadingPersonalData) && (

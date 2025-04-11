@@ -1,5 +1,5 @@
+import { Skeleton } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
-import { Skeleton } from 'antd'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { createDisplayValueJSX } from '@banx/components/TableComponents'
@@ -21,7 +21,7 @@ export const ProtocolStats = () => {
   })
 
   if (isLoading || !data) {
-    return <Skeleton.Input className={styles.skeletonProtocolStats} active />
+    return <Skeleton classNames={{ root: styles.skeletonProtocolStats }} />
   }
 
   if (!data) return null

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
+import { Skeleton } from '@mantine/core'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { Skeleton } from 'antd'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
@@ -95,7 +95,7 @@ type SelectTokenButtonProps = {
 
 const SelectTokenButton = ({ token, onClick, disabled, className }: SelectTokenButtonProps) => {
   if (!token) {
-    return <Skeleton.Button style={{ width: 100 }} className={className} />
+    return <Skeleton className={classNames(styles.skeletonSelectTokenButton, className)} />
   }
 
   return (

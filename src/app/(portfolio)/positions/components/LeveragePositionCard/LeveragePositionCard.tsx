@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
+import { Skeleton } from '@mantine/core'
 import { useConnection } from '@solana/wallet-adapter-react'
-import { Skeleton } from 'antd'
 import classNames from 'classnames'
 import { BASE_POINTS } from 'fbonds-core/lib/fbond-protocol/constants'
 import moment from 'moment'
@@ -193,7 +193,7 @@ const SkeletonPositionAdditionalInfo = () => (
     {Array.from({ length: 6 }, (_, index) => (
       <StatInfo
         key={index}
-        value={<Skeleton.Button active className={classNames(styles.skeletonStat)} />}
+        value={<Skeleton className={styles.skeletonStat} />}
         classNamesProps={{ container: styles.additionalInfoStat }}
       />
     ))}

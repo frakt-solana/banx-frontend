@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 
+import { Skeleton } from '@mantine/core'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { Skeleton } from 'antd'
 
 import { Button } from '@banx/components/Buttons'
 import Checkbox from '@banx/components/Checkbox'
@@ -67,7 +67,7 @@ export const RefferralModal = () => {
       <div className={styles.content}>
         <div
           className={styles.referralModalContent}
-          style={{ backgroundImage: `url(${GreenGridBg})` }}
+          style={{ backgroundImage: `url(${GreenGridBg.src})` }}
         >
           <h4 className={styles.title}>Welcome to Banx</h4>
           <span className={styles.subtitle}>
@@ -76,7 +76,7 @@ export const RefferralModal = () => {
           </span>
 
           <div className={styles.referralModalInfo}>
-            <ResponsiveImage className={styles.banxImage} src={BanxImage} />
+            <ResponsiveImage className={styles.banxImage} src={BanxImage.src} />
             <div className={styles.referralModalInfoRows}>
               <div className={styles.referralModalInfoRow}>
                 <CircleCheck />
@@ -170,7 +170,7 @@ const ReferrerWallet: FC<ReferrerWalletProps> = ({ referrerWallet, inputValue, i
 
   return (
     <div className={styles.referrerWallet}>
-      {showSkeleton && <Skeleton.Input size="small" className={styles.referrerWalletSkeleton} />}
+      {showSkeleton && <Skeleton className={styles.referrerWalletSkeleton} />}
       {showReferrerWallet && <span>Referrer wallet: {referrerWallet?.slice(0, 4)}</span>}
       {showErrorMessage && (
         <span className={styles.referrerWalletError}>Invalid referral code</span>

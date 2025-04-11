@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react'
 
+import { Skeleton } from '@mantine/core'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { Skeleton } from 'antd'
 import classNames from 'classnames'
 import { web3 } from 'fbonds-core'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
@@ -153,7 +153,7 @@ const ExitContentInfo: FC<ExitContentInfoProps> = ({
         <p>Instantly receive your total claim</p>
       </div>
 
-      {isLoading && <Skeleton.Button className={styles.skeletonButton} />}
+      {isLoading && <Skeleton className={styles.skeletonButton} />}
 
       {!isLoading && (
         <Button
