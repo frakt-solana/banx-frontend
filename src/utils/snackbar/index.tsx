@@ -1,85 +1,74 @@
-import { Key, ReactNode } from 'react'
-
-import { NotificationPlacement } from 'antd/es/notification/interface'
+import { notifications } from '@mantine/notifications'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { ConfirmTransactionErrorReason } from 'solana-transactions-executor'
 
-import { CloseModal, LoaderCircle } from '@banx/icons'
-
-import {
-  SnackDescription,
-  SnackDescriptionProps,
-  SnackMessage,
-  SnackMessageProps,
-} from './components'
-import { getNotificationApi } from './global'
+import { SnachProgressBar, SnackDescription, SnackMessage } from './components'
+import { SnackbarProps } from './types'
 
 import styles from './Snackbar.module.scss'
 
-export type SnackbarType = 'info' | 'success' | 'warning' | 'error' | 'loading'
+type EnqueueSnackbar = (props: SnackbarProps) => string
 
-export interface SnackbarProps extends SnackMessageProps, Partial<SnackDescriptionProps> {
-  icon?: ReactNode
-  autoHideDuration?: number
-  closable?: boolean //? Show or hide close btn
-  persist?: boolean
-  customKey?: Key
-  placement?: NotificationPlacement
-  className?: string
-  closeIconClassName?: string
-}
-
-type EnqueueSnackbar = (props: SnackbarProps) => Key
 export const enqueueSnackbar: EnqueueSnackbar = ({
   message,
   description,
   icon,
   type = 'info',
-  autoHideDuration = 4.5,
+  autoHideDuration = 4500,
   closable = true,
   persist = false,
   customKey,
-  placement = 'bottomRight',
   className,
-  closeIconClassName,
   solanaExplorerPath,
   copyButtonProps,
 }) => {
-  const notification = getNotificationApi()
+  const key = customKey || _.uniqueId('snack_')
 
-  const key = customKey || _.uniqueId()
-
-  const notificationIcon =
-    type === 'loading' ? (
-      <LoaderCircle className={styles.loadingIcon} gradientColor="#096DD9" />
-    ) : (
-      icon
-    )
-
-  notification.open({
-    type: type === 'loading' ? 'info' : type,
-    className: classNames(styles.snack, styles[`snack__${type}`], className),
-    closeIcon: closable ? (
-      <CloseModal className={classNames(styles.closeIcon, closeIconClassName)} />
-    ) : (
-      false
+  notifications.show({
+    id: key,
+    withCloseButton: closable,
+    autoClose: persist ? false : autoHideDuration,
+    title: (
+      <SnackMessage
+        type={type}
+        icon={icon}
+        message={message}
+        solanaExplorerPath={solanaExplorerPath}
+      />
     ),
-    message: <SnackMessage message={message} solanaExplorerPath={solanaExplorerPath} />,
-    description:
-      description || copyButtonProps ? (
-        <SnackDescription description={description} type={type} copyButtonProps={copyButtonProps} />
-      ) : undefined,
-    placement,
-    duration: persist ? 0 : autoHideDuration,
-    icon: notificationIcon,
-    key,
+
+    message: (
+      <div className={styles.snackContent}>
+        {description || copyButtonProps ? (
+          <SnackDescription
+            description={description}
+            type={type}
+            copyButtonProps={copyButtonProps}
+          />
+        ) : null}
+
+        {!persist && autoHideDuration && (
+          <SnachProgressBar duration={autoHideDuration} type={type} />
+        )}
+      </div>
+    ),
+
+    classNames: {
+      root: classNames(styles.snack, styles[`snack__${type}`], className),
+      body: styles.snackBody,
+      title: styles.snackTitle,
+      description: styles.snackDescription,
+      closeButton: styles.closeIcon,
+      icon: styles.snackIcon,
+      loader: styles.snackIcon,
+    },
   })
 
   return key
 }
 
-export const destroySnackbar = (key?: Key) => getNotificationApi().destroy(key)
+export const destroySnackbar = (key: string) => notifications.hide(key)
 
 export const enqueueTransactionSent = (signature: string) =>
   enqueueSnackbar({
