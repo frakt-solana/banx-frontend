@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Carousel } from 'antd'
+import { Carousel } from '@mantine/carousel'
 
 import { Theme, useTheme } from '@banx/hooks'
 
@@ -22,12 +22,12 @@ export const OnboardingCarousel: FC<OnboardingCarouselProps> = ({ contentType })
   return (
     <div className={styles.carousel}>
       <div className={styles.carouselContent}>
-        <Carousel draggable infinite={false}>
+        <Carousel withControls={false}>
           {content.slides.map(({ text, img, imgDark }, idx) => (
-            <div key={idx} className={styles.carouselSlide}>
+            <Carousel.Slide key={idx} className={styles.carouselSlide}>
               {isDarkMode ? imgDark : img}
               {text}
-            </div>
+            </Carousel.Slide>
           ))}
         </Carousel>
       </div>

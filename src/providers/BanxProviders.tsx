@@ -11,6 +11,7 @@ import { DialectProvider } from './dialect'
 import { QueryProvider } from './query'
 import { SolanaConnectionWalletProvider } from './solana'
 
+import '@mantine/carousel/styles.css'
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 

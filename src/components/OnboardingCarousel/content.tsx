@@ -1,3 +1,4 @@
+import { ResponsiveImage } from '../ResponsiveImage'
 import borrowImage1 from './assets/borrow1.png'
 import borrowImg1_dark from './assets/borrow1_dark.png'
 import borrowImage2 from './assets/borrow2.png'
@@ -13,7 +14,6 @@ import multiplyImage1Dark from './assets/multiply1_dark.png'
 import { OnboardingContentType } from './types'
 
 import styles from './OnboardingCarousel.module.scss'
-import { ResponsiveImage } from '../ResponsiveImage'
 
 const MULTIPLY_CONTENT = {
   slides: [

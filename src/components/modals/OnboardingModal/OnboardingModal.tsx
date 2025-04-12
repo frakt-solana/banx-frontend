@@ -1,13 +1,12 @@
 import { FC } from 'react'
 
-import { Carousel } from 'antd'
+import { Carousel } from '@mantine/carousel'
 import classNames from 'classnames'
 
 import Faq, { FaqType } from '@banx/components/Faq'
 import { Loader } from '@banx/components/Loader'
 
 import { Theme, useTheme } from '@banx/hooks'
-import { ChevronDown } from '@banx/icons'
 
 import { Modal } from '../BaseModal'
 import { CONTENT } from './content'
@@ -35,18 +34,15 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({
     <Modal opened onClose={onCancel} classNames={{ body: styles.modalBody }}>
       <div className={styles.modalContent}>
         <h3 className={styles.title}>{content.title}</h3>
-        <Carousel
-          draggable
-          nextArrow={<ChevronDown className={styles.carouselArrow} />}
-          prevArrow={<ChevronDown className={styles.carouselArrow} />}
-          arrows
-          infinite={false}
-        >
+        <Carousel draggable={content.slides.length > 1} withControls={content.slides.length > 1}>
           {content.slides.map(({ text, img, imgDark }, idx) => (
-            <div className={classNames(styles.slide, { [styles.darkSlide]: isDarkMode })} key={idx}>
+            <Carousel.Slide
+              className={classNames(styles.slide, { [styles.darkSlide]: isDarkMode })}
+              key={idx}
+            >
               {isDarkMode ? imgDark : img}
               {text}
-            </div>
+            </Carousel.Slide>
           ))}
         </Carousel>
         {faqType && <Faq type={faqType} className={styles.faqContainer} />}
