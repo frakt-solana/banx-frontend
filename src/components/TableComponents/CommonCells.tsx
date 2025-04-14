@@ -39,7 +39,7 @@ export const HorizontalCell: FC<HorizontalCellProps> = ({
 
   return tooltipContent ? (
     <div className={styles.rowCell}>
-      <Tooltip title={tooltipContent}>
+      <Tooltip label={tooltipContent}>
         {cellContent}
         <InfoCircleOutlined className={styles.rowCellTooltipIcon} />
       </Tooltip>

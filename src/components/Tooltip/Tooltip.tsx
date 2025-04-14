@@ -1,30 +1,36 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, ReactNode } from 'react'
 
-import { InfoCircleOutlined } from '@ant-design/icons'
-import { Tooltip as AntdTooltip, TooltipProps as AntdTooltipProps } from 'antd'
-import { TooltipPropsWithTitle } from 'antd/es/tooltip'
+import { Tooltip as MantineTooltip, TooltipProps as MantineTooltipProps } from '@mantine/core'
+import { IconInfoCircle } from '@tabler/icons-react'
 
 import styles from './Tooltip.module.scss'
 
-const Tooltip: FC<PropsWithChildren<AntdTooltipProps>> = ({
-  children,
-  placement = 'bottom',
-  ...props
-}) => (
-  <AntdTooltip {...props} arrowContent={null} placement={placement}>
-    {children || <InfoCircleOutlined className={styles.icon} />}
-  </AntdTooltip>
-)
+export type TooltipProps = Omit<MantineTooltipProps, 'children'> & {
+  children?: ReactNode
+}
+
+export const Tooltip: FC<TooltipProps> = ({
+  label,
+  children = null,
+  position = 'bottom',
+  ...rest
+}) => {
+  const fallback = <IconInfoCircle size={16} color="var(--content-secondary)" />
+
+  if (label === undefined || label === null) {
+    return <>{children || fallback}</>
+  }
+
+  return (
+    <MantineTooltip
+      {...rest}
+      label={label}
+      position={position}
+      classNames={{ tooltip: styles.tooltip }}
+    >
+      <span style={{ all: 'unset', display: 'inline-flex' }}>{children || fallback}</span>
+    </MantineTooltip>
+  )
+}
 
 export default Tooltip
-
-export const TooltipWrapper: FC<PropsWithChildren<TooltipPropsWithTitle>> = ({
-  title,
-  className,
-  children,
-  ...props
-}) => (
-  <Tooltip className={className || styles.tooltip} title={title} {...props}>
-    <>{children}</>
-  </Tooltip>
-)

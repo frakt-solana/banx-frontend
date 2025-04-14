@@ -51,7 +51,7 @@ export const HeaderCell = <T extends string>({
   return (
     <div onClick={handleSort} className={headerCellClasses}>
       <span>{label}</span>
-      {tooltipText && <Tooltip placement="top" title={tooltipText} />}
+      {tooltipText && <Tooltip label={tooltipText} position="top" />}
       {columnKey && (
         <SortIcons isActive={isActiveSortColumn} sortDirection={currentSortDirection} />
       )}

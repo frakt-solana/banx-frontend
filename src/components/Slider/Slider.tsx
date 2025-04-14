@@ -57,7 +57,7 @@ export const Slider: FC<SliderProps> = ({
       {!!label && (
         <div className={styles.labelWrapper}>
           <p className={classNames(styles.labelText, labelClassName)}>{label}</p>
-          {tooltipText && <Tooltip title={tooltipText} />}
+          {tooltipText && <Tooltip label={tooltipText} />}
         </div>
       )}
       <MantineSlider

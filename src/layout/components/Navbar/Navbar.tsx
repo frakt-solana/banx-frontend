@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { ChevronDown } from '@banx/icons'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
@@ -47,7 +47,7 @@ const NavbarLink: FC<NavbarLinkProps> = ({ link, createNewPath }) => {
   const isActive = isPathActive(pathname, link.pathname, true)
 
   return (
-    <TooltipWrapper title={link.disabledText}>
+    <Tooltip label={link.disabledText}>
       <Link
         href={createNewPath(link.pathname)}
         className={classNames(styles.linkText, styles.navbarLink, {
@@ -59,7 +59,7 @@ const NavbarLink: FC<NavbarLinkProps> = ({ link, createNewPath }) => {
           {link.label}
         </span>
       </Link>
-    </TooltipWrapper>
+    </Tooltip>
   )
 }
 

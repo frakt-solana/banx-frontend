@@ -59,19 +59,19 @@ const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
       <div className={styles.marketLinks}>
         <DexscreenerLink mint={market.collateral.mint} />
         {market.isHot && (
-          <Tooltip title="Market is in a huge demand and waiting for lenders!">
+          <Tooltip label="Market is in a huge demand and waiting for lenders!">
             <Fire />
           </Tooltip>
         )}
 
         {!_.isEmpty(marketRewards) && (
-          <Tooltip title={marketRewards.description}>
+          <Tooltip label={marketRewards.description}>
             <StarSecondary />
           </Tooltip>
         )}
 
         {isOracleMarket && (
-          <Tooltip title={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
+          <Tooltip label={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
             {getOracleIcon(market.oraclePriceFeedType)}
           </Tooltip>
         )}

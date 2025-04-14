@@ -109,7 +109,7 @@ interface FilterButtonProps {
 }
 
 const LiquidatedFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loansAmount }) => (
-  <Tooltip title={loansAmount ? 'Liquidated loans' : 'No liquidated loans currently'}>
+  <Tooltip label={loansAmount ? 'Liquidated loans' : 'No liquidated loans currently'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.liquidated)}
       data-loans-amount={loansAmount && loansAmount > 0 ? loansAmount : null}
@@ -133,7 +133,7 @@ const LiquidatedFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loan
 )
 
 const TerminatingFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loansAmount }) => (
-  <Tooltip title={loansAmount ? 'Terminating loans' : 'No terminating loans currently'}>
+  <Tooltip label={loansAmount ? 'Terminating loans' : 'No terminating loans currently'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.terminating)}
       data-loans-amount={loansAmount && loansAmount > 0 ? loansAmount : null}
@@ -161,7 +161,7 @@ export const UnderwaterFilterButton: FC<FilterButtonProps> = ({
   onClick,
   loansAmount,
 }) => (
-  <Tooltip title={loansAmount ? 'Underwater loans' : 'No underwater loans currently'}>
+  <Tooltip label={loansAmount ? 'Underwater loans' : 'No underwater loans currently'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.underwater)}
       data-loans-amount={loansAmount && loansAmount > 0 ? loansAmount : null}

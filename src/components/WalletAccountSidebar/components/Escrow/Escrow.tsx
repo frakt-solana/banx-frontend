@@ -57,7 +57,7 @@ export const Escrow = () => {
       <div className={styles.header}>
         <h3 className={styles.title}>
           Escrow
-          <Tooltip title="With escrow, lenders can make an unlimited number of offers, as long as each offer doesn’t exceed the escrow balance" />
+          <Tooltip label="With escrow, lenders can make an unlimited number of offers, as long as each offer doesn’t exceed the escrow balance" />
         </h3>
         <TokenDropdown
           option={tokenType}

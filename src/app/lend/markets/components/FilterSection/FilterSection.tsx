@@ -11,7 +11,7 @@ import {
 } from '@banx/components/Dropdowns'
 import { Search } from '@banx/components/Search'
 import { SortDropdown, SortDropdownProps } from '@banx/components/SortDropdown'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { MARKETS_CATEGORIES, MarketCategory } from '@banx/constants'
 import { Fire, StarSecondary } from '@banx/icons'
@@ -97,7 +97,7 @@ interface FilterButtonProps {
 }
 
 const HotFilterButton: FC<FilterButtonProps> = ({ isActive, isDisabled, onClick }) => (
-  <TooltipWrapper title={isDisabled ? 'No hot collections currently' : 'Hot collections'}>
+  <Tooltip label={isDisabled ? 'No hot collections currently' : 'Hot collections'}>
     <Button
       className={classNames(styles.filterButton, {
         [styles.active]: isActive,
@@ -111,13 +111,11 @@ const HotFilterButton: FC<FilterButtonProps> = ({ isActive, isDisabled, onClick 
       <Fire />
       Hot
     </Button>
-  </TooltipWrapper>
+  </Tooltip>
 )
 
 const ExtraRewardFilterButton: FC<FilterButtonProps> = ({ isActive, isDisabled, onClick }) => (
-  <TooltipWrapper
-    title={isDisabled ? 'No markets with extra rewards' : 'Markets with extra rewards'}
-  >
+  <Tooltip label={isDisabled ? 'No markets with extra rewards' : 'Markets with extra rewards'}>
     <Button
       className={classNames(styles.filterButton, {
         [styles.active]: isActive,
@@ -131,7 +129,7 @@ const ExtraRewardFilterButton: FC<FilterButtonProps> = ({ isActive, isDisabled, 
       <StarSecondary />
       Rewards
     </Button>
-  </TooltipWrapper>
+  </Tooltip>
 )
 
 interface CategoryContentProps {

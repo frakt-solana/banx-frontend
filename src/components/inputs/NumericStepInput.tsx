@@ -98,7 +98,7 @@ export const NumericStepInput: FC<NumericStepInputProps> = ({
       <div className={classNames(styles.labelsContainer, labelClassName)}>
         <div className={styles.labelWrapper}>
           <span className={styles.label}>{label}</span>
-          {tooltipText && <Tooltip title={tooltipText} />}
+          {tooltipText && <Tooltip label={tooltipText} />}
         </div>
         {rightLabelJSX}
       </div>

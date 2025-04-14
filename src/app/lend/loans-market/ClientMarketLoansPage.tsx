@@ -186,7 +186,7 @@ interface FilterButtonProps {
 }
 
 const AuctionFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loansAmount }) => (
-  <Tooltip title={loansAmount ? 'Expiring loans' : 'No expiring loans currently'}>
+  <Tooltip label={loansAmount ? 'Expiring loans' : 'No expiring loans currently'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.auction)}
       data-loans-amount={loansAmount}
@@ -210,7 +210,7 @@ const AuctionFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loansAm
 )
 
 const FreezeFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, loansAmount }) => (
-  <Tooltip title={loansAmount ? 'Loans with freeze' : 'No loans with freeze currently'}>
+  <Tooltip label={loansAmount ? 'Loans with freeze' : 'No loans with freeze currently'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.freeze)}
       data-loans-amount={loansAmount}

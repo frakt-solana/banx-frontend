@@ -4,7 +4,7 @@ import { Button } from '@banx/components/Buttons'
 import { Doughnut, DoughnutChartProps } from '@banx/components/Charts'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { UserPortfolio } from '@banx/api/common'
 
@@ -16,14 +16,11 @@ import styles from './MyOffers.module.scss'
 export const Header: FC<{ offers: UserPortfolio['offers'] | undefined }> = ({ offers }) => (
   <div className={styles.allocationHeader}>
     <h4 className={styles.heading}>My offers</h4>
-    <TooltipWrapper
-      title={<TooltipContent data={offers?.historical} />}
-      overlayClassName={styles.tooltip}
-    >
+    <Tooltip label={<TooltipContent data={offers?.historical} />} overlayClassName={styles.tooltip}>
       <Button variant="secondary" size="small">
         History
       </Button>
-    </TooltipWrapper>
+    </Tooltip>
   </div>
 )
 

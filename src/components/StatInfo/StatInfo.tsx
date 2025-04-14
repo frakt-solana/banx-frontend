@@ -1,6 +1,6 @@
 import { CSSProperties, FC, JSX, ReactNode, SVGProps } from 'react'
 
-import { TooltipPlacement } from 'antd/es/tooltip'
+import { FloatingPosition } from '@mantine/core'
 import classNames from 'classnames'
 
 import Tooltip from '../Tooltip'
@@ -29,7 +29,7 @@ export interface StatsInfoProps {
   label?: string
   secondValue?: string | JSX.Element
   tooltipText?: ReactNode
-  tooltipPlacement?: TooltipPlacement
+  tooltipPlacement?: FloatingPosition
   valueType?: VALUES_TYPES
   flexType?: 'row' | 'column'
   valueStyles?: CSSProperties
@@ -65,7 +65,7 @@ export const StatInfo: FC<StatsInfoProps> = ({
         <span className={labelClasses} onClick={onClickProps?.onLabelClick}>
           {label}
         </span>
-        {tooltipText && <Tooltip title={tooltipText} placement={tooltipPlacement} />}
+        {tooltipText && <Tooltip label={tooltipText} position={tooltipPlacement} />}
       </div>
       <span className={valueClasses} style={valueStyles} onClick={onClickProps?.onValueClick}>
         {formattedValue}

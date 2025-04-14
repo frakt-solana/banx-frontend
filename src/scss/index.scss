@@ -2,9 +2,6 @@
 @import './base/scrollBar.scss';
 @import './abstracts/variables.scss';
 
-@import './antd/slider.scss';
-@import './antd/tooltip.scss';
-
 html body {
   background-color: var(--bg-tertiary);
   color: var(--content-primary);

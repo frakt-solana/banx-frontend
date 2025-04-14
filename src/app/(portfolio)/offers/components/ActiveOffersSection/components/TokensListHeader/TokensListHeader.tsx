@@ -44,6 +44,6 @@ interface StatProps {
 const Stat: FC<StatProps> = ({ label, tooltipText, className }) => (
   <div className={className}>
     <span className={styles.statLabel}>{label}</span>
-    {tooltipText && <Tooltip title={tooltipText} />}
+    {tooltipText && <Tooltip label={tooltipText} />}
   </div>
 )

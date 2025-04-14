@@ -111,7 +111,7 @@ export const AssetsLogos: FC<AssetsLogosProps> = ({ assets }) => {
   return (
     <div className={styles.assetsLogosContainer}>
       {visibleAssets.map((asset) => (
-        <Tooltip key={asset.mint} title={<VisibleAssetTooltip asset={asset} />}>
+        <Tooltip key={asset.mint} label={<VisibleAssetTooltip asset={asset} />}>
           <ResponsiveImage
             src={asset.logoUrl}
             className={classNames(styles.assetLogo, {
@@ -122,7 +122,7 @@ export const AssetsLogos: FC<AssetsLogosProps> = ({ assets }) => {
       ))}
 
       {hiddenAssets.length > 0 && (
-        <Tooltip title={<HiddenAssetsTooltip assets={hiddenAssets} />}>
+        <Tooltip label={<HiddenAssetsTooltip assets={hiddenAssets} />}>
           <div className={styles.extraAssetsCount}>+{hiddenAssets.length}</div>
         </Tooltip>
       )}

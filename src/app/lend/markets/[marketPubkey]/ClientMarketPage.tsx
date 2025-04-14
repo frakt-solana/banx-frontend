@@ -170,7 +170,7 @@ const MarketOverview: FC<{ market: TokenMarketPreview }> = ({ market }) => {
         <div className={styles.marketLinks}>
           <DexscreenerLink className={styles.dexScreenerLink} mint={market.collateral.mint} />
           {isOracleMarket && (
-            <Tooltip title={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
+            <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
               {getOracleIcon(oraclePriceFeedType)}
             </Tooltip>
           )}

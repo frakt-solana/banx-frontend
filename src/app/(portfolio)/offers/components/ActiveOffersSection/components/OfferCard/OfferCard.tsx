@@ -95,7 +95,7 @@ const MarketMainInfo: FC<{ offerPreview: core.OfferPreview }> = ({ offerPreview 
         <DexscreenerLink mint={offerPreview.tokenMarketPreview.collateral.mint} />
         {isOracleMarket && (
           <Tooltip
-            title={`Price feed from the ${_.capitalize(collateral.oraclePriceFeedType)} oracle`}
+            label={`Price feed from the ${_.capitalize(collateral.oraclePriceFeedType)} oracle`}
           >
             {getOracleIcon(collateral.oraclePriceFeedType)}
           </Tooltip>
@@ -238,21 +238,21 @@ const LoansStatus: FC<LoansStatusProps> = ({
 }) => {
   return (
     <div className={styles.loansStatus}>
-      <Tooltip title="Terminating loans">
+      <Tooltip label="Terminating loans">
         <div className={styles.loansStatusIcon}>
           <CoinPlus />
           <span>{terminatingLoansAmount}</span>,
         </div>
       </Tooltip>
 
-      <Tooltip title="Liquidated loans">
+      <Tooltip label="Liquidated loans">
         <div className={styles.loansStatusIcon}>
           <Warning />
           <span>{liquidatedLoansAmount}</span>,
         </div>
       </Tooltip>
 
-      <Tooltip title="Repayment calls">
+      <Tooltip label="Repayment calls">
         <div className={styles.loansStatusIcon}>
           <Coin />
           <span>{repaymentCallsAmount}</span>

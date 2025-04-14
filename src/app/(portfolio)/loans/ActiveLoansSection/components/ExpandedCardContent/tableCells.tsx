@@ -12,7 +12,7 @@ import {
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
 import Timer from '@banx/components/Timer'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { Loan } from '@banx/api'
 import { createMultiplyPairFromCollateral } from '@banx/app/multiply/[ticker]/helpers'
@@ -207,7 +207,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
 
   return (
     <div className={styles.actionsButtons}>
-      <TooltipWrapper title={tooltipTitle} className={styles.tooltip}>
+      <Tooltip label={tooltipTitle} className={styles.tooltip}>
         <Button
           size="medium"
           className={styles.actionSellButton}
@@ -219,7 +219,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, disableActions }) => {
         >
           Sell
         </Button>
-      </TooltipWrapper>
+      </Tooltip>
 
       <Button
         size="medium"

@@ -21,7 +21,7 @@ export const HeaderList = () => {
         {stats.map(({ label, tooltipText }, index) => (
           <div key={index} className={styles.headerAdditionalStat}>
             <span className={styles.headerStatLabel}>{label}</span>
-            {tooltipText && <Tooltip title={tooltipText} />}
+            {tooltipText && <Tooltip label={tooltipText} />}
           </div>
         ))}
       </div>

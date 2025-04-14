@@ -10,7 +10,7 @@ import { Loader } from '@banx/components/Loader'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { UserPortfolio } from '@banx/api/common'
 
@@ -23,11 +23,11 @@ type Position = PositionList[number]
 export const Header: FC<{ totalNetPnl: number }> = ({ totalNetPnl }) => (
   <div className={styles.header}>
     <h4 className={styles.title}>My multiplies</h4>
-    <TooltipWrapper title={<TooltipContent totalNetPnl={totalNetPnl} />}>
+    <Tooltip label={<TooltipContent totalNetPnl={totalNetPnl} />}>
       <Button variant="secondary" size="small">
         History
       </Button>
-    </TooltipWrapper>
+    </Tooltip>
   </div>
 )
 

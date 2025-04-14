@@ -3,7 +3,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 
 import { StatInfo, StatsInfoProps } from '@banx/components/StatInfo'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { deepMergeStyles } from '@banx/utils/common'
 
@@ -26,7 +26,7 @@ export const TokenStats: FC<TokenStatsProps> = ({ ticker, stats }) => {
   return (
     <div className={getStyleWithModifier('customBodyContent', ticker)}>
       {stats.map(({ label, value, tooltip }) => (
-        <TooltipWrapper key={label} title={tooltip} className={styles.customStatContent}>
+        <Tooltip key={label} label={tooltip} className={styles.customStatContent}>
           <StatInfo
             label={label}
             value={value ?? 'N/A'}
@@ -35,7 +35,7 @@ export const TokenStats: FC<TokenStatsProps> = ({ ticker, stats }) => {
               value: getStyleWithModifier('customStatValue', ticker),
             })}
           />
-        </TooltipWrapper>
+        </Tooltip>
       ))}
     </div>
   )

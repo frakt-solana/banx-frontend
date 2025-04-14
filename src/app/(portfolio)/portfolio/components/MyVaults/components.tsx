@@ -10,7 +10,7 @@ import { Loader } from '@banx/components/Loader'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
-import Tooltip, { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { UserPortfolio } from '@banx/api/common'
 
@@ -25,11 +25,11 @@ type AssetMeta = Vault['assets'][number]
 export const Header: FC<{ totalPnl: number }> = ({ totalPnl }) => (
   <div className={styles.header}>
     <h4 className={styles.title}>My vaults</h4>
-    <TooltipWrapper title={<TooltipContent totalPnl={totalPnl} />}>
+    <Tooltip label={<TooltipContent totalPnl={totalPnl} />}>
       <Button variant="secondary" size="small">
         History
       </Button>
-    </TooltipWrapper>
+    </Tooltip>
   </div>
 )
 
@@ -148,7 +148,7 @@ const AssetsLogos: FC<{ assets: AssetMeta[] }> = ({ assets }) => {
   return (
     <div className={styles.assetsLogosContainer}>
       {visibleAssets.map((asset) => (
-        <Tooltip key={asset.name} title={<VisibleAssetTooltip asset={asset} />}>
+        <Tooltip key={asset.name} label={<VisibleAssetTooltip asset={asset} />}>
           <ResponsiveImage
             src={asset.logoUrl}
             alt={asset.name}
@@ -160,7 +160,7 @@ const AssetsLogos: FC<{ assets: AssetMeta[] }> = ({ assets }) => {
       ))}
 
       {hiddenAssets.length > 0 && (
-        <Tooltip title={<HiddenAssetsTooltip assets={hiddenAssets} />}>
+        <Tooltip label={<HiddenAssetsTooltip assets={hiddenAssets} />}>
           <div className={styles.extraAssetsCount}>+{hiddenAssets.length}</div>
         </Tooltip>
       )}

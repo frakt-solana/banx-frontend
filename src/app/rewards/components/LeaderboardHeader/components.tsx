@@ -86,7 +86,7 @@ export const LoyaltyBlock: FC<LoyaltyBlockProps> = ({
         <li>
           <span className={styles.loyaltyListTitle}>
             Boost{' '}
-            <Tooltip title="Only $BANX rewards are boosted by staking Banx NFTs, the more player points staked the higher the boost" />{' '}
+            <Tooltip label="Only $BANX rewards are boosted by staking Banx NFTs, the more player points staked the higher the boost" />{' '}
           </span>
           <span className={styles.loyaltyBoost}>{multiplier}x</span>
         </li>

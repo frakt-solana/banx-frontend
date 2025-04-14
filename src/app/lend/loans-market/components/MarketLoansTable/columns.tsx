@@ -127,7 +127,7 @@ const createRightContentJSX = (loan: Loan) => {
     : 'This loan is available for a limited amount of time'
 
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip label={tooltipText}>
       {isLoanFrozen(loan) ? (
         <Snowflake className={styles.snowflakeIcon} />
       ) : (

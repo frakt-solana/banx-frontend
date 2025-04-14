@@ -53,7 +53,7 @@ export const ProtocolStats = () => {
   )
 
   return (
-    <Tooltip title={tooltipContent}>
+    <Tooltip label={tooltipContent}>
       <div className={styles.protocolStats}>
         <span className={styles.protocolStatsLabel}>TVL:</span>
         <span className={styles.protocolStatsValue}>{createDisplayValue(totalValueLocked)}</span>

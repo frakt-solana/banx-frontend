@@ -9,7 +9,7 @@ import {
   HorizontalCell,
   createPercentValueJSX,
 } from '@banx/components/TableComponents'
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 
 import { Loan } from '@banx/api'
@@ -78,7 +78,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, isCardView, disabledAc
 
   return (
     <div className={classNames(styles.actionsCell, { [styles.cardView]: isCardView })}>
-      <TooltipWrapper title={isOwnLoan ? "You can't lend to your own loan" : ''}>
+      <Tooltip label={isOwnLoan ? "You can't lend to your own loan" : ''}>
         <Button
           className={styles.actionButton}
           onClick={onClickHandler}
@@ -87,7 +87,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, isCardView, disabledAc
         >
           Lend
         </Button>
-      </TooltipWrapper>
+      </Tooltip>
     </div>
   )
 }

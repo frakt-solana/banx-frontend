@@ -6,7 +6,7 @@ export const RPC_HELLOMOON = 'https://rpc.hellomoon.io/51e91377-d146-4f74-bf41-c
 export const RPC_PUBLIC = 'https://solana-mainnet.rpc.extrnode.com/'
 
 export const RPC_ENDPOINTS = [
-  process.env.RPC_LOCALHOST || '',
+  process.env.NEXT_PUBLIC_RPC_LOCALHOST || '',
   RPC_HELIUS,
   RPC_HELLOMOON,
   RPC_QUICKNODE,

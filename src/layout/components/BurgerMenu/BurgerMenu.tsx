@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { TooltipWrapper } from '@banx/components/Tooltip'
+import { Tooltip } from '@banx/components/Tooltip'
 
 import { Burger, BurgerClose, ChevronDown } from '@banx/icons'
 import { buildUrlWithModeAndToken, useTokenType } from '@banx/store'
@@ -96,7 +96,7 @@ const MenuItem: FC<MenuItemProps> = ({
     link.subLinks?.some((subLink) => isPathActive(pathname, subLink.pathname, true))
 
   return (
-    <TooltipWrapper title={link.disabledText}>
+    <Tooltip label={link.disabledText}>
       <div
         onClick={handleClick}
         className={classNames(styles.menuItem, {
@@ -127,7 +127,7 @@ const MenuItem: FC<MenuItemProps> = ({
           />
         )}
       </div>
-    </TooltipWrapper>
+    </Tooltip>
   )
 }
 

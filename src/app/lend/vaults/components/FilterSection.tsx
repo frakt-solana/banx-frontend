@@ -73,7 +73,7 @@ interface FilterButtonProps {
 }
 
 const UserDepositFilterButton: FC<FilterButtonProps> = ({ isActive, onClick, vaultsAmount }) => (
-  <Tooltip title={vaultsAmount ? 'Vaults with your deposits' : 'No active deposits'}>
+  <Tooltip label={vaultsAmount ? 'Vaults with your deposits' : 'No active deposits'}>
     <div
       className={classNames(styles.filterButtonWrapper, styles.userDeposit)}
       data-amount={vaultsAmount > 0 ? vaultsAmount : null}

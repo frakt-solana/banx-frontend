@@ -95,7 +95,7 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
         </span>
       </div>
       {isOracleMarket && (
-        <Tooltip title={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
+        <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
           {getOracleIcon(oraclePriceFeedType)}
         </Tooltip>
       )}
@@ -189,21 +189,21 @@ const LoansStatus: FC<LoansStatusProps> = ({
 }) => {
   return (
     <div className={styles.loansStatus}>
-      <Tooltip title="Liquidated loans">
+      <Tooltip label="Liquidated loans">
         <div className={styles.loansStatusIcon}>
           <CoinCrashed />
           <span>{liquidatedLoansAmount}</span>,
         </div>
       </Tooltip>
 
-      <Tooltip title="Terminating loans">
+      <Tooltip label="Terminating loans">
         <div className={styles.loansStatusIcon}>
           <Warning />
           <span>{terminatingLoansAmount}</span>,
         </div>
       </Tooltip>
 
-      <Tooltip title="Underwater loans">
+      <Tooltip label="Underwater loans">
         <div className={styles.loansStatusIcon}>
           <CoinPlus />
           <span>{underwaterLoansAmount}</span>

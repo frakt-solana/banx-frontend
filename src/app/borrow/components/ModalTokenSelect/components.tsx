@@ -34,7 +34,7 @@ export const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => {
           </span>
         </div>
         {isOracleMarket && (
-          <Tooltip title={`Price feed from the ${_.capitalize(oracleType)} oracle`}>
+          <Tooltip label={`Price feed from the ${_.capitalize(oracleType)} oracle`}>
             {getOracleIcon(oracleType)}
           </Tooltip>
         )}

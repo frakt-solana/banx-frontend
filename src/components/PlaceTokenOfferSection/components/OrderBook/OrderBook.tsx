@@ -70,7 +70,7 @@ interface LabelConfig {
 const Label = ({ title, tooltip }: LabelConfig) => (
   <div className={styles.labelWrapper}>
     <span className={styles.label}>{title}</span>
-    {tooltip && <Tooltip title={tooltip} />}
+    {tooltip && <Tooltip label={tooltip} />}
   </div>
 )
 
