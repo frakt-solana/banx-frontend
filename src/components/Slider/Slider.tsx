@@ -1,120 +1,78 @@
-import { FC, JSX, useMemo } from 'react'
+import { FC, useMemo } from 'react'
 
-import { Slider as SliderAntd } from 'antd'
+import { Slider as MantineSlider } from '@mantine/core'
 import classNames from 'classnames'
-import _ from 'lodash'
+
+import { deepMergeStyles } from '@banx/utils/common'
 
 import Tooltip from '../Tooltip'
+import { DEFAULT_SLIDER_MARKS } from './constants'
+import { formatSliderLabel, getFormattedMarks } from './helpers'
+import { SliderProps } from './types'
 
 import styles from './Slider.module.scss'
 
-const DEFAULT_SLIDER_MARKS = {
-  0: '0%',
-  25: '25%',
-  50: '50%',
-  75: '75%',
-  100: '100%',
-}
-
-export interface SliderProps {
-  label?: string
-  tooltipText?: string
-  labelClassName?: string
-  value: number
-  onChange: (nextValue: number) => void
-  marks?: { [key: number]: string | JSX.Element }
-  step?: number
-  max?: number
-  min?: number
-  className?: string
-  rootClassName?: string
-  disabled?: boolean
-  showValue?: keyof typeof SLIDER_WITH_VALUE_CLASSNAME
-}
-
-//? Described in global silder.scss file
-const SLIDER_WITH_VALUE_CLASSNAME = {
-  number: 'sliderWithValue',
-  percent: 'sliderWithValuePercent',
-  sol: 'sliderWithValueSol',
-  multiplier: 'sliderWithValueMultiplier',
-} as const
-
 export const Slider: FC<SliderProps> = ({
+  value,
+  onChange,
   label,
   labelClassName,
-  value,
+  tooltipText,
+  valueFormat,
   marks = DEFAULT_SLIDER_MARKS,
-  step = 1,
   className,
   rootClassName,
-  showValue,
-  tooltipText,
-  disabled,
-  max = 100,
+  classNames: userClassNames,
   min = 0,
-  ...props
+  max = 100,
+  step = 1,
+  disabled,
+  ...rest
 }) => {
-  const marksFormatted = useMemo(() => {
-    //? If slider handle doesn't show live value -- ignore
-    if (!showValue) {
-      return marks
-    }
+  const mantineMarks = useMemo(() => {
+    const marksFormatted = getFormattedMarks(marks, value, min, max, !!valueFormat)
 
-    const progress = (value - min) / (max - min)
+    return Object.entries(marksFormatted).map(([key, label]) => ({
+      value: parseFloat(key),
+      label,
+    }))
+  }, [marks, max, min, value, valueFormat])
 
-    //? If slider handle shows live value -- show only border labels
-
-    const HIDE_BORDER_LABELS_OFFSET = 0.1
-
-    return _.chain(marks)
-      .entries()
-      .map(([value, label], idx, marks) => {
-        const numberValue = parseFloat(value)
-
-        //? Min value mark
-        if (idx === 0 && numberValue === min) {
-          const showLabel = progress > HIDE_BORDER_LABELS_OFFSET
-          return [value, showLabel ? label : ' ']
-        }
-        //? Max value mark
-        if (idx === marks.length - 1 && numberValue === max) {
-          const showLabel = progress < 1 - HIDE_BORDER_LABELS_OFFSET
-          return [value, showLabel ? label : ' ']
-        }
-
-        //? Remove label from other marks
-        return [value, ' ']
-      })
-      .fromPairs()
-      .value()
-  }, [marks, max, min, showValue, value])
+  const sliderClassNames = deepMergeStyles(
+    {
+      root: styles.mantineSliderRoot,
+      track: styles.mantineSliderTrack,
+      bar: styles.mantineSliderBar,
+      thumb: styles.mantineSliderThumb,
+      markWrapper: styles.mantineSliderMarkWrapper,
+      mark: styles.mantineSliderMark,
+      markLabel: styles.mantineSliderMarkLabel,
+      label: styles.mantineSliderLabel,
+    },
+    userClassNames,
+  )
 
   return (
-    <div className={classNames(styles.slider, { [styles.sliderWithValue]: showValue }, className)}>
+    <div className={classNames(styles.slider, className)}>
       {!!label && (
-        <div className={styles.labels}>
-          <p className={classNames(styles.label, labelClassName)}>{label}</p>
+        <div className={styles.labelWrapper}>
+          <p className={classNames(styles.labelText, labelClassName)}>{label}</p>
           {tooltipText && <Tooltip title={tooltipText} />}
         </div>
       )}
-      <SliderAntd
-        rootClassName={classNames(
-          'rootSliderClassName',
-          { [SLIDER_WITH_VALUE_CLASSNAME[showValue || 'number']]: !!showValue },
-          { ['sliderDisabled']: disabled },
-          rootClassName,
-        )}
-        marks={marksFormatted}
-        disabled={disabled}
-        step={step}
-        tooltip={{
-          open: false,
-        }}
-        max={max}
-        min={min}
+      <MantineSlider
         value={value}
-        {...props}
+        onChange={onChange}
+        marks={mantineMarks}
+        classNames={sliderClassNames}
+        label={valueFormat ? (v) => formatSliderLabel(valueFormat, v) : () => null}
+        labelAlwaysOn={!!valueFormat}
+        min={min}
+        max={max}
+        step={step}
+        size="xs"
+        disabled={disabled}
+        {...rest}
       />
     </div>
   )

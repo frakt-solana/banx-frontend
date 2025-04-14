@@ -1,17 +1,14 @@
 .slider {
-  padding: 2px 0;
-}
-.sliderWithValue {
-  padding: 0 0 10px;
+  padding: 2px 0 8px;
 }
 
-.labels {
+.labelWrapper {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.label {
+.labelText {
   color: var(--content-secondary);
   font: var(--important-text-sm);
   text-transform: uppercase;
@@ -53,4 +50,62 @@
     max-width: 58px;
     min-width: 58px;
   }
+}
+
+//? Mantine slider
+.mantineSliderTrack {
+  &::before {
+    background: var(--accent-primary-sub);
+  }
+
+  &[data-disabled='true'] {
+    &::before {
+      background: var(--content-secondary);
+    }
+  }
+}
+
+.mantineSliderBar {
+  background: var(--accent-primary);
+
+  &[data-disabled='true'] {
+    background: var(--content-secondary);
+  }
+}
+
+.mantineSliderThumb {
+  border: 2px solid var(--accent-primary);
+  height: 14px;
+  width: 14px;
+
+  &[data-disabled='true'] {
+    border: 2px solid var(--content-secondary);
+    display: unset;
+  }
+}
+
+.mantineSliderMarkWrapper {
+  top: -2px;
+}
+
+.mantineSliderMark {
+  border-color: var(--accent-primary-sub);
+  height: 8px;
+  width: 8px;
+
+  &[data-filled='true'] {
+    border-color: var(--accent-primary);
+  }
+}
+
+.mantineSliderMarkLabel {
+  color: var(--content-primary);
+  font: var(--body-text-sm);
+}
+
+.mantineSliderLabel {
+  background-color: transparent;
+  color: var(--content-primary);
+  font: var(--body-text-sm);
+  top: 10px;
 }

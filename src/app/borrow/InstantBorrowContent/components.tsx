@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 
 import { useWallet } from '@solana/wallet-adapter-react'
-import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
 import { Slider, SliderProps } from '@banx/components/Slider'
@@ -117,21 +116,21 @@ export const LtvSlider: FC<LtvSliderProps> = ({
     debouncedSetLtvSlider(newValue)
   }
 
-  const sliderColorClassName = getColorByPercent(localSliderValue, {
+  const sliderThumbStyles = getColorByPercent(localSliderValue, {
     25: styles.maxLtvSliderGreen,
     50: styles.maxLtvSliderYellow,
     75: styles.maxLtvSliderOrange,
     100: styles.maxLtvSliderRed,
   })
 
-  const getSliderRailClassName = (value: number): string => {
+  const getSliderTrackStyles = (value: number): string => {
     if (value <= 25) return styles.sliderRailGreen
     if (value <= 50) return styles.sliderRailYellow
     if (value <= 75) return styles.sliderRailOrange
     return styles.sliderRailRed
   }
 
-  const sliderRailClassName = getSliderRailClassName(maxAvailableLtv)
+  const sliderTrackStyles = getSliderTrackStyles(maxAvailableLtv)
   const labelColor = getColorByPercent(localSliderValue, HealthColorIncreasing)
 
   return (
@@ -151,9 +150,12 @@ export const LtvSlider: FC<LtvSliderProps> = ({
         min={10}
         max={maxAvailableLtv}
         marks={{}}
-        rootClassName={sliderColorClassName}
-        className={classNames(styles.ltvSlider, sliderRailClassName)}
         {...props}
+        classNames={{
+          track: sliderTrackStyles,
+          thumb: sliderThumbStyles,
+          bar: styles.sliderBar,
+        }}
       />
     </div>
   )

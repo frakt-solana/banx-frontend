@@ -3,7 +3,8 @@ import { FC } from 'react'
 import classNames from 'classnames'
 
 import { NumericStepInput } from '../inputs'
-import { Slider, SliderProps } from './Slider'
+import { Slider } from './Slider'
+import { SliderProps } from './types'
 
 import styles from './Slider.module.scss'
 

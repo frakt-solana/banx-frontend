@@ -233,28 +233,11 @@
   padding: 12px 24px;
 }
 
-.ltvSlider :global {
-  .sliderDisabled {
-    .ant-slider-handle {
-      border-color: var(--content-secondary) !important;
-    }
-
-    .ant-slider-track {
-      display: none;
-    }
-  }
-
-  .ant-slider-track {
-    border: 0 !important;
-    background: transparent !important;
-  }
-}
-
-.sliderRailGreen :global(.ant-slider-rail) {
+.sliderRailGreen::before {
   background: var(--accent-primary) !important;
 }
 
-.sliderRailYellow :global(.ant-slider-rail) {
+.sliderRailYellow::before {
   background: linear-gradient(
     to right,
     var(--accent-primary),
@@ -262,7 +245,7 @@
   ) !important;
 }
 
-.sliderRailOrange :global(.ant-slider-rail) {
+.sliderRailOrange::before {
   background: linear-gradient(
     to right,
     var(--accent-primary),
@@ -271,7 +254,7 @@
   ) !important;
 }
 
-.sliderRailRed :global(.ant-slider-rail) {
+.sliderRailRed::before {
   background: linear-gradient(
     to right,
     var(--accent-primary),
@@ -279,6 +262,10 @@
     var(--additional-orange-primary),
     var(--additional-red-primary)
   ) !important;
+}
+
+.sliderBar {
+  display: none;
 }
 
 .sliderLabels {
@@ -314,11 +301,7 @@
 }
 
 @mixin ltvSliderColor($color: var(--accent-primary)) {
-  :global {
-    .ant-slider-handle {
-      border-color: #{$color} !important;
-    }
-  }
+  border-color: #{$color} !important;
 }
 
 .maxLtvSliderGreen {

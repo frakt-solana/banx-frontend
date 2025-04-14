@@ -161,7 +161,7 @@ const MultiplierSliderComponent: FC<MultiplierSliderProps> = ({
         max={maxMultiplier}
         step={1}
         marks={marks}
-        showValue="multiplier"
+        valueFormat="multiplier"
         className={classNames(styles.multiplierSlider, {
           [styles.multiplierSliderDisabled]: sliderDisabled,
         })}
