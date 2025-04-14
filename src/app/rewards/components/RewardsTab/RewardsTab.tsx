@@ -55,8 +55,8 @@ const ClaimRewardsBlock: FC<ClaimRewardsBlockProps> = ({ totalWeekRewards }) => 
         <div className={styles.partnersInfoWrapper}>
           <p className={styles.blockTitle}>Powered by</p>
           <div className={styles.partnersImages}>
-            <ResponsiveImage src={BanxImg} alt="Banx" />
-            <ResponsiveImage src={AnybodiesImg} alt="Anybodies" />
+            <ResponsiveImage src={BanxImg.src} alt="Banx" />
+            <ResponsiveImage src={AnybodiesImg.src} alt="Anybodies" />
           </div>
         </div>
       </div>

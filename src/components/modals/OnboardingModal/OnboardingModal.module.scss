@@ -103,6 +103,10 @@ $animation-duration: 0.3s;
   }
 }
 
+.carouselRoot {
+  padding: 12px;
+}
+
 .slide {
   user-select: none;
   width: 100%;

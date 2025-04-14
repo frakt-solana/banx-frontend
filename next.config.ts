@@ -6,7 +6,14 @@ const withAnalyzer = withBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
-  webpack: (config) => {
+  webpack: (config, options) => {
+    if (options.dev) {
+      Object.defineProperty(config, 'devtool', {
+        get: () => 'source-map',
+        set: () => null,
+      })
+    }
+
     config.resolve.fallback = {
       ...(config.resolve.fallback || {}),
       assert: require.resolve('assert'),

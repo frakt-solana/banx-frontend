@@ -34,7 +34,11 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({
     <Modal opened onClose={onCancel} classNames={{ body: styles.modalBody }}>
       <div className={styles.modalContent}>
         <h3 className={styles.title}>{content.title}</h3>
-        <Carousel draggable={content.slides.length > 1} withControls={content.slides.length > 1}>
+        <Carousel
+          draggable={content.slides.length > 1}
+          withControls={content.slides.length > 1}
+          classNames={{ root: styles.carouselRoot }}
+        >
           {content.slides.map(({ text, img, imgDark }, idx) => (
             <Carousel.Slide
               className={classNames(styles.slide, { [styles.darkSlide]: isDarkMode })}
