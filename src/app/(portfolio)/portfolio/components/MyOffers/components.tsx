@@ -16,7 +16,7 @@ import styles from './MyOffers.module.scss'
 export const Header: FC<{ offers: UserPortfolio['offers'] | undefined }> = ({ offers }) => (
   <div className={styles.allocationHeader}>
     <h4 className={styles.heading}>My offers</h4>
-    <Tooltip label={<TooltipContent data={offers?.historical} />} overlayClassName={styles.tooltip}>
+    <Tooltip label={<TooltipContent data={offers?.historical} />}>
       <Button variant="secondary" size="small">
         History
       </Button>

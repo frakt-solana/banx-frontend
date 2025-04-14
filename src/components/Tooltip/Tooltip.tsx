@@ -3,8 +3,6 @@ import { FC, ReactNode } from 'react'
 import { Tooltip as MantineTooltip, TooltipProps as MantineTooltipProps } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 
-import styles from './Tooltip.module.scss'
-
 export type TooltipProps = Omit<MantineTooltipProps, 'children'> & {
   children?: ReactNode
 }
@@ -22,12 +20,7 @@ export const Tooltip: FC<TooltipProps> = ({
   }
 
   return (
-    <MantineTooltip
-      {...rest}
-      label={label}
-      position={position}
-      classNames={{ tooltip: styles.tooltip }}
-    >
+    <MantineTooltip {...rest} label={label} position={position}>
       <span style={{ all: 'unset', display: 'inline-flex' }}>{children || fallback}</span>
     </MantineTooltip>
   )

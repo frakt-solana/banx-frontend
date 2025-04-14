@@ -90,7 +90,6 @@ export const LiquidationLtvCell: FC<LiquidationLtvCellProps> = ({
         onChange={(value) => setTempLiquidationLtv(value)}
         onBlur={() => onSave(loan)}
         placeholder="0"
-        autoFocus
       />
     )
   }

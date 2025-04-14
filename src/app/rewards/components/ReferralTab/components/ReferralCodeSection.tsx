@@ -44,6 +44,7 @@ export const ReferralCodeSection = () => {
         <div className={styles.referralCodeContent}>
           <ReferralInput
             label="Your referral code"
+            onChange={() => null}
             value={refCode}
             actionButton={{ text: 'Copy', icon: Copy, onClick: handleCopyRefCode }}
             className={styles.referralInput}

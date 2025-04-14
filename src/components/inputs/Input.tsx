@@ -18,9 +18,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <MantineInput
+      unstyled
       ref={ref}
       error={error}
-      classNames={{ input: classNames(styles.input, className) }}
+      classNames={{ input: classNames(styles.input, className), wrapper: styles.inputWrapper }}
       {...rest}
     />
   )

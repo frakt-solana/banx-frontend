@@ -17,7 +17,23 @@ import '@mantine/notifications/styles.css'
 
 export function BanxProviders({ children }: { children: ReactNode }) {
   return (
-    <MantineProvider>
+    <MantineProvider
+      theme={{
+        components: {
+          Tooltip: {
+            styles: {
+              tooltip: {
+                maxWidth: 320,
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+                backgroundColor: 'var(--pure-black)',
+                borderRadius: '4px',
+              },
+            },
+          },
+        },
+      }}
+    >
       <Notifications />
       <ErrorBoundary>
         <QueryProvider>
