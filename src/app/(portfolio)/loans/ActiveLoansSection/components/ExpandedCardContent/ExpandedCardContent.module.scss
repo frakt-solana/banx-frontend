@@ -133,21 +133,6 @@
   }
 }
 
-.summarySliderContainer {
-  @media (max-width: 1120px) {
-    order: 2;
-    flex-direction: row-reverse;
-  }
-
-  @media (max-width: 640px) {
-    min-width: 164px;
-  }
-}
-
-.summarySlider {
-  padding-bottom: 18px;
-}
-
 .summaryActionButton {
   min-width: 176px;
 

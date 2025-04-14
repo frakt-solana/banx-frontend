@@ -170,9 +170,7 @@ const ExpandedCardContent: FC<ExpandedCardContentProps> = ({ loans }) => {
 
       <Summary
         loansToClaim={loansToClaim}
-        loansToTerminate={loansToTerminate}
         selectedLoansOptimistics={selectedLoans}
-        setSelection={setSelection}
         lendingToken={lendingToken}
       />
     </>

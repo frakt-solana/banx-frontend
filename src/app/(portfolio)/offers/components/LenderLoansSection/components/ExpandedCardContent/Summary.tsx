@@ -1,11 +1,9 @@
 import { FC, useMemo } from 'react'
 
-import { useWallet } from '@solana/wallet-adapter-react'
 import classNames from 'classnames'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 
 import { Button } from '@banx/components/Buttons'
-import { CounterSlider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue } from '@banx/components/TableComponents'
 
@@ -18,20 +16,15 @@ import styles from './ExpandedCardContent.module.scss'
 
 interface SummaryProps {
   loansToClaim: Loan[]
-  loansToTerminate: Loan[]
   selectedLoansOptimistics: LoanOptimistic[]
-  setSelection: (loans: Loan[], walletPublicKey: string) => void
   lendingToken: LendingTokenType
 }
 
 export const Summary: FC<SummaryProps> = ({
   loansToClaim,
-  loansToTerminate,
   selectedLoansOptimistics,
-  setSelection,
   lendingToken,
 }) => {
-  const { publicKey: walletPublicKey } = useWallet()
   const { claimTokenLoans, terminateTokenLoans } = useLenderLoansTxns()
 
   const selectedLoans = useMemo(
@@ -39,13 +32,7 @@ export const Summary: FC<SummaryProps> = ({
     [selectedLoansOptimistics],
   )
 
-  const { totalSelectedLoans, totalClaim, totalInterest, weightedApr, weightedLtv } =
-    calculateLoansStats(selectedLoans)
-
-  const handleLoanSelection = (value = 0) => {
-    const selectedLoansSubset = loansToTerminate.slice(0, value)
-    setSelection(selectedLoansSubset, walletPublicKey?.toBase58() || '')
-  }
+  const { totalClaim, totalInterest, weightedApr, weightedLtv } = calculateLoansStats(selectedLoans)
 
   return (
     <div className={styles.summary}>
@@ -95,26 +82,14 @@ export const Summary: FC<SummaryProps> = ({
         />
       </div>
 
-      <div className={styles.summaryControls}>
-        <CounterSlider
-          label="# Loans"
-          value={totalSelectedLoans}
-          onChange={(value) => handleLoanSelection(value)}
-          rootClassName={styles.summarySlider}
-          className={styles.summarySliderContainer}
-          disabled={!loansToTerminate.length}
-          max={loansToTerminate.length}
-        />
-
-        <Button
-          className={styles.summaryActionButton}
-          onClick={() => terminateTokenLoans(selectedLoans)}
-          disabled={!selectedLoans.length}
-          variant="secondary"
-        >
-          Terminate
-        </Button>
-      </div>
+      <Button
+        className={styles.summaryActionButton}
+        onClick={() => terminateTokenLoans(selectedLoans)}
+        disabled={!selectedLoans.length}
+        variant="secondary"
+      >
+        Terminate
+      </Button>
     </div>
   )
 }

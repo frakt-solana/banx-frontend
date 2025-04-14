@@ -131,35 +131,6 @@
   }
 }
 
-.summaryControls {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  @media (max-width: 1120px) {
-    width: 100%;
-  }
-
-  @media (max-width: 640px) {
-    gap: 8px;
-  }
-}
-
-.summarySliderContainer {
-  @media (max-width: 1120px) {
-    order: 2;
-    flex-direction: row-reverse;
-  }
-
-  @media (max-width: 640px) {
-    min-width: 164px;
-  }
-}
-
-.summarySlider {
-  padding-bottom: 18px;
-}
-
 .summaryActionButton {
   min-width: 148px;
 

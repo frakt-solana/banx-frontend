@@ -1,10 +1,8 @@
 import { FC, useMemo } from 'react'
 
-import { useWallet } from '@solana/wallet-adapter-react'
 import classNames from 'classnames'
 
 import { Button } from '@banx/components/Buttons'
-import { CounterSlider } from '@banx/components/Slider'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
 import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
 
@@ -18,11 +16,9 @@ import styles from './ExpandedCardContent.module.scss'
 interface SummaryProps {
   loans: Loan[]
   selectedLoansOptimistics: LoanOptimistic[]
-  setSelection: (loans: Loan[], walletPublicKey: string) => void
 }
 
-export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics, setSelection }) => {
-  const { publicKey: walletPublicKey } = useWallet()
+export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics }) => {
   const { repayAllLoans, repayUnpaidLoansInterest } = useLoansTxns()
 
   const lendingToken = loans[0].bondTradeTransaction.lendingToken
@@ -34,11 +30,6 @@ export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics, set
 
   const { totalSelectedLoans, totalDebt, totalWeeklyFee, totalValueToPay, weightedApr } =
     calculateLoansStats(selectedLoans)
-
-  const handleLoanSelection = (value = 0) => {
-    const selectedLoansSubset = loans.slice(0, value)
-    setSelection(selectedLoansSubset, walletPublicKey?.toBase58() || '')
-  }
 
   const classNamesProps = {
     container: classNames(styles.summaryAdditionalStat, styles.summaryHiddenStat),
@@ -76,15 +67,6 @@ export const Summary: FC<SummaryProps> = ({ loans, selectedLoansOptimistics, set
       </div>
 
       <div className={styles.summaryControls}>
-        <CounterSlider
-          label="# Loans"
-          value={totalSelectedLoans}
-          onChange={(value) => handleLoanSelection(value)}
-          rootClassName={styles.summarySlider}
-          className={styles.summarySliderContainer}
-          max={loans.length}
-        />
-
         <Button
           onClick={repayUnpaidLoansInterest}
           variant="secondary"
