@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
+import { IconMinus, IconPlus } from '@tabler/icons-react'
 import classNames from 'classnames'
 
 import NumericInput, { NumericInputProps } from './NumericInput'
@@ -77,7 +77,7 @@ export const InputCounter: FC<InputCounterProps> = ({
         <CounterButton
           disabled={!isValueGreaterThanOne || disabled}
           onClick={decreaseValue}
-          icon={MinusOutlined}
+          icon={IconMinus}
         />
         <NumericInput
           className={styles.inputCounter}
@@ -88,7 +88,7 @@ export const InputCounter: FC<InputCounterProps> = ({
           positiveOnly
           integerOnly
         />
-        <CounterButton onClick={increaseValue} icon={PlusOutlined} disabled={disabled} />
+        <CounterButton onClick={increaseValue} icon={IconPlus} disabled={disabled} />
       </div>
     </div>
   )

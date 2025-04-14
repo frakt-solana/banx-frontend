@@ -10,6 +10,15 @@
   }
 }
 
+.searchIcon {
+  min-width: 16px;
+  min-height: 16px;
+
+  path {
+    fill: transparent;
+  }
+}
+
 .searchText {
   @media (max-width: 640px) {
     display: none;

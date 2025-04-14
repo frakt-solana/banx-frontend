@@ -1,32 +1,19 @@
-body .input {
+.input {
   background: var(--action-primary);
   border-radius: 6px;
   color: var(--content-primary);
   font: var(--body-text-md);
-  outline: none;
-  transition: none;
   padding: 8px 12px;
   height: 32px;
+  border: none;
 
-  &,
   &:hover,
   &:focus,
   &:focus-visible {
+    background-color: var(--action-secondary);
     border: none;
-    background-color: unset;
-  }
-
-  &,
-  &:global(.ant-input:focus),
-  &:global(.ant-input-focused) {
-    box-shadow: unset;
-  }
-
-  &:focus,
-  &:focus-visible,
-  &:global(.ant-input:focus),
-  &:global(.ant-input-focused) {
-    background: var(--action-secondary);
+    outline: none;
+    box-shadow: none;
   }
 
   &::placeholder {
@@ -37,10 +24,6 @@ body .input {
     background: var(--action-tertiary);
     color: var(--content-secondary);
     pointer-events: none;
-
-    svg path {
-      fill: var(--content-secondary);
-    }
   }
 
   @media (max-width: 640px) {

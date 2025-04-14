@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 
-import { SearchOutlined } from '@ant-design/icons'
+import { IconSearch } from '@tabler/icons-react'
 
 import { useOnClickOutside } from '@banx/hooks'
 import { CloseModal } from '@banx/icons'
@@ -65,7 +65,8 @@ interface CollapsedContentProps {
 
 export const CollapsedContent: FC<CollapsedContentProps> = ({ onClick }) => (
   <Button className={styles.collapsedButton} type="circle" variant="tertiary" onClick={onClick}>
-    <SearchOutlined /> <span className={styles.searchText}>Search</span>
+    <IconSearch className={styles.searchIcon} />
+    <span className={styles.searchText}>Search</span>
   </Button>
 )
 

@@ -85,12 +85,6 @@
   &.rotated {
     transform: rotate(180deg);
   }
-
-  svg {
-    fill: var(--accent-primary);
-    width: 18px;
-    height: 18px;
-  }
 }
 // * EscrowTabs * //
 

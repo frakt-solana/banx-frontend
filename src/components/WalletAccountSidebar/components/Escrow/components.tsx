@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { CaretRightOutlined } from '@ant-design/icons'
+import { IconChevronRight } from '@tabler/icons-react'
 import classNames from 'classnames'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
@@ -40,7 +40,7 @@ export const EscrowTabs: FC<EscrowTabsProps> = ({ tab, setTab, escrowBalance, wa
         onClick={() => setTab(TabName.Wallet)}
       />
       <div className={classNames(styles.arrow, { [styles.rotated]: tab === TabName.Escrow })}>
-        <CaretRightOutlined />
+        <IconChevronRight color="var(--accent-primary)" size={18} />
       </div>
       <EscrowTab
         label="Escrow balance"

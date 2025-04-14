@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useEffect, useMemo, useRef, useState } from 'react'
 
-import { SearchOutlined } from '@ant-design/icons'
 import { useWallet } from '@solana/wallet-adapter-react'
+import { IconSearch } from '@tabler/icons-react'
 
 import { Input } from '@banx/components/inputs/Input'
 import { Modal } from '@banx/components/modals/BaseModal'
@@ -66,7 +66,7 @@ const ModalTokenSelect = ({
   return (
     <Modal opened onClose={closeModal}>
       <div className={styles.searchInputWrapper}>
-        <SearchOutlined className={styles.searchIcon} />
+        <IconSearch className={styles.searchIcon} color="var(--content-secondary)" size={16} />
         <Input
           ref={internalRef}
           value={searchInput}

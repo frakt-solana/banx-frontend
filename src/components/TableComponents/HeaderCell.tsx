@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { CaretDownFilled, CaretUpFilled } from '@ant-design/icons'
+import { IconChevronDown, IconChevronUp } from '@tabler/icons-react'
 import classNames from 'classnames'
 
 import { SortOrder } from '../SortDropdown'
@@ -64,17 +64,20 @@ interface SortIconsProps {
   sortDirection: SortOrder | undefined
 }
 
-const SortIcons: FC<SortIconsProps> = ({ isActive, sortDirection }) => (
-  <span className={styles.sortIcon}>
-    <CaretUpFilled
-      className={classNames(styles.arrowIcon, {
-        [styles.active]: isActive && sortDirection === 'asc',
-      })}
-    />
-    <CaretDownFilled
-      className={classNames(styles.arrowIcon, {
-        [styles.active]: isActive && sortDirection === 'desc',
-      })}
-    />
-  </span>
-)
+const SortIcons: FC<SortIconsProps> = ({ isActive, sortDirection }) => {
+  const isAscActive = isActive && sortDirection === 'asc'
+  const isDescActive = isActive && sortDirection === 'desc'
+
+  return (
+    <span className={styles.sortIcon}>
+      <IconChevronUp
+        color={isAscActive ? 'var(--content-primary)' : 'var(--content-secondary)'}
+        size={8}
+      />
+      <IconChevronDown
+        color={isDescActive ? 'var(--content-primary)' : 'var(--content-secondary)'}
+        size={8}
+      />
+    </span>
+  )
+}

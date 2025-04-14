@@ -29,20 +29,6 @@
   flex-direction: column;
 }
 
-.arrowIcon {
-  svg {
-    fill: var(--content-secondary);
-    height: 7px;
-    width: 7px;
-  }
-
-  &.active {
-    svg {
-      fill: var(--content-primary);
-    }
-  }
-}
-
 .activityTime {
   color: var(--content-primary);
   font: var(--body-text-md);
@@ -95,12 +81,6 @@
   &.highlight {
     color: var(--additional-green-primary-deep);
   }
-}
-
-.rowCellTooltipIcon svg {
-  fill: var(--content-secondary);
-  width: 13px;
-  height: 13px;
 }
 
 .displayValue {

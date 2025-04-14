@@ -1,28 +1,27 @@
-import { ChangeEvent, Ref, forwardRef } from 'react'
+import { ChangeEvent, FocusEvent, forwardRef } from 'react'
 
-import { Input as InputAnt, InputProps as InputPropsAnt, InputRef } from 'antd'
+import { Input as MantineInput, InputProps as MantineInputProps } from '@mantine/core'
 import classNames from 'classnames'
 
 import styles from './Inputs.module.scss'
 
-export interface InputProps extends InputPropsAnt {
-  error?: boolean
+export interface InputProps extends Omit<MantineInputProps, 'value' | 'onChange'> {
+  value: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void
+  placeholder?: string
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
-  const { className, error, ...inputProps } = props
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const { className, error, ...rest } = props
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (inputProps.onChange) {
-      inputProps.onChange(event)
-    }
-  }
   return (
-    <InputAnt
-      className={classNames(styles.input, className)}
-      ref={forwardedRef as Ref<InputRef>}
-      {...inputProps}
-      onChange={handleChange}
+    <MantineInput
+      ref={ref}
+      error={error}
+      classNames={{ input: classNames(styles.input, className) }}
+      {...rest}
     />
   )
 })

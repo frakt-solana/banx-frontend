@@ -1,6 +1,6 @@
 import { FC, JSX, ReactNode } from 'react'
 
-import { InfoCircleOutlined } from '@ant-design/icons'
+import { IconInfoCircle } from '@tabler/icons-react'
 import classNames from 'classnames'
 
 import Tooltip from '../Tooltip'
@@ -41,7 +41,7 @@ export const HorizontalCell: FC<HorizontalCellProps> = ({
     <div className={styles.rowCell}>
       <Tooltip label={tooltipContent}>
         {cellContent}
-        <InfoCircleOutlined className={styles.rowCellTooltipIcon} />
+        <IconInfoCircle size={14} color="var(--content-secondary)" />
       </Tooltip>
     </div>
   ) : (
