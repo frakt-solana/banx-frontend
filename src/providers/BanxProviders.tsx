@@ -8,6 +8,7 @@ import { Notifications } from '@mantine/notifications'
 import { ErrorBoundary } from '@banx/components/ErrorBoundary'
 
 import { DialectProvider } from './dialect'
+import { mantineTheme } from './mantine'
 import { QueryProvider } from './query'
 import { SolanaConnectionWalletProvider } from './solana'
 
@@ -17,23 +18,7 @@ import '@mantine/notifications/styles.css'
 
 export function BanxProviders({ children }: { children: ReactNode }) {
   return (
-    <MantineProvider
-      theme={{
-        components: {
-          Tooltip: {
-            styles: {
-              tooltip: {
-                maxWidth: 320,
-                whiteSpace: 'normal',
-                wordBreak: 'break-word',
-                backgroundColor: 'var(--pure-black)',
-                borderRadius: '4px',
-              },
-            },
-          },
-        },
-      }}
-    >
+    <MantineProvider theme={mantineTheme}>
       <Notifications />
       <ErrorBoundary>
         <QueryProvider>
