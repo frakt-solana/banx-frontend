@@ -1,0 +1,6 @@
+.skeleton {
+  &::before,
+  &::after {
+    background-color: var(--action-primary) !important;
+  }
+}
