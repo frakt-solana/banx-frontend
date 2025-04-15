@@ -1,7 +1,7 @@
 .modal {
-  border-radius: 6px;
-  background-color: var(--bg-tertiary);
-  color: var(--content-primary);
+  border-radius: 6px !important;
+  background-color: var(--bg-tertiary) !important;
+  color: var(--content-primary) !important;
 
   @media (max-width: 960px) {
     border-radius: 6px 6px 0 0;

@@ -21,10 +21,10 @@ $animation-duration: 0.3s;
 }
 
 .modalBody {
-  padding: 24px;
+  padding: 24px !important;
 
   @media (max-width: 960px) {
-    padding: 16px;
+    padding: 16px !important;
   }
 }
 
@@ -39,41 +39,6 @@ $animation-duration: 0.3s;
   }
 
   animation: $animation-duration linear modalAppear;
-
-  :global {
-    .slick-dots li button {
-      background: var(--content-primary) !important;
-    }
-
-    .slick-dots li.slick-active {
-      width: 16px !important;
-    }
-
-    .slick-track:focus-visible {
-      outline: none !important;
-    }
-
-    .slick-arrow {
-      width: 42px !important;
-      height: 42px !important;
-      margin-top: -64px !important;
-      transform: rotate(90deg);
-      inset-inline-start: 0;
-      z-index: 1;
-
-      path {
-        fill: var(--content-primary);
-      }
-    }
-    .slick-next {
-      transform: rotate(-90deg);
-      inset-inline-end: 0;
-      inset-inline-start: unset;
-    }
-    .slick-disabled {
-      opacity: 0;
-    }
-  }
 }
 
 @keyframes modalAppear {
