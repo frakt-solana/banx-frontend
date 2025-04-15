@@ -1,4 +1,4 @@
-import { Instruction, QuoteResponse, SwapApi, createJupiterApiClient } from '@jup-ag/api'
+import { Instruction, QuoteResponse, DefaultApi, createJupiterApiClient } from '@jup-ag/api'
 import { BN, web3 } from 'fbonds-core'
 import { BASE_POINTS, LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import {
@@ -162,7 +162,7 @@ export const createLeverageTxnData: CreateLeverageTxnData = async (params, walle
 }
 
 const getJupSwapIxns = async (params: {
-  jupiterQuoteApi: SwapApi
+  jupiterQuoteApi: DefaultApi
   quote: QuoteResponse
   walletPublicKey: web3.PublicKey
 }) => {

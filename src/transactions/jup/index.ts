@@ -1,4 +1,4 @@
-import { SwapApi, Instruction, QuoteResponse } from '@jup-ag/api'
+import { Instruction, QuoteResponse, DefaultApi } from '@jup-ag/api'
 import { web3 } from 'fbonds-core'
 
 export const deserializeJupInstruction = (instruction: Instruction) => {
@@ -14,7 +14,7 @@ export const deserializeJupInstruction = (instruction: Instruction) => {
 }
 
 export const getJupSwapIxns = async (params: {
-  jupiterQuoteApi: SwapApi
+  jupiterQuoteApi: DefaultApi
   quote: QuoteResponse
   walletPublicKey: web3.PublicKey
 }) => {

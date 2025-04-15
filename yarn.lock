@@ -1137,10 +1137,10 @@
   resolved "https://registry.yarnpkg.com/@js-sdsl/ordered-map/-/ordered-map-4.4.2.tgz#9299f82874bab9e4c7f9c48d865becbfe8d6907c"
   integrity sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==
 
-"@jup-ag/api@^6.0.24":
-  version "6.0.40"
-  resolved "https://registry.yarnpkg.com/@jup-ag/api/-/api-6.0.40.tgz#4a6c9f738e60f5c6897999862c8575f0fce9662d"
-  integrity sha512-iHDOY5YiCnt+XvqCoiPTKcYWIpAY7nmeo3Rsr1Cx2sdjgqTRjqNsYtLLvjTOO33pemVz5h+U0GaU2vc9zeyjew==
+"@jup-ag/api@6.0.24":
+  version "6.0.24"
+  resolved "https://registry.yarnpkg.com/@jup-ag/api/-/api-6.0.24.tgz#c311ea05c7b18a6372471c48e6508b68ad79271c"
+  integrity sha512-zIX4WIPb0Kb2UnK2wNIOQBWqPJyMJq/D9dQTf/2qvPb0hfa8XdgbrQAzomHMHnAzw9StMQoybBk+JK/A76xP3w==
 
 "@keystonehq/alias-sampling@^0.1.1":
   version "0.1.2"

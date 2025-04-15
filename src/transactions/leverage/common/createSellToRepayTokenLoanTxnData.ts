@@ -1,4 +1,4 @@
-import { QuoteResponse, SwapApi, createJupiterApiClient } from '@jup-ag/api'
+import { QuoteResponse, DefaultApi, createJupiterApiClient } from '@jup-ag/api'
 import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
 import { sellToRepay } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
@@ -105,7 +105,7 @@ export const parseSellToRepayTokenLoanSimulatedAccounts = (
 type FetchQuoteProps = (props: {
   loan: Loan
   pair: MultiplyPair
-  jupiterClient: SwapApi
+  jupiterClient: DefaultApi
   slippageBps: number
   swapWarningHandler?: (message: string) => void
 }) => Promise<QuoteResponse | null>
