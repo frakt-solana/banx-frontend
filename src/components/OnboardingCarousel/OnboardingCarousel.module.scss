@@ -4,32 +4,13 @@
   width: 100%;
 }
 
-.carouselContent {
+.carouselRoot {
   background: var(--bg-primary);
   border-radius: 12px;
+}
 
-  :global {
-    .slick-dots li button {
-      background: var(--content-primary) !important;
-    }
-
-    .slick-dots li.slick-active {
-      width: 16px !important;
-    }
-
-    .slick-track:focus-visible {
-      outline: none !important;
-    }
-
-    .slick-next {
-      transform: rotate(-90deg);
-      inset-inline-end: 0;
-      inset-inline-start: unset;
-    }
-    .slick-disabled {
-      opacity: 0;
-    }
-  }
+.carouselIndicator {
+  background: var(--content-primary);
 }
 // * OnboardingCarousel * //
 

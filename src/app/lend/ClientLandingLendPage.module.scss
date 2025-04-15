@@ -1,0 +1,189 @@
+// * LendTokenLandingPage * //
+.landingPageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0;
+
+  @media (max-width: 1240px) {
+    padding: 24px 0;
+  }
+}
+
+.landingPageSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 24px;
+
+  @media (max-width: 1240px) {
+    flex-direction: column;
+  }
+}
+
+.introSection {
+  max-width: 516px;
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+
+  h3 {
+    font: var(--title-3xl);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+
+    @media (max-width: 1240px) {
+      font: var(--title-2xl);
+    }
+
+    @media (max-width: 640px) {
+      font: var(--title-xl);
+    }
+  }
+
+  p {
+    font: var(--body-text-xl);
+
+    @media (max-width: 1240px) {
+      font: var(--body-text-lg);
+    }
+
+    @media (max-width: 640px) {
+      font: var(--body-text-md);
+    }
+  }
+}
+
+.overviewContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+  gap: 24px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(246px, 1fr));
+    gap: 16px;
+  }
+}
+// * LendTokenLandingPage * //
+
+// * OverviewBlock *//
+.overviewBlock {
+  background-color: var(--action-primary);
+  border-radius: 12px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 100%;
+
+  &:hover button {
+    border-color: var(--accent-primary);
+  }
+
+  button {
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    padding: 16px;
+
+    button {
+      margin-top: 12px;
+      height: 24px !important;
+    }
+  }
+}
+
+.overviewBlockHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+
+  h3 {
+    font: var(--title-xl);
+    text-transform: uppercase;
+
+    @media (max-width: 640px) {
+      font: var(--title-md);
+    }
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
+
+    path {
+      fill: var(--content-primary);
+    }
+
+    @media (max-width: 640px) {
+      height: 18px;
+      width: 18px;
+    }
+  }
+}
+
+.apyContainer {
+  background-color: var(--bg-primary);
+  gap: 8px;
+
+  display: flex;
+  align-items: center;
+  margin: 12px -24px;
+  padding: 16px;
+
+  span {
+    font: var(--important-text-2xl);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 640px) {
+    margin: 8px -16px;
+
+    span {
+      @media (max-width: 640px) {
+        font: var(--important-text-md);
+      }
+    }
+  }
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.featuresListItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font: var(--body-text-md);
+
+  @media (max-width: 640px) {
+    font: var(--body-text-sm);
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+
+    path:first-child {
+      fill: var(--additional-green-primary);
+    }
+  }
+}
+// * OverviewBlock *//

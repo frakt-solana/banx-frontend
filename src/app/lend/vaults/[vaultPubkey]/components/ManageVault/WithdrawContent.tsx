@@ -73,7 +73,7 @@ export const WithdrawContent: FC<WithdrawContentProps> = ({ vaultPreview }) => {
 
   const isWithdrawDisabled = (() => {
     const enteredAmount = parseFloat(withdrawAmountInput)
-    if (!connected || !enteredAmount) return true
+    if (connected && !enteredAmount) return true
 
     const maxWithdrawable = availableWithdrawBalance / 10 ** tokenDecimals
     return enteredAmount > maxWithdrawable

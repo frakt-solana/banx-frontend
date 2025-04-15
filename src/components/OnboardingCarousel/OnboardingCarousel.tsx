@@ -21,16 +21,18 @@ export const OnboardingCarousel: FC<OnboardingCarouselProps> = ({ contentType })
 
   return (
     <div className={styles.carousel}>
-      <div className={styles.carouselContent}>
-        <Carousel withControls={false}>
-          {content.slides.map(({ text, img, imgDark }, idx) => (
-            <Carousel.Slide key={idx} className={styles.carouselSlide}>
-              {isDarkMode ? imgDark : img}
-              {text}
-            </Carousel.Slide>
-          ))}
-        </Carousel>
-      </div>
+      <Carousel
+        withControls={false}
+        withIndicators={content.slides.length > 1}
+        classNames={{ root: styles.carouselRoot, indicator: styles.carouselIndicator }}
+      >
+        {content.slides.map(({ text, img, imgDark }, idx) => (
+          <Carousel.Slide key={idx} className={styles.carouselSlide}>
+            {isDarkMode ? imgDark : img}
+            {text}
+          </Carousel.Slide>
+        ))}
+      </Carousel>
     </div>
   )
 }
