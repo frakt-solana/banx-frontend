@@ -21,7 +21,7 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <MantineTooltip {...rest} label={label} position={position}>
-      <span style={{ all: 'unset', display: 'inline-flex' }}>{children || fallback}</span>
+      <span style={{ display: 'inline-flex' }}>{children || fallback}</span>
     </MantineTooltip>
   )
 }

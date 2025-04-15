@@ -7,6 +7,7 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import _ from 'lodash'
 import { TxnExecutor } from 'solana-transactions-executor'
 
+import { useWalletSidebar } from '@banx/components/WalletAccountSidebar'
 import { AppSettingsModal } from '@banx/components/modals'
 
 import { CollateralToken, Loan, fetchMultiplyMarketData } from '@banx/api'
@@ -115,7 +116,9 @@ type UseLeverageParams = {
 export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
   const wallet = useWallet()
   const { connection } = useConnection()
+  const { toggleVisibility } = useWalletSidebar()
   const { open } = useModal()
+
   const { slippage, slippageBps } = useSlippage()
 
   const { walletCollateralBalance } = useWalletCollateralBalance(pair.collateralMint)
@@ -169,6 +172,11 @@ export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
   const totalCollateralAmount = userEnteredCollateralAmount.mul(new BN(multiplierValue))
 
   const onLeverageBorrow = async () => {
+    if (!wallet.connected) {
+      toggleVisibility()
+      return
+    }
+
     const loadingSnackbarId = _.uniqueId()
     setBorrowBtnLoading(true)
     try {
@@ -265,7 +273,7 @@ export const useLeverage = ({ pair, collateralToken }: UseLeverageParams) => {
   const borrowBtnProps: { text: string; disabled: boolean } = (() => {
     if (!wallet.connected)
       return {
-        disabled: true,
+        disabled: false,
         text: `Connect wallet`,
       }
 
