@@ -2,6 +2,11 @@ import { ReactNode } from 'react'
 
 import { AppLayout } from '@banx/layout'
 import { BanxProviders } from '@banx/providers/BanxProviders'
+
+import '@mantine/carousel/styles.css'
+import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
+
 import '@banx/scss/index.scss'
 
 import { syne, wix } from './fonts'

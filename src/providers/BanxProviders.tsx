@@ -12,9 +12,7 @@ import { mantineTheme } from './mantine'
 import { QueryProvider } from './query'
 import { SolanaConnectionWalletProvider } from './solana'
 
-import '@mantine/carousel/styles.css'
-import '@mantine/core/styles.css'
-import '@mantine/notifications/styles.css'
+
 
 export function BanxProviders({ children }: { children: ReactNode }) {
   return (
