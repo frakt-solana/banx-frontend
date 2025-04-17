@@ -11,8 +11,6 @@ import { DisplayValue } from '@banx/components/TableComponents'
 
 import { MarketTokenRewards, TokenMarketPreview } from '@banx/api'
 import { SECONDS_IN_DAY } from '@banx/constants'
-import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
-import { calcOfferLtvPercent } from '@banx/utils/core'
 import { getTokenDecimals } from '@banx/utils/tokens'
 
 import styles from '../PlaceTokenOfferSection.module.scss'
@@ -23,19 +21,15 @@ interface OfferSummaryProps {
 
   apr: number //? percent number
   offerSize: number //? normal number
-  tokensPerCollateral: number //? normal number
 }
 
 export const AdditionalSummary: FC<OfferSummaryProps> = ({
   market,
   apr,
   offerSize,
-  tokensPerCollateral,
   lendingToken,
 }) => {
-  const { collateralPrice = 0, collateral, oraclePriceFeedType } = market || {}
-
-  const isOracleMarket = oraclePriceFeedType !== 'none'
+  const { collateral } = market || {}
 
   const lendingTokenDecimals = getTokenDecimals(lendingToken)
   const collateralInterestFee = collateral?.interestFee || 0
@@ -49,26 +43,8 @@ export const AdditionalSummary: FC<OfferSummaryProps> = ({
     rateBasePoints: apr * 100,
   })
 
-  const ltvPercent = calcOfferLtvPercent({
-    tokensPerCollateral,
-    collateralPrice,
-    lendingTokenDecimals,
-  })
-
-  const ltvColor = getColorByPercent(ltvPercent, HealthColorIncreasing)
-
   return (
     <div className={styles.additionalSummary}>
-      {!isOracleMarket && (
-        <StatInfo
-          label="LTV"
-          value={ltvPercent}
-          valueType={VALUES_TYPES.PERCENT}
-          valueStyles={{ color: ltvColor }}
-          classNamesProps={{ value: styles.fixedValueContent }}
-          flexType="row"
-        />
-      )}
       <StatInfo
         label="Borrow APR"
         value={borrowApr}

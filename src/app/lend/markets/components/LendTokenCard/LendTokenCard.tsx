@@ -53,8 +53,6 @@ interface MarketMainInfoProps {
 }
 
 const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
-  const isOracleMarket = market.oraclePriceFeedType !== 'none'
-
   return (
     <div className={styles.mainInfoContainer}>
       <ResponsiveImage src={market.collateral.logoUrl} className={styles.collateralImage} />
@@ -62,11 +60,9 @@ const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
 
       <div className={styles.marketLinks}>
         <DexscreenerLink mint={market.collateral.mint} />
-        {isOracleMarket && (
-          <Tooltip label={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
-            {getOracleIcon(market.oraclePriceFeedType)}
-          </Tooltip>
-        )}
+        <Tooltip label={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
+          {getOracleIcon(market.oraclePriceFeedType)}
+        </Tooltip>
 
         {market.isHot && (
           <Tooltip label="Market is in a huge demand and waiting for lenders!">

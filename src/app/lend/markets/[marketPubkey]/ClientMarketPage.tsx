@@ -146,8 +146,6 @@ const MarketOverview: FC<{ market: TokenMarketPreview }> = ({ market }) => {
   const tokenTicker = getTokenTicker(tokenType)
   const Icon = isUsdcTokenType(tokenType) ? USDC : SOLFilled
 
-  const isOracleMarket = oraclePriceFeedType !== 'none'
-
   const classNamesProps = {
     container: styles.marketStat,
     label: styles.marketStatLabel,
@@ -169,11 +167,9 @@ const MarketOverview: FC<{ market: TokenMarketPreview }> = ({ market }) => {
         </h4>
         <div className={styles.marketLinks}>
           <DexscreenerLink className={styles.dexScreenerLink} mint={market.collateral.mint} />
-          {isOracleMarket && (
-            <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
-              {getOracleIcon(oraclePriceFeedType)}
-            </Tooltip>
-          )}
+          <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
+            {getOracleIcon(oraclePriceFeedType)}
+          </Tooltip>
         </div>
       </div>
 

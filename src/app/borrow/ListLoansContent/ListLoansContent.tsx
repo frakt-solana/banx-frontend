@@ -55,7 +55,6 @@ const ListLoansContent = () => {
     toggleVisibility()
   }
 
-  const isOracleMarket = collateralToken?.collateral.oraclePriceFeedType !== 'none'
   const displayMessage = !connected ? 'Connect wallet' : errorMessage || 'List request'
 
   return (
@@ -91,17 +90,15 @@ const ListLoansContent = () => {
         />
 
         <div className={styles.fields}>
-          {isOracleMarket && (
-            <NumericStepInput
-              label="Liq. LTV"
-              value={liquidationLtv}
-              onChange={setLiquidationLtv}
-              disabled={!connected}
-              placeholder="0"
-              postfix="%"
-              step={1}
-            />
-          )}
+          <NumericStepInput
+            label="Liq. LTV"
+            value={liquidationLtv}
+            onChange={setLiquidationLtv}
+            disabled={!connected}
+            placeholder="0"
+            postfix="%"
+            step={1}
+          />
 
           <div className={styles.aprFieldWrapper}>
             <NumericStepInput

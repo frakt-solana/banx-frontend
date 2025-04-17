@@ -9,7 +9,7 @@ import { getTokenUnit, isBanxSolTokenType } from '@banx/utils/tokens'
 
 import { InputErrorMessage, NumericStepInput } from '../inputs'
 import { ActionsButtons } from './components/ActionsButtons'
-import { LtvPercentageSelector, LtvValueSelector } from './components/LtvSelectors'
+import { LtvPercentageSelector } from './components/LtvSelectors'
 import { AdditionalSummary, ExtraRewards } from './components/Summary'
 import { usePlaceTokenOffer } from './hooks/usePlaceTokenOffer'
 
@@ -26,12 +26,11 @@ const PlaceTokenOfferSection: FC<PlaceTokenOfferSectionProps> = (props) => {
   const { marketPubkey, offerPubkey = '', lendingToken, marketRewards } = props
 
   const { connected } = useWallet()
-  const { market, isEditMode, isOracleMarket, values, fields, actions, validation } =
-    usePlaceTokenOffer({
-      marketPubkey,
-      offerPubkey,
-      lendingToken,
-    })
+  const { market, isEditMode, values, fields, actions, validation } = usePlaceTokenOffer({
+    marketPubkey,
+    offerPubkey,
+    lendingToken,
+  })
 
   const inputStepByTokenType = isBanxSolTokenType(lendingToken) ? 0.1 : 1
   const lendingTokenUnit = getTokenUnit(lendingToken)
@@ -39,46 +38,25 @@ const PlaceTokenOfferSection: FC<PlaceTokenOfferSectionProps> = (props) => {
   return (
     <>
       <div className={styles.fieldsColumn}>
-        {!isOracleMarket && (
-          <NumericStepInput
-            label="Price"
-            {...fields.tokensPerCollateral}
-            postfix={lendingTokenUnit}
-            disabled={!connected}
-            step={inputStepByTokenType}
-            rightLabelJSX={
-              <LtvValueSelector
-                market={market}
-                onChange={fields.tokensPerCollateral.onChange}
-                lendingToken={lendingToken}
-              />
-            }
-          />
-        )}
+        <NumericStepInput
+          label="Offer ltv"
+          {...fields.offerLtv}
+          postfix="%"
+          disabled={!connected}
+          step={1}
+          rightLabelJSX={
+            <LtvPercentageSelector market={market} onChange={fields.offerLtv.onChange} />
+          }
+        />
 
-        {isOracleMarket && (
+        <div className={styles.fieldsRow}>
           <NumericStepInput
-            label="Offer ltv"
-            {...fields.offerLtv}
+            label="Liquidation LTV"
+            {...fields.offerLiquidationLtv}
             postfix="%"
             disabled={!connected}
             step={1}
-            rightLabelJSX={
-              <LtvPercentageSelector market={market} onChange={fields.offerLtv.onChange} />
-            }
           />
-        )}
-
-        <div className={styles.fieldsRow}>
-          {isOracleMarket && (
-            <NumericStepInput
-              label="Liquidation LTV"
-              {...fields.offerLiquidationLtv}
-              postfix="%"
-              disabled={!connected}
-              step={1}
-            />
-          )}
 
           <NumericStepInput
             label="Apr"
@@ -108,7 +86,6 @@ const PlaceTokenOfferSection: FC<PlaceTokenOfferSectionProps> = (props) => {
         lendingToken={lendingToken}
         apr={values.apr}
         offerSize={values.offerSize}
-        tokensPerCollateral={values.tokensPerCollateral}
       />
 
       {!_.isEmpty(marketRewards) && <ExtraRewards data={marketRewards} />}

@@ -68,8 +68,6 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
     oraclePriceFeedType,
   } = loansPreview
 
-  const isOracleMarket = oraclePriceFeedType !== 'none'
-
   const totalCollateralAmount = useMemo(() => {
     return _.sumBy(loansPreview.loans, (loan) => getTokenLoanSupply(loan))
   }, [loansPreview])
@@ -94,11 +92,9 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
           <DisplayValue value={totalCollateralPrice} strictTokenType={lendingToken} />
         </span>
       </div>
-      {isOracleMarket && (
-        <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
-          {getOracleIcon(oraclePriceFeedType)}
-        </Tooltip>
-      )}
+      <Tooltip label={`Price feed from the ${_.capitalize(oraclePriceFeedType)} oracle`}>
+        {getOracleIcon(oraclePriceFeedType)}
+      </Tooltip>
     </div>
   )
 }

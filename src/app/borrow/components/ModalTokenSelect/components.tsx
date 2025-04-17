@@ -21,7 +21,6 @@ interface TokenListItemProps {
 
 export const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => {
   const oracleType = token.collateral.oraclePriceFeedType
-  const isOracleMarket = oracleType !== 'none'
 
   return (
     <div onClick={onClick} className={styles.tokensListItem}>
@@ -33,11 +32,9 @@ export const TokenListItem: FC<TokenListItemProps> = ({ token, onClick }) => {
             {shortenAddress(token.collateral.mint)}
           </span>
         </div>
-        {isOracleMarket && (
-          <Tooltip label={`Price feed from the ${_.capitalize(oracleType)} oracle`}>
-            {getOracleIcon(oracleType)}
-          </Tooltip>
-        )}
+        <Tooltip label={`Price feed from the ${_.capitalize(oracleType)} oracle`}>
+          {getOracleIcon(oracleType)}
+        </Tooltip>
       </div>
       <TokenBalanceInfo token={token} />
     </div>

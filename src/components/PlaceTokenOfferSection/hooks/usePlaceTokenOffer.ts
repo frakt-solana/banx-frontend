@@ -31,7 +31,6 @@ export const usePlaceTokenOffer = ({
   })
 
   const isEditMode = Boolean(offerPubkey)
-  const isOracleMarket = market?.oraclePriceFeedType !== 'none'
 
   const { formState, initialValues, numericValues, generateField, resetForm } =
     useOfferFormController({
@@ -77,23 +76,20 @@ export const usePlaceTokenOffer = ({
     resetForm,
   })
 
-  const activeFieldConfig = isOracleMarket ? FIELD_CONFIG.oracle : FIELD_CONFIG.nonOracle
   const { disablePlaceOffer, disableUpdateOffer, errorMessage } = useFormStateChecks({
     formState,
     initialValues,
-    fieldConfig: activeFieldConfig,
+    fieldConfig: FIELD_CONFIG.oracle,
   })
 
   return {
     market,
     isEditMode,
-    isOracleMarket,
 
     values: {
       apr: numericValues.apr,
       offerSize: numericValues.offerSize,
       tokensPerCollateral: numericValues.tokensPerCollateral,
-      collateralsPerToken,
     },
 
     fields: {

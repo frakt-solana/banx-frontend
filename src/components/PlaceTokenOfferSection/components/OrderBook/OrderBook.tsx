@@ -9,7 +9,7 @@ import Tooltip from '@banx/components/Tooltip/Tooltip'
 
 import { OfferPreview } from '@banx/api'
 
-import { Offer, OracleOffer } from './Offer'
+import { Offer } from './Offer'
 import { useMarketOrders } from './hooks'
 
 import styles from './OrderBook.module.scss'
@@ -22,18 +22,14 @@ export interface OrderBookProps {
 }
 
 const OrderBook: FC<OrderBookProps> = ({ market, lendingToken, offerPubkey = '', className }) => {
-  const { marketPubkey = '', collateral } = market ?? {}
+  const { marketPubkey = '' } = market ?? {}
 
   const { offers, isLoading } = useMarketOrders(marketPubkey, offerPubkey, lendingToken)
-
-  const isOracleMarket = collateral?.oraclePriceFeedType !== 'none'
-
-  const marketLabels = getMarketLabels(isOracleMarket)
 
   return (
     <div className={classNames(styles.orderBook, className)}>
       <div className={styles.labelsWrapper}>
-        {_.map(marketLabels, (label, key) => (
+        {_.map(MARKET_LABELS, (label, key) => (
           <Label key={key} title={label.title} tooltip={label.tooltip} />
         ))}
       </div>
@@ -44,16 +40,8 @@ const OrderBook: FC<OrderBookProps> = ({ market, lendingToken, offerPubkey = '',
         {!isLoading &&
           offers.map((offer) => {
             const offerPubkey = offer.publicKey.toBase58()
-            const OfferComponent = isOracleMarket ? OracleOffer : Offer
 
-            return (
-              <OfferComponent
-                key={offerPubkey}
-                offer={offer}
-                market={market}
-                lendingToken={lendingToken}
-              />
-            )
+            return <Offer key={offerPubkey} offer={offer} lendingToken={lendingToken} />
           })}
       </ul>
     </div>
@@ -74,14 +62,14 @@ const Label = ({ title, tooltip }: LabelConfig) => (
   </div>
 )
 
-const BASE_LABELS = {
+const MARKET_LABELS = {
   price: {
-    title: 'Price',
-    tooltip: 'The proposed price per token for lending',
+    title: 'Offer LTV',
+    tooltip: 'The LTV ratio defined by the lender for this offer',
   },
   ltv: {
-    title: 'LTV',
-    tooltip: 'The LTV ratio, which changes dynamically based on token prices',
+    title: 'Liquidation LTV',
+    tooltip: 'The maximum LTV ratio allowed. If exceeded, the collateral will be liquidated',
   },
   apr: {
     title: 'APR',
@@ -92,17 +80,3 @@ const BASE_LABELS = {
     tooltip: 'The total amount available to lend at the given price',
   },
 }
-
-const ORACLE_MARKET_LABELS = {
-  price: {
-    title: 'Offer LTV',
-    tooltip: 'The LTV ratio defined by the lender for this offer',
-  },
-  ltv: {
-    title: 'Liquidation LTV',
-    tooltip: 'The maximum LTV ratio allowed. If exceeded, the collateral will be liquidated',
-  },
-}
-
-const getMarketLabels = (isOracleMarket: boolean): Record<string, LabelConfig> =>
-  isOracleMarket ? _.merge({}, BASE_LABELS, ORACLE_MARKET_LABELS) : BASE_LABELS

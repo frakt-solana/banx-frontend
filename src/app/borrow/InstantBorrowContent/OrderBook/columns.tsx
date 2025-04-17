@@ -2,7 +2,6 @@ import { ColumnType } from '@banx/components/Table'
 import { DisplayValue, HeaderCell, createPercentValueJSX } from '@banx/components/TableComponents'
 
 import { CollateralToken } from '@banx/api'
-import { insertAtArray } from '@banx/utils/common'
 
 import { BorrowOffer, ColumnKey, SortColumnOption } from '../hooks'
 import { AprCell, MaxBorrowCell } from './cells'
@@ -22,8 +21,6 @@ export const getTableColumns: GetTableColumns = ({
   onSort,
   selectedSortOption,
 }) => {
-  const isOracleMarket = collateral && collateral.collateral.oraclePriceFeedType !== 'none'
-
   const columns: ColumnType<BorrowOffer>[] = [
     {
       key: ColumnKey.MAX_BORROW,
@@ -55,6 +52,23 @@ export const getTableColumns: GetTableColumns = ({
       render: (offer) => <AprCell offer={offer} collateral={collateral} />,
     },
     {
+      key: ColumnKey.LIQ_LTV,
+      title: (
+        <HeaderCell
+          label="Liq. LTV"
+          className={styles.headerCellCenter}
+          columnKey={ColumnKey.LIQ_LTV}
+          onSort={onSort}
+          selectedSortOption={selectedSortOption}
+        />
+      ),
+      render: (offer: BorrowOffer) => (
+        <span className={styles.cellTextCenter}>
+          {createPercentValueJSX(offer.liquidationLtvBp / 100)}
+        </span>
+      ),
+    },
+    {
       key: ColumnKey.OFFER_SIZE,
       title: (
         <HeaderCell
@@ -71,28 +85,6 @@ export const getTableColumns: GetTableColumns = ({
       ),
     },
   ]
-
-  if (isOracleMarket) {
-    const column = {
-      key: ColumnKey.LIQ_LTV,
-      title: (
-        <HeaderCell
-          label="Liq. LTV"
-          className={styles.headerCellCenter}
-          columnKey={ColumnKey.LIQ_LTV}
-          onSort={onSort}
-          selectedSortOption={selectedSortOption}
-        />
-      ),
-      render: (offer: BorrowOffer) => (
-        <span className={styles.cellTextCenter}>
-          {createPercentValueJSX(offer.liquidationLtvBp / 100)}
-        </span>
-      ),
-    }
-
-    return insertAtArray(columns, 2, column)
-  }
 
   return columns
 }

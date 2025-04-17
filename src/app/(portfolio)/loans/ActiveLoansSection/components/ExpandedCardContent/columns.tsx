@@ -11,7 +11,6 @@ import {
 
 import { Loan } from '@banx/api'
 import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
-import { insertAtArray } from '@banx/utils/common'
 import { getTokenLoanSupply } from '@banx/utils/core'
 
 import { TableColumnKey } from '../../constants'
@@ -37,10 +36,7 @@ export const getTableColumns = ({
   hasSelectedLoans,
   onSort,
   selectedSortOption,
-  oraclePriceFeedType,
 }: GetTableColumnsProps) => {
-  const isOracleMarket = oraclePriceFeedType !== 'none'
-
   const columns: ColumnType<Loan>[] = [
     {
       key: 'collateral',
@@ -89,6 +85,30 @@ export const getTableColumns = ({
       render: (loan) => <LTVCell loan={loan} />,
     },
     {
+      key: TableColumnKey.LIQ_LTV,
+      title: (
+        <HeaderCell
+          label="Liq. LTV"
+          className={styles.headerCellText}
+          columnKey={TableColumnKey.LIQ_LTV}
+          onSort={onSort}
+          selectedSortOption={selectedSortOption}
+        />
+      ),
+      render: (loan: Loan) => {
+        const liquidationLtv = loan.liquidationLtvBp / 100
+        const color = liquidationLtv ? getColorByPercent(liquidationLtv, HealthColorIncreasing) : ''
+
+        return (
+          <HorizontalCell
+            value={createPercentValueJSX(liquidationLtv)}
+            textColor={color}
+            className={styles.bodyCellText}
+          />
+        )
+      },
+    },
+    {
       key: TableColumnKey.APR,
       title: (
         <HeaderCell
@@ -121,35 +141,6 @@ export const getTableColumns = ({
       ),
     },
   ]
-
-  if (isOracleMarket) {
-    const column = {
-      key: TableColumnKey.LIQ_LTV,
-      title: (
-        <HeaderCell
-          label="Liq. LTV"
-          className={styles.headerCellText}
-          columnKey={TableColumnKey.LIQ_LTV}
-          onSort={onSort}
-          selectedSortOption={selectedSortOption}
-        />
-      ),
-      render: (loan: Loan) => {
-        const liquidationLtv = loan.liquidationLtvBp / 100
-        const color = liquidationLtv ? getColorByPercent(liquidationLtv, HealthColorIncreasing) : ''
-
-        return (
-          <HorizontalCell
-            value={createPercentValueJSX(liquidationLtv)}
-            textColor={color}
-            className={styles.bodyCellText}
-          />
-        )
-      },
-    }
-
-    return insertAtArray(columns, 3, column)
-  }
 
   return columns
 }

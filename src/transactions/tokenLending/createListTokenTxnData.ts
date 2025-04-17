@@ -1,9 +1,6 @@
 import { BN, web3 } from 'fbonds-core'
 import { LOOKUP_TABLE } from 'fbonds-core/lib/fbond-protocol/constants'
-import {
-  createPerpetualListingSpl,
-  getFullLoanBodyFromBorrowerSendedAmount,
-} from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
+import { createPerpetualListingSpl } from 'fbonds-core/lib/fbond-protocol/functions/perpetual'
 import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import {
   CreateTxnData,
@@ -14,7 +11,6 @@ import {
 import { BondTradeTransaction, CollateralToken, FraktBond } from '@banx/api'
 import { BONDS } from '@banx/constants'
 import { ZERO_BN } from '@banx/utils/bn'
-import { getTokenDecimals } from '@banx/utils/tokens'
 
 import { parseAccountInfoByPubkey } from '../functions'
 import { sendTxnPlaceHolder } from '../helpers'
@@ -44,26 +40,12 @@ export const createListTokenTxnData: CreateListTxnData = async (params, walletAn
   const {
     aprRate,
     borrowAmount,
-    collateralAmount,
     collateral,
     freezeValue = 0,
     offerLtvBP = 0,
     liquidationLtvBP = 0,
     tokenType,
   } = params
-
-  const marketDecimals = getTokenDecimals(tokenType) //? 6,9
-  const collateralDecimals = collateral.collateral.decimals
-
-  const fullLoanAmount = getFullLoanBodyFromBorrowerSendedAmount({
-    borrowerSendedAmount: borrowAmount,
-    upfrontFeeBasePoints: collateral.collateral.upfrontFee,
-  })
-
-  const collateralsPerTokenFactor = Math.pow(10, collateralDecimals) * Math.pow(10, marketDecimals)
-  const collateralsPerToken = (collateralAmount / fullLoanAmount) * collateralsPerTokenFactor
-
-  const isOracleMarket = collateral.collateral.oraclePriceFeedType !== 'none'
 
   const {
     instructions,
@@ -75,22 +57,21 @@ export const createListTokenTxnData: CreateListTxnData = async (params, walletAn
       hadoMarket: new web3.PublicKey(collateral.marketPubkey),
       userPubkey: wallet.publicKey,
       collateralMint: new web3.PublicKey(collateral.collateral.mint),
-      oraclePriceFeed:
-        isOracleMarket && collateral.collateral.oraclePriceFeed
-          ? new web3.PublicKey(collateral.collateral.oraclePriceFeed)
-          : undefined,
+      oraclePriceFeed: collateral.collateral.oraclePriceFeed
+        ? new web3.PublicKey(collateral.collateral.oraclePriceFeed)
+        : undefined,
     },
     args: {
       amountToGetBorrower: new BN(borrowAmount),
-      collateralsPerToken: !isOracleMarket ? new BN(collateralsPerToken) : ZERO_BN,
+      collateralsPerToken: ZERO_BN,
       terminationFreeze: new BN(freezeValue),
       amountToSend: ZERO_BN,
       aprRate: new BN(aprRate),
       upfrontFeeBasePoints: collateral.collateral.upfrontFee,
       isBorrowerListing: true,
       lendingTokenType: tokenType,
-      liquidationLtvBP: isOracleMarket ? new BN(liquidationLtvBP) : undefined,
-      offerLtvBP: isOracleMarket ? new BN(offerLtvBP) : undefined,
+      liquidationLtvBP: new BN(liquidationLtvBP),
+      offerLtvBP: new BN(offerLtvBP),
     },
     connection,
     sendTxn: sendTxnPlaceHolder,
