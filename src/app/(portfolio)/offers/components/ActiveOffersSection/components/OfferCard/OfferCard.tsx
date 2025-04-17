@@ -1,26 +1,24 @@
 import { FC } from 'react'
 
 import classNames from 'classnames'
-import { calculateTokensPerCollateralFloat } from 'fbonds-core/lib/fbond-protocol/tokenLendingUtils'
 import _ from 'lodash'
 
 import { Button } from '@banx/components/Buttons'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { DexscreenerLink } from '@banx/components/SolanaLinks'
 import { StatInfo } from '@banx/components/StatInfo'
-import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
+import {
+  DisplayValue,
+  MarketLabelDisplay,
+  createPercentValueJSX,
+} from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
 import { OfferPreview, core } from '@banx/api'
 import { ChevronDown, Coin, CoinPlus, SOLFilled, USDC, Warning } from '@banx/icons'
 import { convertToSynthetic, useSyntheticTokenOffers } from '@banx/store'
-import { ZERO_BN, bnToNumberSafe } from '@banx/utils/bn'
 import { HealthColorIncreasing, getColorByPercent } from '@banx/utils/colors'
-import {
-  calcOfferLtvPercent,
-  formatTokensPerCollateral,
-  getLendingTokenFromBondingCurve,
-} from '@banx/utils/core'
+import { getLendingTokenFromBondingCurve } from '@banx/utils/core'
 import { getOracleIcon, getTokenDecimals, isUsdcTokenType } from '@banx/utils/tokens'
 
 import ExpandedCardContent from '../ExpandedCardContent'
@@ -77,7 +75,6 @@ export const OfferCard: FC<OfferCardProps> = ({ offerPreview, isOpen, onToggleCa
 const MarketMainInfo: FC<{ offerPreview: core.OfferPreview }> = ({ offerPreview }) => {
   const { collateral } = offerPreview.tokenMarketPreview
 
-  const isOracleMarket = collateral.oraclePriceFeedType !== 'none'
   const lendingToken = getLendingTokenFromBondingCurve(
     offerPreview.bondOffer.bondingCurve.bondingType,
   )
@@ -90,16 +87,14 @@ const MarketMainInfo: FC<{ offerPreview: core.OfferPreview }> = ({ offerPreview 
         <ResponsiveImage src={collateral.logoUrl} className={styles.collateralImage} />
         <Icon className={styles.lendingTokenImage} />
       </div>
-      <h4 className={styles.collateralName}>{collateral.ticker}</h4>
+      <MarketLabelDisplay label={collateral.ticker} />
       <div className={styles.marketLinks}>
         <DexscreenerLink mint={offerPreview.tokenMarketPreview.collateral.mint} />
-        {isOracleMarket && (
-          <Tooltip
-            label={`Price feed from the ${_.capitalize(collateral.oraclePriceFeedType)} oracle`}
-          >
-            {getOracleIcon(collateral.oraclePriceFeedType)}
-          </Tooltip>
-        )}
+        <Tooltip
+          label={`Price feed from the ${_.capitalize(collateral.oraclePriceFeedType)} oracle`}
+        >
+          {getOracleIcon(collateral.oraclePriceFeedType)}
+        </Tooltip>
       </div>
     </div>
   )
@@ -120,32 +115,14 @@ const MarketAdditionalInfo: FC<MarketAdditionalInfoProps> = ({ offerPreview, isO
     repaymentCallsAmount,
   } = tokenOfferPreview
 
-  const { collateral, collateralPrice } = tokenMarketPreview
-
-  const isOracleMarket = bondOffer.offerLtvBp.gt(ZERO_BN)
+  const { collateralPrice } = tokenMarketPreview
 
   const lendingToken = getLendingTokenFromBondingCurve(bondOffer.bondingCurve.bondingType)
   const lendingTokenDecimals = getTokenDecimals(lendingToken)
 
   const aprPercent = offerPreview.bondOffer.loanApr.toNumber() / 100
 
-  const tokensPerCollateral = formatTokensPerCollateral(
-    calculateTokensPerCollateralFloat(
-      bnToNumberSafe(offerPreview.bondOffer.validation.collateralsPerToken),
-      collateral.decimals,
-      lendingTokenDecimals,
-    ),
-    lendingTokenDecimals,
-  )
-
-  const ltvPercent = calcOfferLtvPercent({
-    tokensPerCollateral: parseFloat(tokensPerCollateral),
-    lendingTokenDecimals,
-    collateralPrice,
-  })
-
   const formattedPrice = collateralPrice / Math.pow(10, lendingTokenDecimals)
-
   const offerLtvPercent = bondOffer.offerLtvBp.toNumber() / 100
 
   const classNamesProps = {
@@ -163,35 +140,15 @@ const MarketAdditionalInfo: FC<MarketAdditionalInfoProps> = ({ offerPreview, isO
         tooltipText="Token market price"
         classNamesProps={classNamesProps}
       />
-      {isOracleMarket && (
-        <StatInfo
-          label="My offer"
-          value={
-            <span style={{ color: getColorByPercent(offerLtvPercent, HealthColorIncreasing) }}>
-              {createPercentValueJSX(offerLtvPercent)} LTV
-            </span>
-          }
-          classNamesProps={classNamesProps}
-        />
-      )}
-      {!isOracleMarket && (
-        <StatInfo
-          label="My offer"
-          value={
-            <DisplayValue
-              value={parseFloat(tokensPerCollateral)}
-              strictTokenType={lendingToken}
-              isSubscriptFormat
-            />
-          }
-          classNamesProps={{ ...classNamesProps, value: styles.myOfferStat }}
-          secondValue={
-            <span style={{ color: getColorByPercent(ltvPercent, HealthColorIncreasing) }}>
-              {createPercentValueJSX(ltvPercent)} LTV
-            </span>
-          }
-        />
-      )}
+      <StatInfo
+        label="My offer"
+        value={
+          <span style={{ color: getColorByPercent(offerLtvPercent, HealthColorIncreasing) }}>
+            {createPercentValueJSX(offerLtvPercent)} LTV
+          </span>
+        }
+        classNamesProps={classNamesProps}
+      />
       <StatInfo
         label="In loans"
         value={<DisplayValue value={inLoans} strictTokenType={lendingToken} />}

@@ -4,12 +4,15 @@ import { LendingTokenType } from 'fbonds-core/lib/fbond-protocol/types'
 import moment from 'moment'
 
 import { useTokenType } from '@banx/store'
+import { parseLabel } from '@banx/utils/common'
 import {
   TokenUnit,
   formatDecimalWithSubscript,
   formatValueByTokenType,
   getTokenUnit,
 } from '@banx/utils/tokens'
+
+import Tooltip from '../Tooltip'
 
 import styles from './TableCells.module.scss'
 
@@ -86,4 +89,27 @@ export const DisplayValue: FC<DisplayValueProps> = ({
   const defaultPlaceholder = placeholder ?? createDisplayValueJSX('0', tokenUnit)
 
   return formattedValue ? createDisplayValueJSX(formattedValue, tokenUnit) : defaultPlaceholder
+}
+
+type MarketLabelDisplayProps = {
+  label: string
+}
+
+export const MarketLabelDisplay: FC<MarketLabelDisplayProps> = ({ label }) => {
+  const { protocol, ticker } = parseLabel(label)
+
+  return (
+    <Tooltip label={label}>
+      <div className={styles.marketLabels}>
+        {protocol ? (
+          <>
+            <div className={styles.protocol}>{protocol}</div>
+            <div className={styles.ticker}>{ticker}</div>
+          </>
+        ) : (
+          <div className={styles.ticker}>{ticker}</div>
+        )}
+      </div>
+    </Tooltip>
+  )
 }

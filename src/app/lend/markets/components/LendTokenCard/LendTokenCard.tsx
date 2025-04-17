@@ -6,7 +6,11 @@ import { Button } from '@banx/components/Buttons'
 import { ResponsiveImage } from '@banx/components/ResponsiveImage'
 import { DexscreenerLink } from '@banx/components/SolanaLinks'
 import { StatInfo, VALUES_TYPES } from '@banx/components/StatInfo'
-import { DisplayValue, createPercentValueJSX } from '@banx/components/TableComponents'
+import {
+  DisplayValue,
+  MarketLabelDisplay,
+  createPercentValueJSX,
+} from '@banx/components/TableComponents'
 import Tooltip from '@banx/components/Tooltip'
 
 import { MarketTokenRewards, core } from '@banx/api'
@@ -54,10 +58,16 @@ const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
   return (
     <div className={styles.mainInfoContainer}>
       <ResponsiveImage src={market.collateral.logoUrl} className={styles.collateralImage} />
-      <h4 className={styles.collateralName}>{market.collateral.ticker}</h4>
+      <MarketLabelDisplay label={market.collateral.ticker} />
 
       <div className={styles.marketLinks}>
         <DexscreenerLink mint={market.collateral.mint} />
+        {isOracleMarket && (
+          <Tooltip label={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
+            {getOracleIcon(market.oraclePriceFeedType)}
+          </Tooltip>
+        )}
+
         {market.isHot && (
           <Tooltip label="Market is in a huge demand and waiting for lenders!">
             <Fire />
@@ -67,12 +77,6 @@ const MarketMainInfo: FC<MarketMainInfoProps> = ({ market, marketRewards }) => {
         {!_.isEmpty(marketRewards) && (
           <Tooltip label={marketRewards.description}>
             <StarSecondary />
-          </Tooltip>
-        )}
-
-        {isOracleMarket && (
-          <Tooltip label={`Price feed from the ${_.capitalize(market.oraclePriceFeedType)} oracle`}>
-            {getOracleIcon(market.oraclePriceFeedType)}
           </Tooltip>
         )}
       </div>

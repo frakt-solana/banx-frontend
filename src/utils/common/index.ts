@@ -98,3 +98,20 @@ export const deepMergeStyles = <T extends string>(
     return objValue || srcValue
   })
 }
+
+export const parseLabel = (label: string): { protocol?: string; ticker: string } => {
+  //? Try to extract protocol name from the label, e.g. "(RateX)" => "RateX"
+  const protocolMatch = label.match(/\(([^)]+)\)/)
+  const protocol = protocolMatch?.[1]
+
+  //? Remove the protocol part from the label, e.g. "PT-JTO-2508 (RateX)" => "PT-JTO-2508"
+  const labelWithoutProtocol = label.replace(/\s*\([^)]+\)/, '')
+
+  //? Remove trailing date-like suffix, e.g. "-2508" => ""
+  const ticker = labelWithoutProtocol.replace(/-\d{4}$/, '')
+
+  return {
+    protocol, //? optional, only present if "(...)" was in the label
+    ticker, //? cleaned-up ticker without protocol and date
+  }
+}

@@ -87,17 +87,6 @@
   line-height: 1em;
 }
 
-.rarityText {
-  font: var(--body-text-sm);
-  border-radius: 100px;
-  padding: 2px 8px;
-  justify-content: flex-end;
-
-  &.highlight {
-    color: var(--pure-black);
-  }
-}
-
 // * CollateralTokenCell * //
 .collateralTokenCell {
   display: flex;
@@ -125,6 +114,15 @@
   color: var(--content-secondary);
   font: var(--important-text-sm);
   text-transform: uppercase;
+  min-width: 104px;
+  max-width: 104px;
+}
+
+.collateralTokenTicker {
+  font: var(--important-text-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .collateralTokenPrice {
@@ -169,3 +167,36 @@
 }
 
 // * CollateralTokenCell * //
+
+// * MarketLabelDisplay * //
+.marketLabels {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.protocol {
+  font: var(--important-text-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-sm);
+  }
+}
+
+.ticker {
+  font: var(--important-text-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 92px;
+  max-width: 92px;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-sm);
+    min-width: unset;
+    max-width: unset;
+  }
+}

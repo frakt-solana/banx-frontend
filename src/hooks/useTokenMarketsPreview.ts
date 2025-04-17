@@ -19,7 +19,9 @@ export const useTokenMarketsPreview = (strictTokenType?: LendingTokenType) => {
   })
 
   return {
-    marketsPreview: data || [],
+    marketsPreview: (data ?? []).filter(
+      (market) => market.collateral.oraclePriceFeedType !== 'none',
+    ),
     isLoading,
   }
 }
