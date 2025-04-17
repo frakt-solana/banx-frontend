@@ -17,9 +17,10 @@ const defaultFormatCountdownUnits = (countdownUnits: CountdownUnits): string => 
     return formatCountdownUnits(countdownUnits, 'm:s')
   }
   if (!days) {
-    return formatCountdownUnits(countdownUnits, 'h:m:s')
+    return formatCountdownUnits(countdownUnits, 'h:m')
   }
-  return formatCountdownUnits(countdownUnits, 'd:h:m')
+
+  return formatCountdownUnits(countdownUnits, 'd:h')
 }
 
 const Timer: FC<TimerProps> = ({

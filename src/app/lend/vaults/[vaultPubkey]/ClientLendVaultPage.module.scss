@@ -160,7 +160,7 @@
 // * VaultTabsContent * //
 .vaultTabsContent {
   margin-top: 24px;
-  height: 100%;
+  height: 100% !important;
 
   @media (max-width: 1180px) {
     margin-top: 0;

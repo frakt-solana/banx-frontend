@@ -69,7 +69,7 @@ export const CollateralTokenCell: FC<CollateralTokenCellProps> = ({
         <div className={styles.collateralTokenMainInfo}>
           <div className={styles.collateralTokenMainInfoRow}>
             {formattedAmount && <span>{formattedAmount}</span>}
-            {ticker && <span>{ticker}</span>}
+            {ticker && <span className={styles.collateralTokenTicker}>{ticker}</span>}
           </div>
           {totalValue > 0 && (
             <span className={styles.collateralTokenPrice}>

@@ -78,7 +78,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ loan, isCardView, disabledAc
 
   return (
     <div className={classNames(styles.actionsCell, { [styles.cardView]: isCardView })}>
-      <Tooltip label={isOwnLoan ? "You can't lend to your own loan" : ''}>
+      <Tooltip label={isOwnLoan ? "You can't lend to your own loan" : null}>
         <Button
           className={styles.actionButton}
           onClick={onClickHandler}

@@ -40,11 +40,10 @@
 }
 
 .tableWrapper {
-  padding-bottom: 10px;
   height: 100% !important;
 
   @media (max-width: 960px) {
-    height: 100vh;
+    height: 100vh !important;
   }
 }
 

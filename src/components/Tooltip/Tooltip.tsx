@@ -20,7 +20,13 @@ export const Tooltip: FC<TooltipProps> = ({
   }
 
   return (
-    <MantineTooltip {...rest} label={label} position={position}>
+    <MantineTooltip
+      {...rest}
+      label={label}
+      position={position}
+      events={{ hover: true, focus: true, touch: true }}
+      withinPortal={false}
+    >
       <span style={{ display: 'inline-flex' }}>{children || fallback}</span>
     </MantineTooltip>
   )

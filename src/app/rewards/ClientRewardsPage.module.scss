@@ -6,7 +6,13 @@
 }
 
 .tabs {
-  padding: 0 !important;
+  button {
+    padding: 6px 2px;
+
+    @media (max-width: 640px) {
+      font: var(--body-text-sm);
+    }
+  }
 }
 
 .leaderboardPlug {

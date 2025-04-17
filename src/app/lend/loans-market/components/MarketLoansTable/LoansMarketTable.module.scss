@@ -4,6 +4,7 @@
   align-items: center;
   gap: 16px;
 }
+
 .checkbox {
   height: 18px;
   padding-left: 18px;
@@ -27,3 +28,11 @@
   width: 72px;
 }
 // * ActionsCell * //
+
+.snowflakeIcon path:first-child {
+  fill: var(--content-primary);
+}
+
+.hourglassIcon path:last-child {
+  fill: var(--content-primary);
+}
