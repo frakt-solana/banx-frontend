@@ -6,44 +6,6 @@
   padding: 4px 24px 24px;
 }
 
-@mixin multiplierSliderColor($color: var(--accent-primary)) {
-  :global {
-    .ant-slider-track {
-      background: $color !important;
-      border-color: $color !important;
-    }
-    .ant-slider-dot-active {
-      border-color: $color !important;
-    }
-    .ant-slider-handle {
-      border-color: $color !important;
-    }
-  }
-}
-
-.multiplierSlider {
-  @include multiplierSliderColor(var(--accent-primary));
-}
-
-.multiplierSliderDisabled {
-  pointer-events: none;
-  @include multiplierSliderColor(var(--content-secondary));
-
-  :global {
-    .ant-slider-handle {
-      background: var(--bg-primary);
-      border: 2px solid var(--content-secondary);
-    }
-    .ant-slider-dot {
-      border-color: var(--content-secondary) !important;
-      background: var(--content-secondary) !important;
-    }
-    .ant-slider-rail {
-      background: var(--content-secondary) !important;
-    }
-  }
-}
-
 .sliderLabels {
   display: flex;
   align-items: center;

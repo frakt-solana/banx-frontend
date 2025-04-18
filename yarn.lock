@@ -8927,6 +8927,16 @@ solana-transactions-parser@2.0.3:
     js-sha256 "^0.11.0"
     lodash "^4.17.21"
 
+solana-transactions-parser@2.0.3-beta.1:
+  version "2.0.3-beta.1"
+  resolved "https://registry.yarnpkg.com/solana-transactions-parser/-/solana-transactions-parser-2.0.3-beta.1.tgz#22b9bbf55eba8e44ff25a46902e8b03f4689385c"
+  integrity sha512-j1RVCiM5DpHYl7+ruZYakRUnNfQvgx6JeShF3VTGb3p7OGXXzvJgv2Udzt5d1AH0nXB/eNF/BafiUgpGMsiEew==
+  dependencies:
+    "@coral-xyz/anchor" "0.30.1"
+    bs58 "^5.0.0"
+    js-sha256 "^0.11.0"
+    lodash "^4.17.21"
+
 sonic-boom@^2.2.1:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-2.8.0.tgz#c1def62a77425090e6ad7516aad8eb402e047611"

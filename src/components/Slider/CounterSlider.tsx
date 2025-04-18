@@ -14,7 +14,6 @@ export const CounterSlider: FC<SliderProps> = ({
   max = 0,
   label,
   labelClassName,
-  rootClassName,
   className,
   disabled,
 }) => {
@@ -32,7 +31,6 @@ export const CounterSlider: FC<SliderProps> = ({
         max={max}
         label={label}
         labelClassName={labelClassName}
-        rootClassName={rootClassName}
         disabled={disabled}
       />
       <NumericStepInput

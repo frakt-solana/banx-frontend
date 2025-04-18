@@ -61,16 +61,11 @@
 }
 
 .walletInfoMobileBadge {
-  @media (min-width: 1281px) {
-    display: none;
-  }
-
   background: var(--additional-green-secondary);
   border: 0.5px solid var(--additional-green-primary-deep);
+  border-radius: 100px;
   color: var(--additional-green-primary-deep);
   cursor: pointer;
-
-  border-radius: 100px;
 
   font: var(--body-text-sm);
 
@@ -86,8 +81,11 @@
   right: 8px;
 
   svg path {
-    // fill: var(--content-secondary);
     fill: var(--additional-green-primary-deep);
+  }
+
+  @media (min-width: 1281px) {
+    display: none;
   }
 
   @media (max-width: 640px) {

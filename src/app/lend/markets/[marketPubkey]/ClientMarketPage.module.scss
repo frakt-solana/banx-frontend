@@ -93,16 +93,6 @@
   }
 }
 
-.modal :global {
-  .ant-modal-body {
-    height: 440px;
-  }
-
-  .ant-modal-content {
-    padding: 0 !important;
-  }
-}
-
 .orderBook {
   @media (max-width: 960px) {
     padding-bottom: 224px !important;

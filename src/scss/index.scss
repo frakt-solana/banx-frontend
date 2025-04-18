@@ -1,6 +1,6 @@
-@import './base/reset.scss';
-@import './base/scrollBar.scss';
-@import './abstracts/variables.scss';
+@use './base/reset' as *;
+@use './base/scrollBar' as *;
+@use './abstracts/variables' as *;
 
 html body {
   background-color: var(--bg-tertiary);

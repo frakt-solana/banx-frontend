@@ -7,7 +7,6 @@ import { DisplayValue } from '@banx/components/TableComponents'
 import { NumericStepInput } from '@banx/components/inputs'
 
 import { Loan, core } from '@banx/api'
-import { getColorByPercent } from '@banx/utils/colors'
 import { formatTrailingZeros } from '@banx/utils/common'
 import { caclulateBorrowTokenLoanValue, isLoanRepaymentCallActive } from '@banx/utils/core'
 import { getTokenDecimals, getTokenUnit } from '@banx/utils/tokens'
@@ -91,10 +90,10 @@ export const RepayTokenContent: FC<RepayTokenContentProps> = ({ loan }) => {
     return await repayPartialLoan(loan, fractionToRepay)
   }
 
-  const colorClassNameByValue = {
-    [Math.ceil(initialRepayPercent)]: styles.repayModalSliderYellow,
-    100: styles.repayModalSliderGreen,
-  }
+  // const colorClassNameByValue = {
+  //   [Math.ceil(initialRepayPercent)]: styles.repayModalSliderYellow,
+  //   100: styles.repayModalSliderGreen,
+  // }
 
   return (
     <>
@@ -109,7 +108,6 @@ export const RepayTokenContent: FC<RepayTokenContentProps> = ({ loan }) => {
         value={repaymentPercent}
         onChange={handleSliderChange}
         className={styles.repayModalSlider}
-        rootClassName={getColorByPercent(repaymentPercent, colorClassNameByValue)}
       />
 
       <div className={styles.repayModalAdditionalInfo}>

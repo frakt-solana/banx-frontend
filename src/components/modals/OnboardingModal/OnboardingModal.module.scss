@@ -34,11 +34,12 @@ $animation-duration: 0.3s;
   position: relative;
   z-index: 2;
   margin: -24px;
+
+  animation: $animation-duration linear modalAppear;
+
   @media (max-width: 640px) {
     margin: -16px;
   }
-
-  animation: $animation-duration linear modalAppear;
 }
 
 @keyframes modalAppear {
