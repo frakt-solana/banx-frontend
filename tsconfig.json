@@ -1,27 +1,50 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    // 📦 Modules
+    "target": "ES2022", // Output modern JS features
+    "module": "esnext", // Use ES modules (Next.js requirement)
+    "moduleResolution": "node", // Resolve modules like Node.js
+    "resolveJsonModule": true, // Allow importing .json files
+    "isolatedModules": true, // Enforce per-file module boundaries
+    "noEmit": true, // No output files, only type-checking
+
+    // 🧠 Language features
+    "lib": ["dom", "dom.iterable", "esnext"], // Enable DOM and modern JS APIs
+    "jsx": "preserve", // Keep JSX for Next.js to compile
+    "esModuleInterop": true, // Allow default imports from CommonJS
+
+    // 🔗 Paths & Aliases
+    "baseUrl": "./", // Resolve imports from root
+    "paths": {
+      "@banx/*": ["./src/*"] // Alias for internal modules
+    },
+
+    // 🛡️ Type safety
+    "strict": true, // Enable all strict type checks
+    "forceConsistentCasingInFileNames": true, // Enforce case-sensitive imports
+    "skipLibCheck": true, // Skip types in node_modules
+
+    // ⚡ Performance
+    "incremental": true, // Enable incremental builds
+
+    // 🚀 Framework support
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Next.js TypeScript support
       }
     ],
-    "paths": {
-      "@banx/*": ["./src/*"]
-    }
+
+    // ❌ Disable JS support
+    "allowJs": false // Don't include .js files
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+
+  // 📂 Project scope
+  "include": [
+    "next-env.d.ts", // Next.js environment types
+    "**/*.ts", // TypeScript files
+    "**/*.tsx", // React TSX files
+    ".next/types/**/*.ts" // Next.js generated types
+  ],
+
   "exclude": ["node_modules"]
 }

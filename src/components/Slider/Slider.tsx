@@ -21,7 +21,6 @@ export const Slider: FC<SliderProps> = ({
   valueFormat,
   marks = DEFAULT_SLIDER_MARKS,
   className,
-  rootClassName,
   classNames: userClassNames,
   min = 0,
   max = 100,
