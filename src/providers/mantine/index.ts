@@ -1,1 +1,0 @@
-export { mantineTheme } from './theme'

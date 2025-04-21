@@ -15,6 +15,7 @@
     "@dialectlabs/blockchain-sdk-solana": "1.0.0-beta.4",
     "@dialectlabs/react-sdk": "1.2.0",
     "@dialectlabs/react-sdk-blockchain-solana": "1.1.0",
+    "@emotion/react": "^11.14.0",
     "@jup-ag/api": "6.0.24",
     "@mantine/carousel": "^7.17.4",
     "@mantine/core": "^7.17.4",
