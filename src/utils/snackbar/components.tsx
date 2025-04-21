@@ -1,5 +1,6 @@
 import { ElementType, FC } from 'react'
 
+import { notifications } from '@mantine/notifications'
 import {
   IconAlertTriangle,
   IconCircleCheck,
@@ -14,6 +15,7 @@ import { SolanaFMLink } from '@banx/components/SolanaLinks'
 
 import { Copy } from '@banx/icons'
 
+import { enqueueSnackbar } from '.'
 import { copyToClipboard } from '../common'
 import { SnackbarProps, SnackbarType } from './types'
 
@@ -54,8 +56,12 @@ export const SnackMessage: FC<SnackMessageProps> = ({
   )
 }
 
-type SnackDescriptionProps = Pick<SnackbarProps, 'type' | 'description' | 'copyButtonProps'>
+type SnackDescriptionProps = Pick<
+  SnackbarProps,
+  'customKey' | 'type' | 'description' | 'copyButtonProps'
+>
 export const SnackDescription: FC<SnackDescriptionProps> = ({
+  customKey = '',
   type,
   description = '',
   copyButtonProps = {},
@@ -64,6 +70,15 @@ export const SnackDescription: FC<SnackDescriptionProps> = ({
 
   const onBtnClick = () => {
     copyToClipboard(textToCopy || '')
+    notifications.hide(customKey)
+
+    setTimeout(() => {
+      enqueueSnackbar({
+        message: 'Copied to clipboard',
+        type: 'success',
+        autoHideDuration: 2000,
+      })
+    }, 300)
   }
 
   return (

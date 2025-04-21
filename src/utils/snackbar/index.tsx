@@ -42,8 +42,9 @@ export const enqueueSnackbar: EnqueueSnackbar = ({
       <div className={styles.snackContent}>
         {description || copyButtonProps ? (
           <SnackDescription
-            description={description}
+            customKey={key}
             type={type}
+            description={description}
             copyButtonProps={copyButtonProps}
           />
         ) : null}
@@ -56,12 +57,6 @@ export const enqueueSnackbar: EnqueueSnackbar = ({
 
     classNames: {
       root: classNames(styles.snack, styles[`snack__${type}`], className),
-      body: styles.snackBody,
-      title: styles.snackTitle,
-      description: styles.snackDescription,
-      closeButton: styles.closeIcon,
-      icon: styles.snackIcon,
-      loader: styles.snackIcon,
     },
   })
 

@@ -1,64 +1,19 @@
 .snack {
-  background: var(--bg-tertiary);
-  border: 1px solid;
-  border-radius: 6px;
-  padding: 0;
-
-  &::before {
-    display: none;
-  }
-
   &__info,
   &__loading {
-    border-color: var(--additional-blue-primary);
+    border-color: var(--additional-blue-primary) !important;
   }
 
   &__success {
-    border-color: var(--additional-green-primary);
+    border-color: var(--additional-green-primary) !important;
   }
 
   &__warning {
-    border-color: var(--additional-gold-primary);
+    border-color: var(--additional-gold-primary) !important;
   }
 
   &__error {
-    border-color: var(--additional-red-primary);
-  }
-}
-
-.snackBody {
-  margin: 0;
-}
-
-.snackTitle {
-  color: var(--content-primary);
-  font: var(--body-text-md);
-  padding: 12px 12px 0 12px;
-  margin-bottom: 16px;
-}
-
-.snackIcon {
-  width: 16px;
-  height: 16px;
-}
-
-.closeIcon {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  &:hover {
-    color: inherit;
-    background-color: inherit;
-  }
-
-  svg {
-    height: 20px !important;
-    width: 20px !important;
-  }
-
-  svg rect {
-    fill: var(--content-primary);
+    border-color: var(--additional-red-primary) !important;
   }
 }
 
