@@ -2,10 +2,10 @@ import { CSSObject, Global } from '@emotion/react'
 
 export const skeletonGlobalStyles: CSSObject = {
   '.mantine-Skeleton-root': {
-    backgroundColor: 'var(--action-secondary)',
+    backgroundColor: 'var(--action-tertiary)',
 
     '&::before, &::after': {
-      backgroundColor: 'var(--action-primary)',
+      backgroundColor: 'var(--action-tertiary)',
     },
   },
 }

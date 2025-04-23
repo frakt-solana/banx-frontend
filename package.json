@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "build:log": "next build 2> build-errors.log",
     "start": "next start",
@@ -32,6 +32,7 @@
     "@tanstack/react-query": "^5.71.1",
     "@tanstack/react-query-persist-client": "^5.71.1",
     "axios": "^1.4.0",
+    "banx-token-lending-sdk": "0.1.0-beta.2",
     "banx-vaults-sdk": "0.0.20",
     "bn.js": "^5.2.1",
     "bs58": "^5.0.0",

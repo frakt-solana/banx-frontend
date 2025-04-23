@@ -14,12 +14,12 @@
     height: 40px;
 
     &:last-child {
-      width: 164px;
+      width: 176px;
     }
 
     @media (max-width: 640px) {
       &:last-child {
-        width: 148px;
+        width: 164px;
       }
     }
   }
@@ -44,6 +44,7 @@
 .cellValue {
   color: var(--content-primary);
   font: var(--body-text-md);
+  white-space: nowrap;
 
   @media (max-width: 640px) {
     font: var(--body-text-sm);
@@ -62,7 +63,7 @@
 }
 
 .refinanceModalButton {
-  width: 132px;
+  width: 144px;
   gap: 4px;
 
   @media (max-width: 640px) {

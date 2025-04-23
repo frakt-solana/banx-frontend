@@ -80,7 +80,12 @@ const RefinanceTokenModal: FC<RefinanceTokenModalProps> = ({ loan }) => {
   }, [currentDebt, marketUpfrontFee, offers, wallet?.publicKey, lendingToken, loan])
 
   return (
-    <Modal opened onClose={closeModal} classNames={{ content: styles.refinanceModalContent }}>
+    <Modal
+      opened
+      onClose={closeModal}
+      classNames={{ content: styles.refinanceModalContent }}
+      size="lg"
+    >
       <h4 className={styles.refinanceModalTitle}>Current loan</h4>
 
       <LoansInfoStats

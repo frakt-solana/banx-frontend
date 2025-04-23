@@ -97,6 +97,13 @@
   width: 14px;
 }
 
+.selectTokenButtonTicker {
+  font: var(--important-text-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 144px;
+}
+
 .selectTokenButtonChevronIcon {
   min-height: 16px;
   min-width: 16px;

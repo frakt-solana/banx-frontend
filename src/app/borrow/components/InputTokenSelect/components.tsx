@@ -34,7 +34,7 @@ export const SelectTokenButton = <T extends BaseToken>({
       variant="tertiary"
     >
       <ResponsiveImage src={token.collateral.logoUrl} className={styles.selectTokenButtonIcon} />
-      {token.collateral.ticker}
+      <span className={styles.selectTokenButtonTicker}>{token.collateral.ticker}</span>
       <ChevronDown className={styles.selectTokenButtonChevronIcon} />
     </Button>
   )

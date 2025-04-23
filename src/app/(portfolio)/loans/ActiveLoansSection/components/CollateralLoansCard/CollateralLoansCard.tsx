@@ -86,7 +86,7 @@ const CollateralLoansMainInfo: FC<{ loansPreview: LoansPreview }> = ({ loansPrev
       <div className={styles.mainInfoContent}>
         <div className={styles.mainInfoContentRow}>
           <span>{formattedTotalCollateralAmount}</span>
-          <span>{collateralTicker}</span>
+          <span className={styles.ticker}>{collateralTicker}</span>
         </div>
         <span className={styles.collateralPrice}>
           <DisplayValue value={totalCollateralPrice} strictTokenType={lendingToken} />

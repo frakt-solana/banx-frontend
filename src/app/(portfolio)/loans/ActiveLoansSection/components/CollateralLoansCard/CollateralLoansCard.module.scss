@@ -106,8 +106,24 @@
   color: var(--content-secondary);
   font: var(--important-text-md);
 
+  min-width: 124px;
+  max-width: 124px;
+
   @media (max-width: 640px) {
     font: var(--important-text-sm);
+    min-width: unset;
+  }
+}
+
+.ticker {
+  font: var(--important-text-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 640px) {
+    font: var(--important-text-sm);
+    min-width: unset;
+    max-width: unset;
   }
 }
 
